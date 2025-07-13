@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>James Nithil Portfolio</title>
+   <link rel="icon" href="https://github.com/nithiljn/AI_Portfolio/raw/main/logo_nithil.png" type="image/png" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  
+
+</head>
+<style>
+  /* General Reset */
+body {
+  margin: 0;
+  font-family: monospace;
+  background-color: #1e1e1e;
+  color: white;
+  padding-top: 40px; 
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: #1f2937;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  color: #60a5fa;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tab-btn {
+  background-color: #2d3748;
+  color: white;
+  text-align: left;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: normal;
+  transition: background 0.2s;
+}
+
+.tab-btn:hover {
+  background-color: #3b4252;
+}
+
+.tab-btn.active {
+  background-color: #3b82f6;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Main Content */
+.main {
+  flex: 1;
+  background-color: #0f172a;
+  padding: 24px;
+  padding-right: 280px;
+  overflow-y: auto;
+}
+.readme-terminal {
+  overflow-x: hidden;
+}
+
+
+.welcome {
+  font-size: 24px;
+  font-weight: bold;
+  color: #60a5fa;
+}
+
+.instruction {
+  color: #9ca3af;
+  margin-top: 16px;
+}
+
+.tab-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #60a5fa;
+}
+
+.code {
+  margin-top: 16px;
+  background-color: #1e293b;
+  padding: 16px;
+  border-radius: 8px;
+  white-space: pre-wrap;
+}
+
+.code.green {
+  color: #4ade80;
+}
+
+.code.yellow {
+  color: #facc15;
+}
+
+.code.pink {
+  color: #f472b6;
+}
+
+.code.gray {
+  color: #d1d5db;
+}
+
+.hidden {
+  display: none;
+}
+/* New Plastic ID Card Style */
+.plastic-id-wrapper {
+    padding-top: 35px; 
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: swing 4s ease-in-out infinite;
+  transform-origin: top center;
+  z-index: 999;
+}
+
+/* Top round tag */
+.badge-tag {
+  
+  width: 50px;
+  height: 50px;
+  background-color: #273f42;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(217, 221, 231, 0.6);
+}
+
+/* Clip bar below tag */
+.badge-clip {
+  width: 16px;
+  height: 40px;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  margin-top: -5px;
+  position: relative;
+}
+.badge-clip::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: #6b7280;
+  border-radius: 50%;
+}
+
+/* Card body */
+.plastic-id-card {
+  width: 240px;
+  height: 360px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* Top section */
+.card-header {
+  background: linear-gradient(to bottom, #273045, #1094b9);
+  padding: 20px 10px 10px;
+  position: relative;
+}
+
+.logo-placeholder {
+  font-size: 12px;
+  color: #38bdf8;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.profile-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #38bdf8;
+  margin: 0 auto;
+}
+.profile-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Info section */
+.card-info {
+  padding: 14px;
+  font-size: 13px;
+  color: #0c121e;
+}
+
+.emp-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 8px 0 2px;
+}
+
+.emp-role {
+  font-size: 12px;
+  font-weight: 500;
+  color: #4b5563;
+  margin-bottom: 12px;
+}
+
+.barcode {
+  margin-top: 14px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  color: #3d3a3a;
+}
+
+/* Swinging effect */
+@keyframes swing {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(1.5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-1.5deg); }
+  100% { transform: rotate(0deg); }
+}
+.vscode-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #1e1e1e;
+  width: 50px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+  z-index: 1000;
+}
+
+.nav-icon {
+  position: relative;
+  color: #ccc;
+  margin: 10px 0;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.nav-icon:hover {
+  background-color: #333;
+  color: #3b82f6;
+}
+
+/* Tooltip styling */
+.nav-icon::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #333;
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.nav-icon:hover::after {
+  opacity: 1;
+}
+
+
+/* Icon sizes */
+.nav-icon i {
+  width: 24px;
+  height: 24px;
+}
+.tab-btn i {
+  margin-right: 8px;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+/* Wraps the full content area excluding the fixed sidebar */
+.main-content-container {
+  margin-left: 50px; /* adjust based on .vscode-nav width */
+}
+
+@media (max-width: 640px) {
+  .main-content-container {
+    margin-left: 0;
+  }
+
+  .vscode-nav {
+    display: none;
+  }
+}
+/* Topbar Styling */
+.tech-topbar {
+  background-color: #0f172a;
+  color: #00ffff;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Courier New', monospace;
+}
+
+/* Keywords scroll */
+.keywords-container {
+  display: flex;
+  gap: 30px;
+  animation: scroll 15s linear infinite;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.keyword {
+  color: #00ffff;
+  font-weight: bold;
+}
+@keyframes scroll {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 22px;
+  margin-right: 45px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #888;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 18px; width: 18px;
+  left: 2px; bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+input:checked + .slider {
+  background-color: #4caf50;
+}
+input:checked + .slider::before {
+  transform: translateX(23px);
+}
+/* Default is dark */
+
+
+body {
+  background-color: #0f172a;
+  color: white;
+}
+
+body.light-theme {
+  background-color: #f4f4f4;
+  color: #111;
+}
+
+body.light-theme .tech-topbar {
+  background-color: #d8d7d7;
+  color: #333;
+}
+body.light-theme .keyword {
+  color: #333;
+}
+.readme-terminal {
+  background-color: #1e293b;
+  color: #00ffcc;
+  padding: 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  border-radius: 8px;
+  min-height: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  position: relative;
+  white-space: pre-wrap;
+}
+
+.blinking-cursor {
+  color: #00ffcc;
+  font-size: 14px;
+  animation: blink 1s step-start infinite;
+
+  bottom: 20px;
+  left: 20px;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.tabs a.tab-btn {
+  display: flex;
+  align-items: center;
+  background-color: #2d3748;
+  color: white;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.tabs a.tab-btn:hover {
+  background-color: #3b4252;
+}
+.project-card {
+  margin-bottom: 30px;
+  padding: 10px 15px;
+  background-color: #1e293b;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.08);
+  overflow-x: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+}
+
+.project-card pre {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  white-space: pre-wrap;
+}
+
+/* Syntax coloring */
+.keyword {
+  color: #569CD6;
+}
+
+.classname {
+  color: #4EC9B0;
+}
+
+.function {
+  color: #DCDCAA;
+}
+
+.string {
+  color: #CE9178;
+}
+
+.list {
+  color: #9CDCFE;
+}
+
+.code-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #38bdf8;
+  text-decoration: none;
+  padding-left: 8px;
+}
+
+.code-link:hover {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+/* skills.json highlighting */
+.key {
+  color: #9CDCFE; /* light blue for keys */
+}
+
+.string {
+  color: #CE9178; /* orange for string values */
+}
+
+.bracket {
+  color: #D4D4D4; /* VS Code default gray for punctuation */
+}
+/* YAML-like styling */
+.key {
+  color: #9CDCFE; /* light blue */
+}
+
+.string {
+  color: #CE9178; /* light orange */
+}
+
+.dash {
+  color: #D4D4D4; /* gray */
+}
+.code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+#terminal-output {
+  background-color: #1e1e1e;
+  color: #0f0;
+  font-family: 'Courier New', monospace;
+  padding: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 5px;
+}
+
+#terminal-input {
+  width: 100%;
+  background: black;
+  color: lime;
+  border: none;
+  padding: 8px 10px;
+  font-family: 'Courier New', monospace;
+  outline: none;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.input-line {
+  color: #3cf;
+}
+
+.output-line {
+  color: #0f0;
+}
+</style>
+<body>
+   <div class="tech-topbar">
+  <div class="keywords-container">
+    <span class="keyword">Java</span>
+    <span class="keyword">Python</span>
+    <span class="keyword">AI</span>
+    <span class="keyword">Machine Learning</span>
+    <span class="keyword">API</span>
+    <span class="keyword">LLM</span>
+    <span class="keyword">RAG</span>
+    <span class="keyword">Flask</span>
+    <span class="keyword">React</span>
+    <span class="keyword">GitHub</span>
+  </div>
+
+  <!-- Light/Dark Switch -->
+  <label class="switch">
+    <input type="checkbox" id="theme-toggle" />
+    <span class="slider"></span>
+  </label>
+</div>
+
+<div class="vscode-nav">
+  <div class="nav-icon" data-tooltip="Explorer">
+    <i data-lucide="files"></i>
+  </div>
+  <div class="nav-icon" data-tooltip="Search">
+    <i data-lucide="search"></i>
+  </div>
+  <div class="nav-icon" data-tooltip="Source Control">
+    <i data-lucide="git-branch"></i>
+  </div>
+  <div class="nav-icon" data-tooltip="Run & Debug">
+    <i data-lucide="play-circle"></i>
+  </div>
+  <div class="nav-icon" data-tooltip="Extensions">
+    <i data-lucide="box"></i>
+  </div>
+  <div class="nav-icon" data-tooltip="Settings">
+    <i data-lucide="settings"></i>
+  </div>
+</div>
+<div class="main-content-container">
+  <div class="container">
+
+    <!-- VS Code Sidebar -->
+    <aside class="sidebar">
+  <div class="title">James_Nithil.portfolio</div>
+  <nav class="tabs">
+    <button class="tab-btn active">
+      <i class="devicon-markdown-original"></i> README.md
+    </button>
+    <button class="tab-btn">
+      <i class="devicon-python-plain"></i> projects.py
+    </button>
+    <button class="tab-btn">
+      <i class="devicon-javascript-plain"></i> skills.json
+    </button>
+    <button class="tab-btn">
+      <i class="devicon-bash-plain"></i> terminal.sh
+    </button>
+    <button class="tab-btn">
+  <i class="devicon-linux-plain"></i> Internships.yml
+</button>
+    <a class="tab-btn" href="https://www.linkedin.com/in/jamesnithil-v/" target="_blank">
+    <i class="devicon-linkedin-plain"></i> LinkedIn
+  </a>
+  <a class="tab-btn" href="https://github.com/nithiljn" target="_blank">
+    <i class="devicon-github-original"></i> GitHub
+  </a>
+  <a class="tab-btn" href="https://huggingface.co/JamesGenAI" target="_blank">
+    🤗 HuggingFace
+  </a>
+  <a class="tab-btn" href="https://leetcode.com/u/NITHIL07/" target="_blank">
+    🧠 LeetCode
+  </a>
+  <a class="tab-btn" href="https://github.com/nithiljn/AI_Portfolio/raw/main/James_Nithil_Resume.pdf" download target="_blank">
+  📄 Download Resume
+</a>
+
+  </nav>
+</aside>
+
+   
+    <!-- Main Dashboard Area -->
+    <main class="main">
+        
+      <h1 class="welcome">Welcome to James Nithil Portfolio</h1>
+      <p class="instruction">Click a tab on the left to get started.</p>
+
+      <div id="tab-readme" class="tab-content">
+  <h1 class="tab-title">README.md</h1>
+  <div class="readme-terminal">
+    <pre id="typed-readme"></pre><span class="blinking-cursor">█</span>
+    
+  </div>
+ <audio id="typing-sound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_efb4b48b6c.mp3" preload="auto"></audio>
+</div>
+     <div id="tab-projects" class="tab-content">
+  <h1 class="tab-title">projects.py</h1>
+
+  <!-- 🔹 Project 1 -->
+  <div class="project-card">
+    <pre class="code yellow">
+<span class="keyword">class</span> <span class="classname">AI_InterviewBot</span>:
+
+    <span class="keyword">def</span> <span class="function">__init__</span>(self):
+
+        self.title = <span class="string">" AI - INTERVIEW CHAT BOT "</span>
+
+        self.tech_stack = <span class="list">[</span>
+            <span class="string">"Python"</span>, <span class="string">"Flask"</span>, <span class="string">"LLM"</span>,
+            <span class="string">"JSON"</span>, <span class="string">"GeminiAPI"</span>, <span class="string">"gTTS"</span>,
+            <span class="string">"ElevenLabsAPI"</span>
+        <span class="list">]</span>
+
+        self.description = (
+
+            <span class="string">" An AI interview assistant that conducts live interviews. "</span>
+
+            <span class="string">" Analyzes responses and gives feedback — all without resumes. "</span>
+
+            <span class="string">" Interactive with human-like voice. "</span>
+        )
+    </pre>
+    <a href="https://github.com/nithiljn/james-ai-voicebot" class="code-link" target="_blank">🔗 GitHub: james-ai-voicebot</a>
+  </div>
+
+  <!-- 🔹 Project 2 -->
+  <div class="project-card">
+    <pre class="code yellow">
+<span class="keyword">class</span> <span class="classname">Sympto_Med_AI</span>:
+
+    <span class="keyword">def</span> <span class="function">__init__</span>(self):
+
+        self.title = <span class="string">" SymptoMedAI - Disease Prediction "</span>
+
+        self.tech_stack = <span class="list">[</span>
+            <span class="string">"Python"</span>, <span class="string">"Random Forest"</span>, <span class="string">"FastAPI"</span>,
+            <span class="string">"Flask"</span>, <span class="string">"MySQL"</span>, <span class="string">"CSV"</span>
+        <span class="list">]</span>
+
+        self.description = (
+
+            <span class="string">" Predicts diseases from symptoms. "</span>
+
+            <span class="string">"  Books appointments, suggests medicine, and enables. "</span>
+
+            <span class="string">" Live doctor consultations for real-time diagnosis. "</span>
+        )
+    </pre>
+    <a href="https://github.com/nithiljn/SymptoMedAi" class="code-link" target="_blank">🔗 GitHub: SymptoMedAi</a>
+  </div>
+
+  <!-- 🔹 Project 3 -->
+  <div class="project-card">
+    <pre class="code yellow">
+<span class="keyword">class</span> <span class="classname">FarmVista</span>:
+
+    <span class="keyword">def</span> <span class="function">__init__</span>(self):
+     
+        self.title = <span class="string">" FarmVista - Smart Agriculture "</span>
+
+        self.tech_stack = <span class="list">[</span>
+            <span class="string">"Python"</span>, <span class="string">"Machine Learning"</span>, <span class="string">"Flask"</span>,
+            <span class="string">"Weather API"</span>, <span class="string">"Soil Analysis"</span>
+        <span class="list">]</span>
+
+        self.description = (
+
+            <span class="string">" Helps farmers choose optimal crops using weather + soil data. "</span>
+
+            <span class="string">" Offers fertilizer tips and guidance for increased productivity. "</span>
+       
+            )
+    </pre>
+    <a href="https://github.com/nithiljn/Farmvista/tree/main/Farmvista%20.iva/SIH1" class="code-link" target="_blank">🔗 GitHub: FarmVista</a>
+  </div>
+</div>
+
+
+<div id="tab-skills" class="tab-content hidden">
+  <h1 class="tab-title">skills.json</h1>
+  <pre class="code pink">
+<span class="bracket">{</span>
+  <span class="key">"Languages"</span>: <span class="bracket">[</span>
+
+    <span class="string">"Python (Advanced)"</span>,
+
+    <span class="string">"Core Java (Advanced)"</span>,
+
+    <span class="string">"JavaScript"</span>,
+
+    <span class="string">"HTML5 & CSS3"</span>,
+
+    <span class="string">"SQL"</span>
+  <span class="bracket">]</span>,
+  
+  <span class="key">"Frameworks & Libraries"</span>: <span class="bracket">[</span>
+
+    <span class="string">"Flask"</span>,
+
+    <span class="string">"Spring Boot"</span>,
+
+    <span class="string">"Scikit-learn"</span>,
+
+    <span class="string">"Pandas"</span>,
+
+    <span class="string">"NumPy"</span>,
+
+    <span class="string">"Matplotlib"</span>,
+
+    <span class="string">"TensorFlow (Basics)"</span>
+  <span class="bracket">]</span>,
+
+  <span class="key">"Data Engineering & Cloud"</span>: <span class="bracket">[</span>
+
+    <span class="string">"MySQL"</span>,
+
+    <span class="string">"Google Colab"</span>,
+
+    <span class="string">"AWS (S3, EC2 basics)"</span>,
+
+    <span class="string">"Vercel (deployment)"</span>,
+
+    <span class="string">"JSON"</span>
+  <span class="bracket">]</span>,
+
+  <span class="key">"Generative AI"</span>: <span class="bracket">[</span>
+
+    <span class="string">"LLMs (Large Language Models)"</span>,
+
+    <span class="string">"Retrieval-Augmented Generation (RAG)"</span>,
+
+    <span class="string">"Hugging Face Transformers"</span>,
+
+    <span class="string">"Prompt Engineering"</span>
+  <span class="bracket">]</span>,
+
+  <span class="key">"Developer Tools & Practices"</span>: <span class="bracket">[</span>
+
+    <span class="string">"GitHub"</span>,
+
+    <span class="string">"Jupyter Notebook"</span>,
+
+    <span class="string">"Eclipse IDE"</span>,
+
+    <span class="string">"VS Code"</span>
+  <span class="bracket">]</span>
+<span class="bracket">}</span>
+  </pre>
+</div>
+
+
+      <div id="tab-terminal" class="tab-content hidden">
+  <h1 class="tab-title">terminal.sh</h1>
+  <div id="terminal-output" class="terminal-window">
+    <div class="output-line">$ npm run james</div>
+    <div class="output-line">> Launching James’s AI Portfolio Assistant...</div>
+  </div>
+  <input type="text" id="terminal-input" placeholder="$npm : " autocomplete="off" />
+</div>
+      <div id="tab-internship" class="tab-content hidden">
+  <h1 class="tab-title">Internship.yml</h1>
+  <pre class="code green">
+<span class="key">Internships</span>:
+
+  <span class="dash">-</span> <span class="key">company</span>: <span class="string">Accenture</span>
+
+    <span class="key">role</span>: <span class="string">Data Analytics & Visualization Intern</span>
+
+    <span class="key">duration</span>: <span class="string">Nov 2023 – May 2024</span>
+
+    <span class="key">location</span>: <span class="string">Remote</span>
+
+    <span class="key">responsibilities</span>:
+
+      <span class="dash">-</span> <span class="string">Analyzed over 10,000 records using Pandas and NumPy...</span>
+
+      <span class="dash">-</span> <span class="string">Optimized data pipelines, reducing report time by 20%.</span>
+
+      <span class="dash">-</span> <span class="string">Built Power BI dashboards & visualizations (Matplotlib).</span>
+
+      <span class="dash">-</span> <span class="string">Automated reporting across 5+ departments.</span>
+
+      <span class="dash">-</span> <span class="string">Worked in Agile teams to deliver data-driven solutions.</span>
+
+  <span class="dash">-</span> <span class="key">company</span>: <span class="string">SpreadTeach Solutions</span>
+
+    <span class="key">role</span>: <span class="string">Data Analyst Intern</span>
+
+    <span class="key">duration</span>: <span class="string">Nov 2023 – Dec 2023</span>
+
+    <span class="key">location</span>: <span class="string">Remote</span>
+
+    <span class="key">projects</span>:
+
+      <span class="dash">-</span> <span class="string">Weather Prediction</span>
+
+      <span class="dash">-</span> <span class="string">House Price Prediction</span>
+
+      <span class="dash">-</span> <span class="string">Spam Mail Prediction</span>
+  </pre>
+</div>
+
+
+  <div class="plastic-id-wrapper">
+  <div class="badge-tag"></div>
+  <div class="badge-clip"></div>
+  <div class="plastic-id-card">
+    <div class="card-header">
+        
+      <div class="profile-circle">
+        <img src="Nithil.jpg" alt="James" />
+      </div>
+    </div>
+    <div class="card-info">
+      <h2 class="emp-name">James Nithil</h2>
+      <p class="emp-role"> Developer</p>
+      <p></p>
+      <p>E-mail: jamnithil@gmail.com</p>
+      <p>Phone: +91 8220173595</p>
+      <div class="barcode">████████████</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div>
+</div>
+</main>
+
+  <script>
+    const buttons = document.querySelectorAll(".tab-btn");
+    const tabIds = ["tab-readme", "tab-projects", "tab-skills", "tab-terminal","tab-internship"];
+
+    buttons.forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-content").forEach(tab => {
+          tab.classList.add("hidden");
+        });
+
+        document.getElementById(tabIds[index]).classList.remove("hidden");
+
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
+    const toggle = document.getElementById("theme-toggle");
+  toggle.addEventListener("change", () => {
+    document.body.classList.toggle("light-theme");
+  });
+  const text = `
+$ Hello, I'm James Nithil!
+Passionate about @Artificial Intelligence, Data Science, and Software Development
+
+$ B.Tech in AI & Data Science @ KIOT (2021–2025)
+Scored 8.1 CGPA
+
+$ +2 @ St. Mary's Matric Higher Secondary School (2020–2021)
+Scored 84%
+
+$ SSLC @ St. Mary's Matric Higher Secondary School (2018–2019)
+Scored 74%
+
+$ About @ me
+Highly motivated Artificial Intelligence and Data Science student with strong skills in Java, Python
+and a deep interest in software and AI
+development. I learn quickly, can join immediately, and am fully committed to giving my best 
+even if it means working 12+ hours a day to get the job done
+I’m currently building hands-on AI projects, exploring
+automation, and genuinely enjoy coding — especially when it involves solving real-world problems.
+
+$ James Nithil @ Achievements
+• Solved 220+ LeetCode Problems
+• Led a team in the SIH Hackathon (Team of 5)
+
+& Certifications
+• Core Java & SQL Certification - EBox
+• MySQL Database Certification - IBM
+• Machine Learning Certification - Simplilearn
+• Deep Learning using PyTorch - Guvi
+
+$ Seeking opportunities to showcase my skill set in AI and ML 
+To solve real-world problems.Ready to work from Day 1 and 
+Complete tasks with full dedication.$ learning from 4 years of college
+
+$ Thought
+"In every failed attempt, I find the seeds of mastery."
+
+$ Thought
+"Consistency is my key — I’m ready to work from Day 1.
+`;
+
+  const target = document.getElementById("typed-readme");
+  const terminal = document.querySelector(".readme-terminal");
+  const typingSound = document.getElementById("typing-sound");
+  let i = 0;
+
+  function typeChar() {
+    if (i < text.length) {
+      const char = text.charAt(i);
+      target.textContent += char;
+
+      // typing sound
+      if (char !== ' ' && char !== '\n') {
+        typingSound.currentTime = 0;
+        typingSound.play();
+      }
+
+      // auto-scroll terminal down
+      terminal.scrollTop = terminal.scrollHeight;
+
+      i++;
+
+      // Add slight delay after each paragraph
+      if (char === '\n' && text[i] === '\n') {
+        setTimeout(typeChar, 600);
+      } else {
+        setTimeout(typeChar, 25); // normal speed
+      }
+    } else {
+      // Stop cursor blinking at end (optional)
+      document.querySelector('.blinking-cursor').style.display = 'none';
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', typeChar);
+
+  
+     lucide.createIcons();
+
+     const terminalOutput = document.getElementById("terminal-output");
+const inputField = document.getElementById("terminal-input");
+
+const commands = {
+  "who is james": "I’m James Nithil, a passionate AI/ML developer with strong Python and web dev skills.",
+  "is have arrier": "No, I have no arrears. I'm a consistent performer and deadline-oriented.",
+  "skills": "Python, Java, Flask, TensorFlow, LLMs, APIs, Power BI, SQL, AWS, GitHub.",
+  "is have arrier": "🔗 https://www.linkedin.com/in/james-nithil",
+  "github": "🔗 https://github.com/jamesnithil"
+    
+};
+
+inputField.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    const userCommand = inputField.value.trim().toLowerCase();
+    const cleanCommand = userCommand.replace("$npm :", "").trim();
+    const response = commands[cleanCommand] || "Command not recognized. Try: who is james";
+
+    terminalOutput.innerHTML += `<div class="input-line">$npm : ${cleanCommand}</div>`;
+    terminalOutput.innerHTML += `<div class="output-line">> ${response}</div>`;
+    inputField.value = "";
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+  }
+});
+
+  </script>
+</body>
+</html>
