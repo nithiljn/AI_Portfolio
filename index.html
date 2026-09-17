@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>James Nithil V | Junior Software Developer & AI Systems Engineer</title>
-  <meta name="description" content="Portfolio of James Nithil V - Junior Software Developer at Vaken Technology (Sovablu), LeetCode Knight (Global Rank #197), specializing in Java, Spring Boot, Python, LangGraph, Distributed Systems, and Generative AI." />
-  <link rel="icon" href="logo_image.png" type="image/png" />
+  <meta name="description" content="Portfolio of James Nithil V, Junior Software Developer at Vaken Technology (Sovablu). LeetCode Knight (Contest Rating 1,994, Rank #197), specializing in Java, Spring Boot, Python, LangGraph, Distributed Systems, and AI." />
+  <link rel="icon" href="assets/images/logo_image.png" type="image/png" />
 
   <!-- Fonts: Inter for UI & JetBrains Mono for Code -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1284,6 +1284,56 @@
       font-family: var(--font-code);
     }
 
+    .knight-spotlight-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .knight-info-col {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .leetcode-screenshot-wrap {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: var(--radius-md);
+      padding: 10px;
+      max-width: 360px;
+      width: 100%;
+      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.15);
+      transition: var(--transition-smooth);
+    }
+
+    .leetcode-screenshot-wrap:hover {
+      transform: translateY(-3px) scale(1.02);
+      border-color: rgba(245, 158, 11, 0.65);
+      box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.7), 0 0 28px rgba(245, 158, 11, 0.25);
+    }
+
+    .leetcode-screenshot-img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+      display: block;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .leetcode-screenshot-caption {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      font-family: var(--font-code);
+    }
+
     .problems-breakdown-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -1847,16 +1897,16 @@
       <div class="ticker-track">
         <div class="ticker-item">
           <span class="pulse-dot"></span>
-          <span>Junior Software Developer @ <span class="ticker-highlight">Vaken Technology (Sovablu)</span></span>
+          <span>Junior Software Developer at <span class="ticker-highlight">Vaken Technology (Sovablu)</span></span>
         </div>
         <div class="ticker-item">
-          <span>🏆 <span class="ticker-highlight">LeetCode Knight Badge</span> · Global Rank #197 / 43,027</span>
+          <span>🏆 <span class="ticker-highlight">LeetCode Knight (Rating 1,994)</span> | Global Rank #197 / 43,027</span>
         </div>
         <div class="ticker-item">
-          <span>⚡ <span class="ticker-highlight">KadalValzhi</span>: LangGraph Multi-Agent RAG & AI Guidance</span>
+          <span>⚡ <span class="ticker-highlight">KadalValzhi</span>: LangGraph Multi-Agent RAG and AI Guidance</span>
         </div>
         <div class="ticker-item">
-          <span>💻 700+ Coding Problems Solved (Java · Python · SQL)</span>
+          <span>💻 980+ Solved Problems Across Java, Python, and SQL</span>
         </div>
       </div>
     </div>
@@ -1946,7 +1996,7 @@
           <span>README.md</span>
         </div>
 
-        <div class="file-item" data-tab="tab-projects" data-file-title="KadalValzhi_projects.py" data-file-icon="devicon-python-plain">
+        <div class="file-item" data-tab="tab-projects" data-file-title="projects.py" data-file-icon="devicon-python-plain">
           <span class="file-icon"><i class="devicon-python-plain" style="color: #facc15;"></i></span>
           <span>projects.py</span>
         </div>
@@ -2004,7 +2054,7 @@
             <span class="pulse-dot"></span> Active in Production
           </div>
           <div style="color: var(--text-primary); font-weight: 600; margin-bottom: 2px;">Vaken Technology</div>
-          <div style="color: var(--text-muted);">Junior Software Developer @ Sovablu</div>
+          <div style="color: var(--text-muted);">Junior Software Developer at Sovablu</div>
         </div>
       </div>
     </nav>
@@ -2062,15 +2112,15 @@
                 <i data-lucide="terminal" style="width: 13px; height: 13px;"></i> Junior Software Developer
               </span>
               <span class="badge-knight-pill">
-                🏆 LeetCode Knight #197 / 43,027
+                🏆 LeetCode Knight (Rating 1,994, Rank #197)
               </span>
             </div>
 
             <p class="hero-bio">
-              Software Developer at <strong>Vaken Technology</strong> (working on product <strong>Sovablu</strong>).
-              Specialized in high-availability production <strong>Java & Spring Boot APIs</strong>,
-              scalable distributed workflows with <strong>Redis & PostgreSQL</strong>, <strong>Agentic AI</strong> systems via AWS Bedrock,
-              and multi-agent architectures in <strong>Python & LangGraph</strong>.
+              Software Developer at <strong>Vaken Technology</strong>, working on the <strong>Sovablu</strong> platform.
+              Focused on production <strong>Java and Spring Boot APIs</strong>,
+              database caching with <strong>Redis and PostgreSQL</strong>, <strong>Agentic AI</strong> with AWS Bedrock,
+              and multi-agent architectures using <strong>Python and LangGraph</strong>.
             </p>
 
             <div class="hero-actions">
@@ -2092,31 +2142,31 @@
           <!-- Quick Metrics Grid -->
           <div class="stats-grid">
             <div class="stat-card stat-gold">
-              <div class="stat-value">#197</div>
-              <div class="stat-label">Global Rank on LeetCode</div>
-              <div class="stat-sub">Weekly Contest 490 (4/4 Solved · Top Tier)</div>
+              <div class="stat-value">1,994</div>
+              <div class="stat-label">LeetCode Contest Rating</div>
+              <div class="stat-sub">Knight Level, Rank #197 in Weekly Contest 490</div>
             </div>
             <div class="stat-card">
-              <div class="stat-value">700+</div>
-              <div class="stat-label">Problems Solved Total</div>
-              <div class="stat-sub">400+ Java · 350+ Python3 · 60+ SQL</div>
+              <div class="stat-value">980+</div>
+              <div class="stat-label">Problems Solved Across Languages</div>
+              <div class="stat-sub">442 Java, 436 Python3, 40 MySQL, 31 C++</div>
             </div>
             <div class="stat-card stat-green">
               <div class="stat-value">Production</div>
-              <div class="stat-label">REST APIs @ Sovablu</div>
-              <div class="stat-sub">Spring Boot · Redis Caching · AWS Bedrock</div>
+              <div class="stat-label">REST APIs at Sovablu</div>
+              <div class="stat-sub">Spring Boot, Redis Caching, AWS Bedrock</div>
             </div>
             <div class="stat-card stat-purple">
               <div class="stat-value">Multi-Agent</div>
               <div class="stat-label">KadalValzhi Platform</div>
-              <div class="stat-sub">LangGraph · RAG · ChromaDB · LangSmith</div>
+              <div class="stat-sub">LangGraph, ChromaDB RAG, LangSmith</div>
             </div>
           </div>
 
           <!-- Live Terminal-style Bio Output -->
           <div class="terminal-container">
             <div class="terminal-header">
-              <span>bash - profile.sh --verbose</span>
+              <span>bash: profile.sh</span>
               <span>README_OUTPUT.log</span>
             </div>
             <div class="terminal-body" id="readme-typewriter-text"><span class="terminal-cursor"></span></div>
@@ -2150,10 +2200,10 @@
           <div class="section-headline">
             <div class="section-title">
               <i data-lucide="folder-git-2" style="color: var(--accent-yellow);"></i>
-              <span>projects.py — Featured Engineering Work</span>
+              <span>projects.py: Featured Work</span>
             </div>
             <span style="font-family: var(--font-code); font-size: 0.8rem; color: var(--text-muted);">
-              LangGraph · Agentic AI · RAG · Spring Boot
+              LangGraph, Agentic AI, RAG, Spring Boot
             </span>
           </div>
 
@@ -2163,39 +2213,39 @@
 
             <div class="project-header">
               <h2 class="project-name">
-                <span>KadalValzhi – AI Fisherman Guidance System</span>
+                <span>KadalValzhi: AI Fisherman Guidance System</span>
               </h2>
-              <p class="project-tagline">Real-time Multi-Agent Guidance Platform: Weather, Pricing, Fuel & Safety</p>
+              <p class="project-tagline">Real-time multi-agent guidance platform for weather, pricing, fuel, and voyage safety</p>
             </div>
 
             <p class="project-description">
-              Engineered a mission-critical, real-time AI platform for maritime fishermen covering weather risk analysis,
-              fish market pricing forecasts, fuel cost estimation, and voyage profitability using an autonomous
+              A real-time AI guidance system for fishermen that handles weather risk analysis,
+              fish market price forecasts, fuel cost estimates, and voyage profitability using an autonomous
               <strong>LangGraph multi-agent architecture</strong>.
             </p>
 
             <ul class="project-bullets">
               <li>
                 <strong>Multi-Agent Architecture:</strong> Developed specialized <em>Weather</em>, <em>Financial</em>,
-                <em>Guide</em>, and <em>LLM-as-Judge</em> agents; monitored and calibrated evaluation metrics via <strong>LangSmith</strong>.
+                <em>Guide</em>, and <em>LLM-as-Judge</em> agents, tracking evaluation metrics with <strong>LangSmith</strong>.
               </li>
               <li>
-                <strong>RAG Pipeline with ChromaDB:</strong> Built vector store retrieval using cosine similarity search on official fishery documents for high-accuracy, context-aware LLM generation.
+                <strong>RAG Pipeline with ChromaDB:</strong> Built vector store retrieval using cosine similarity search on official fishery documents for context-aware responses.
               </li>
               <li>
-                <strong>Predictive Vision & Forecasting:</strong> Trained an <strong>LSTM time-series forecasting model</strong> and integrated <strong>PaddleOCR + Vision-Language Model (VLM)</strong> for fish image data extraction and valuation.
+                <strong>Predictive Vision and Forecasting:</strong> Trained an <strong>LSTM time-series forecasting model</strong> and connected <strong>PaddleOCR with a Vision-Language Model (VLM)</strong> for fish image data extraction and valuation.
               </li>
               <li>
-                <strong>Fail-Safe Fallback Loop:</strong> Integrated OpenWeather API with a 3-attempt fallback loop across multiple weather APIs — if all fail, the system explicitly warns fishermen rather than serving unverified data, protecting lives at sea.
+                <strong>Safe Fallback Loop:</strong> Integrated OpenWeather API with a 3-attempt fallback loop across multiple weather services. If all requests fail, the system explicitly warns fishermen instead of serving unverified data to protect lives at sea.
               </li>
               <li>
-                <strong>Performance & Reliability:</strong> Applied the <strong>Singleton pattern</strong> and <strong>LRU caching</strong>; logged daily fishing P&L records into <strong>PostgreSQL</strong> for historical AI guidance models.
+                <strong>Performance and Reliability:</strong> Applied the <strong>Singleton pattern</strong> and <strong>LRU caching</strong>, logging daily fishing profit and loss into <strong>PostgreSQL</strong> for historical AI guidance models.
               </li>
             </ul>
 
             <!-- Python pseudo-code snippet for KadalValzhi -->
             <div class="code-preview-block">
-              <span class="syntax-com"># kadalvalzhi_core.py — LangGraph Multi-Agent Orchestration</span><br>
+              <span class="syntax-com"># kadalvalzhi_core.py: LangGraph multi-agent setup</span><br>
               <span class="syntax-kw">from</span> langgraph.graph <span class="syntax-kw">import</span> StateGraph, END<br>
               <span class="syntax-kw">from</span> chromadb <span class="syntax-kw">import</span> PersistentClient<br>
               <br>
@@ -2227,7 +2277,7 @@
                 <i data-lucide="github" style="width: 15px; height: 15px;"></i> View Repository
               </a>
               <span style="font-size: 0.8rem; color: var(--text-muted);">
-                <i data-lucide="shield-alert" style="width: 14px; height: 14px; color: var(--accent-green); vertical-align: middle;"></i> Safety-critical Maritime AI
+                <i data-lucide="shield-alert" style="width: 14px; height: 14px; color: var(--accent-green); vertical-align: middle;"></i> Safety-critical Maritime System
               </span>
             </div>
           </div>
@@ -2236,15 +2286,15 @@
           <div class="project-card-modern">
             <div class="project-header">
               <h2 class="project-name">
-                <span>AI-InterviewBot – Real-Time AI Interviewer</span>
+                <span>AI InterviewBot: Dynamic Voice Interviewer</span>
               </h2>
-              <p class="project-tagline">Autonomous Voice-Based Interview Assistant with Real-time Feedback</p>
+              <p class="project-tagline">Voice-based interview assistant that delivers real-time candidate feedback</p>
             </div>
 
             <p class="project-description">
-              An intelligent interactive interview assistant that conducts spoken, dynamic interviews in real time.
-              Analyzes candidate verbal responses, assesses problem-solving methodology, and provides instant actionable
-              constructive feedback without human or resume bias.
+              An interactive interview assistant that conducts spoken interviews in real time.
+              Analyzes candidate verbal responses, assesses problem-solving methodology, and provides actionable
+              constructive feedback without resume screening bias.
             </p>
 
             <div class="tech-pill-list">
@@ -2267,14 +2317,14 @@
           <div class="project-card-modern">
             <div class="project-header">
               <h2 class="project-name">
-                <span>SymptoMedAI – Disease Prediction & Healthcare Assistant</span>
+                <span>SymptoMedAI: Disease Prediction and Healthcare Assistant</span>
               </h2>
-              <p class="project-tagline">Machine Learning Diagnosis & Telehealth Workflow</p>
+              <p class="project-tagline">Machine learning diagnostics with appointment and consultation flow</p>
             </div>
 
             <p class="project-description">
-              Healthcare machine learning platform that accurately predicts potential conditions from structured patient symptom inputs.
-              Features automated appointment booking, targeted medicine suggestions, and a live consultation bridge for physician review.
+              A healthcare machine learning platform that predicts likely medical conditions from structured patient symptom inputs.
+              Features automated appointment booking, targeted medicine suggestions, and doctor consultation workflows.
             </p>
 
             <div class="tech-pill-list">
@@ -2296,13 +2346,13 @@
           <div class="project-card-modern">
             <div class="project-header">
               <h2 class="project-name">
-                <span>FarmVista – Smart Agriculture Advisory</span>
+                <span>FarmVista: Smart Agriculture Advisory</span>
               </h2>
-              <p class="project-tagline">Smart India Hackathon (SIH) – Team Lead Project</p>
+              <p class="project-tagline">Smart India Hackathon (SIH) team lead project</p>
             </div>
 
             <p class="project-description">
-              Led a 5-member team in developing an AI-driven agricultural advisory system that recommends optimal crop patterns
+              Led a five-member team in developing an agricultural advisory system that recommends optimal crop patterns
               and fertilizer cycles based on live weather data, regional soil composition, and market demand indices.
             </p>
 
@@ -2346,36 +2396,36 @@
               <div class="experience-card">
                 <div class="exp-top-row">
                   <div class="company-brand">
-                    <img src="vaken-logo.png" alt="Vaken Logo" class="company-logo-img" onerror="this.src='https://github.com/nithiljn/AI_Portfolio/raw/main/vaken-logo.png'">
+                    <img src="assets/images/vaken-logo.png" alt="Vaken Logo" class="company-logo-img" onerror="this.src='https://github.com/nithiljn/AI_Portfolio/raw/main/assets/images/vaken-logo.png'">
                     <div>
                       <h3 class="role-title">Junior Software Developer</h3>
-                      <p class="company-sub">Vaken Technology · Product: <strong>Sovablu</strong></p>
+                      <p class="company-sub">Vaken Technology, Product: <strong>Sovablu</strong></p>
                     </div>
                   </div>
                   <div class="exp-period-badge" id="vaken-duration-counter">
-                    Aug 2025 – Present
+                    Aug 2025 to Present
                   </div>
                 </div>
 
                 <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
-                  <i data-lucide="map-pin" style="width: 13px; height: 13px; vertical-align: middle;"></i> On-site · Trichy / Salem, India
+                  <i data-lucide="map-pin" style="width: 13px; height: 13px; vertical-align: middle;"></i> On-site, Trichy, Tamil Nadu, India
                 </div>
 
                 <ul class="exp-highlights-list">
                   <li>
-                    Built and maintained <strong>production REST APIs using Java & Spring Boot</strong>, applied <strong>rate limiting</strong>, <strong>Singleton design pattern</strong>, and scalable system design for high-availability workflows.
+                    Built and maintained <strong>production REST APIs using Java and Spring Boot</strong>, applied <strong>rate limiting</strong>, <strong>Singleton design pattern</strong>, and scalable system design for high-availability workflows.
                   </li>
                   <li>
-                    Integrated <strong>Redis caching</strong> at critical hotspots, reducing DB query latency, and stored structured business data in <strong>PostgreSQL</strong>.
+                    Integrated <strong>Redis caching</strong> at critical hotspots to reduce database query latency, storing structured business data in <strong>PostgreSQL</strong>.
                   </li>
                   <li>
-                    Managed <strong>CI/CD pipeline via Jenkins</strong> (JAR build & deploy), utilizing <strong>AWS CodeCommit, EC2, S3, and Lambda</strong> for cloud infrastructure.
+                    Managed <strong>CI/CD deployment pipelines using Jenkins</strong>, using <strong>AWS CodeCommit, EC2, S3, and Lambda</strong> for cloud infrastructure.
                   </li>
                   <li>
-                    Engineered an <strong>Agentic AI system using AWS Bedrock</strong> for LLM API calls, and built <strong>OCR pipelines in Python</strong> to extract structured data from images, PDFs, and enterprise documents.
+                    Engineered an <strong>Agentic AI system using AWS Bedrock</strong> for LLM API calls, and built <strong>Python OCR pipelines</strong> to extract structured data from images and documents.
                   </li>
                   <li>
-                    Developed frontend features in <strong>Vue.js</strong> and configured <strong>CORS & proxy</strong> for secure client-server communication.
+                    Developed frontend features in <strong>Vue.js</strong> and configured <strong>CORS and proxy</strong> for secure client-server communication.
                   </li>
                 </ul>
 
@@ -2401,14 +2451,14 @@
                 <div class="exp-top-row">
                   <div>
                     <h3 class="role-title">Knowledge Institute of Technology (KIOT)</h3>
-                    <p class="company-sub">B.Tech – Artificial Intelligence and Data Science</p>
+                    <p class="company-sub">B.Tech in Artificial Intelligence and Data Science</p>
                   </div>
                   <div class="exp-period-badge" style="border-color: rgba(52, 211, 153, 0.3); color: var(--accent-green); background: rgba(52, 211, 153, 0.1);">
-                    2021 – 2025 · CGPA: 8.1
+                    2021 to 2025 (CGPA: 8.1)
                   </div>
                 </div>
                 <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 10px 0 0 0;">
-                  Comprehensive foundation in Data Structures & Algorithms, Systems Architecture, Machine Learning, Database Management Systems, and Distributed Computing.
+                  Comprehensive foundation in data structures, algorithms, systems architecture, machine learning, databases, and distributed computing.
                 </p>
               </div>
             </div>
@@ -2420,16 +2470,16 @@
                 <h3 class="role-title" style="margin-bottom: 12px;">Industry Certifications</h3>
                 <div class="skills-category-grid" style="margin-bottom: 0;">
                   <div class="skill-chip">
-                    <i data-lucide="badge-check" style="color: var(--accent-blue);"></i> Core Java & SQL — <strong>EBox</strong>
+                    <i data-lucide="badge-check" style="color: var(--accent-blue);"></i> Core Java and SQL (<strong>EBox</strong>)
                   </div>
                   <div class="skill-chip">
-                    <i data-lucide="badge-check" style="color: var(--accent-blue);"></i> MySQL Database — <strong>IBM</strong>
+                    <i data-lucide="badge-check" style="color: var(--accent-blue);"></i> MySQL Database (<strong>IBM</strong>)
                   </div>
                   <div class="skill-chip">
-                    <i data-lucide="badge-check" style="color: var(--accent-blue);"></i> Machine Learning — <strong>Simply Learn</strong>
+                    <i data-lucide="badge-check" style="color: var(--accent-blue);"></i> Machine Learning (<strong>Simply Learn</strong>)
                   </div>
                   <div class="skill-chip">
-                    <i data-lucide="badge-check" style="color: var(--accent-blue);"></i> Deep Learning (PyTorch) — <strong>Guvi</strong>
+                    <i data-lucide="badge-check" style="color: var(--accent-blue);"></i> Deep Learning with PyTorch (<strong>Guvi</strong>)
                   </div>
                 </div>
               </div>
@@ -2554,6 +2604,9 @@
                   <i class="devicon-mysql-plain" style="color: #0284c7;"></i> MySQL
                 </div>
                 <div class="skill-chip">
+                  <i data-lucide="database" style="width: 16px; height: 16px; color: #f59e0b;"></i> DynamoDB (NoSQL)
+                </div>
+                <div class="skill-chip">
                   <i data-lucide="database" style="width: 16px; height: 16px; color: var(--accent-green);"></i> ChromaDB (Vector Store)
                 </div>
               </div>
@@ -2622,7 +2675,7 @@
           <div class="section-headline">
             <div class="section-title">
               <i data-lucide="award" style="color: #fbbf24;"></i>
-              <span>Achievements & Competitive Coding</span>
+              <span>Achievements and Competitive Coding</span>
             </div>
             <a href="https://leetcode.com/u/NITHIL07/" target="_blank" class="btn-action">
               <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> Open LeetCode Profile
@@ -2631,42 +2684,132 @@
 
           <!-- Knight Spotlight Card -->
           <div class="knight-spotlight-card">
-            <div class="knight-title">
-              <span>🏆 LeetCode Knight Badge</span>
-            </div>
+            <div class="knight-spotlight-inner">
+              <div class="knight-info-col">
+                <div class="knight-title">
+                  <span>🏆 LeetCode Knight Badge</span>
+                </div>
 
-            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 800px;">
-              Earned the coveted <strong>LeetCode Knight badge</strong> — one of the top competitive programming tiers on the platform.
-              Secured a perfect <strong>4/4 score in Weekly Contest 490</strong>, outranking tens of thousands of global software engineers.
-            </p>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 800px; margin-bottom: 14px;">
+                  LeetCode Knight with an official <strong>Contest Rating of 1,994</strong>.
+                  Secured a perfect <strong>4/4 score in Weekly Contest 490</strong>, reaching a peak single-contest global rank of <strong>#197 out of 43,027</strong> participants.
+                </p>
 
-            <div class="knight-rank-metric">
-              <div>
-                <span class="rank-number">#197</span>
-                <span class="rank-total">/ 43,027 Global Participants</span>
+                <div class="knight-rank-metric">
+                  <div>
+                    <span class="rank-number">1,994</span>
+                    <span class="rank-total">Contest Rating (Knight Tier)</span>
+                  </div>
+                </div>
+
+                <div style="font-size: 0.84rem; color: var(--accent-yellow); font-family: var(--font-code); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                  <span>Global Ranking: 23,201 / 883,546</span>
+                  <span>·</span>
+                  <span>Attended: 10 Contests</span>
+                  <span>·</span>
+                  <span>Peak Single Contest: #197</span>
+                </div>
               </div>
-            </div>
 
-            <div style="font-size: 0.82rem; color: var(--accent-yellow); font-family: var(--font-code); margin-bottom: 8px;">
-              ⚡ Weekly Contest 490 · 100% Problem Accuracy (4/4 Solved)
+              <!-- Official LeetCode Rating Card Image -->
+              <div class="leetcode-screenshot-wrap">
+                <img src="assets/images/leetcode_knight.png" alt="LeetCode Knight Rating 1994, James Nithil V" class="leetcode-screenshot-img" />
+                <div class="leetcode-screenshot-caption">
+                  <i data-lucide="shield-check" style="width: 14px; height: 14px; color: #34d399;"></i> Official LeetCode Rating Card (Knight 1,994)
+                </div>
+              </div>
             </div>
 
             <div class="problems-breakdown-grid">
               <div class="problem-box">
-                <div class="problem-count">700+</div>
-                <div class="problem-category">Total Solved Problems</div>
+                <div class="problem-count" style="color: #ea580c;">442</div>
+                <div class="problem-category">Java Solved</div>
               </div>
               <div class="problem-box">
-                <div class="problem-count" style="color: #ea580c;">400+</div>
-                <div class="problem-category">Java (DSA Deep Dive)</div>
+                <div class="problem-count" style="color: #38bdf8;">436</div>
+                <div class="problem-category">Python3 Solved</div>
               </div>
               <div class="problem-box">
-                <div class="problem-count" style="color: #38bdf8;">350+</div>
-                <div class="problem-category">Python 3</div>
+                <div class="problem-count" style="color: #10b981;">40</div>
+                <div class="problem-category">MySQL Solved</div>
               </div>
               <div class="problem-box">
-                <div class="problem-count" style="color: #10b981;">60+</div>
-                <div class="problem-category">SQL & Pandas</div>
+                <div class="problem-count" style="color: #a855f7;">31</div>
+                <div class="problem-category">C++ Solved</div>
+              </div>
+              <div class="problem-box">
+                <div class="problem-count" style="color: #06b6d4;">16</div>
+                <div class="problem-category">Pandas Solved</div>
+              </div>
+              <div class="problem-box">
+                <div class="problem-count" style="color: #facc15;">13</div>
+                <div class="problem-category">JavaScript Solved</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Languages & Skill Distribution Card -->
+          <div class="project-card-modern">
+            <h3 style="color: var(--text-primary); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="code-2" style="width: 20px; height: 20px; color: var(--accent-blue);"></i> Solved Problems by Language & Algorithmic Skills
+            </h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px;">
+              Verified problem counts across programming languages and topic mastery directly from LeetCode:
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 20px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+                <span style="font-family: var(--font-code); font-size: 0.85rem; color: #ea580c; display: flex; align-items: center; gap: 6px;">
+                  <i class="devicon-java-plain"></i> Java
+                </span>
+                <span style="font-family: var(--font-code); font-weight: 700; color: var(--text-primary);">442 solved</span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+                <span style="font-family: var(--font-code); font-size: 0.85rem; color: #38bdf8; display: flex; align-items: center; gap: 6px;">
+                  <i class="devicon-python-plain"></i> Python3
+                </span>
+                <span style="font-family: var(--font-code); font-weight: 700; color: var(--text-primary);">436 solved</span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+                <span style="font-family: var(--font-code); font-size: 0.85rem; color: #0284c7; display: flex; align-items: center; gap: 6px;">
+                  <i class="devicon-mysql-plain"></i> MySQL
+                </span>
+                <span style="font-family: var(--font-code); font-weight: 700; color: var(--text-primary);">40 solved</span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+                <span style="font-family: var(--font-code); font-size: 0.85rem; color: #a855f7; display: flex; align-items: center; gap: 6px;">
+                  <i class="devicon-cplusplus-plain"></i> C++
+                </span>
+                <span style="font-family: var(--font-code); font-weight: 700; color: var(--text-primary);">31 solved</span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+                <span style="font-family: var(--font-code); font-size: 0.85rem; color: #06b6d4; display: flex; align-items: center; gap: 6px;">
+                  <i class="devicon-pandas-plain"></i> Pandas
+                </span>
+                <span style="font-family: var(--font-code); font-weight: 700; color: var(--text-primary);">16 solved</span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+                <span style="font-family: var(--font-code); font-size: 0.85rem; color: #facc15; display: flex; align-items: center; gap: 6px;">
+                  <i class="devicon-javascript-plain"></i> JavaScript
+                </span>
+                <span style="font-family: var(--font-code); font-weight: 700; color: var(--text-primary);">13 solved</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 14px;">
+              <div style="font-size: 0.86rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">
+                Algorithm & Data Structure Breakdown
+              </div>
+              <div class="tech-pill-list">
+                <span class="tech-pill highlight">Dynamic Programming x108</span>
+                <span class="tech-pill highlight">Array x380</span>
+                <span class="tech-pill highlight">String x161</span>
+                <span class="tech-pill">Math x136</span>
+                <span class="tech-pill">Hash Table x133</span>
+                <span class="tech-pill">Sorting x90</span>
+                <span class="tech-pill">Greedy x66</span>
+                <span class="tech-pill">Backtracking x20</span>
+                <span class="tech-pill">Divide and Conquer x16</span>
               </div>
             </div>
           </div>
@@ -2677,30 +2820,30 @@
               <i data-lucide="git-merge" style="width: 18px; height: 18px; color: var(--accent-blue); vertical-align: middle;"></i> Core Algorithmic Domains Mastered
             </h3>
             <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
-              Extensive problem-solving depth in Java covering rigorous production-grade algorithms:
+              Extensive problem-solving depth in Java covering core computer science algorithms:
             </p>
 
             <div class="tech-pill-list" style="margin-top: 12px;">
-              <span class="tech-pill highlight">Binary Trees & BST</span>
-              <span class="tech-pill highlight">Graphs (BFS / DFS / Dijkstra)</span>
-              <span class="tech-pill highlight">Dynamic Programming (1D / 2D / Knapsack)</span>
-              <span class="tech-pill">Recursion & Backtracking</span>
-              <span class="tech-pill">Two Pointers & Sliding Window</span>
+              <span class="tech-pill highlight">Binary Trees and BST</span>
+              <span class="tech-pill highlight">Graphs (BFS, DFS, Dijkstra)</span>
+              <span class="tech-pill highlight">Dynamic Programming (1D, 2D, Knapsack)</span>
+              <span class="tech-pill">Recursion and Backtracking</span>
+              <span class="tech-pill">Two Pointers and Sliding Window</span>
               <span class="tech-pill">Greedy Algorithms</span>
-              <span class="tech-pill">Single, Double & Circular Linked Lists</span>
-              <span class="tech-pill">Heaps & Priority Queues</span>
-              <span class="tech-pill">Tries & String Hashing</span>
+              <span class="tech-pill">Single, Double and Circular Linked Lists</span>
+              <span class="tech-pill">Heaps and Priority Queues</span>
+              <span class="tech-pill">Tries and String Hashing</span>
             </div>
           </div>
 
           <!-- Hackathon & Leadership -->
           <div class="project-card-modern">
             <h3 style="color: var(--text-primary); font-size: 1.15rem; margin-top: 0; margin-bottom: 10px;">
-              <i data-lucide="users" style="width: 18px; height: 18px; color: var(--accent-green); vertical-align: middle;"></i> Smart India Hackathon (SIH) – Team Leader
+              <i data-lucide="users" style="width: 18px; height: 18px; color: var(--accent-green); vertical-align: middle;"></i> Smart India Hackathon (SIH) Team Leader
             </h3>
             <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">
-              Led a 5-member team through prototype development for AI-driven agricultural planning (FarmVista).
-              Coordinated technical architecture, ML pipeline development, API integration, and final jury presentation.
+              Led a five-member team during prototype development for FarmVista.
+              Coordinated technical architecture, machine learning pipelines, API integrations, and project presentations.
             </p>
           </div>
 
@@ -2714,7 +2857,7 @@
           <div class="section-headline">
             <div class="section-title">
               <i data-lucide="terminal" style="color: var(--accent-green);"></i>
-              <span>terminal.sh — Interactive Developer CLI</span>
+              <span>terminal.sh: Interactive Developer CLI</span>
             </div>
             <button class="btn-topbar" onclick="executeCommand('clear')">
               <i data-lucide="trash-2" style="width: 13px; height: 13px;"></i> Clear
@@ -2729,13 +2872,13 @@
 
             <div class="term-scroll-area" id="terminal-scroll-view">
               <div class="term-line cmd-success">
-                ➜ Welcome to James Nithil's Interactive Developer Terminal (v2.6.0)
+                ➜ Welcome to James Nithil's Developer Terminal (v2.6.0)
               </div>
               <div class="term-line cmd-output">
                 Type <span style="color: #38bdf8;">help</span> to see all available commands, or click any quick command below.
               </div>
               <div class="term-line cmd-highlight">
-                ★ Status: Junior Software Developer @ Vaken (Sovablu) | LeetCode Knight #197
+                ★ Status: Junior Software Developer at Vaken Technology (Sovablu), LeetCode Knight (1,994)
               </div>
             </div>
 
@@ -2779,20 +2922,20 @@
         </div>
 
         <div class="badge-avatar-wrap">
-          <img src="jamesnithil.jpeg" alt="James Nithil" class="badge-avatar-img" onerror="this.src='Nithil.jpg'">
+          <img src="assets/images/jamesnithil.jpeg" alt="James Nithil" class="badge-avatar-img" onerror="this.src='assets/images/Nithil.jpg'">
           <span class="badge-online-dot" title="Active in Production"></span>
         </div>
 
         <h3 class="badge-name">James Nithil V</h3>
         <p class="badge-role">Junior Software Developer</p>
-        <p class="badge-company">Vaken Technology · Sovablu</p>
+        <p class="badge-company">Vaken Technology (Sovablu)</p>
 
         <div class="badge-divider"></div>
 
         <div class="badge-details-list">
           <div class="badge-detail-row">
             <i data-lucide="award" style="width: 12px; height: 12px; color: #f59e0b;"></i>
-            <span>Knight Badge #197 / 43,027</span>
+            <span>Knight 1,994 (Rank #197)</span>
           </div>
           <div class="badge-detail-row">
             <i data-lucide="mail" style="width: 12px; height: 12px; color: var(--accent-blue);"></i>
@@ -2804,7 +2947,7 @@
           </div>
           <div class="badge-detail-row">
             <i data-lucide="code" style="width: 12px; height: 12px; color: var(--accent-purple);"></i>
-            <span>Java · Python · LangGraph</span>
+            <span>Java, Python, LangGraph</span>
           </div>
         </div>
 
@@ -2830,42 +2973,42 @@
         <div class="palette-item" onclick="selectPalette('tab-readme')">
           <div class="palette-item-left">
             <i class="devicon-markdown-original" style="color: #60a5fa;"></i>
-            <span>README.md — Overview & Bio</span>
+            <span>README.md (Overview and Bio)</span>
           </div>
           <span class="palette-shortcut-key">Tab 1</span>
         </div>
         <div class="palette-item" onclick="selectPalette('tab-projects')">
           <div class="palette-item-left">
             <i class="devicon-python-plain" style="color: #facc15;"></i>
-            <span>projects.py — KadalValzhi & AI Projects</span>
+            <span>projects.py (KadalValzhi and AI Projects)</span>
           </div>
           <span class="palette-shortcut-key">Tab 2</span>
         </div>
         <div class="palette-item" onclick="selectPalette('tab-experience')">
           <div class="palette-item-left">
             <i class="devicon-java-plain" style="color: #f87171;"></i>
-            <span>experience.json — Vaken Technology (Sovablu)</span>
+            <span>experience.json (Vaken Technology, Sovablu)</span>
           </div>
           <span class="palette-shortcut-key">Tab 3</span>
         </div>
         <div class="palette-item" onclick="selectPalette('tab-skills')">
           <div class="palette-item-left">
             <i class="devicon-typescript-plain" style="color: #38bdf8;"></i>
-            <span>skills.ts — Technical Skills Matrix</span>
+            <span>skills.ts (Technical Skills Matrix)</span>
           </div>
           <span class="palette-shortcut-key">Tab 4</span>
         </div>
         <div class="palette-item" onclick="selectPalette('tab-achievements')">
           <div class="palette-item-left">
             <span>🏆</span>
-            <span>achievements.md — LeetCode Knight #197</span>
+            <span>achievements.md (LeetCode Knight #197)</span>
           </div>
           <span class="palette-shortcut-key">Tab 5</span>
         </div>
         <div class="palette-item" onclick="selectPalette('tab-terminal')">
           <div class="palette-item-left">
             <i class="devicon-bash-plain" style="color: #4ade80;"></i>
-            <span>terminal.sh — Interactive CLI</span>
+            <span>terminal.sh (Developer Terminal)</span>
           </div>
           <span class="palette-shortcut-key">Tab 6</span>
         </div>
@@ -3151,27 +3294,27 @@
     // TYPEWRITER TEXT FOR README TAB
     // -------------------------------------------------------------
     const typewriterText = `
-$ whoami --engineer
-James Nithil V — Junior Software Developer @ Vaken Technology (Sovablu)
-Competitive Programmer: LeetCode Knight (Global Rank #197 / 43,027)
+$ whoami
+James Nithil V, Junior Software Developer at Vaken Technology (Sovablu)
+Competitive Programmer: LeetCode Knight (Contest Rating 1,994, Rank #197 / 43,027)
 
 $ current_focus.json
 {
-  "enterprise_role": "Junior Software Developer @ Vaken Technology",
+  "role": "Junior Software Developer at Vaken Technology",
   "product": "Sovablu (Production REST APIs, Redis Caching, AWS Bedrock, Jenkins)",
-  "flagship_project": "KadalValzhi — AI Fisherman Guidance System (LangGraph, ChromaDB, RAG)",
-  "competitive_ranking": "Top Tier LeetCode Knight, 700+ Problems (400+ Java, 350+ Python3)",
-  "education": "B.Tech in Artificial Intelligence & Data Science (KIOT, CGPA 8.1)",
-  "core_philosophy": "Designing fault-tolerant distributed backends and reliable AI systems."
+  "flagship_project": "KadalValzhi: AI Fisherman Guidance System (LangGraph, ChromaDB, RAG)",
+  "competitive_ranking": "LeetCode Knight, 980+ Solved (442 Java, 436 Python3)",
+  "education": "B.Tech in Artificial Intelligence and Data Science (KIOT, CGPA 8.1)",
+  "focus": "Building reliable distributed backends and practical AI systems."
 }
 
 $ tech_highlights
-• Built & maintained production REST APIs in Java & Spring Boot with rate limiting and Singleton design pattern.
-• Integrated Redis caching to minimize query latency across critical hot paths with PostgreSQL.
-• Automated CI/CD pipelines via Jenkins, provisioning EC2, S3, Lambda, and CodeCommit on AWS.
-• Architected multi-agent orchestration via LangGraph for real-time maritime safety, pricing, and weather analytics.
+• Built and maintained production REST APIs in Java and Spring Boot with rate limiting and Singleton design pattern.
+• Integrated Redis caching to reduce database query latency across hot paths with PostgreSQL.
+• Automated CI/CD deployment pipelines using Jenkins with AWS services (EC2, S3, Lambda, CodeCommit).
+• Architected multi-agent workflows using LangGraph for maritime safety, pricing, and weather guidance.
 
-[Ready for high-impact software engineering roles and system architecture collaborations]
+[Open for high-impact software engineering roles and collaboration]
 `;
 
     const terminalTarget = document.getElementById('readme-typewriter-text');
@@ -3200,14 +3343,14 @@ $ tech_highlights
       updateDynamicTenure();
     });
 
-    // Dynamic Tenure Counter for Vaken (Aug 2025 – Present)
+    // Dynamic Tenure Counter for Vaken (Aug 2025 to Present)
     function updateDynamicTenure() {
       const startDate = new Date(2025, 7, 1); // August 2025 (month is 0-indexed)
       const now = new Date();
       const diffMonths = (now.getFullYear() - startDate.getFullYear()) * 12 + (now.getMonth() - startDate.getMonth());
       const el = document.getElementById('vaken-duration-counter');
       if (el && diffMonths >= 0) {
-        el.textContent = `Aug 2025 – Present · ${diffMonths + 1} mos`;
+        el.textContent = `Aug 2025 to Present (${diffMonths + 1} mos)`;
       }
     }
 
@@ -3276,74 +3419,81 @@ $ tech_highlights
     const cliResponses = {
       'help': `
 Available Commands:
-  whoami       - Display identity, role, and competitive ranking
-  skills       - Print categorized technical skill matrix
-  projects     - List flagship engineering projects
-  kadalvalzhi  - Deep dive into KadalValzhi LangGraph multi-agent architecture
-  experience   - Show production highlights at Vaken Technology (Sovablu)
-  knight       - LeetCode Knight stats (Global Rank #197 / 43,027)
-  resume       - Trigger download of James_Nithil_Resume.pdf
-  contact      - Direct email, phone, and profile links
-  clear        - Clear terminal history
-  theme        - Toggle light/dark theme
+  whoami       Display identity, role, and competitive ranking
+  skills       Print technical skills matrix
+  projects     List featured engineering projects
+  kadalvalzhi  Details on KadalValzhi LangGraph multi-agent architecture
+  experience   Production highlights at Vaken Technology (Sovablu)
+  knight       LeetCode Knight statistics and contest rankings
+  resume       Trigger download of James_Nithil_Resume.pdf
+  contact      Direct email, phone, and profile links
+  clear        Clear terminal history
+  theme        Toggle light and dark theme
 `,
       'whoami': `
 James Nithil V
-Role: Junior Software Developer @ Vaken Technology (Product: Sovablu)
-Education: B.Tech in Artificial Intelligence & Data Science | CGPA 8.1
-Competitive Coding: LeetCode Knight Badge (Global Rank #197 / 43,027 in WC 490)
+Role: Junior Software Developer at Vaken Technology (Product: Sovablu)
+Education: B.Tech in Artificial Intelligence and Data Science (CGPA: 8.1)
+Competitive Coding: LeetCode Knight (Contest Rating 1,994, Rank #197 / 43,027 in WC 490)
 Specialization: Java, Spring Boot, Distributed Systems, Redis, LangGraph, LLMs
 `,
       'skills': `
-TECHNICAL SKILLS MATRIX (Resume Verified):
-• Languages: Java (Core/Spring Boot), Python (LangGraph/FastAPI), SQL, JavaScript
-• Backend & Systems: Spring Boot, FastAPI, REST APIs, Rate Limiting, Singleton Pattern
-• Databases & Caching: Redis (Hotspot Caching), PostgreSQL, MySQL, ChromaDB
-• Cloud & DevOps: AWS (EC2, S3, Lambda, Bedrock, CodeCommit), Jenkins CI/CD, Docker
-• AI / ML: LangGraph (Multi-Agent), ChromaDB (RAG), LangSmith, PaddleOCR, VLMs, LSTM
+Technical Skills Matrix:
+• Languages: Java (Core and Spring Boot), Python (LangGraph and FastAPI), SQL, JavaScript
+• Backend and Systems: Spring Boot, FastAPI, REST APIs, Rate Limiting, Singleton Pattern
+• Databases and Caching: Redis (Hotspot Caching), PostgreSQL, MySQL, DynamoDB (NoSQL), ChromaDB
+• Cloud and DevOps: AWS (EC2, S3, Lambda, Bedrock, CodeCommit), Jenkins CI/CD, Docker
+• AI and ML: LangGraph (Multi-Agent), ChromaDB (RAG), LangSmith, PaddleOCR, VLMs, LSTM
 `,
       'projects': `
-FEATURED PROJECTS:
+Featured Projects:
 1. KadalValzhi (2026): AI Fisherman Guidance System (LangGraph multi-agent, ChromaDB RAG, LSTM)
-2. AI-InterviewBot: Autonomous voice-based interview assistant (Gemini API, ElevenLabs)
-3. SymptoMedAI: Disease diagnosis & doctor consultation system (FastAPI, Random Forest, MySQL)
+2. AI InterviewBot: Autonomous voice-based interview assistant (Gemini API, ElevenLabs)
+3. SymptoMedAI: Disease diagnosis and doctor consultation system (FastAPI, Random Forest, MySQL)
 4. FarmVista: Smart agriculture advisory platform (SIH Hackathon Leader)
 `,
       'kadalvalzhi': `
-KadalValzhi — AI Fisherman Guidance System (2026):
+KadalValzhi: AI Fisherman Guidance System (2026)
 • Architecture: LangGraph Multi-Agent (Weather, Financial, Guide, LLM-as-Judge)
 • RAG Pipeline: ChromaDB vector store with cosine similarity on official fishery documents
 • Safety First: OpenWeather API 3-attempt fallback loop with explicit safety warnings
-• Computer Vision: PaddleOCR + Vision-Language Model (VLM) for fish image extraction
+• Computer Vision: PaddleOCR and Vision-Language Model (VLM) for fish image extraction
 • Time Series: LSTM forecasting model for market pricing and catch valuation
 • Systems: Singleton pattern, Redis LRU caching, and daily P&L logged in PostgreSQL
 `,
       'experience': `
-VAKEN TECHNOLOGY | Product: Sovablu (Aug 2025 – Present)
-Role: Junior Software Developer
-• Built and maintained production REST APIs using Java & Spring Boot with rate limiting.
-• Integrated Redis caching at critical hotspots, reducing DB latency with PostgreSQL.
-• Managed CI/CD pipeline via Jenkins; utilized AWS CodeCommit, EC2, S3, and Lambda.
-• Engineered Agentic AI system using AWS Bedrock and Python OCR document extraction.
-• Developed Vue.js frontend features with CORS and proxy configuration.
+Vaken Technology, Product: Sovablu (Aug 2025 to Present)
+Role: Junior Software Developer | Location: On-site, Trichy, Tamil Nadu, India
+• Built and maintained production REST APIs using Java and Spring Boot with rate limiting.
+• Integrated Redis caching at critical hotspots, reducing DB query latency with PostgreSQL.
+• Managed CI/CD pipelines via Jenkins, using AWS CodeCommit, EC2, S3, and Lambda.
+• Engineered Agentic AI systems using AWS Bedrock and Python OCR document extraction.
+• Developed Vue.js frontend modules with CORS and proxy configuration.
 `,
       'knight': `
-🏆 LEETCODE KNIGHT BADGE:
-• Global Rank: #197 / 43,027 (Weekly Contest 490 - Solved 4/4 Problems)
-• Total Solved: 700+ Problems
-  - 400+ in Java (Trees, Graphs, BFS/DFS, DP, Recursion, Two Pointers, Greedy, Linked Lists)
-  - 350+ in Python3
-  - 60+ in SQL & Pandas
-• Profile: https://leetcode.com/u/NITHIL07/
+LeetCode Knight Badge:
+• Contest Rating: 1,994 (Knight Tier)
+• Overall Global Ranking: 23,201 / 883,546
+• Attended Contests: 10
+• Best Single Contest: Weekly Contest 490 (Rank #197 / 43,027, Solved 4/4 Problems)
+• Solved Breakdown by Language:
+  - Java: 442 problems solved (Trees, Graphs, BFS/DFS, DP, Recursion, Two Pointers, Greedy)
+  - Python3: 436 problems solved (Data structures, Algorithms, Scripts)
+  - MySQL: 40 problems solved
+  - C++: 31 problems solved
+  - Pandas: 16 problems solved
+  - JavaScript: 13 problems solved
+• Core Skills: Dynamic Programming (108), Math (136), Hash Table (133), Arrays (380), Strings (161), Greedy (66)
+• Official Profile: https://leetcode.com/u/NITHIL07/
 `,
       'contact': `
-LET'S CONNECT:
+Contact Information:
 • Email: jamnithil@gmail.com
 • Phone: +91 8220173595
 • LinkedIn: https://www.linkedin.com/in/jamesnithil-v
 • GitHub: https://github.com/nithiljn
 • LeetCode: https://leetcode.com/u/NITHIL07/
-• Location: Salem / Trichy, Tamil Nadu, India
+• Location: Trichy, Tamil Nadu, India
 `,
       'resume': `
 📄 Triggering download for 'James_Nithil_Resume.pdf'...
