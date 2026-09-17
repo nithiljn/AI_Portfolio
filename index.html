@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>James Nithil V | Junior Software Developer & AI Systems Engineer</title>
   <meta name="description" content="Portfolio of James Nithil V, Junior Software Developer at Vaken Technology (Sovablu). LeetCode Knight (Contest Rating 1,994, Rank #197), specializing in Java, Spring Boot, Python, LangGraph, Distributed Systems, and AI." />
   <link rel="icon" href="assets/images/logo_image.png" type="image/png" />
@@ -1805,19 +1805,46 @@
     }
 
     /* -------------------------------------------------------------
-       MOBILE RESPONSIVENESS
+       MOBILE RESPONSIVENESS & TOUCH OPTIMIZATION
     ------------------------------------------------------------- */
+    .sidebar-backdrop {
+      display: none;
+    }
+
     @media (max-width: 900px) {
       .id-badge-container {
-        position: static;
-        margin: 20px auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        max-width: none;
+        margin: 0;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 1500;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
         transform: none !important;
-        width: 100%;
-        max-width: 280px;
+      }
+
+      .id-badge-container.mobile-open {
+        display: flex !important;
+      }
+
+      .id-badge-container.hidden-badge {
+        display: none !important;
       }
 
       .glass-id-card {
         width: 100%;
+        max-width: 320px;
+        margin: auto;
       }
 
       .lanyard-clip-assembly {
@@ -1834,33 +1861,265 @@
         display: none;
       }
 
+      .topbar {
+        padding: 0 10px;
+        overflow-x: hidden;
+      }
+
+      .topbar-left {
+        min-width: unset;
+        gap: 8px;
+      }
+
+      .window-controls {
+        display: none;
+      }
+
+      .topbar-left .breadcrumbs {
+        display: none;
+      }
+
+      .topbar-right {
+        gap: 6px;
+      }
+
+      .btn-topbar {
+        padding: 5px 8px;
+        font-size: 0.75rem;
+      }
+
       .sidebar {
         position: fixed;
         top: 44px;
         bottom: 24px;
         left: 0;
-        z-index: 90;
-        box-shadow: 10px 0 25px rgba(0, 0, 0, 0.5);
+        width: 270px;
+        z-index: 500;
+        transform: translateX(-100%);
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: none;
       }
 
-      .sidebar.mobile-hidden {
-        width: 0;
+      .sidebar.mobile-open {
+        transform: translateX(0);
+        box-shadow: 12px 0 35px rgba(0, 0, 0, 0.6);
+      }
+
+      .sidebar-backdrop {
+        display: block;
+        position: fixed;
+        top: 44px;
+        left: 0;
+        right: 0;
+        bottom: 24px;
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        z-index: 400;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.22s ease;
+      }
+
+      .sidebar-backdrop.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .app-container {
+        width: 100%;
+        max-width: 100vw;
+      }
+
+      .editor-wrapper {
+        width: 100%;
+        max-width: 100vw;
+      }
+
+      .tabs-bar {
+        height: 36px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .tabs-bar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tab-element {
+        padding: 0 10px;
+        font-size: 0.75rem;
+        flex-shrink: 0;
       }
 
       .editor-content {
-        padding: 16px;
+        padding: 14px 12px 60px 12px;
+      }
+
+      .hero-banner {
+        padding: 18px 14px;
+        margin-bottom: 20px;
       }
 
       .hero-title {
-        font-size: 1.6rem;
+        font-size: 1.55rem;
+      }
+
+      .hero-bio {
+        font-size: 0.92rem;
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
+
+      .hero-actions {
+        gap: 8px;
+      }
+
+      .btn-action {
+        padding: 8px 12px;
+        font-size: 0.82rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-bottom: 22px;
+      }
+
+      .stat-card {
+        padding: 12px 14px;
+      }
+
+      .stat-value {
+        font-size: 1.35rem;
+      }
+
+      .stat-label {
+        font-size: 0.75rem;
+      }
+
+      .stat-sub {
+        font-size: 0.68rem;
+      }
+
+      .project-card-modern {
+        padding: 16px 14px;
+        margin-bottom: 18px;
+      }
+
+      .project-name {
+        font-size: 1.15rem;
+      }
+
+      .experience-card {
+        padding: 16px 14px;
+      }
+
+      .knight-spotlight-card {
+        padding: 18px 14px;
+      }
+
+      .knight-title {
+        font-size: 1.25rem;
+      }
+
+      .rank-number {
+        font-size: 1.8rem;
+      }
+
+      .problems-breakdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+
+      .problem-box {
+        padding: 10px;
+      }
+
+      .problem-count {
+        font-size: 1.25rem;
+      }
+
+      .skills-filter-bar {
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .skills-filter-bar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .filter-btn {
+        flex-shrink: 0;
+      }
+
+      .skills-category-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .interactive-term-window {
+        height: 380px;
+      }
+
+      .term-scroll-area {
+        padding: 12px 14px;
+        font-size: 0.8rem;
+      }
+
+      .term-quick-pills {
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .term-quick-pills::-webkit-scrollbar {
+        display: none;
+      }
+
+      .term-pill-btn {
+        flex-shrink: 0;
+      }
+
+      .status-bar {
+        padding: 0 8px;
+        font-size: 0.68rem;
+      }
+
+      .status-bar-right .status-bar-item:not(:first-child) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .topbar {
+        padding: 0 6px;
+      }
+
+      .btn-topbar span {
+        display: none;
+      }
+
+      #toggle-sidebar-btn span {
+        display: inline;
+        font-size: 0.74rem;
       }
 
       .stats-grid {
         grid-template-columns: 1fr;
       }
 
-      .topbar-left .breadcrumbs {
-        display: none;
+      .hero-actions .btn-action {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .project-links .btn-action {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .problems-breakdown-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -1977,6 +2236,9 @@
         </a>
       </div>
     </aside>
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 
     <!-- File Explorer Sidebar -->
     <nav class="sidebar" id="main-sidebar">
@@ -3142,7 +3404,7 @@
       tabElements.forEach(el => {
         if (el.getAttribute('data-tab') === tabId) {
           el.classList.add('active');
-          el.scrollIntoView({ behavior: 'smooth', inline: 'nearest' });
+          el.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         } else {
           el.classList.remove('active');
         }
@@ -3165,6 +3427,11 @@
           icon.classList.remove('active');
         }
       });
+
+      // Auto close mobile drawer when switching tabs
+      if (window.innerWidth <= 768) {
+        closeMobileSidebar();
+      }
 
       // Update Breadcrumb
       if (fileMetaMap[tabId] && breadcrumbLabel) {
@@ -3208,13 +3475,39 @@
       });
     });
 
-    // Toggle Sidebar
+    // Toggle Sidebar & Mobile Drawer
     const toggleSidebarBtn = document.getElementById('toggle-sidebar-btn');
     const mainSidebar = document.getElementById('main-sidebar');
+    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+
+    function openMobileSidebar() {
+      mainSidebar.classList.add('mobile-open');
+      if (sidebarBackdrop) sidebarBackdrop.classList.add('active');
+    }
+
+    function closeMobileSidebar() {
+      mainSidebar.classList.remove('mobile-open');
+      if (sidebarBackdrop) sidebarBackdrop.classList.remove('active');
+    }
+
     toggleSidebarBtn.addEventListener('click', () => {
-      mainSidebar.classList.toggle('collapsed');
-      mainSidebar.classList.toggle('mobile-hidden');
+      if (window.innerWidth <= 768) {
+        if (mainSidebar.classList.contains('mobile-open')) {
+          closeMobileSidebar();
+        } else {
+          openMobileSidebar();
+        }
+      } else {
+        mainSidebar.classList.toggle('collapsed');
+      }
+      playKeyClick();
     });
+
+    if (sidebarBackdrop) {
+      sidebarBackdrop.addEventListener('click', () => {
+        closeMobileSidebar();
+      });
+    }
 
     // -------------------------------------------------------------
     // THEME TOGGLE (DARK / LIGHT)
@@ -3247,13 +3540,26 @@
     const hideBadgeBtn = document.getElementById('hide-badge-btn');
 
     toggleBadgeBtn.addEventListener('click', () => {
-      badgeContainer.classList.toggle('hidden-badge');
+      if (window.innerWidth <= 900) {
+        badgeContainer.classList.toggle('mobile-open');
+      } else {
+        badgeContainer.classList.toggle('hidden-badge');
+      }
       playKeyClick();
     });
 
     hideBadgeBtn.addEventListener('click', () => {
+      badgeContainer.classList.remove('mobile-open');
       badgeContainer.classList.add('hidden-badge');
       playKeyClick();
+    });
+
+    // Tap dark overlay to close mobile badge modal
+    badgeContainer.addEventListener('click', (e) => {
+      if (window.innerWidth <= 900 && e.target === badgeContainer) {
+        badgeContainer.classList.remove('mobile-open');
+        playKeyClick();
+      }
     });
 
     // 3D Tilt on Mouse Move
