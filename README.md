@@ -16,12 +16,17 @@ I am a **Junior Software Developer** at **Vaken Technology**, actively engineeri
 
 ## 🏆 Key Achievements
 
-- **LeetCode Knight Badge**: Global Rank **#197 / 43,027** in **Weekly Contest 490** (Solved 4/4 problems with 100% accuracy).
+- **LeetCode Knight Badge**: Contest Rating **1,986** | Global Ranking **24,142 / 882,088**
+- **Weekly Contest 490**: Global Rank **#197 / 43,027** (Solved 4/4 problems with 100% accuracy).
 - **700+ Problems Solved**:
   - **400+ in Java**: Trees, Graphs, BFS/DFS, Dynamic Programming, Recursion, Two Pointers, Greedy, Linked Lists (Single, Double, Circular).
   - **350+ in Python3**: Algorithmic problem-solving & data engineering.
   - **60+ in SQL & Pandas**: Relational database queries & data wrangling.
 - **Smart India Hackathon (SIH)**: Team Leader of a 5-member team designing AI agriculture advisory prototypes.
+
+<p align="center">
+  <img src="./leetcode_knight.png" alt="LeetCode Knight Rating 1986" width="500" />
+</p>
 
 ---
 

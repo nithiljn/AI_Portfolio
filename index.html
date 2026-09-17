@@ -1284,6 +1284,56 @@
       font-family: var(--font-code);
     }
 
+    .knight-spotlight-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .knight-info-col {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .leetcode-screenshot-wrap {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: var(--radius-md);
+      padding: 10px;
+      max-width: 360px;
+      width: 100%;
+      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.15);
+      transition: var(--transition-smooth);
+    }
+
+    .leetcode-screenshot-wrap:hover {
+      transform: translateY(-3px) scale(1.02);
+      border-color: rgba(245, 158, 11, 0.65);
+      box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.7), 0 0 28px rgba(245, 158, 11, 0.25);
+    }
+
+    .leetcode-screenshot-img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+      display: block;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .leetcode-screenshot-caption {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      font-family: var(--font-code);
+    }
+
     .problems-breakdown-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -1850,7 +1900,7 @@
           <span>Junior Software Developer @ <span class="ticker-highlight">Vaken Technology (Sovablu)</span></span>
         </div>
         <div class="ticker-item">
-          <span>🏆 <span class="ticker-highlight">LeetCode Knight Badge</span> · Global Rank #197 / 43,027</span>
+          <span>🏆 <span class="ticker-highlight">LeetCode Knight (Rating 1,986)</span> · Global Rank #197 / 43,027</span>
         </div>
         <div class="ticker-item">
           <span>⚡ <span class="ticker-highlight">KadalValzhi</span>: LangGraph Multi-Agent RAG & AI Guidance</span>
@@ -2062,7 +2112,7 @@
                 <i data-lucide="terminal" style="width: 13px; height: 13px;"></i> Junior Software Developer
               </span>
               <span class="badge-knight-pill">
-                🏆 LeetCode Knight #197 / 43,027
+                🏆 LeetCode Knight (Rating: 1,986 · Rank #197)
               </span>
             </div>
 
@@ -2092,9 +2142,9 @@
           <!-- Quick Metrics Grid -->
           <div class="stats-grid">
             <div class="stat-card stat-gold">
-              <div class="stat-value">#197</div>
-              <div class="stat-label">Global Rank on LeetCode</div>
-              <div class="stat-sub">Weekly Contest 490 (4/4 Solved · Top Tier)</div>
+              <div class="stat-value">1,986</div>
+              <div class="stat-label">LeetCode Contest Rating</div>
+              <div class="stat-sub">Knight Level · Global Rank #197 in WC 490</div>
             </div>
             <div class="stat-card">
               <div class="stat-value">700+</div>
@@ -2631,24 +2681,40 @@
 
           <!-- Knight Spotlight Card -->
           <div class="knight-spotlight-card">
-            <div class="knight-title">
-              <span>🏆 LeetCode Knight Badge</span>
-            </div>
+            <div class="knight-spotlight-inner">
+              <div class="knight-info-col">
+                <div class="knight-title">
+                  <span>🏆 LeetCode Knight Badge</span>
+                </div>
 
-            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 800px;">
-              Earned the coveted <strong>LeetCode Knight badge</strong> — one of the top competitive programming tiers on the platform.
-              Secured a perfect <strong>4/4 score in Weekly Contest 490</strong>, outranking tens of thousands of global software engineers.
-            </p>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 800px; margin-bottom: 14px;">
+                  Earned the prestigious <strong>LeetCode Knight badge</strong> — placing among the top competitive programmers worldwide with an official <strong>Contest Rating of 1,986</strong>.
+                  Secured a perfect <strong>4/4 score in Weekly Contest 490</strong>, achieving a peak single-contest global rank of <strong>#197 / 43,027</strong>.
+                </p>
 
-            <div class="knight-rank-metric">
-              <div>
-                <span class="rank-number">#197</span>
-                <span class="rank-total">/ 43,027 Global Participants</span>
+                <div class="knight-rank-metric">
+                  <div>
+                    <span class="rank-number">1,986</span>
+                    <span class="rank-total">Contest Rating (Knight Tier)</span>
+                  </div>
+                </div>
+
+                <div style="font-size: 0.84rem; color: var(--accent-yellow); font-family: var(--font-code); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                  <span>⚡ Overall Global Ranking: 24,142 / 882,088</span>
+                  <span>·</span>
+                  <span>Attended: 9 Contests</span>
+                  <span>·</span>
+                  <span>Peak Single Contest: #197</span>
+                </div>
               </div>
-            </div>
 
-            <div style="font-size: 0.82rem; color: var(--accent-yellow); font-family: var(--font-code); margin-bottom: 8px;">
-              ⚡ Weekly Contest 490 · 100% Problem Accuracy (4/4 Solved)
+              <!-- Official LeetCode Rating Card Image -->
+              <div class="leetcode-screenshot-wrap">
+                <img src="leetcode_knight.png" alt="LeetCode Knight Rating 1986 - James Nithil V" class="leetcode-screenshot-img" />
+                <div class="leetcode-screenshot-caption">
+                  <i data-lucide="shield-check" style="width: 14px; height: 14px; color: #34d399;"></i> Official LeetCode Rating Card · Knight (1,986)
+                </div>
+              </div>
             </div>
 
             <div class="problems-breakdown-grid">
@@ -2792,7 +2858,7 @@
         <div class="badge-details-list">
           <div class="badge-detail-row">
             <i data-lucide="award" style="width: 12px; height: 12px; color: #f59e0b;"></i>
-            <span>Knight Badge #197 / 43,027</span>
+            <span>Knight 1,986 (Rank #197)</span>
           </div>
           <div class="badge-detail-row">
             <i data-lucide="mail" style="width: 12px; height: 12px; color: var(--accent-blue);"></i>
@@ -3329,12 +3395,15 @@ Role: Junior Software Developer
 `,
       'knight': `
 🏆 LEETCODE KNIGHT BADGE:
-• Global Rank: #197 / 43,027 (Weekly Contest 490 - Solved 4/4 Problems)
+• Contest Rating: 1,986 (Knight Tier)
+• Overall Global Ranking: 24,142 / 882,088 (Top ~2.7% globally)
+• Attended Contests: 9
+• Best Single Contest: Weekly Contest 490 — Global Rank #197 / 43,027 (Solved 4/4 Problems)
 • Total Solved: 700+ Problems
   - 400+ in Java (Trees, Graphs, BFS/DFS, DP, Recursion, Two Pointers, Greedy, Linked Lists)
   - 350+ in Python3
   - 60+ in SQL & Pandas
-• Profile: https://leetcode.com/u/NITHIL07/
+• Official Profile: https://leetcode.com/u/NITHIL07/
 `,
       'contact': `
 LET'S CONNECT:
