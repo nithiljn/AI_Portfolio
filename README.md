@@ -29,10 +29,7 @@ Software Developer at **Vaken Technology**, working on the **Sovablu** platform.
 - **Smart India Hackathon (SIH)**: Team Leader of a 5-member team designing AI agriculture advisory prototypes.
 
 <p align="center">
-  <img src="./assets/images/leetcode_knight.png" alt="LeetCode Knight Rating 1994" width="480" />
-</p>
-<p align="center">
-  <img src="./assets/images/leetcode_languages.png" alt="LeetCode Solved Problems by Language" width="360" />
+  <img src="./assets/images/leetcode_knight.png" alt="LeetCode Knight Rating 1994" width="500" />
 </p>
 
 ---
