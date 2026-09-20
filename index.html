@@ -282,6 +282,12 @@
       border-color: var(--border-accent);
     }
 
+    .btn-topbar.active {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-blue);
+      border-color: var(--accent-blue);
+    }
+
     .btn-topbar.btn-primary {
       background: linear-gradient(135deg, #0284c7, #38bdf8);
       color: #070d18;
@@ -1547,6 +1553,16 @@
       cursor: grabbing;
     }
 
+    body.light-theme .glass-id-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.96) 0%, rgba(241, 245, 249, 0.98) 100%);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    }
+
+    body.light-theme .badge-close-btn:hover {
+      background: rgba(0, 0, 0, 0.06);
+    }
+
     .glass-id-card::before {
       content: '';
       position: absolute;
@@ -1812,14 +1828,18 @@
     }
 
     @media (max-width: 900px) {
+      .topbar {
+        z-index: 1600;
+      }
+
       .id-badge-container {
         position: fixed;
-        top: 0;
+        top: 44px;
         left: 0;
         right: 0;
         bottom: 0;
         width: 100vw;
-        height: 100vh;
+        height: calc(100vh - 44px);
         max-width: none;
         margin: 0;
         background: rgba(0, 0, 0, 0.75);
@@ -1829,16 +1849,14 @@
         display: none;
         align-items: center;
         justify-content: center;
-        padding: 20px;
+        padding: 16px;
         transform: none !important;
+        overflow-y: auto;
+        box-sizing: border-box;
       }
 
       .id-badge-container.mobile-open {
         display: flex !important;
-      }
-
-      .id-badge-container.hidden-badge {
-        display: none !important;
       }
 
       .glass-id-card {
@@ -2174,10 +2192,6 @@
       <button class="btn-topbar" id="cmd-palette-btn" title="Open Command Palette (⌘K)">
         <i data-lucide="search" style="width: 13px; height: 13px;"></i>
         <span>⌘K</span>
-      </button>
-
-      <button class="btn-topbar" id="sound-toggle-btn" title="Toggle Typing Audio FX">
-        <i data-lucide="volume-2" id="sound-icon" style="width: 13px; height: 13px;"></i>
       </button>
 
       <button class="btn-topbar" id="theme-toggle-btn" title="Toggle Dark/Light Mode">
@@ -3164,58 +3178,57 @@
 
       </div>
     </main>
+  </div>
 
-    <!-- ---------------------------------------------------------
-         PLASTIC / GLASS DEVELOPER ID BADGE
-    ---------------------------------------------------------- -->
-    <div class="id-badge-container" id="id-badge-card">
-      <div class="lanyard-clip-assembly">
-        <div class="lanyard-strap"></div>
-        <div class="metallic-clip"></div>
-      </div>
-
-      <div class="glass-id-card" id="interactive-card">
-        <div class="badge-top-row">
-          <span>Sovablu · DEV ID</span>
-          <button class="badge-close-btn" id="hide-badge-btn" title="Hide ID Badge">✕</button>
-        </div>
-
-        <div class="badge-avatar-wrap">
-          <img src="assets/images/jamesnithil.jpeg" alt="James Nithil" class="badge-avatar-img" onerror="this.src='assets/images/Nithil.jpg'">
-          <span class="badge-online-dot" title="Active in Production"></span>
-        </div>
-
-        <h3 class="badge-name">James Nithil V</h3>
-        <p class="badge-role">Junior Software Developer</p>
-        <p class="badge-company">Vaken Technology (Sovablu)</p>
-
-        <div class="badge-divider"></div>
-
-        <div class="badge-details-list">
-          <div class="badge-detail-row">
-            <i data-lucide="award" style="width: 12px; height: 12px; color: #f59e0b;"></i>
-            <span>Knight 1,994 (Rank #197)</span>
-          </div>
-          <div class="badge-detail-row">
-            <i data-lucide="mail" style="width: 12px; height: 12px; color: var(--accent-blue);"></i>
-            <span>jamnithil@gmail.com</span>
-          </div>
-          <div class="badge-detail-row">
-            <i data-lucide="phone" style="width: 12px; height: 12px; color: var(--accent-green);"></i>
-            <span>+91 8220173595</span>
-          </div>
-          <div class="badge-detail-row">
-            <i data-lucide="code" style="width: 12px; height: 12px; color: var(--accent-purple);"></i>
-            <span>Java, Python, LangGraph</span>
-          </div>
-        </div>
-
-        <div class="badge-barcode">
-          ||| | |||| || ||| |||| | ||
-        </div>
-      </div>
+  <!-- ---------------------------------------------------------
+       PLASTIC / GLASS DEVELOPER ID BADGE
+  ---------------------------------------------------------- -->
+  <div class="id-badge-container" id="id-badge-card">
+    <div class="lanyard-clip-assembly">
+      <div class="lanyard-strap"></div>
+      <div class="metallic-clip"></div>
     </div>
 
+    <div class="glass-id-card" id="interactive-card">
+      <div class="badge-top-row">
+        <span>Sovablu · DEV ID</span>
+        <button class="badge-close-btn" id="hide-badge-btn" title="Hide ID Badge">✕</button>
+      </div>
+
+      <div class="badge-avatar-wrap">
+        <img src="assets/images/jamesnithil.jpeg" alt="James Nithil" class="badge-avatar-img" onerror="this.src='assets/images/Nithil.jpg'">
+        <span class="badge-online-dot" title="Active in Production"></span>
+      </div>
+
+      <h3 class="badge-name">James Nithil V</h3>
+      <p class="badge-role">Junior Software Developer</p>
+      <p class="badge-company">Vaken Technology (Sovablu)</p>
+
+      <div class="badge-divider"></div>
+
+      <div class="badge-details-list">
+        <div class="badge-detail-row">
+          <i data-lucide="award" style="width: 12px; height: 12px; color: #f59e0b;"></i>
+          <span>Knight 1,994 (Rank #197)</span>
+        </div>
+        <div class="badge-detail-row">
+          <i data-lucide="mail" style="width: 12px; height: 12px; color: var(--accent-blue);"></i>
+          <span>jamnithil@gmail.com</span>
+        </div>
+        <div class="badge-detail-row">
+          <i data-lucide="phone" style="width: 12px; height: 12px; color: var(--accent-green);"></i>
+          <span>+91 8220173595</span>
+        </div>
+        <div class="badge-detail-row">
+          <i data-lucide="code" style="width: 12px; height: 12px; color: var(--accent-purple);"></i>
+          <span>Java, Python, LangGraph</span>
+        </div>
+      </div>
+
+      <div class="badge-barcode">
+        ||| | |||| || ||| |||| | ||
+      </div>
+    </div>
   </div>
 
   <!-- ---------------------------------------------------------
@@ -3323,49 +3336,8 @@
     // Lucide Icons Initialization
     lucide.createIcons();
 
-    // Sound FX Generator using Web Audio API (100% reliable offline, no external audio lag)
-    let soundEnabled = false;
-    let audioCtx = null;
-
-    function playKeyClick() {
-      if (!soundEnabled) return;
-      try {
-        if (!audioCtx) {
-          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        }
-        if (audioCtx.state === 'suspended') {
-          audioCtx.resume();
-        }
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(440 + Math.random() * 220, audioCtx.currentTime);
-        gain.gain.setValueAtTime(0.015, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.04);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.04);
-      } catch (e) {
-        // audio context blocked by browser policy
-      }
-    }
-
-    // Toggle Sound Button
-    const soundBtn = document.getElementById('sound-toggle-btn');
-    const soundIcon = document.getElementById('sound-icon');
-    soundBtn.addEventListener('click', () => {
-      soundEnabled = !soundEnabled;
-      if (soundEnabled) {
-        soundIcon.setAttribute('data-lucide', 'volume-2');
-        soundBtn.style.color = 'var(--accent-blue)';
-        playKeyClick();
-      } else {
-        soundIcon.setAttribute('data-lucide', 'volume-x');
-        soundBtn.style.color = 'var(--text-muted)';
-      }
-      lucide.createIcons();
-    });
+    // Sound FX (disabled per user request)
+    function playKeyClick() {}
 
     // -------------------------------------------------------------
     // TAB SWITCHING (SMOOTH & INSTANT)
@@ -3429,6 +3401,9 @@
       if (window.innerWidth <= 768) {
         closeMobileSidebar();
       }
+      if (window.innerWidth <= 900) {
+        closeBadge();
+      }
 
       // Update Breadcrumb
       if (fileMetaMap[tabId] && breadcrumbLabel) {
@@ -3478,6 +3453,9 @@
     const sidebarBackdrop = document.getElementById('sidebar-backdrop');
 
     function openMobileSidebar() {
+      if (window.innerWidth <= 900) {
+        closeBadge();
+      }
       mainSidebar.classList.add('mobile-open');
       if (sidebarBackdrop) sidebarBackdrop.classList.add('active');
     }
@@ -3518,6 +3496,9 @@
       themeIcon.setAttribute('data-lucide', isLight ? 'sun' : 'moon');
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
       lucide.createIcons();
+      if (window.innerWidth <= 900) {
+        closeBadge();
+      }
       playKeyClick();
     });
 
@@ -3536,26 +3517,73 @@
     const toggleBadgeBtn = document.getElementById('badge-toggle-btn');
     const hideBadgeBtn = document.getElementById('hide-badge-btn');
 
-    toggleBadgeBtn.addEventListener('click', () => {
+    function isBadgeOpen() {
+      if (!badgeContainer) return false;
       if (window.innerWidth <= 900) {
-        badgeContainer.classList.toggle('mobile-open');
-      } else {
-        badgeContainer.classList.toggle('hidden-badge');
+        return badgeContainer.classList.contains('mobile-open');
       }
-      playKeyClick();
-    });
+      return !badgeContainer.classList.contains('hidden-badge');
+    }
 
-    hideBadgeBtn.addEventListener('click', () => {
+    function openBadge() {
+      if (!badgeContainer) return;
+      if (window.innerWidth <= 768) {
+        closeMobileSidebar();
+      }
+      badgeContainer.classList.remove('hidden-badge');
+      if (window.innerWidth <= 900) {
+        badgeContainer.classList.add('mobile-open');
+      } else {
+        badgeContainer.classList.remove('mobile-open');
+      }
+      if (toggleBadgeBtn) toggleBadgeBtn.classList.add('active');
+    }
+
+    function closeBadge() {
+      if (!badgeContainer) return;
       badgeContainer.classList.remove('mobile-open');
       badgeContainer.classList.add('hidden-badge');
-      playKeyClick();
-    });
+      if (toggleBadgeBtn) toggleBadgeBtn.classList.remove('active');
+    }
+
+    function toggleBadge() {
+      if (isBadgeOpen()) {
+        closeBadge();
+      } else {
+        openBadge();
+      }
+    }
+
+    if (toggleBadgeBtn) {
+      toggleBadgeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleBadge();
+        playKeyClick();
+      });
+    }
+
+    if (hideBadgeBtn) {
+      hideBadgeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeBadge();
+        playKeyClick();
+      });
+    }
 
     // Tap dark overlay to close mobile badge modal
-    badgeContainer.addEventListener('click', (e) => {
-      if (window.innerWidth <= 900 && e.target === badgeContainer) {
+    if (badgeContainer) {
+      badgeContainer.addEventListener('click', (e) => {
+        if (window.innerWidth <= 900 && e.target === badgeContainer) {
+          closeBadge();
+          playKeyClick();
+        }
+      });
+    }
+
+    // Responsive resize cleanup
+    window.addEventListener('resize', () => {
+      if (badgeContainer && window.innerWidth > 900 && badgeContainer.classList.contains('mobile-open')) {
         badgeContainer.classList.remove('mobile-open');
-        playKeyClick();
       }
     });
 
@@ -3665,6 +3693,9 @@ $ tech_highlights
     const cmdBtn = document.getElementById('cmd-palette-btn');
 
     function openPalette() {
+      if (window.innerWidth <= 900) {
+        closeBadge();
+      }
       paletteBackdrop.classList.add('active');
       paletteInput.value = '';
       paletteInput.focus();
@@ -3682,8 +3713,13 @@ $ tech_highlights
         e.preventDefault();
         openPalette();
       }
-      if (e.key === 'Escape' && paletteBackdrop.classList.contains('active')) {
-        closePalette();
+      if (e.key === 'Escape') {
+        if (paletteBackdrop && paletteBackdrop.classList.contains('active')) {
+          closePalette();
+        }
+        if (isBadgeOpen()) {
+          closeBadge();
+        }
       }
     });
 
