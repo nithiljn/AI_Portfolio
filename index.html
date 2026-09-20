@@ -1799,25 +1799,46 @@
       font-family: var(--font-code);
       z-index: 100;
       user-select: none;
+      white-space: nowrap;
+      overflow: hidden;
+      box-sizing: border-box;
+      line-height: 24px;
     }
 
     .status-bar-left, .status-bar-right {
       display: flex;
       align-items: center;
       gap: 14px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      height: 24px;
     }
 
     .status-bar-item {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 5px;
       cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      height: 24px;
+      line-height: 24px;
+      padding: 0 4px;
+      border-radius: 2px;
+      transition: background 0.15s ease;
+    }
+
+    .status-bar-item span {
+      white-space: nowrap;
+      line-height: 24px;
     }
 
     .status-bar-item:hover {
       background: rgba(255, 255, 255, 0.2);
-      padding: 0 4px;
-      border-radius: 2px;
+    }
+
+    .status-item-rank .rank-short {
+      display: none;
     }
 
     /* -------------------------------------------------------------
@@ -1971,7 +1992,7 @@
       }
 
       .editor-content {
-        padding: 14px 12px 60px 12px;
+        padding: 14px 12px 75px 12px;
       }
 
       .hero-banner {
@@ -2101,9 +2122,50 @@
       .status-bar {
         padding: 0 8px;
         font-size: 0.68rem;
+        height: 24px;
       }
 
-      .status-bar-right .status-bar-item:not(:first-child) {
+      .status-bar-left, .status-bar-right {
+        gap: 8px;
+      }
+
+      .status-item-spaces,
+      .status-item-runtime,
+      .status-item-shell {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .status-bar {
+        padding: 0 8px;
+        font-size: 0.67rem;
+        height: 24px;
+      }
+
+      .status-bar-left {
+        gap: 8px;
+      }
+
+      .status-bar-right {
+        gap: 6px;
+      }
+
+      .status-item-problems {
+        display: none;
+      }
+
+      .status-item-rank .rank-full {
+        display: none;
+      }
+
+      .status-item-rank .rank-short {
+        display: inline;
+      }
+
+      .status-item-spaces,
+      .status-item-runtime,
+      .status-item-shell {
         display: none;
       }
     }
@@ -2122,6 +2184,16 @@
         font-size: 0.74rem;
       }
 
+      .quick-contact-bar {
+        padding: 14px 16px !important;
+        margin-bottom: 20px;
+      }
+
+      .quick-contact-bar > div {
+        gap: 12px !important;
+        font-size: 0.82rem !important;
+      }
+
       .stats-grid {
         grid-template-columns: 1fr;
       }
@@ -2138,6 +2210,23 @@
 
       .problems-breakdown-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .status-bar {
+        padding: 0 6px;
+        font-size: 0.64rem;
+      }
+
+      .status-bar-left {
+        gap: 6px;
+      }
+
+      .status-item-branch span {
+        max-width: 48px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   </style>
@@ -2183,7 +2272,7 @@
           <span>⚡ <span class="ticker-highlight">KadalValzhi</span>: LangGraph Multi-Agent RAG and AI Guidance</span>
         </div>
         <div class="ticker-item">
-          <span>💻 980+ Solved Problems Across Java, Python, and SQL</span>
+          <span>💻 1000+ Solved Problems Across Java, Python, and SQL</span>
         </div>
       </div>
     </div>
@@ -2423,7 +2512,7 @@
               <div class="stat-sub">Knight Level, Rank #197 in Weekly Contest 490</div>
             </div>
             <div class="stat-card">
-              <div class="stat-value">980+</div>
+              <div class="stat-value">1000+</div>
               <div class="stat-label">Problems Solved Across Languages</div>
               <div class="stat-sub">442 Java, 436 Python3, 40 MySQL, 31 C++</div>
             </div>
@@ -2449,7 +2538,7 @@
           </div>
 
           <!-- Quick Contact Footer Bar -->
-          <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+          <div class="quick-contact-bar" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
             <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 0.88rem; color: var(--text-secondary);">
               <span style="display: flex; align-items: center; gap: 6px;">
                 <i data-lucide="mail" style="width: 15px; height: 15px; color: var(--accent-blue);"></i> jamnithil@gmail.com
@@ -3300,29 +3389,30 @@
   ---------------------------------------------------------- -->
   <footer class="status-bar">
     <div class="status-bar-left">
-      <div class="status-bar-item" onclick="switchTab('tab-readme')">
+      <div class="status-bar-item status-item-branch" onclick="switchTab('tab-readme')" title="Active Git Branch">
         <i data-lucide="git-branch" style="width: 12px; height: 12px;"></i>
         <span>main*</span>
       </div>
-      <div class="status-bar-item">
+      <div class="status-bar-item status-item-problems" title="Zero Diagnostics">
         <i data-lucide="check" style="width: 12px; height: 12px;"></i>
         <span>0 errors, 0 warnings</span>
       </div>
-      <div class="status-bar-item" onclick="switchTab('tab-achievements')">
-        <span>🏆 Knight Rank: #197</span>
+      <div class="status-bar-item status-item-rank" onclick="switchTab('tab-achievements')" title="LeetCode Knight Rank">
+        <span class="rank-full">🏆 Knight Rank: #197</span>
+        <span class="rank-short">🏆 Knight #197</span>
       </div>
     </div>
     <div class="status-bar-right">
-      <div class="status-bar-item">
+      <div class="status-bar-item status-item-encoding">
         <span>UTF-8</span>
       </div>
-      <div class="status-bar-item">
+      <div class="status-bar-item status-item-spaces">
         <span>Spaces: 4</span>
       </div>
-      <div class="status-bar-item">
+      <div class="status-bar-item status-item-runtime">
         <span>Java 21 · Python 3.11</span>
       </div>
-      <div class="status-bar-item" onclick="switchTab('tab-terminal')">
+      <div class="status-bar-item status-item-shell" onclick="switchTab('tab-terminal')" title="Integrated Terminal">
         <i data-lucide="terminal" style="width: 12px; height: 12px;"></i>
         <span>zsh</span>
       </div>
@@ -3634,7 +3724,7 @@ $ current_focus.json
   "role": "Junior Software Developer at Vaken Technology",
   "product": "Sovablu (Production REST APIs, Redis Caching, AWS Bedrock, Jenkins)",
   "flagship_project": "KadalValzhi: AI Fisherman Guidance System (LangGraph, ChromaDB, RAG)",
-  "competitive_ranking": "LeetCode Knight, 980+ Solved (442 Java, 436 Python3)",
+  "competitive_ranking": "LeetCode Knight, 1000+ Solved (442 Java, 436 Python3)",
   "education": "B.Tech in Artificial Intelligence and Data Science (KIOT, CGPA 8.1)",
   "focus": "Building reliable distributed backends and practical AI systems."
 }
