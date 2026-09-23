@@ -10,7 +10,7 @@
 
 ## 👨‍💻 About Me
 
-Software Developer at **Vaken Technology**, working on the **Sovablu** platform. Focused on building high-availability production REST APIs in **Java and Spring Boot**, architecting **distributed systems with Redis and PostgreSQL**, managing cloud infrastructure on **AWS**, and designing **Agentic AI systems** using **AWS Bedrock** and **LangGraph**.
+Software Developer at **Vaken Technology**, engineering enterprise backend services and REST APIs for the **Sovablu low-code platform** using **Java 21, Spring Boot, Redis, PostgreSQL**, and **AWS Bedrock**. Concurrently architecting **KadalVazhi** as an independent engineering initiative, an enterprise-grade real-time maritime microservices and AI platform built with **Java 25, Apache Kafka, Python FastAPI**, and **LangGraph**.
 
 ---
 
@@ -51,14 +51,14 @@ Software Developer at **Vaken Technology**, working on the **Sovablu** platform.
 
 ## 🚀 Featured Projects
 
-### 🌊 **KadalVazhi: AI Fisherman Guidance System (2026)**
+### 🌊 **KadalVazhi (கடல் வழி): Maritime Microservices & AI Platform (2026)**
 *Repository: [github.com/orgs/kadal-vazhi/repositories](https://github.com/orgs/kadal-vazhi/repositories) (Under Active Development)*
-- Built a real-time AI platform for fishermen covering weather risk analysis, fish market pricing, fuel cost estimation, and voyage profitability using a **LangGraph multi-agent architecture**.
-- Designed a **RAG pipeline with ChromaDB vector store** using cosine similarity search on fishery documents for context-aware LLM responses.
-- Developed specialized **Weather, Financial, Guide, and LLM-as-Judge agents**, tracking agent evaluation via **LangSmith**.
-- Built an **LSTM time-series forecasting model** and integrated **PaddleOCR with a Vision-Language Model (VLM)** for fish image data extraction.
-- Integrated **OpenWeather API** with a 3-attempt fallback loop across multiple weather services, alerting fishermen explicitly if all requests fail to protect safety at sea.
-- Applied the **Singleton pattern** and **LRU caching**, logging daily fishing profit and loss into **PostgreSQL** for historical AI guidance.
+- **Polyglot Microservices**: Core transactional services engineered in **Java 25 and Spring Boot** (`nn-home-service`, `fleet-service`, `crew-exchange-service`, `marketplace-service`) routed via **Spring Cloud Gateway**, using **Apache Kafka** event streaming for asynchronous workflows.
+- **Offline-First Deep-Sea Sync**: Solved 5-to-10 nautical mile offshore dead zones using local SQLite / Room storage with idempotent background sync to PostgreSQL once vessels reach coastal 4G networks.
+- **Direct-From-Sea Pre-Order Marketplace**: Enables dockside catch declarations at sea, linking vessel arrival ETAs at major fish landing centers (Kasimedu, Tuticorin, Rameswaram) directly to buyers and eliminating exploitative middlemen.
+- **Voyage Ledger & Subsidized Fuel Quota**: Full voyage lifecycle engine for all vessel classes (country craft to 15-day trawlers), tracking diesel/kerosene subsidies, ice supplies, crew rosters, and trip P&L.
+- **Emergency Crew Exchange & AI Voice Advisory**: Rapid crew replacement board paired with a **Python FastAPI AI Voice Engine** using Whisper STT (Tamil/Malayalam) and LLM marine safety reasoning.
+- **DevOps & Cloud**: Containerized on **AWS EKS Kubernetes** with Application Load Balancers, Multi-AZ RDS PostgreSQL (JSONB), and automated canary deployments via **Jenkins CI/CD**.
 
 ### 🎙️ **AI InterviewBot: Dynamic Voice Interviewer**
 - Autonomous voice-based interview assistant conducting live conversational interviews.
@@ -102,7 +102,7 @@ Software Developer at **Vaken Technology**, working on the **Sovablu** platform.
 ## 📬 Contact & Connect
 
 - **Email**: [jamnithil@gmail.com](mailto:jamnithil@gmail.com)
-- **Phone**: +91 8220173595
-- **LinkedIn**: [linkedin.com/in/jamesnithil-v](https://www.linkedin.com/in/jamesnithil-v)
+- **Location**: Tamil Nadu, India
+- **LinkedIn**: [linkedin.com/in/jamesnithilv](https://www.linkedin.com/in/jamesnithilv/)
 - **GitHub**: [github.com/nithiljn](https://github.com/nithiljn)
 - **LeetCode**: [leetcode.com/u/NITHIL07](https://leetcode.com/u/NITHIL07/)
