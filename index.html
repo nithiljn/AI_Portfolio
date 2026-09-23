@@ -2541,10 +2541,8 @@
             </div>
 
             <p class="hero-bio">
-              Software Developer at <strong>Vaken Technology</strong>, working on the <strong>Sovablu</strong> platform.
-              Focused on production <strong>Java and Spring Boot APIs</strong>,
-              database caching with <strong>Redis and PostgreSQL</strong>, <strong>Agentic AI</strong> with AWS Bedrock,
-              and multi-agent architectures using <strong>Python and LangGraph</strong>.
+              Software Developer at <strong>Vaken Technology</strong>, engineering enterprise backend services and REST APIs for the <strong>Sovablu low-code platform</strong> using <strong>Java 21, Spring Boot, Redis, PostgreSQL</strong>, and <strong>AWS Bedrock</strong>.
+              Concurrently architecting <strong>KadalVazhi</strong> as an independent engineering initiative, an enterprise-grade real-time maritime microservices and AI guidance platform built with <strong>Java 25, Python, LangGraph</strong>, and <strong>Apache Kafka</strong>.
             </p>
 
             <div class="hero-actions">
@@ -2571,9 +2569,9 @@
               <div class="stat-sub">Java 21, Spring Boot, Redis, AWS Bedrock</div>
             </div>
             <div class="stat-card stat-purple">
-              <div class="stat-value">Multi-Agent</div>
+              <div class="stat-value">Microservices</div>
               <div class="stat-label">KadalVazhi Platform</div>
-              <div class="stat-sub">LangGraph, ChromaDB RAG, LangSmith</div>
+              <div class="stat-sub">Java 25, Kafka, LangGraph, Offline Sync</div>
             </div>
             <div class="stat-card">
               <div class="stat-value">707</div>
@@ -2598,16 +2596,23 @@
 
           <!-- Quick Contact Footer Bar -->
           <div class="quick-contact-bar" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
-            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 0.88rem; color: var(--text-secondary);">
-              <span style="display: flex; align-items: center; gap: 6px;">
-                <i data-lucide="mail" style="width: 15px; height: 15px; color: var(--accent-blue);"></i> jamnithil@gmail.com
-              </span>
-              <span style="display: flex; align-items: center; gap: 6px;">
-                <i data-lucide="phone" style="width: 15px; height: 15px; color: var(--accent-green);"></i> +91 8220173595
-              </span>
-              <span style="display: flex; align-items: center; gap: 6px;">
+            <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 0.88rem; color: var(--text-secondary);">
+              <button class="btn-action" id="copy-email-btn" onclick="copyEmailToClipboard(this)" title="Click to copy email address" style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); color: var(--text-primary); padding: 7px 14px; font-size: 0.86rem; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.2s ease;">
+                <i data-lucide="mail" style="width: 14px; height: 14px; color: var(--accent-blue);"></i>
+                <span id="copy-email-text">jamnithil@gmail.com</span>
+                <i data-lucide="copy" id="copy-email-icon" style="width: 13px; height: 13px; color: var(--text-muted);"></i>
+              </button>
+              <span style="display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); font-size: 0.88rem;">
                 <i data-lucide="map-pin" style="width: 15px; height: 15px; color: var(--accent-purple);"></i> Tamil Nadu, India
               </span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <a href="https://www.linkedin.com/in/jamesnithilv/" target="_blank" class="btn-action" style="padding: 7px 14px; font-size: 0.82rem;">
+                <i data-lucide="linkedin" style="width: 14px; height: 14px;"></i> LinkedIn
+              </a>
+              <a href="https://github.com/nithiljn" target="_blank" class="btn-action" style="padding: 7px 14px; font-size: 0.82rem;">
+                <i data-lucide="github" style="width: 14px; height: 14px;"></i> GitHub
+              </a>
             </div>
           </div>
 
@@ -2631,69 +2636,69 @@
           <!-- 🌟 FLAGSHIP PROJECT: KadalVazhi -->
           <div class="project-card-modern featured">
             <div class="project-thumb-wrap">
-              <img src="assets/images/project-kadalvazhi.jpg" alt="KadalVazhi AI Fisherman Guidance System Dashboard" class="project-thumb-img" loading="lazy">
+              <img src="assets/images/project-kadalvazhi.jpg" alt="KadalVazhi Maritime Microservices Platform Dashboard" class="project-thumb-img" loading="lazy">
             </div>
             <span class="featured-badge">Flagship 2026</span>
 
             <div class="project-header">
               <h2 class="project-name">
-                <span>KadalVazhi: AI Fisherman Guidance System</span>
+                <span>KadalVazhi (கடல் வழி): Maritime Microservices & AI Platform</span>
               </h2>
-              <p class="project-tagline">Real-time multi-agent guidance platform for weather, pricing, fuel, and voyage safety</p>
+              <p class="project-tagline">Enterprise polyglot microservices platform for deep-sea fleet voyages, emergency crew exchange, and direct dockside catch pre-orders</p>
             </div>
 
             <p class="project-description">
-              A real-time AI guidance system for fishermen that handles weather risk analysis,
-              fish market price forecasts, fuel cost estimates, and voyage profitability using an autonomous
-              <strong>LangGraph multi-agent architecture</strong>.
+              An enterprise-grade, polyglot microservices ecosystem tailored for deep-sea fishing communities and fleet owners.
+              Features an offline-first voyage engine, Apache Kafka event streaming, zero-middlemen dockside catch pre-booking,
+              emergency crew replacement, and a Tamil/Malayalam voice AI advisory engine.
             </p>
 
             <ul class="project-bullets">
               <li>
-                <strong>Multi-Agent Architecture:</strong> Developed specialized <em>Weather</em>, <em>Financial</em>,
-                <em>Guide</em>, and <em>LLM-as-Judge</em> agents, tracking evaluation metrics with <strong>LangSmith</strong>.
+                <strong>Polyglot Microservices & Event Streaming:</strong> Core transactional services engineered in <strong>Java 25 and Spring Boot</strong> (<code>nn-home-service</code>, <code>fleet-service</code>, <code>crew-exchange-service</code>, <code>marketplace-service</code>) routed via <strong>Spring Cloud Gateway</strong>, using <strong>Apache Kafka</strong> for asynchronous event-driven workflows (trip events, catch declarations, emergency alerts).
               </li>
               <li>
-                <strong>RAG Pipeline with ChromaDB:</strong> Built vector store retrieval using cosine similarity search on official fishery documents for context-aware responses.
+                <strong>Offline-First Zero-Connectivity Sync:</strong> Solved 5-to-10 nautical mile offshore dead zones with local SQLite storage on mobile clients, executing <strong>idempotent background synchronization</strong> to <strong>PostgreSQL</strong> once vessels regain coastal 4G connectivity.
               </li>
               <li>
-                <strong>Predictive Vision and Forecasting:</strong> Trained an <strong>LSTM time-series forecasting model</strong> and connected <strong>PaddleOCR with a Vision-Language Model (VLM)</strong> for fish image data extraction and valuation.
+                <strong>Direct-From-Sea Pre-Order Marketplace:</strong> Built a dockside catch pre-order system enabling captains to declare catches while at sea, linking vessel arrival ETAs at major fish landing centers (Kasimedu, Tuticorin, Rameswaram, Munambam) directly to buyers and eliminating exploitative middlemen.
               </li>
               <li>
-                <strong>Safe Fallback Loop:</strong> Integrated OpenWeather API with a 3-attempt fallback loop across multiple weather services. If all requests fail, the system explicitly warns fishermen instead of serving unverified data to protect lives at sea.
+                <strong>Voyage Ledger & Subsidized Fuel Quota:</strong> Engine supporting all vessel classes (from 1-day country crafts and FRP fiber boats to 15-day mechanized trawlers), tracking government diesel/kerosene quota balances, ice supplies, crew rosters, and trip P&L.
               </li>
               <li>
-                <strong>Performance and Reliability:</strong> Applied the <strong>Singleton pattern</strong> and <strong>LRU caching</strong>, logging daily fishing profit and loss into <strong>PostgreSQL</strong> for historical AI guidance models.
+                <strong>Emergency Crew Exchange & AI Voice Advisory:</strong> Real-time dispatch board for urgent port crew hiring, paired with a <strong>Python FastAPI AI Voice Engine</strong> using <strong>Whisper STT (Tamil/Malayalam)</strong> and LLM reasoning for marine safety alerts and annual fishing ban compliance.
+              </li>
+              <li>
+                <strong>AWS Cloud & Automated Jenkins CI/CD:</strong> Containerized microservices orchestrated on <strong>AWS EKS Kubernetes</strong> with Application Load Balancers, Multi-AZ RDS PostgreSQL (JSONB), and automated canary deployments via <strong>Jenkins pipelines</strong>.
               </li>
             </ul>
 
-            <!-- Python pseudo-code snippet for KadalVazhi -->
+            <!-- Java / Kafka event snippet for KadalVazhi -->
             <div class="code-preview-block">
-              <span class="syntax-com"># kadalvazhi_core.py: LangGraph multi-agent setup</span><br>
-              <span class="syntax-kw">from</span> langgraph.graph <span class="syntax-kw">import</span> StateGraph, END<br>
-              <span class="syntax-kw">from</span> chromadb <span class="syntax-kw">import</span> PersistentClient<br>
-              <br>
-              <span class="syntax-kw">class</span> <span class="syntax-cls">KadalVazhiAgentGraph</span>:<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-kw">def</span> <span class="syntax-fn">__init__</span>(self, vector_store: PersistentClient):<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.rag_engine = vector_store.get_collection(<span class="syntax-str">"fishery_docs"</span>)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.workflow = StateGraph(FishermanState)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-com"># Define specialized agent nodes</span><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.workflow.add_node(<span class="syntax-str">"weather_safety_agent"</span>, self.eval_weather_risk)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.workflow.add_node(<span class="syntax-str">"market_pricing_agent"</span>, self.forecast_pnl_lstm)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.workflow.add_node(<span class="syntax-str">"llm_as_judge"</span>, self.validate_safety_verdict)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.workflow.add_conditional_edges(<span class="syntax-str">"weather_safety_agent"</span>, self.check_storm_threshold)<br>
+              <span class="syntax-com">// CatchEventConsumer.java: Kafka-driven Offshore Catch & Marketplace Processing</span><br>
+              <span class="syntax-kw">@Component</span><br>
+              <span class="syntax-kw">public class</span> <span class="syntax-cls">CatchEventConsumer</span> {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-kw">@KafkaListener</span>(topics = <span class="syntax-str">"catch-reported-events"</span>, groupId = <span class="syntax-str">"marketplace-v1"</span>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-kw">public void</span> <span class="syntax-fn">processOffshoreCatch</span>(CatchDeclaredEvent event) {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-com">// Idempotent catch registration synced from offline marine client</span><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;marketplaceService.registerDocksidePreOrder(event.getVesselId(), event.getSpecies(), event.getEtaHarbor());<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;redisLeaderboard.updatePortVolume(event.getPortId(), event.getWeightKg());<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+              }
             </div>
 
             <div class="tech-pill-list">
-              <span class="tech-pill highlight">LangGraph</span>
-              <span class="tech-pill highlight">ChromaDB (RAG)</span>
-              <span class="tech-pill highlight">LangSmith</span>
-              <span class="tech-pill">PaddleOCR + VLM</span>
-              <span class="tech-pill">LSTM Time-Series</span>
-              <span class="tech-pill">OpenWeather API</span>
-              <span class="tech-pill">PostgreSQL</span>
-              <span class="tech-pill">Redis LRU Cache</span>
-              <span class="tech-pill">Python 3.11</span>
+              <span class="tech-pill highlight">Java 25 & Spring Boot</span>
+              <span class="tech-pill highlight">Apache Kafka</span>
+              <span class="tech-pill highlight">Spring Cloud Gateway</span>
+              <span class="tech-pill">Offline SQLite Sync</span>
+              <span class="tech-pill">Python FastAPI</span>
+              <span class="tech-pill">Whisper Voice AI (Tamil/Malayalam)</span>
+              <span class="tech-pill">PostgreSQL (JSONB)</span>
+              <span class="tech-pill">Redis Cluster</span>
+              <span class="tech-pill">AWS EKS & Docker</span>
+              <span class="tech-pill">Jenkins CI/CD</span>
             </div>
 
             <div class="project-links">
@@ -3430,13 +3435,13 @@
           <i data-lucide="award" style="width: 12px; height: 12px; color: #f59e0b;"></i>
           <span>Knight 1,994 (Rank #197)</span>
         </div>
-        <div class="badge-detail-row">
+        <div class="badge-detail-row" style="cursor: pointer;" onclick="copyEmailToClipboard(this)" title="Click to copy email">
           <i data-lucide="mail" style="width: 12px; height: 12px; color: var(--accent-blue);"></i>
           <span>jamnithil@gmail.com</span>
         </div>
         <div class="badge-detail-row">
-          <i data-lucide="phone" style="width: 12px; height: 12px; color: var(--accent-green);"></i>
-          <span>+91 8220173595</span>
+          <i data-lucide="map-pin" style="width: 12px; height: 12px; color: var(--accent-green);"></i>
+          <span>Tamil Nadu, India</span>
         </div>
         <div class="badge-detail-row">
           <i data-lucide="code" style="width: 12px; height: 12px; color: var(--accent-purple);"></i>
@@ -3852,18 +3857,18 @@ Competitive Programmer: LeetCode Knight (Contest Rating 1,994, Rank #197 / 43,02
 $ current_focus.json
 {
   "role": "Junior Software Developer at Vaken Technology",
-  "product": "Sovablu (Production REST APIs, Redis Caching, AWS Bedrock, Jenkins)",
-  "flagship_project": "KadalVazhi: AI Fisherman Guidance System (LangGraph, ChromaDB, RAG)",
+  "product": "Sovablu Low-Code Platform (Java 21, Spring Boot REST APIs, Redis, AWS Bedrock)",
+  "personal_flagship": "KadalVazhi: Real-Time Maritime Microservices & AI (Java 25, Kafka, Whisper)",
   "competitive_ranking": "LeetCode Knight, 707 Problems Solved (446 Java, 443 Python3)",
   "education": "B.Tech in Artificial Intelligence and Data Science (KIOT, CGPA 8.1)",
-  "focus": "Building reliable distributed backends and practical AI systems."
+  "focus": "Engineering distributed backend services and real-world AI systems."
 }
 
 $ tech_highlights
 • Built and maintained production REST APIs in Java and Spring Boot with rate limiting and Singleton design pattern.
 • Integrated Redis caching to reduce database query latency across hot paths with PostgreSQL.
 • Automated CI/CD deployment pipelines using Jenkins with AWS services (EC2, S3, Lambda, CodeCommit).
-• Architected multi-agent workflows using LangGraph for maritime safety, pricing, and weather guidance.
+• Architected KadalVazhi microservices with Java 25, Kafka event streaming, and offline SQLite sync.
 
 [Open for high-impact software engineering roles and collaboration]
 `;
@@ -3976,15 +3981,17 @@ $ tech_highlights
     const cliInput = document.getElementById('cli-input-field');
 
     const kadalvazhiCliResponse = `
-KadalVazhi: AI Fisherman Guidance System (2026)
+KadalVazhi (கடல் வழி): Maritime Microservices & AI Platform (2026)
 • Status: Under Active Development
 • Organization: https://github.com/orgs/kadal-vazhi/repositories
-• Architecture: LangGraph Multi-Agent (Weather, Financial, Guide, LLM-as-Judge)
-• RAG Pipeline: ChromaDB vector store with cosine similarity on official fishery documents
-• Safety First: OpenWeather API 3-attempt fallback loop with explicit safety warnings
-• Computer Vision: PaddleOCR and Vision-Language Model (VLM) for fish image extraction
-• Time Series: LSTM forecasting model for market pricing and catch valuation
-• Systems: Singleton pattern, Redis LRU caching, and daily P&L logged in PostgreSQL
+• Architecture: Polyglot Microservices (Java 25 Spring Boot + Python FastAPI)
+• Event Backbone: Apache Kafka (Trip lifecycle, catch pre-orders, crew alerts)
+• Deep-Sea Offline Sync: SQLite local client syncs to PostgreSQL when entering 4G
+• Direct Catch Pre-Orders: Live dockside pre-booking eliminating middlemen
+• Voyage & Fuel Ledger: All-vessel tracking (Country craft to 15-day trawler) with subsidy balances
+• Emergency Crew Exchange: Real-time harbour crew shortage board
+• Voice AI: Tamil & Malayalam Whisper STT + LLM marine safety advisory
+• Cloud & DevOps: AWS EKS, RDS PostgreSQL (JSONB), Redis Cluster, Jenkins CI/CD
 `;
 
     const cliResponses = {
@@ -4056,12 +4063,11 @@ LeetCode Knight Badge:
 `,
       'contact': `
 Contact Information:
-• Email: jamnithil@gmail.com
-• Phone: +91 8220173595
+• Email: jamnithil@gmail.com (click to copy on page)
+• Location: Tamil Nadu, India
 • LinkedIn: https://www.linkedin.com/in/jamesnithilv/
 • GitHub: https://github.com/nithiljn
 • LeetCode: https://leetcode.com/u/NITHIL07/
-• Location: Trichy, Tamil Nadu, India
 `,
       'resume': `
 📄 Triggering download for 'James_Nithil_Resume.pdf'...
@@ -4121,6 +4127,49 @@ Contact Information:
     function runCliBtn(cmd) {
       cliInput.value = '';
       executeCommand(cmd);
+    }
+
+    function copyEmailToClipboard(btn) {
+      const email = 'jamnithil@gmail.com';
+      const textEl = document.getElementById('copy-email-text');
+      const onSuccess = () => {
+        if (textEl) textEl.textContent = 'Email copied!';
+        if (btn) {
+          btn.style.borderColor = 'rgba(16, 185, 129, 0.6)';
+          btn.style.background = 'rgba(16, 185, 129, 0.15)';
+        }
+        setTimeout(() => {
+          if (textEl) textEl.textContent = email;
+          if (btn) {
+            btn.style.borderColor = 'rgba(56, 189, 248, 0.25)';
+            btn.style.background = 'rgba(56, 189, 248, 0.08)';
+          }
+        }, 2200);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(onSuccess).catch(() => {
+          fallbackCopyText(email, onSuccess);
+        });
+      } else {
+        fallbackCopyText(email, onSuccess);
+      }
+    }
+
+    function fallbackCopyText(text, callback) {
+      const input = document.createElement('input');
+      input.value = text;
+      input.style.position = 'fixed';
+      input.style.opacity = '0';
+      document.body.appendChild(input);
+      input.select();
+      try {
+        document.execCommand('copy');
+        if (callback) callback();
+      } catch (err) {
+        prompt('Copy email address:', text);
+      }
+      document.body.removeChild(input);
     }
   </script>
 
