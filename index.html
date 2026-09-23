@@ -955,27 +955,152 @@
 
     .project-thumb-wrap {
       width: 100%;
-      height: 260px;
+      aspect-ratio: 16 / 9;
+      height: auto;
       border-radius: var(--radius-md);
       overflow: hidden;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       position: relative;
-      background: rgba(15, 23, 42, 0.6);
+      background: #0b1120;
       border: 1px solid var(--border-subtle);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+      cursor: pointer;
     }
 
     .project-thumb-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center top;
+      object-fit: contain;
       display: block;
       transition: transform 0.35s ease;
     }
 
-    .project-card-modern:hover .project-thumb-img {
-      transform: scale(1.025);
+    .project-thumb-wrap:hover .project-thumb-img {
+      transform: scale(1.02);
+    }
+
+    .thumb-author-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 20px;
+      padding: 4px 10px 4px 5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      z-index: 2;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    .thumb-author-avatar {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .thumb-expand-btn {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: var(--radius-sm);
+      padding: 5px 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.76rem;
+      font-family: var(--font-code);
+      color: var(--accent-blue);
+      z-index: 2;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    .project-thumb-wrap:hover .thumb-expand-btn {
+      background: var(--accent-blue);
+      color: #fff;
+      border-color: var(--accent-blue);
+    }
+
+    /* Lightbox Modal */
+    .image-lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .image-lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-content-box {
+      max-width: 1240px;
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+      animation: modalPop 0.2s ease-out;
+    }
+
+    .lightbox-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+    }
+
+    .lightbox-close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 4px 10px;
+      border-radius: 4px;
+      transition: color 0.15s ease;
+    }
+
+    .lightbox-close-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .lightbox-img-wrap {
+      width: 100%;
+      max-height: 84vh;
+      overflow: auto;
+      background: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
     }
 
     .project-header {
@@ -2101,8 +2226,28 @@
       }
 
       .project-thumb-wrap {
-        height: 180px;
+        aspect-ratio: 16 / 9;
+        height: auto;
         margin-bottom: 14px;
+      }
+
+      .thumb-author-badge {
+        font-size: 0.68rem;
+        padding: 3px 8px 3px 4px;
+        top: 8px;
+        left: 8px;
+      }
+
+      .thumb-author-avatar {
+        width: 17px;
+        height: 17px;
+      }
+
+      .thumb-expand-btn {
+        font-size: 0.68rem;
+        padding: 4px 8px;
+        bottom: 8px;
+        right: 8px;
       }
 
       .project-name {
@@ -2635,8 +2780,18 @@
 
           <!-- 🌟 FLAGSHIP PROJECT: KadalVazhi -->
           <div class="project-card-modern featured">
-            <div class="project-thumb-wrap">
+            <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-kadalvazhi.jpg', 'KadalVazhi Maritime Microservices Platform (Full Architecture View)')" title="Click to view full architectural dashboard in high resolution">
               <img src="assets/images/project-kadalvazhi.jpg" alt="KadalVazhi Maritime Microservices Platform Dashboard" class="project-thumb-img" loading="lazy">
+              
+              <div class="thumb-author-badge">
+                <img src="assets/images/jamesnithil.jpeg" alt="James Nithil" class="thumb-author-avatar">
+                <span>Architect & Lead: James Nithil</span>
+              </div>
+
+              <div class="thumb-expand-btn">
+                <i data-lucide="maximize-2" style="width: 13px; height: 13px;"></i>
+                <span>Full Picture</span>
+              </div>
             </div>
             <span class="featured-badge">Flagship 2026</span>
 
@@ -2713,10 +2868,6 @@
 
           <!-- PROJECT 2: AI InterviewBot -->
           <div class="project-card-modern">
-            <div class="project-thumb-wrap">
-              <img src="assets/images/project-interviewbot.jpg" alt="AI InterviewBot Voice Interview System Dashboard" class="project-thumb-img" loading="lazy">
-            </div>
-
             <div class="project-header">
               <h2 class="project-name">
                 <span>AI InterviewBot: Dynamic Voice Interviewer</span>
@@ -2760,10 +2911,6 @@
 
           <!-- PROJECT 3: SymptoMedAI -->
           <div class="project-card-modern">
-            <div class="project-thumb-wrap">
-              <img src="assets/images/project-symptomedai.jpg" alt="SymptoMedAI Disease Prediction Platform" class="project-thumb-img" loading="lazy">
-            </div>
-
             <div class="project-header">
               <h2 class="project-name">
                 <span>SymptoMedAI: Disease Prediction and Healthcare Assistant</span>
@@ -2805,10 +2952,6 @@
 
           <!-- PROJECT 4: FarmVista (SIH) -->
           <div class="project-card-modern">
-            <div class="project-thumb-wrap">
-              <img src="assets/images/project-farmvista.jpg" alt="FarmVista Smart Agriculture Advisory Dashboard" class="project-thumb-img" loading="lazy">
-            </div>
-
             <div class="project-header">
               <h2 class="project-name">
                 <span>FarmVista: Smart Agriculture Advisory</span>
@@ -3520,6 +3663,24 @@
   </div>
 
   <!-- ---------------------------------------------------------
+       FULLSCREEN IMAGE LIGHTBOX MODAL
+  ---------------------------------------------------------- -->
+  <div class="image-lightbox-modal" id="image-lightbox" onclick="closeImageLightbox(event)">
+    <div class="lightbox-content-box">
+      <div class="lightbox-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <img src="assets/images/jamesnithil.jpeg" alt="James Nithil" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;">
+          <span id="lightbox-caption" style="font-weight: 600; font-size: 0.92rem; color: var(--text-primary);">KadalVazhi Full Architecture View</span>
+        </div>
+        <button class="lightbox-close-btn" onclick="closeImageLightboxDirect()" title="Close (ESC)">✕</button>
+      </div>
+      <div class="lightbox-img-wrap">
+        <img id="lightbox-img" src="" alt="Full Architecture View" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------------------------------------------------------
        BOTTOM STATUS BAR (VS CODE FOOTER)
   ---------------------------------------------------------- -->
   <footer class="status-bar">
@@ -3939,6 +4100,7 @@ $ tech_highlights
         openPalette();
       }
       if (e.key === 'Escape') {
+        closeImageLightboxDirect();
         if (paletteBackdrop && paletteBackdrop.classList.contains('active')) {
           closePalette();
         }
@@ -4170,6 +4332,33 @@ Contact Information:
         prompt('Copy email address:', text);
       }
       document.body.removeChild(input);
+    }
+
+    // Image Lightbox Functions
+    function openImageLightbox(src, caption) {
+      const modal = document.getElementById('image-lightbox');
+      const img = document.getElementById('lightbox-img');
+      const cap = document.getElementById('lightbox-caption');
+      if (modal && img) {
+        img.src = src;
+        if (cap) cap.textContent = caption || 'KadalVazhi Full Architecture View';
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeImageLightbox(e) {
+      if (e.target.id === 'image-lightbox') {
+        closeImageLightboxDirect();
+      }
+    }
+
+    function closeImageLightboxDirect() {
+      const modal = document.getElementById('image-lightbox');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
     }
   </script>
 
