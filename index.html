@@ -955,28 +955,38 @@
 
     .project-thumb-wrap {
       width: 100%;
-      aspect-ratio: 16 / 9;
-      height: auto;
+      height: 230px;
       border-radius: var(--radius-md);
       overflow: hidden;
       margin-bottom: 18px;
       position: relative;
       background: #0b1120;
       border: 1px solid var(--border-subtle);
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
       cursor: pointer;
+    }
+
+    .project-thumb-wrap.flagship-thumb {
+      aspect-ratio: 16 / 9;
+      height: auto;
+      box-shadow: 0 4px 26px rgba(0, 0, 0, 0.4);
     }
 
     .project-thumb-img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
+      object-position: center top;
       display: block;
       transition: transform 0.35s ease;
     }
 
+    .project-thumb-wrap.flagship-thumb .project-thumb-img {
+      object-fit: contain;
+    }
+
     .project-thumb-wrap:hover .project-thumb-img {
-      transform: scale(1.02);
+      transform: scale(1.025);
     }
 
     .thumb-author-badge {
@@ -2226,9 +2236,13 @@
       }
 
       .project-thumb-wrap {
+        height: 180px;
+        margin-bottom: 14px;
+      }
+
+      .project-thumb-wrap.flagship-thumb {
         aspect-ratio: 16 / 9;
         height: auto;
-        margin-bottom: 14px;
       }
 
       .thumb-author-badge {
@@ -2780,7 +2794,7 @@
 
           <!-- 🌟 FLAGSHIP PROJECT: KadalVazhi -->
           <div class="project-card-modern featured">
-            <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-kadalvazhi.jpg', 'KadalVazhi Maritime Microservices Platform (Full Architecture View)')" title="Click to view full architectural dashboard in high resolution">
+            <div class="project-thumb-wrap flagship-thumb" onclick="openImageLightbox('assets/images/project-kadalvazhi.jpg', 'KadalVazhi Maritime Microservices Platform (Full Architecture View)')" title="Click to view full architectural dashboard in high resolution">
               <img src="assets/images/project-kadalvazhi.jpg" alt="KadalVazhi Maritime Microservices Platform Dashboard" class="project-thumb-img" loading="lazy">
               
               <div class="thumb-author-badge">
@@ -2868,6 +2882,14 @@
 
           <!-- PROJECT 2: AI InterviewBot -->
           <div class="project-card-modern">
+            <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-interviewbot.jpg', 'AI InterviewBot: Dynamic Voice Interviewer Dashboard')" title="Click to view preview in high resolution">
+              <img src="assets/images/project-interviewbot.jpg" alt="AI InterviewBot Voice Interview System Dashboard" class="project-thumb-img" loading="lazy">
+              <div class="thumb-expand-btn">
+                <i data-lucide="maximize-2" style="width: 13px; height: 13px;"></i>
+                <span>Preview</span>
+              </div>
+            </div>
+
             <div class="project-header">
               <h2 class="project-name">
                 <span>AI InterviewBot: Dynamic Voice Interviewer</span>
@@ -2911,6 +2933,14 @@
 
           <!-- PROJECT 3: SymptoMedAI -->
           <div class="project-card-modern">
+            <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-symptomedai.jpg', 'SymptoMedAI: Disease Prediction Platform')" title="Click to view preview in high resolution">
+              <img src="assets/images/project-symptomedai.jpg" alt="SymptoMedAI Disease Prediction Platform" class="project-thumb-img" loading="lazy">
+              <div class="thumb-expand-btn">
+                <i data-lucide="maximize-2" style="width: 13px; height: 13px;"></i>
+                <span>Preview</span>
+              </div>
+            </div>
+
             <div class="project-header">
               <h2 class="project-name">
                 <span>SymptoMedAI: Disease Prediction and Healthcare Assistant</span>
@@ -2952,6 +2982,14 @@
 
           <!-- PROJECT 4: FarmVista (SIH) -->
           <div class="project-card-modern">
+            <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-farmvista.jpg', 'FarmVista: Smart Agriculture Advisory Dashboard')" title="Click to view preview in high resolution">
+              <img src="assets/images/project-farmvista.jpg" alt="FarmVista Smart Agriculture Advisory Dashboard" class="project-thumb-img" loading="lazy">
+              <div class="thumb-expand-btn">
+                <i data-lucide="maximize-2" style="width: 13px; height: 13px;"></i>
+                <span>Preview</span>
+              </div>
+            </div>
+
             <div class="project-header">
               <h2 class="project-name">
                 <span>FarmVista: Smart Agriculture Advisory</span>
