@@ -19,12 +19,15 @@ Software Developer at **Vaken Technology**, working on the **Sovablu** platform.
 - **LeetCode Knight Badge**: Contest Rating **1,994** | Global Ranking **23,201 / 883,546** | Contests Attended: **10**
 - **Weekly Contest 490**: Global Rank **#197 out of 43,027** participants (Solved 4/4 problems with 100% accuracy).
 - **LeetCode Problem Solving Breakdown**:
-  - **Java**: 442 problems solved (Trees, Graphs, BFS/DFS, Dynamic Programming, Recursion, Two Pointers, Greedy, Linked Lists)
-  - **Python3**: 436 problems solved (Algorithmic problem solving and data structures)
+  - **Total Solved**: 707 unique problems
+  - **Java**: 446 problems solved (Trees, Graphs, BFS/DFS, Dynamic Programming, Recursion, Two Pointers, Greedy, Linked Lists)
+  - **Python3**: 443 problems solved (Algorithmic problem solving and data structures)
   - **MySQL**: 40 problems solved (Relational database queries and optimization)
   - **C++**: 31 problems solved
   - **Pandas**: 16 problems solved (Data analysis and transformation)
   - **JavaScript**: 13 problems solved
+  - **Python**: 5 problems solved
+  - **Bash**: 1 problem solved
   - **Core Topic Mastery**: Dynamic Programming (108), Math (136), Hash Table (133), Arrays (380), Strings (161), Sorting (90), Greedy (66)
 - **Smart India Hackathon (SIH)**: Team Leader of a 5-member team designing AI agriculture advisory prototypes.
 
@@ -48,7 +51,8 @@ Software Developer at **Vaken Technology**, working on the **Sovablu** platform.
 
 ## 🚀 Featured Projects
 
-### 🌊 **KadalValzhi: AI Fisherman Guidance System (2026)**
+### 🌊 **KadalVazhi: AI Fisherman Guidance System (2026)**
+*Repository: [github.com/orgs/kadal-vazhi/repositories](https://github.com/orgs/kadal-vazhi/repositories) (Under Active Development)*
 - Built a real-time AI platform for fishermen covering weather risk analysis, fish market pricing, fuel cost estimation, and voyage profitability using a **LangGraph multi-agent architecture**.
 - Designed a **RAG pipeline with ChromaDB vector store** using cosine similarity search on fishery documents for context-aware LLM responses.
 - Developed specialized **Weather, Financial, Guide, and LLM-as-Judge agents**, tracking agent evaluation via **LangSmith**.
