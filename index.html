@@ -1810,7 +1810,7 @@
       border: 1px solid var(--border-accent);
       border-radius: var(--radius-xl);
       box-shadow: var(--badge-shadow);
-      padding: 16px;
+      padding: 12px 14px 10px 14px;
       text-align: center;
       position: relative;
       transform-style: preserve-3d;
@@ -1824,26 +1824,51 @@
 
     body.light-theme .glass-id-card {
       background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
+      border: 1px solid #d0d7de;
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.14);
     }
 
-    body.light-theme .badge-close-btn:hover {
-      background: rgba(0, 0, 0, 0.06);
+    /* Slot punch where lanyard clip attaches */
+    .badge-slot-punch {
+      width: 34px;
+      height: 4px;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 3px;
+      margin: -2px auto 8px auto;
+    }
+
+    body.light-theme .badge-slot-punch {
+      background: #d0d7de;
+      border: 1px solid #b1bac4;
     }
 
     .badge-top-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 12px;
-      font-size: 0.68rem;
+      margin-bottom: 8px;
+    }
+
+    .badge-brand-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.70rem;
+      font-family: var(--font-code);
       font-weight: 700;
-      letter-spacing: 0.06em;
-      color: var(--accent-blue);
-      text-transform: uppercase;
-      position: relative;
-      z-index: 2;
+      letter-spacing: 0.08em;
+      color: var(--text-primary);
+    }
+
+    .badge-dot-sep {
+      color: var(--text-muted);
+      font-size: 0.65rem;
+    }
+
+    .badge-corp-sub {
+      color: var(--text-accent);
+      font-weight: 600;
     }
 
     .badge-close-btn {
@@ -1852,44 +1877,46 @@
       color: var(--text-muted);
       cursor: pointer;
       font-size: 0.9rem;
-      padding: 2px 4px;
+      padding: 2px 5px;
       border-radius: 4px;
+      transition: all 0.15s ease;
     }
 
     .badge-close-btn:hover {
       color: var(--text-primary);
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--border-subtle);
     }
 
-    .badge-avatar-wrap {
-      width: 88px;
-      height: 88px;
-      margin: 0 auto 10px auto;
-      border-radius: 50%;
-      padding: 3px;
-      background: linear-gradient(135deg, var(--accent-blue), #818cf8);
+    /* Rectangular Portrait Photo Container */
+    .badge-photo-container {
+      width: 96px;
+      height: 116px;
+      margin: 0 auto 8px auto;
+      border-radius: 8px;
+      overflow: hidden;
       position: relative;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      background: var(--bg-terminal);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
 
-    .badge-avatar-img {
+    .badge-portrait-photo {
       width: 100%;
       height: 100%;
-      border-radius: 50%;
       object-fit: cover;
+      object-position: center 38%;
       display: block;
-      background: #0f172a;
+      transition: transform 0.25s ease;
     }
 
-    .badge-online-dot {
-      position: absolute;
-      bottom: 2px;
-      right: 4px;
-      width: 13px;
-      height: 13px;
-      background: #10b981;
-      border: 2px solid #0f172a;
-      border-radius: 50%;
+    .glass-id-card:hover .badge-portrait-photo {
+      transform: scale(1.03);
+    }
+
+    /* Identity Details */
+    .badge-identity {
+      margin-bottom: 8px;
+      text-align: center;
     }
 
     .badge-name {
@@ -1897,55 +1924,131 @@
       font-weight: 800;
       color: var(--text-primary);
       margin: 0 0 2px 0;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
     }
 
     .badge-role {
-      font-size: 0.74rem;
+      font-size: 0.76rem;
       font-weight: 600;
-      color: var(--accent-blue);
-      margin: 0 0 4px 0;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      color: var(--text-accent);
+      margin: 0 0 2px 0;
+      line-height: 1.2;
     }
 
-    .badge-company {
-      font-size: 0.75rem;
+    .badge-division {
+      font-size: 0.68rem;
       color: var(--text-secondary);
-      margin: 0 0 10px 0;
+      margin: 0;
+      font-family: var(--font-code);
+      line-height: 1.2;
     }
 
-    .badge-divider {
-      height: 1px;
-      background: var(--border-subtle);
-      margin: 10px 0;
-    }
-
-    .badge-details-list {
-      font-size: 0.72rem;
-      color: var(--text-secondary);
+    /* Spec Grid */
+    .badge-spec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 6px;
+      background: var(--bg-terminal);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 6px 8px;
+      margin-bottom: 7px;
       text-align: left;
+    }
+
+    body.light-theme .badge-spec-grid {
+      background: #f6f8fa;
+      border: 1px solid #d0d7de;
+    }
+
+    .spec-cell {
       display: flex;
       flex-direction: column;
-      gap: 5px;
-      font-family: var(--font-code);
     }
 
-    .badge-detail-row {
+    .spec-key {
+      font-size: 0.58rem;
+      color: var(--text-muted);
+      font-family: var(--font-code);
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .spec-val {
+      font-size: 0.68rem;
+      color: var(--text-primary);
+      font-family: var(--font-code);
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.2;
+    }
+
+    .spec-verified {
+      color: var(--accent-green);
+    }
+
+    /* Contact Row */
+    .badge-contact-row {
       display: flex;
       align-items: center;
       gap: 6px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 5px 8px;
+      margin-bottom: 7px;
+      font-size: 0.70rem;
+      font-family: var(--font-code);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
     }
 
-    .badge-barcode {
-      margin-top: 12px;
-      letter-spacing: 3px;
+    body.light-theme .badge-contact-row {
+      background: #ffffff;
+      border: 1px solid #d0d7de;
+    }
+
+    .badge-contact-row:hover {
+      background: var(--border-subtle);
+      border-color: var(--border-accent);
+      color: var(--text-primary);
+    }
+
+    body.light-theme .badge-contact-row:hover {
+      background: #f6f8fa;
+    }
+
+    .badge-email-label {
+      font-size: 0.70rem;
+    }
+
+    /* Bottom Barcode & Serial */
+    .badge-card-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 6px;
+    }
+
+    .badge-barcode-lines {
+      letter-spacing: 2px;
       font-family: var(--font-code);
       font-weight: 900;
       color: var(--text-muted);
-      font-size: 0.85rem;
+      font-size: 0.74rem;
+      line-height: 1;
+      margin-bottom: 2px;
+      user-select: none;
+    }
+
+    .badge-serial-code {
+      font-size: 0.60rem;
+      font-family: var(--font-code);
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
       user-select: none;
     }
 
@@ -3660,44 +3763,56 @@
       <div class="metallic-clip"></div>
     </div>
 
-    <div class="glass-id-card" id="interactive-card">
+    <div class="glass-id-card corporate-pass" id="interactive-card">
+      <div class="badge-slot-punch"></div>
+
       <div class="badge-top-row">
-        <span>Sovablu · DEV ID</span>
+        <div class="badge-brand-chip">
+          <span class="badge-corp-name">VAKEN</span>
+          <span class="badge-dot-sep">·</span>
+          <span class="badge-corp-sub">SOVABLU</span>
+        </div>
         <button class="badge-close-btn" id="hide-badge-btn" title="Hide ID Badge">✕</button>
       </div>
 
-      <div class="badge-avatar-wrap">
-        <img src="assets/images/jamesnithil.jpeg" alt="James Nithil" class="badge-avatar-img" onerror="this.src='assets/images/Nithil.jpg'">
-        <span class="badge-online-dot" title="Active in Production"></span>
+      <div class="badge-photo-container">
+        <img src="assets/images/jamesnithil.jpeg" alt="James Nithil" class="badge-portrait-photo" onerror="this.src='assets/images/Nithil.jpg'">
       </div>
 
-      <h3 class="badge-name">James Nithil V</h3>
-      <p class="badge-role">Junior Software Developer</p>
-      <p class="badge-company">Vaken Technology (Sovablu)</p>
+      <div class="badge-identity">
+        <h3 class="badge-name">James Nithil V</h3>
+        <p class="badge-role">Software Developer</p>
+        <p class="badge-division">Agentic AI & Core Platform</p>
+      </div>
 
-      <div class="badge-divider"></div>
-
-      <div class="badge-details-list">
-        <div class="badge-detail-row">
-          <i data-lucide="award" style="width: 12px; height: 12px; color: #f59e0b;"></i>
-          <span>Knight 1,994 (Rank #197)</span>
+      <div class="badge-spec-grid">
+        <div class="spec-cell">
+          <span class="spec-key">BADGE ID</span>
+          <span class="spec-val">VK-XXXX</span>
         </div>
-        <div class="badge-detail-row" style="cursor: pointer;" onclick="copyEmailToClipboard(this)" title="Click to copy email">
-          <i data-lucide="mail" style="width: 12px; height: 12px; color: var(--accent-blue);"></i>
-          <span>jamnithil@gmail.com</span>
+        <div class="spec-cell">
+          <span class="spec-key">ACCESS LEVEL</span>
+          <span class="spec-val">LEVEL-XX</span>
         </div>
-        <div class="badge-detail-row">
-          <i data-lucide="map-pin" style="width: 12px; height: 12px; color: var(--accent-green);"></i>
-          <span>Tamil Nadu, India</span>
+        <div class="spec-cell">
+          <span class="spec-key">LOCATION</span>
+          <span class="spec-val">TAMIL NADU, IN</span>
         </div>
-        <div class="badge-detail-row">
-          <i data-lucide="code" style="width: 12px; height: 12px; color: var(--accent-purple);"></i>
-          <span>Java, Python, LangGraph</span>
+        <div class="spec-cell">
+          <span class="spec-key">STATUS</span>
+          <span class="spec-val spec-verified">VERIFIED</span>
         </div>
       </div>
 
-      <div class="badge-barcode">
-        ||| | |||| || ||| |||| | ||
+      <div class="badge-contact-row" onclick="copyEmailToClipboard(this)" title="Click to copy official email">
+        <i data-lucide="mail" style="width: 12px; height: 12px; color: var(--accent-blue);"></i>
+        <span class="badge-email-label">jamnithil@gmail.com</span>
+        <i data-lucide="copy" style="width: 11px; height: 11px; color: var(--text-muted); margin-left: auto;"></i>
+      </div>
+
+      <div class="badge-card-footer">
+        <div class="badge-barcode-lines">||||| | ||| |||| | ||||| ||| | || |||||</div>
+        <div class="badge-serial-code">SEC-ID: VK-SOVABLU-2026-JN</div>
       </div>
     </div>
   </div>
@@ -4488,17 +4603,20 @@ Contact Information:
     function copyEmailToClipboard(btn) {
       const email = 'jamnithil@gmail.com';
       const textEl = document.getElementById('copy-email-text');
+      const badgeLabel = btn ? btn.querySelector('.badge-email-label') : null;
       const onSuccess = () => {
         if (textEl) textEl.textContent = 'Email copied!';
+        if (badgeLabel) badgeLabel.textContent = 'Copied to clipboard!';
         if (btn) {
           btn.style.borderColor = 'rgba(16, 185, 129, 0.6)';
           btn.style.background = 'rgba(16, 185, 129, 0.15)';
         }
         setTimeout(() => {
           if (textEl) textEl.textContent = email;
+          if (badgeLabel) badgeLabel.textContent = email;
           if (btn) {
-            btn.style.borderColor = 'var(--border-subtle)';
-            btn.style.background = 'var(--bg-card)';
+            btn.style.borderColor = '';
+            btn.style.background = '';
           }
         }, 2200);
       };
