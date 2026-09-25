@@ -31,7 +31,7 @@
   <meta property="twitter:image" content="https://jamesnithil.vercel.app/assets/images/James_Nithil.jpeg" />
 
   <!-- Theme & Mobile App Bar Color -->
-  <meta name="theme-color" content="#090d16" />
+  <meta name="theme-color" content="#0a0b0e" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
@@ -48,49 +48,53 @@
 
   <style>
     /* -------------------------------------------------------------
-       CSS DESIGN TOKENS & VARIABLES
+       CSS DESIGN TOKENS & CURATED THEMES
     ------------------------------------------------------------- */
     :root {
       --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-code: 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, monospace;
 
-      /* Dark Theme (Default) */
-      --bg-body: #090d16;
-      --bg-activity: #0b0f19;
-      --bg-sidebar: #0f1624;
-      --bg-editor: #0c121e;
-      --bg-card: rgba(18, 25, 39, 0.75);
-      --bg-card-hover: rgba(26, 36, 56, 0.85);
-      --bg-topbar: rgba(11, 15, 25, 0.85);
-      --bg-tab-active: #0c121e;
-      --bg-tab-inactive: #0f1624;
-      --bg-terminal: #070a10;
+      /* DEFAULT: Obsidian Studio (Crafted Senior-Engineer Dark Theme) */
+      --bg-body: #0a0b0e;
+      --bg-activity: #0e1014;
+      --bg-sidebar: #12141a;
+      --bg-editor: #0d0f14;
+      --bg-card: #151820;
+      --bg-card-hover: #1b1f2a;
+      --bg-topbar: rgba(13, 15, 20, 0.94);
+      --bg-tab-active: #0d0f14;
+      --bg-tab-inactive: #0a0b0e;
+      --bg-terminal: #08090c;
 
       --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-accent: rgba(56, 189, 248, 0.3);
-      --border-glow: rgba(56, 189, 248, 0.15);
+      --border-accent: rgba(255, 255, 255, 0.16);
+      --border-glow: transparent;
 
-      --text-primary: #f1f5f9;
+      --text-primary: #f8fafc;
       --text-secondary: #94a3b8;
       --text-muted: #64748b;
-      --text-accent: #38bdf8;
+      --text-accent: #60a5fa;
 
-      --accent-blue: #38bdf8;
-      --accent-indigo: #818cf8;
-      --accent-green: #34d399;
-      --accent-yellow: #fbbf24;
-      --accent-orange: #fb923c;
-      --accent-pink: #f472b6;
-      --accent-purple: #c084fc;
+      --accent-blue: #3b82f6;
+      --accent-indigo: #6366f1;
+      --accent-green: #10b981;
+      --accent-yellow: #f59e0b;
+      --accent-orange: #f97316;
+      --accent-pink: #ec4899;
+      --accent-purple: #8b5cf6;
 
-      --syntax-keyword: #ff7b72;
-      --syntax-entity: #79c0ff;
-      --syntax-string: #a5d6ff;
-      --syntax-function: #d2a8ff;
-      --syntax-comment: #8b949e;
-      --syntax-number: #ffa657;
+      --syntax-keyword: #f43f5e;
+      --syntax-entity: #60a5fa;
+      --syntax-string: #93c5fd;
+      --syntax-function: #c084fc;
+      --syntax-comment: #64748b;
+      --syntax-number: #fb923c;
 
-      --badge-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.12);
+      --btn-primary-bg: #f8fafc;
+      --btn-primary-text: #0a0b0e;
+      --btn-primary-hover: #e2e8f0;
+
+      --badge-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
       --radius-sm: 6px;
       --radius-md: 10px;
       --radius-lg: 16px;
@@ -98,26 +102,119 @@
       --transition-smooth: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+    /* THEME 2: Tokyo Night Pro (Midnight Indigo Developer Aesthetic) */
+    body.theme-tokyo-night {
+      --bg-body: #16161e;
+      --bg-activity: #1a1b26;
+      --bg-sidebar: #1f2335;
+      --bg-editor: #1a1b26;
+      --bg-card: #24283b;
+      --bg-card-hover: #2f354f;
+      --bg-topbar: rgba(26, 27, 38, 0.94);
+      --bg-tab-active: #1a1b26;
+      --bg-tab-inactive: #16161e;
+      --bg-terminal: #13141c;
+
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(122, 162, 247, 0.28);
+      --border-glow: transparent;
+
+      --text-primary: #c0caf5;
+      --text-secondary: #9aa5ce;
+      --text-muted: #565f89;
+      --text-accent: #7aa2f7;
+
+      --accent-blue: #7aa2f7;
+      --accent-indigo: #bb9af7;
+      --accent-green: #9ece6a;
+      --accent-yellow: #e0af68;
+      --accent-orange: #ff9e64;
+      --accent-pink: #f7768e;
+      --accent-purple: #bb9af7;
+
+      --syntax-keyword: #bb9af7;
+      --syntax-entity: #7dcfff;
+      --syntax-string: #9ece6a;
+      --syntax-function: #7aa2f7;
+      --syntax-comment: #565f89;
+      --syntax-number: #ff9e64;
+
+      --btn-primary-bg: #7aa2f7;
+      --btn-primary-text: #15161e;
+      --btn-primary-hover: #89b4fa;
+    }
+
+    /* THEME 3: Catppuccin Mocha (Warm Espresso Ergonomic Aesthetic) */
+    body.theme-catppuccin {
+      --bg-body: #181825;
+      --bg-activity: #11111b;
+      --bg-sidebar: #1e1e2e;
+      --bg-editor: #1e1e2e;
+      --bg-card: #313244;
+      --bg-card-hover: #45475a;
+      --bg-topbar: rgba(30, 30, 46, 0.94);
+      --bg-tab-active: #1e1e2e;
+      --bg-tab-inactive: #181825;
+      --bg-terminal: #11111b;
+
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(137, 180, 250, 0.28);
+      --border-glow: transparent;
+
+      --text-primary: #cdd6f4;
+      --text-secondary: #a6adc8;
+      --text-muted: #6c7086;
+      --text-accent: #89b4fa;
+
+      --accent-blue: #89b4fa;
+      --accent-indigo: #b4befe;
+      --accent-green: #a6e3a1;
+      --accent-yellow: #f9e2af;
+      --accent-orange: #fab387;
+      --accent-pink: #f5c2e7;
+      --accent-purple: #cba6f7;
+
+      --syntax-keyword: #cba6f7;
+      --syntax-entity: #89b4fa;
+      --syntax-string: #a6e3a1;
+      --syntax-function: #89dceb;
+      --syntax-comment: #6c7086;
+      --syntax-number: #fab387;
+
+      --btn-primary-bg: #cdd6f4;
+      --btn-primary-text: #181825;
+      --btn-primary-hover: #bac2de;
+    }
+
+    /* THEME 4: GitHub Light (Clean Document Light Mode) */
     body.light-theme {
-      --bg-body: #f1f5f9;
-      --bg-activity: #e2e8f0;
-      --bg-sidebar: #f8fafc;
+      --bg-body: #f6f8fa;
+      --bg-activity: #eaeef2;
+      --bg-sidebar: #f6f8fa;
       --bg-editor: #ffffff;
-      --bg-card: rgba(255, 255, 255, 0.9);
-      --bg-card-hover: #ffffff;
-      --bg-topbar: rgba(248, 250, 252, 0.9);
+      --bg-card: #ffffff;
+      --bg-card-hover: #f3f4f6;
+      --bg-topbar: rgba(246, 248, 250, 0.94);
       --bg-tab-active: #ffffff;
-      --bg-tab-inactive: #eef2f6;
-      --bg-terminal: #1e293b;
+      --bg-tab-inactive: #eaeef2;
+      --bg-terminal: #1f2328;
 
-      --border-subtle: rgba(0, 0, 0, 0.08);
-      --border-accent: rgba(2, 132, 199, 0.3);
-      --border-glow: rgba(2, 132, 199, 0.1);
+      --border-subtle: #d0d7de;
+      --border-accent: #0969da;
+      --border-glow: transparent;
 
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #64748b;
-      --text-accent: #0284c7;
+      --text-primary: #1f2328;
+      --text-secondary: #656d76;
+      --text-muted: #8c959f;
+      --text-accent: #0969da;
+
+      --accent-blue: #0969da;
+      --accent-indigo: #6639ba;
+      --accent-green: #1a7f37;
+      --accent-yellow: #9a6700;
+      --accent-orange: #bc4c00;
+      --accent-pink: #bf3989;
+      --accent-purple: #8250df;
 
       --syntax-keyword: #cf222e;
       --syntax-entity: #0550ae;
@@ -126,7 +223,11 @@
       --syntax-comment: #6e7781;
       --syntax-number: #953800;
 
-      --badge-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15), 0 0 20px rgba(2, 132, 199, 0.1);
+      --btn-primary-bg: #1f2328;
+      --btn-primary-text: #ffffff;
+      --btn-primary-hover: #24292f;
+
+      --badge-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12);
     }
 
     /* -------------------------------------------------------------
@@ -312,22 +413,24 @@
     }
 
     .btn-topbar.active {
-      background: rgba(56, 189, 248, 0.15);
-      color: var(--accent-blue);
-      border-color: var(--accent-blue);
+      background: var(--border-subtle);
+      color: var(--text-primary);
+      border-color: var(--border-accent);
     }
 
     .btn-topbar.btn-primary {
-      background: linear-gradient(135deg, #0284c7, #38bdf8);
-      color: #070d18;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
       font-weight: 600;
-      border: none;
-      box-shadow: 0 2px 10px rgba(56, 189, 248, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
     }
 
     .btn-topbar.btn-primary:hover {
+      background: var(--btn-primary-hover);
+      color: var(--btn-primary-text);
       transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.45);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
     }
 
     /* -------------------------------------------------------------
@@ -496,9 +599,9 @@
     }
 
     .file-item.active {
-      background: rgba(56, 189, 248, 0.12);
-      color: var(--accent-blue);
-      border-color: rgba(56, 189, 248, 0.25);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border-color: var(--border-subtle);
       font-weight: 600;
     }
 
@@ -522,8 +625,8 @@
     .quick-status-card {
       margin: 12px;
       padding: 12px;
-      background: rgba(56, 189, 248, 0.05);
-      border: 1px solid rgba(56, 189, 248, 0.2);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       font-size: 0.76rem;
     }
@@ -599,7 +702,7 @@
 
     .tab-element.active {
       background: var(--bg-tab-active);
-      color: var(--accent-blue);
+      color: var(--text-primary);
       font-weight: 500;
     }
 
@@ -611,7 +714,6 @@
       right: 0;
       height: 2px;
       background: var(--accent-blue);
-      box-shadow: 0 1px 8px var(--accent-blue);
     }
 
     .tab-close {
@@ -667,25 +769,13 @@
        MODERN HERO & TYPED README
     ------------------------------------------------------------- */
     .hero-banner {
-      background: linear-gradient(135deg, rgba(14, 165, 233, 0.08) 0%, rgba(99, 102, 241, 0.05) 100%);
+      background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       padding: 28px 32px;
       margin-bottom: 28px;
       position: relative;
       overflow: hidden;
-    }
-
-    .hero-banner::before {
-      content: '';
-      position: absolute;
-      top: -40px;
-      right: -40px;
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
     }
 
     .hero-title-row {
@@ -705,24 +795,24 @@
     }
 
     .badge-knight-pill {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: #0b0f19;
-      font-weight: 700;
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--accent-yellow);
+      border: 1px solid rgba(245, 158, 11, 0.28);
+      font-weight: 600;
       font-size: 0.8rem;
       padding: 4px 12px;
       border-radius: 20px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
     }
 
     .badge-role-pill {
-      background: rgba(56, 189, 248, 0.12);
-      color: var(--accent-blue);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
       font-size: 0.8rem;
-      font-weight: 600;
+      font-weight: 500;
       padding: 4px 12px;
       border-radius: 20px;
       display: inline-flex;
@@ -770,16 +860,18 @@
     }
 
     .btn-action.btn-accent {
-      background: linear-gradient(135deg, #0284c7, #38bdf8);
-      color: #070d18;
-      border: none;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       font-weight: 600;
-      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
     }
 
     .btn-action.btn-accent:hover {
-      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.45);
-      color: #070d18;
+      background: var(--btn-primary-hover);
+      color: var(--btn-primary-text);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+      transform: translateY(-1px);
     }
 
     /* -------------------------------------------------------------
@@ -813,15 +905,15 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 4px;
+      width: 3px;
       height: 100%;
       background: var(--accent-blue);
-      border-radius: 4px 0 0 4px;
+      border-radius: 3px 0 0 3px;
     }
 
-    .stat-card.stat-gold::before { background: #f59e0b; }
-    .stat-card.stat-green::before { background: #10b981; }
-    .stat-card.stat-purple::before { background: #8b5cf6; }
+    .stat-card.stat-gold::before { background: var(--accent-yellow); }
+    .stat-card.stat-green::before { background: var(--accent-green); }
+    .stat-card.stat-purple::before { background: var(--accent-purple); }
 
     .stat-value {
       font-size: 1.6rem;
@@ -872,7 +964,7 @@
       font-family: var(--font-code);
       font-size: 0.88rem;
       line-height: 1.65;
-      color: #38bdf8;
+      color: #cbd5e1;
       max-height: 380px;
       overflow-y: auto;
       white-space: pre-wrap;
@@ -883,7 +975,7 @@
       display: inline-block;
       width: 8px;
       height: 15px;
-      background: #38bdf8;
+      background: var(--accent-green);
       vertical-align: middle;
       animation: blink 0.9s infinite;
       margin-left: 2px;
@@ -934,17 +1026,17 @@
     }
 
     .project-card-modern.featured {
-      border-color: rgba(56, 189, 248, 0.4);
-      background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(18, 25, 39, 0.8) 100%);
+      border-color: rgba(59, 130, 246, 0.35);
+      background: var(--bg-card);
     }
 
     .featured-badge {
       position: absolute;
       top: 18px;
       right: 20px;
-      background: rgba(56, 189, 248, 0.15);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      color: var(--accent-blue);
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.28);
+      color: var(--text-accent);
       font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
@@ -960,7 +1052,7 @@
       overflow: hidden;
       margin-bottom: 18px;
       position: relative;
-      background: #0b1120;
+      background: var(--bg-terminal);
       border: 1px solid var(--border-subtle);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
       cursor: pointer;
@@ -993,10 +1085,10 @@
       position: absolute;
       top: 12px;
       left: 12px;
-      background: rgba(15, 23, 42, 0.88);
+      background: var(--bg-card);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      border: 1px solid var(--border-accent);
       border-radius: 20px;
       padding: 4px 10px 4px 5px;
       display: inline-flex;
@@ -1020,10 +1112,10 @@
       position: absolute;
       bottom: 12px;
       right: 12px;
-      background: rgba(15, 23, 42, 0.88);
+      background: var(--bg-card);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(56, 189, 248, 0.35);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
       padding: 5px 11px;
       display: inline-flex;
@@ -1031,16 +1123,16 @@
       gap: 6px;
       font-size: 0.76rem;
       font-family: var(--font-code);
-      color: var(--accent-blue);
+      color: var(--text-primary);
       z-index: 2;
       transition: all 0.2s ease;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
     }
 
     .project-thumb-wrap:hover .thumb-expand-btn {
-      background: var(--accent-blue);
-      color: #fff;
-      border-color: var(--accent-blue);
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border-color: var(--border-accent);
     }
 
     /* Lightbox Modal */
@@ -1129,7 +1221,7 @@
 
     .project-tagline {
       font-size: 0.92rem;
-      color: var(--accent-blue);
+      color: var(--text-accent);
       font-weight: 500;
       margin: 0;
     }
@@ -1193,9 +1285,9 @@
     }
 
     .tech-pill.highlight {
-      background: rgba(56, 189, 248, 0.1);
-      border-color: rgba(56, 189, 248, 0.3);
-      color: var(--accent-blue);
+      background: rgba(59, 130, 246, 0.1);
+      border-color: rgba(59, 130, 246, 0.25);
+      color: var(--text-accent);
     }
 
     .project-links {
@@ -1220,7 +1312,7 @@
       top: 14px;
       bottom: 20px;
       width: 2px;
-      background: linear-gradient(to bottom, var(--accent-blue), var(--border-subtle));
+      background: var(--border-subtle);
     }
 
     .timeline-node {
@@ -1235,12 +1327,11 @@
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      background: var(--bg-editor);
+      background: var(--bg-card);
       border: 2px solid var(--accent-blue);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
     }
 
     .timeline-dot::after {
@@ -1297,16 +1388,16 @@
     }
 
     .company-sub {
-      color: var(--accent-blue);
+      color: var(--text-accent);
       font-weight: 500;
       font-size: 0.9rem;
       margin: 2px 0 0 0;
     }
 
     .exp-period-badge {
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      color: var(--accent-blue);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
       font-family: var(--font-code);
       font-size: 0.78rem;
       padding: 5px 12px;
@@ -1416,8 +1507,8 @@
 
     .skill-chip:hover {
       border-color: var(--border-accent);
-      background: rgba(56, 189, 248, 0.08);
-      color: var(--accent-blue);
+      background: var(--bg-card-hover);
+      color: var(--text-accent);
       transform: translateY(-1px);
     }
 
@@ -1429,24 +1520,13 @@
        ACHIEVEMENTS (achievements.md)
     ------------------------------------------------------------- */
     .knight-spotlight-card {
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(18, 25, 39, 0.9) 100%);
-      border: 1px solid rgba(245, 158, 11, 0.35);
+      background: var(--bg-card);
+      border: 1px solid rgba(245, 158, 11, 0.28);
       border-radius: var(--radius-lg);
       padding: 28px;
       margin-bottom: 24px;
       position: relative;
       overflow: hidden;
-    }
-
-    .knight-spotlight-card::before {
-      content: '';
-      position: absolute;
-      top: -30px;
-      right: -30px;
-      width: 140px;
-      height: 140px;
-      background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, transparent 70%);
-      border-radius: 50%;
     }
 
     .knight-title {
@@ -1493,20 +1573,20 @@
     }
 
     .leetcode-screenshot-wrap {
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(245, 158, 11, 0.35);
+      background: var(--bg-terminal);
+      border: 1px solid rgba(245, 158, 11, 0.3);
       border-radius: var(--radius-md);
       padding: 10px;
       max-width: 360px;
       width: 100%;
-      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.15);
+      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.6);
       transition: var(--transition-smooth);
     }
 
     .leetcode-screenshot-wrap:hover {
-      transform: translateY(-3px) scale(1.02);
-      border-color: rgba(245, 158, 11, 0.65);
-      box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.7), 0 0 28px rgba(245, 158, 11, 0.25);
+      transform: translateY(-2px);
+      border-color: rgba(245, 158, 11, 0.5);
+      box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.7);
     }
 
     .leetcode-screenshot-img {
@@ -1637,21 +1717,21 @@
     }
 
     .term-pill-btn:hover {
-      background: rgba(56, 189, 248, 0.15);
-      border-color: var(--accent-blue);
-      color: var(--accent-blue);
+      background: var(--border-subtle);
+      border-color: var(--border-accent);
+      color: var(--text-primary);
     }
 
     .term-input-row {
       display: flex;
       align-items: center;
-      background: rgba(0, 0, 0, 0.4);
+      background: var(--bg-terminal);
       border-top: 1px solid var(--border-subtle);
       padding: 10px 16px;
     }
 
     .term-prompt-label {
-      color: #34d399;
+      color: var(--accent-green);
       font-family: var(--font-code);
       font-size: 0.85rem;
       margin-right: 8px;
@@ -1664,7 +1744,7 @@
       background: transparent;
       border: none;
       outline: none;
-      color: #38bdf8;
+      color: var(--text-primary);
       font-family: var(--font-code);
       font-size: 0.85rem;
     }
@@ -1724,10 +1804,10 @@
 
     .glass-id-card {
       width: 240px;
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(15, 23, 42, 0.9) 100%);
+      background: var(--bg-card);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid var(--border-accent);
       border-radius: var(--radius-xl);
       box-shadow: var(--badge-shadow);
       padding: 16px;
@@ -1743,25 +1823,13 @@
     }
 
     body.light-theme .glass-id-card {
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.96) 0%, rgba(241, 245, 249, 0.98) 100%);
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
     }
 
     body.light-theme .badge-close-btn:hover {
       background: rgba(0, 0, 0, 0.06);
-    }
-
-    .glass-id-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 70px;
-      background: linear-gradient(180deg, rgba(56, 189, 248, 0.25) 0%, transparent 100%);
-      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-      pointer-events: none;
     }
 
     .badge-top-row {
@@ -1951,7 +2019,7 @@
     }
 
     .palette-item:hover, .palette-item.selected {
-      background: rgba(56, 189, 248, 0.12);
+      background: var(--border-subtle);
       color: var(--text-primary);
     }
 
@@ -1978,8 +2046,9 @@
       left: 0;
       right: 0;
       height: 24px;
-      background: #0284c7;
-      color: #ffffff;
+      background: var(--bg-activity);
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-muted);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -2012,9 +2081,10 @@
       flex-shrink: 0;
       height: 24px;
       line-height: 24px;
-      padding: 0 4px;
-      border-radius: 2px;
-      transition: background 0.15s ease;
+      padding: 0 6px;
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      transition: all 0.15s ease;
     }
 
     .status-bar-item span {
@@ -2023,7 +2093,8 @@
     }
 
     .status-bar-item:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: var(--border-subtle);
+      color: var(--text-primary);
     }
 
     .status-item-rank .rank-short {
@@ -2501,8 +2572,9 @@
         <span>⌘K</span>
       </button>
 
-      <button class="btn-topbar" id="theme-toggle-btn" title="Toggle Dark/Light Mode">
-        <i data-lucide="moon" id="theme-icon" style="width: 13px; height: 13px;"></i>
+      <button class="btn-topbar" id="theme-toggle-btn" title="Toggle Theme (Obsidian, Tokyo Night, Catppuccin, Light)">
+        <i data-lucide="palette" id="theme-icon" style="width: 13px; height: 13px;"></i>
+        <span id="theme-btn-label">Theme</span>
       </button>
 
       <button class="btn-topbar" id="badge-toggle-btn" title="Toggle ID Badge">
@@ -2756,7 +2828,7 @@
           <!-- Quick Contact Footer Bar -->
           <div class="quick-contact-bar" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
             <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 0.88rem; color: var(--text-secondary);">
-              <button class="btn-action" id="copy-email-btn" onclick="copyEmailToClipboard(this)" title="Click to copy email address" style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); color: var(--text-primary); padding: 7px 14px; font-size: 0.86rem; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.2s ease;">
+              <button class="btn-action" id="copy-email-btn" onclick="copyEmailToClipboard(this)" title="Click to copy email address" style="background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-primary); padding: 7px 14px; font-size: 0.86rem; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.2s ease;">
                 <i data-lucide="mail" style="width: 14px; height: 14px; color: var(--accent-blue);"></i>
                 <span id="copy-email-text">jamnithil@gmail.com</span>
                 <i data-lucide="copy" id="copy-email-icon" style="width: 13px; height: 13px; color: var(--text-muted);"></i>
@@ -3690,6 +3762,34 @@
           </div>
           <span class="palette-shortcut-key">PDF</span>
         </div>
+        <div class="palette-item" onclick="setThemeAndClose('obsidian')">
+          <div class="palette-item-left">
+            <i data-lucide="moon" style="width: 15px; height: 15px; color: #60a5fa;"></i>
+            <span>Theme: Obsidian Studio (Dark Default)</span>
+          </div>
+          <span class="palette-shortcut-key">Dark</span>
+        </div>
+        <div class="palette-item" onclick="setThemeAndClose('tokyo-night')">
+          <div class="palette-item-left">
+            <i data-lucide="sparkles" style="width: 15px; height: 15px; color: #7aa2f7;"></i>
+            <span>Theme: Tokyo Night (Dev Indigo)</span>
+          </div>
+          <span class="palette-shortcut-key">Indigo</span>
+        </div>
+        <div class="palette-item" onclick="setThemeAndClose('catppuccin')">
+          <div class="palette-item-left">
+            <i data-lucide="coffee" style="width: 15px; height: 15px; color: #fab387;"></i>
+            <span>Theme: Catppuccin Mocha (Warm Dark)</span>
+          </div>
+          <span class="palette-shortcut-key">Mocha</span>
+        </div>
+        <div class="palette-item" onclick="setThemeAndClose('light')">
+          <div class="palette-item-left">
+            <i data-lucide="sun" style="width: 15px; height: 15px; color: #f59e0b;"></i>
+            <span>Theme: GitHub Light (Clean Document)</span>
+          </div>
+          <span class="palette-shortcut-key">Light</span>
+        </div>
       </div>
     </div>
   </div>
@@ -3903,29 +4003,84 @@
     }
 
     // -------------------------------------------------------------
-    // THEME TOGGLE (DARK / LIGHT)
+    // THEME ENGINE (Obsidian Studio, Tokyo Night, Catppuccin, Light)
     // -------------------------------------------------------------
     const themeBtn = document.getElementById('theme-toggle-btn');
     const themeIcon = document.getElementById('theme-icon');
+    const themeBtnLabel = document.getElementById('theme-btn-label');
+    const themeList = ['obsidian', 'tokyo-night', 'catppuccin', 'light'];
 
-    themeBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light-theme');
-      const isLight = document.body.classList.contains('light-theme');
-      themeIcon.setAttribute('data-lucide', isLight ? 'sun' : 'moon');
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-      lucide.createIcons();
-      if (window.innerWidth <= 900) {
-        closeBadge();
+    const themeTitles = {
+      'obsidian': 'Obsidian',
+      'tokyo-night': 'Tokyo',
+      'catppuccin': 'Mocha',
+      'light': 'Light'
+    };
+
+    function setTheme(name) {
+      document.body.classList.remove('theme-tokyo-night', 'theme-catppuccin', 'light-theme');
+      if (name === 'tokyo-night') {
+        document.body.classList.add('theme-tokyo-night');
+      } else if (name === 'catppuccin') {
+        document.body.classList.add('theme-catppuccin');
+      } else if (name === 'light') {
+        document.body.classList.add('light-theme');
       }
-      playKeyClick();
-    });
 
-    // Restore saved theme
-    if (localStorage.getItem('theme') === 'light') {
-      document.body.classList.add('light-theme');
-      themeIcon.setAttribute('data-lucide', 'sun');
+      localStorage.setItem('preferred-theme', name);
+
+      if (themeBtnLabel) {
+        themeBtnLabel.textContent = themeTitles[name] || 'Theme';
+      }
+
+      if (themeIcon) {
+        if (name === 'light') {
+          themeIcon.setAttribute('data-lucide', 'sun');
+        } else if (name === 'tokyo-night') {
+          themeIcon.setAttribute('data-lucide', 'sparkles');
+        } else if (name === 'catppuccin') {
+          themeIcon.setAttribute('data-lucide', 'coffee');
+        } else {
+          themeIcon.setAttribute('data-lucide', 'moon');
+        }
+      }
+
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) {
+        if (name === 'light') metaTheme.setAttribute('content', '#f6f8fa');
+        else if (name === 'tokyo-night') metaTheme.setAttribute('content', '#16161e');
+        else if (name === 'catppuccin') metaTheme.setAttribute('content', '#181825');
+        else metaTheme.setAttribute('content', '#0a0b0e');
+      }
+
       lucide.createIcons();
     }
+
+    function cycleTheme() {
+      const current = localStorage.getItem('preferred-theme') || 'obsidian';
+      const nextIndex = (themeList.indexOf(current) + 1) % themeList.length;
+      const nextTheme = themeList[nextIndex];
+      setTheme(nextTheme);
+      playKeyClick();
+    }
+
+    function setThemeAndClose(name) {
+      setTheme(name);
+      closePalette();
+    }
+
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        cycleTheme();
+        if (window.innerWidth <= 900) {
+          closeBadge();
+        }
+      });
+    }
+
+    // Restore saved theme or default to obsidian
+    const initialSavedTheme = localStorage.getItem('preferred-theme') || (localStorage.getItem('theme') === 'light' ? 'light' : 'obsidian');
+    setTheme(initialSavedTheme);
 
     // -------------------------------------------------------------
     // ID BADGE: TOGGLE & INTERACTIVE 3D PERSPECTIVE TILT
@@ -4288,9 +4443,16 @@ Contact Information:
         return;
       }
 
-      if (cmd === 'theme') {
-        themeBtn.click();
-        appendTermLine('Theme toggled successfully.', 'cmd-success');
+      if (cmd === 'theme' || cmd.startsWith('theme ')) {
+        const parts = cmd.split(' ');
+        if (parts.length > 1 && themeList.includes(parts[1])) {
+          setTheme(parts[1]);
+          appendTermLine(`Theme set to ${parts[1]}.`, 'cmd-success');
+        } else {
+          cycleTheme();
+          const cur = localStorage.getItem('preferred-theme') || 'obsidian';
+          appendTermLine(`Theme switched to: <span style="color: var(--accent-blue); font-weight: 600;">${cur}</span> (Options: obsidian, tokyo-night, catppuccin, light)`, 'cmd-success');
+        }
         return;
       }
 
@@ -4335,8 +4497,8 @@ Contact Information:
         setTimeout(() => {
           if (textEl) textEl.textContent = email;
           if (btn) {
-            btn.style.borderColor = 'rgba(56, 189, 248, 0.25)';
-            btn.style.background = 'rgba(56, 189, 248, 0.08)';
+            btn.style.borderColor = 'var(--border-subtle)';
+            btn.style.background = 'var(--bg-card)';
           }
         }, 2200);
       };
