@@ -1421,6 +1421,143 @@
       color: var(--text-primary);
     }
 
+    /* Multi-role company tree (LinkedIn style) */
+    .company-brand-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+    }
+
+    .company-brand-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .company-main-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 0 0 3px 0;
+    }
+
+    .company-meta-line {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .roles-sub-timeline {
+      position: relative;
+      padding-left: 26px;
+      margin-left: 8px;
+    }
+
+    .roles-sub-timeline::before {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 10px;
+      bottom: 20px;
+      width: 2px;
+      background: var(--border-subtle);
+    }
+
+    .sub-role-node {
+      position: relative;
+      margin-bottom: 28px;
+    }
+
+    .sub-role-node:last-child {
+      margin-bottom: 0;
+    }
+
+    .sub-role-dot {
+      position: absolute;
+      left: -27px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      border: 2px solid var(--bg-card);
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+    }
+
+    .sub-role-node:last-child .sub-role-dot {
+      background: var(--text-muted);
+      box-shadow: 0 0 0 2px var(--border-subtle);
+    }
+
+    .sub-role-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .sub-role-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .sub-role-badge {
+      font-size: 0.72rem;
+      font-family: var(--font-code);
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 12px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      color: var(--text-accent);
+    }
+
+    .sub-role-badge.intern-badge {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--border-subtle);
+      color: var(--text-secondary);
+    }
+
+    .sub-role-period {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: var(--font-code);
+      margin: 0 0 10px 0;
+    }
+
+    .section-sub-divider {
+      font-size: 0.82rem;
+      font-family: var(--font-code);
+      font-weight: 700;
+      color: var(--text-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 32px 0 18px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-sub-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-subtle);
+    }
+
     /* -------------------------------------------------------------
        SKILLS MATRIX (skills.json)
     ------------------------------------------------------------- */
@@ -3208,85 +3345,203 @@
           <div class="section-headline">
             <div class="section-title">
               <i data-lucide="briefcase" style="color: var(--accent-blue);"></i>
-              <span>Professional Experience</span>
+              <span>Professional Experience & Education</span>
             </div>
             <span style="font-family: var(--font-code); font-size: 0.8rem; color: var(--text-muted);">
-              Production Engineering · Enterprise Systems
+              Production Engineering · Applied Data Science · Academic Foundation
             </span>
           </div>
 
           <div class="timeline-modern">
 
-            <!-- Vaken Technology Position -->
+            <!-- EXPERIENCE 1: Vaken Technologies (LinkedIn-style Progressive Multi-Role) -->
             <div class="timeline-node">
               <div class="timeline-dot"></div>
               <div class="experience-card">
-                <div class="exp-top-row">
-                  <div class="company-brand">
-                    <img src="assets/images/vaken-logo.png" alt="Vaken Logo" class="company-logo-img" onerror="this.src='https://github.com/nithiljn/AI_Portfolio/raw/main/assets/images/vaken-logo.png'">
+                <!-- Company Header -->
+                <div class="company-brand-header">
+                  <div class="company-brand-left">
+                    <img src="assets/images/vaken-logo.png" alt="Vaken Technologies Logo" class="company-logo-img" onerror="this.src='https://github.com/nithiljn/AI_Portfolio/raw/main/assets/images/vaken-logo.png'">
                     <div>
-                      <h3 class="role-title">Junior Software Developer</h3>
-                      <p class="company-sub">Vaken Technology, Product: <strong>Sovablu</strong></p>
+                      <h3 class="company-main-name">Vaken Technologies</h3>
+                      <p class="company-meta-line">
+                        <span id="vaken-duration-counter" style="color: var(--text-accent); font-weight: 600;">1 yr 2 mos</span>
+                        <span>·</span>
+                        <span>Trichy, Tamil Nadu, India · On-site</span>
+                        <span>·</span>
+                        <span>Product: <strong>Sovablu</strong></span>
+                      </p>
                     </div>
                   </div>
-                  <div class="exp-period-badge" id="vaken-duration-counter">
-                    Aug 2025 to Present
+                </div>
+
+                <!-- Sub-timeline connecting roles -->
+                <div class="roles-sub-timeline">
+
+                  <!-- Role 1: Junior Software Engineer (Full-time) -->
+                  <div class="sub-role-node">
+                    <div class="sub-role-dot"></div>
+                    <div class="sub-role-header">
+                      <h4 class="sub-role-title">Junior Software Engineer</h4>
+                      <span class="sub-role-badge">Full-time</span>
+                    </div>
+                    <div class="sub-role-period" id="vaken-ft-duration">
+                      Oct 2025 - Present · 1 yr
+                    </div>
+
+                    <ul class="exp-highlights-list" style="margin-top: 8px;">
+                      <li>
+                        Engineered and maintained production REST microservices using <strong>Java 21 & Spring Boot</strong>, incorporating <strong>Singleton & Factory design patterns</strong> for resilient API architectures.
+                      </li>
+                      <li>
+                        Integrated <strong>Redis caching</strong> at critical hotspots to reduce database query latency, storing structured business data in <strong>PostgreSQL</strong>.
+                      </li>
+                      <li>
+                        Managed <strong>CI/CD deployment pipelines using Jenkins</strong>, using <strong>AWS CodeCommit, EC2, S3, and Lambda</strong> for resilient cloud infrastructure.
+                      </li>
+                      <li>
+                        Engineered an <strong>Agentic AI system using Claude SDK</strong> for structured LLM API calls, and built <strong>Python OCR pipelines</strong> to extract structured data from images and documents.
+                      </li>
+                      <li>
+                        Developed frontend features in <strong>Vue.js</strong> and configured <strong>CORS and proxy</strong> for secure client-server communication.
+                      </li>
+                    </ul>
+
+                    <div class="tech-pill-list" style="margin-bottom: 0;">
+                      <span class="tech-pill highlight">Java 21</span>
+                      <span class="tech-pill highlight">Spring Boot</span>
+                      <span class="tech-pill highlight">Redis Caching</span>
+                      <span class="tech-pill highlight">PostgreSQL</span>
+                      <span class="tech-pill">Claude SDK</span>
+                      <span class="tech-pill">Jenkins CI/CD</span>
+                      <span class="tech-pill">AWS (EC2, S3, Lambda)</span>
+                      <span class="tech-pill">Python OCR</span>
+                      <span class="tech-pill">Vue.js</span>
+                      <span class="tech-pill">REST APIs</span>
+                    </div>
                   </div>
-                </div>
 
-                <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
-                  <i data-lucide="map-pin" style="width: 13px; height: 13px; vertical-align: middle;"></i> On-site, Trichy, Tamil Nadu, India
-                </div>
+                  <!-- Role 2: Intern (Internship) -->
+                  <div class="sub-role-node">
+                    <div class="sub-role-dot"></div>
+                    <div class="sub-role-header">
+                      <h4 class="sub-role-title">Intern</h4>
+                      <span class="sub-role-badge intern-badge">Internship</span>
+                    </div>
+                    <div class="sub-role-period">
+                      Aug 2025 - Oct 2025 · 3 mos
+                    </div>
 
-                <ul class="exp-highlights-list">
-                  <li>
-                    Built and maintained <strong>production REST APIs using Java and Spring Boot</strong>, applied <strong>rate limiting</strong>, <strong>Singleton design pattern</strong>, and scalable system design for high-availability workflows.
-                  </li>
-                  <li>
-                    Integrated <strong>Redis caching</strong> at critical hotspots to reduce database query latency, storing structured business data in <strong>PostgreSQL</strong>.
-                  </li>
-                  <li>
-                    Managed <strong>CI/CD deployment pipelines using Jenkins</strong>, using <strong>AWS CodeCommit, EC2, S3, and Lambda</strong> for cloud infrastructure.
-                  </li>
-                  <li>
-                    Engineered an <strong>Agentic AI system using Claude SDK</strong> for LLM API calls, and built <strong>Python OCR pipelines</strong> to extract structured data from images and documents.
-                  </li>
-                  <li>
-                    Developed frontend features in <strong>Vue.js</strong> and configured <strong>CORS and proxy</strong> for secure client-server communication.
-                  </li>
-                </ul>
+                    <ul class="exp-highlights-list" style="margin-top: 8px;">
+                      <li>
+                        Completed intensive onboarding and platform training on <strong>Sovablu</strong>, a low-code enterprise development platform, gaining hands-on understanding of its architecture, engine, and microservices workflow.
+                      </li>
+                      <li>
+                        Built proof-of-concept backend service modules in <strong>Java</strong>, assisted in REST API validation, and automated build checks with <strong>Jenkins CI/CD</strong> and <strong>Git</strong>.
+                      </li>
+                    </ul>
 
-                <div class="tech-pill-list">
-                  <span class="tech-pill highlight">Java</span>
-                  <span class="tech-pill highlight">Spring Boot</span>
-                  <span class="tech-pill highlight">Redis Caching</span>
-                  <span class="tech-pill highlight">PostgreSQL</span>
-                  <span class="tech-pill">Claude SDK</span>
-                  <span class="tech-pill">Jenkins CI/CD</span>
-                  <span class="tech-pill">AWS (EC2, S3, Lambda)</span>
-                  <span class="tech-pill">Python OCR</span>
-                  <span class="tech-pill">Vue.js</span>
-                  <span class="tech-pill">REST APIs</span>
+                    <div class="tech-pill-list" style="margin-bottom: 0;">
+                      <span class="tech-pill highlight">Java</span>
+                      <span class="tech-pill highlight">Spring Boot</span>
+                      <span class="tech-pill highlight">Sovablu Platform</span>
+                      <span class="tech-pill">Jenkins</span>
+                      <span class="tech-pill">Git</span>
+                      <span class="tech-pill">AWS Fundamentals</span>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
 
-            <!-- Education & Foundation -->
+            <!-- EXPERIENCE 2: SpreadTech Solutions -->
+            <div class="timeline-node">
+              <div class="timeline-dot" style="border-color: #3b82f6;"></div>
+              <div class="experience-card">
+                <div class="exp-top-row">
+                  <div class="company-brand">
+                    <img src="assets/images/spreadTech.png" alt="SpreadTech Solutions Logo" class="company-logo-img" style="background: #ffffff; padding: 2px;" onerror="this.src='https://github.com/nithiljn/AI_Portfolio/raw/main/assets/images/spreadTech.png'">
+                    <div>
+                      <h3 class="role-title">Data Science Intern</h3>
+                      <p class="company-sub">SpreadTech Solutions · <strong>Spreading Tech Evaluation</strong></p>
+                    </div>
+                  </div>
+                  <div class="exp-period-badge">
+                    Nov 2023 - Dec 2023 · 2 mos
+                  </div>
+                </div>
+
+                <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
+                  <i data-lucide="map-pin" style="width: 13px; height: 13px; vertical-align: middle;"></i> Tamil Nadu, India · Internship
+                </div>
+
+                <ul class="exp-highlights-list">
+                  <li>
+                    <strong>Home Price Prediction Model:</strong> Engineered multivariate regression pipelines using <strong>Python</strong> and <strong>Scikit-Learn</strong> to predict residential property valuations based on square footage, locality, amenities, and historical sales trends; implemented data normalization and cross-validation (evaluating RMSE and R²).
+                  </li>
+                  <li>
+                    <strong>Weather Forecasting System:</strong> Developed predictive time-series models leveraging historical meteorological data to analyze atmospheric trends and forecast local weather variables including precipitation likelihood, temperature fluctuations, and humidity.
+                  </li>
+                  <li>
+                    <strong>Spam Mail Detection Classifier:</strong> Implemented an end-to-end NLP email classification system using <strong>TF-IDF text vectorization</strong> and supervised classifiers (<strong>Naive Bayes & Random Forest</strong>) to accurately detect and filter spam and phishing emails with high precision and recall.
+                  </li>
+                </ul>
+
+                <div class="tech-pill-list">
+                  <span class="tech-pill highlight">Python</span>
+                  <span class="tech-pill highlight">Scikit-Learn</span>
+                  <span class="tech-pill highlight">NLP & TF-IDF</span>
+                  <span class="tech-pill highlight">Machine Learning</span>
+                  <span class="tech-pill">Pandas</span>
+                  <span class="tech-pill">NumPy</span>
+                  <span class="tech-pill">Data Preprocessing</span>
+                  <span class="tech-pill">Feature Engineering</span>
+                  <span class="tech-pill">Predictive Modeling</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- EDUCATION: Knowledge Institute of Technology (KIOT) -->
             <div class="timeline-node">
               <div class="timeline-dot" style="border-color: var(--accent-green);"></div>
               <div class="experience-card">
                 <div class="exp-top-row">
-                  <div>
-                    <h3 class="role-title">Knowledge Institute of Technology (KIOT)</h3>
-                    <p class="company-sub">B.Tech in Artificial Intelligence and Data Science</p>
+                  <div class="company-brand">
+                    <div style="width: 48px; height: 48px; border-radius: 10px; background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52, 211, 153, 0.25); display: flex; align-items: center; justify-content: center; color: var(--accent-green);">
+                      <i data-lucide="graduation-cap" style="width: 26px; height: 26px;"></i>
+                    </div>
+                    <div>
+                      <h3 class="role-title">Knowledge Institute of Technology (KIOT)</h3>
+                      <p class="company-sub" style="color: var(--accent-green);">B.Tech in Artificial Intelligence and Data Science</p>
+                    </div>
                   </div>
                   <div class="exp-period-badge" style="border-color: rgba(52, 211, 153, 0.3); color: var(--accent-green); background: rgba(52, 211, 153, 0.1);">
-                    2021 to 2025 (CGPA: 8.1)
+                    2021 - 2025 · CGPA: 8.1 / 10
                   </div>
                 </div>
-                <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 10px 0 0 0;">
-                  Comprehensive foundation in data structures, algorithms, systems architecture, machine learning, databases, and distributed computing.
-                </p>
+
+                <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
+                  <i data-lucide="map-pin" style="width: 13px; height: 13px; vertical-align: middle;"></i> Salem, Tamil Nadu, India
+                </div>
+
+                <ul class="exp-highlights-list">
+                  <li>
+                    Built comprehensive theoretical and practical depth across <strong>Data Structures and Algorithms (Java)</strong>, <strong>Distributed Systems</strong>, <strong>Database Management Systems (PostgreSQL, MySQL)</strong>, <strong>Machine Learning</strong>, and <strong>Software Engineering</strong>.
+                  </li>
+                  <li>
+                    <strong>Smart India Hackathon (SIH) Team Leader:</strong> Directed a 5-member engineering team through prototype design, machine learning model integration, and live pitch presentation for FarmVista.
+                  </li>
+                </ul>
+
+                <div class="tech-pill-list">
+                  <span class="tech-pill highlight">DSA in Java</span>
+                  <span class="tech-pill highlight">Machine Learning</span>
+                  <span class="tech-pill highlight">Distributed Systems</span>
+                  <span class="tech-pill">Database Management</span>
+                  <span class="tech-pill">Python</span>
+                  <span class="tech-pill">Algorithms</span>
+                </div>
               </div>
             </div>
 
@@ -3294,8 +3549,18 @@
             <div class="timeline-node">
               <div class="timeline-dot" style="border-color: var(--accent-purple);"></div>
               <div class="experience-card">
-                <h3 class="role-title" style="margin-bottom: 12px;">Industry Certifications</h3>
-                <div class="skills-category-grid" style="margin-bottom: 0;">
+                <div class="exp-top-row">
+                  <div class="company-brand">
+                    <div style="width: 48px; height: 48px; border-radius: 10px; background: rgba(168, 85, 247, 0.12); border: 1px solid rgba(168, 85, 247, 0.25); display: flex; align-items: center; justify-content: center; color: var(--accent-purple);">
+                      <i data-lucide="award" style="width: 26px; height: 26px;"></i>
+                    </div>
+                    <div>
+                      <h3 class="role-title">Industry Certifications</h3>
+                      <p class="company-sub" style="color: var(--accent-purple);">Verified Technical Qualifications</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="skills-category-grid" style="margin-top: 14px; margin-bottom: 0;">
                   <div class="skill-chip">
                     <i data-lucide="badge-check" style="color: var(--accent-blue);"></i> Core Java and SQL (<strong>EBox</strong>)
                   </div>
@@ -4364,12 +4629,40 @@ $ tech_highlights
 
     // Dynamic Tenure Counter for Vaken (Aug 2025 to Present)
     function updateDynamicTenure() {
-      const startDate = new Date(2025, 7, 1); // August 2025 (month is 0-indexed)
       const now = new Date();
-      const diffMonths = (now.getFullYear() - startDate.getFullYear()) * 12 + (now.getMonth() - startDate.getMonth());
-      const el = document.getElementById('vaken-duration-counter');
-      if (el && diffMonths >= 0) {
-        el.textContent = `Aug 2025 to Present (${diffMonths + 1} mos)`;
+
+      // Total Vaken Tenure (from Aug 2025)
+      const vakenStart = new Date(2025, 7, 1);
+      const totalMonths = (now.getFullYear() - vakenStart.getFullYear()) * 12 + (now.getMonth() - vakenStart.getMonth()) + 1;
+      const elTotal = document.getElementById('vaken-duration-counter');
+      if (elTotal && totalMonths > 0) {
+        const years = Math.floor(totalMonths / 12);
+        const remMonths = totalMonths % 12;
+        let durationStr = '';
+        if (years > 0) {
+          durationStr += `${years} yr `;
+        }
+        if (remMonths > 0 || years === 0) {
+          durationStr += `${remMonths} mos`;
+        }
+        elTotal.textContent = durationStr.trim();
+      }
+
+      // Full-time Junior Software Engineer Tenure (from Oct 2025)
+      const ftStart = new Date(2025, 9, 1);
+      const ftMonths = (now.getFullYear() - ftStart.getFullYear()) * 12 + (now.getMonth() - ftStart.getMonth()) + 1;
+      const elFt = document.getElementById('vaken-ft-duration');
+      if (elFt && ftMonths > 0) {
+        const ftYears = Math.floor(ftMonths / 12);
+        const ftRemMonths = ftMonths % 12;
+        let ftDurationStr = '';
+        if (ftYears > 0) {
+          ftDurationStr += `${ftYears} yr `;
+        }
+        if (ftRemMonths > 0 || ftYears === 0) {
+          ftDurationStr += `${ftRemMonths} mos`;
+        }
+        elFt.textContent = `Oct 2025 - Present · ${ftDurationStr.trim()}`;
       }
     }
 
@@ -4498,13 +4791,26 @@ Featured Projects:
       'kadalvazhi': kadalvazhiCliResponse,
       'kadalvalzhi': kadalvazhiCliResponse,
       'experience': `
-Vaken Technology, Product: Sovablu (Aug 2025 to Present)
-Role: Junior Software Developer | Location: On-site, Trichy, Tamil Nadu, India
-• Built and maintained production REST APIs using Java and Spring Boot with rate limiting.
-• Integrated Redis caching at critical hotspots, reducing DB query latency with PostgreSQL.
-• Managed CI/CD pipelines via Jenkins, using AWS CodeCommit, EC2, S3, and Lambda.
-• Engineered Agentic AI systems using Claude SDK and Python OCR document extraction.
-• Developed Vue.js frontend modules with CORS and proxy configuration.
+1. Vaken Technologies (Aug 2025 to Present | Trichy, India | Product: Sovablu)
+   • Junior Software Engineer (Full-time: Oct 2025 to Present)
+     - Built production REST APIs in Java 21 & Spring Boot with rate limiting & Redis caching.
+     - Automated CI/CD deployment pipelines using Jenkins with AWS (EC2, S3, Lambda, CodeCommit).
+     - Engineered Agentic AI workflows with Claude SDK and built Python OCR extraction pipelines.
+     - Developed frontend features in Vue.js with secure CORS and proxy configurations.
+   • Intern (Internship: Aug 2025 to Oct 2025 · 3 mos)
+     - Platform onboarding & intensive training on Sovablu low-code enterprise platform.
+     - Verified Java microservices & assisted in Jenkins CI/CD automation.
+
+2. SpreadTech Solutions (Nov 2023 to Dec 2023 · 2 mos | Tamil Nadu, India)
+   • Data Science Intern (Machine Learning & NLP)
+     - Home Price Prediction Model: Multivariate regression pipeline in Python & Scikit-Learn.
+     - Weather Forecasting System: Time-series forecasting for regional meteorological variables.
+     - Spam Mail Detection Classifier: NLP email classification engine using TF-IDF & Naive Bayes/Random Forest.
+
+3. Academic Foundation:
+   • Knowledge Institute of Technology (KIOT)
+     - B.Tech in Artificial Intelligence & Data Science (2021 to 2025, CGPA: 8.1 / 10)
+     - Smart India Hackathon (SIH) Team Leader for FarmVista
 `,
       'knight': `
 LeetCode Knight Badge:
