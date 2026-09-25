@@ -1294,7 +1294,303 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      flex-wrap: wrap;
     }
+
+    /* -------------------------------------------------------------
+       KADALVAZHI DISTRIBUTED ARCHITECTURE SIMULATOR
+    ------------------------------------------------------------- */
+    .kadalvazhi-sim-panel {
+      background: var(--bg-terminal);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-top: 18px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .sim-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .sim-status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      font-family: var(--font-code);
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .sim-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+
+    .sim-status-indicator.active .sim-status-dot {
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    .sim-header-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sim-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-family: var(--font-code);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .sim-btn:hover {
+      background: var(--border-subtle);
+      border-color: var(--border-accent);
+    }
+
+    .sim-btn-primary {
+      background: rgba(59, 130, 246, 0.15);
+      border-color: rgba(59, 130, 246, 0.35);
+      color: var(--text-accent);
+      font-weight: 600;
+    }
+
+    .sim-btn-primary:hover {
+      background: rgba(59, 130, 246, 0.25);
+      border-color: var(--accent-blue);
+      color: #ffffff;
+    }
+
+    .sim-progress-track {
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 2px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .sim-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #3b82f6, #10b981);
+      transition: width 0.3s ease;
+    }
+
+    .sim-nodes-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .sim-nodes-grid {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .sim-connector {
+        transform: rotate(90deg);
+        margin: 4px auto;
+      }
+    }
+
+    .sim-node {
+      flex: 1;
+      min-width: 130px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px 10px;
+      position: relative;
+      text-align: center;
+      transition: all 0.25s ease;
+    }
+
+    .sim-node.active-stage {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 16px rgba(59, 130, 246, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .sim-node.completed-stage {
+      border-color: var(--accent-green);
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+    }
+
+    .sim-node-badge {
+      font-size: 0.58rem;
+      font-family: var(--font-code);
+      color: var(--text-muted);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .sim-node-icon-wrap {
+      width: 34px;
+      height: 34px;
+      margin: 0 auto 6px auto;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+    }
+
+    .sim-node.active-stage .sim-node-icon-wrap {
+      background: rgba(59, 130, 246, 0.2);
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+    }
+
+    .sim-node.completed-stage .sim-node-icon-wrap {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+    }
+
+    .sim-node-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 3px 0;
+      white-space: nowrap;
+    }
+
+    .sim-node-tech {
+      font-size: 0.65rem;
+      font-family: var(--font-code);
+      color: var(--text-accent);
+      margin-bottom: 4px;
+      white-space: nowrap;
+    }
+
+    .sim-node-status {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      line-height: 1.2;
+    }
+
+    .sim-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .sim-connector.active-flow {
+      color: var(--accent-green);
+      animation: pulseFlow 1s infinite alternate;
+    }
+
+    @keyframes pulseFlow {
+      0% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    .sim-console-wrap {
+      background: #090c14;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    body.light-theme .sim-console-wrap {
+      background: #1e293b;
+      border-color: #cbd5e1;
+    }
+
+    .sim-console-top {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .sim-console-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .sim-console-dot.red { background: #ef4444; }
+    .sim-console-dot.yellow { background: #f59e0b; }
+    .sim-console-dot.green { background: #10b981; }
+
+    .sim-console-title {
+      font-size: 0.68rem;
+      font-family: var(--font-code);
+      color: #94a3b8;
+      margin-left: 4px;
+      flex: 1;
+    }
+
+    .sim-console-clear {
+      font-size: 0.65rem;
+      font-family: var(--font-code);
+      color: #64748b;
+      cursor: pointer;
+      padding: 1px 6px;
+      border-radius: 3px;
+    }
+
+    .sim-console-clear:hover {
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .sim-console-stream {
+      padding: 10px 12px;
+      font-family: var(--font-code);
+      font-size: 0.74rem;
+      line-height: 1.6;
+      max-height: 160px;
+      overflow-y: auto;
+      color: #cbd5e1;
+    }
+
+    .sim-log-line {
+      margin-bottom: 3px;
+      word-break: break-word;
+    }
+
+    .sim-log-line.info { color: #94a3b8; }
+    .sim-log-line.step1 { color: #60a5fa; }
+    .sim-log-line.step2 { color: #facc15; }
+    .sim-log-line.step3 { color: #c084fc; }
+    .sim-log-line.step4 { color: #34d399; }
+    .sim-log-line.success { color: #4ade80; font-weight: 700; }
 
     /* -------------------------------------------------------------
        WORK EXPERIENCE (experience.json)
@@ -3180,9 +3476,114 @@
               <a href="https://github.com/orgs/kadal-vazhi/repositories" target="_blank" class="btn-action">
                 <i data-lucide="github" style="width: 15px; height: 15px;"></i> GitHub Organization
               </a>
+              <button class="btn-action btn-accent" id="sim-trigger-btn" onclick="runKadalVazhiSimulation()" title="Run interactive simulation of offline vessel to Kafka & PostgreSQL sync">
+                <i data-lucide="play" style="width: 14px; height: 14px;"></i> Run Live Data Flow Simulation
+              </button>
               <span style="font-size: 0.8rem; color: var(--accent-yellow); font-family: var(--font-code); display: inline-flex; align-items: center; gap: 6px;">
                 <span class="pulse-dot" style="background: var(--accent-yellow); width: 7px; height: 7px;"></span> Under Active Development
               </span>
+            </div>
+
+            <!-- Interactive Architecture Simulator Panel -->
+            <div class="kadalvazhi-sim-panel" id="kadalvazhi-simulator">
+              <div class="sim-header">
+                <div class="sim-header-left">
+                  <div class="sim-status-indicator" id="sim-status-pill">
+                    <span class="sim-status-dot"></span>
+                    <span id="sim-status-text">SYSTEM IDLE · Ready to simulate voyage sync</span>
+                  </div>
+                </div>
+                <div class="sim-header-controls">
+                  <button class="sim-btn sim-btn-primary" id="sim-run-btn" onclick="runKadalVazhiSimulation()">
+                    <i data-lucide="play" style="width: 13px; height: 13px;"></i>
+                    <span id="sim-run-btn-label">Run Live Simulation</span>
+                  </button>
+                  <button class="sim-btn" onclick="resetKadalVazhiSimulation()" title="Reset Simulator">
+                    <i data-lucide="rotate-ccw" style="width: 13px; height: 13px;"></i> Reset
+                  </button>
+                </div>
+              </div>
+
+              <!-- Pipeline Progress Track -->
+              <div class="sim-progress-track">
+                <div class="sim-progress-bar" id="sim-progress-fill"></div>
+              </div>
+
+              <!-- Pipeline Nodes Grid -->
+              <div class="sim-nodes-grid">
+                <!-- Node 1: Vessel Client -->
+                <div class="sim-node" id="sim-node-1">
+                  <div class="sim-node-badge">STAGE 1</div>
+                  <div class="sim-node-icon-wrap">
+                    <i data-lucide="anchor" style="width: 18px; height: 18px;"></i>
+                  </div>
+                  <h4 class="sim-node-title">Offshore Vessel</h4>
+                  <div class="sim-node-tech">SQLite WAL Mode</div>
+                  <div class="sim-node-status" id="sim-node-1-status">Deep-sea (12 NM offshore)</div>
+                </div>
+
+                <!-- Connector 1 -->
+                <div class="sim-connector" id="sim-connector-1">
+                  <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                </div>
+
+                <!-- Node 2: 4G Coastal Relay -->
+                <div class="sim-node" id="sim-node-2">
+                  <div class="sim-node-badge">STAGE 2</div>
+                  <div class="sim-node-icon-wrap">
+                    <i data-lucide="radio" style="width: 18px; height: 18px;"></i>
+                  </div>
+                  <h4 class="sim-node-title">Coastal 4G Relay</h4>
+                  <div class="sim-node-tech">Kasimedu Tower (5 NM)</div>
+                  <div class="sim-node-status" id="sim-node-2-status">Awaiting cellular link</div>
+                </div>
+
+                <!-- Connector 2 -->
+                <div class="sim-connector" id="sim-connector-2">
+                  <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                </div>
+
+                <!-- Node 3: Kafka Event Hub -->
+                <div class="sim-node" id="sim-node-3">
+                  <div class="sim-node-badge">STAGE 3</div>
+                  <div class="sim-node-icon-wrap">
+                    <i data-lucide="layers" style="width: 18px; height: 18px;"></i>
+                  </div>
+                  <h4 class="sim-node-title">Kafka Event Stream</h4>
+                  <div class="sim-node-tech">catch-reported-events</div>
+                  <div class="sim-node-status" id="sim-node-3-status">Partition 2 · Idempotent</div>
+                </div>
+
+                <!-- Connector 3 -->
+                <div class="sim-connector" id="sim-connector-3">
+                  <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                </div>
+
+                <!-- Node 4: Spring Boot Microservices -->
+                <div class="sim-node" id="sim-node-4">
+                  <div class="sim-node-badge">STAGE 4</div>
+                  <div class="sim-node-icon-wrap">
+                    <i data-lucide="server" style="width: 18px; height: 18px;"></i>
+                  </div>
+                  <h4 class="sim-node-title">Cloud Microservices</h4>
+                  <div class="sim-node-tech">PostgreSQL & Redis</div>
+                  <div class="sim-node-status" id="sim-node-4-status">Dockside Pre-Orders Active</div>
+                </div>
+              </div>
+
+              <!-- Terminal Event Stream Console -->
+              <div class="sim-console-wrap">
+                <div class="sim-console-top">
+                  <span class="sim-console-dot red"></span>
+                  <span class="sim-console-dot yellow"></span>
+                  <span class="sim-console-dot green"></span>
+                  <span class="sim-console-title">kafka-sync-worker.log : Live Event Telemetry Stream</span>
+                  <span class="sim-console-clear" onclick="clearSimConsole()">Clear</span>
+                </div>
+                <div class="sim-console-stream" id="sim-console-logs">
+                  <div class="sim-log-line info">[INIT] Simulator initialized. Click 'Run Live Simulation' to trigger offshore boat-to-cloud sync pipeline.</div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -4977,6 +5378,242 @@ Contact Information:
         modal.classList.remove('active');
         document.body.style.overflow = '';
       }
+    }
+
+    // -------------------------------------------------------------
+    // KADALVAZHI DISTRIBUTED DATA FLOW SIMULATOR
+    // -------------------------------------------------------------
+    let simInterval = null;
+    let simStep = 0;
+    let isSimRunning = false;
+
+    const simLogs = [
+      {
+        stage: 1,
+        progress: 25,
+        statusText: 'STAGE 1: Deep-Sea Offline Capture (Zero 4G)',
+        logClass: 'step1',
+        logText: '[00:00.15] [Vessel TN-08-4129] Status: 12 NM offshore Kasimedu. Zero 4G connectivity.',
+        nodeStatus1: '14 catches in buffer'
+      },
+      {
+        stage: 1,
+        progress: 35,
+        statusText: 'STAGE 1: Local SQLite Write (WAL Mode)',
+        logClass: 'step1',
+        logText: '[00:00.65] [SQLite-Client] Appended: 320kg Yellowfin Tuna + 85kg Seer Fish (Trip ID: VYG-89102). Idempotent UUID generated.',
+        nodeStatus1: 'Delta buffer committed'
+      },
+      {
+        stage: 2,
+        progress: 55,
+        statusText: 'STAGE 2: Coastal 4G Handshake Detected',
+        logClass: 'step2',
+        logText: '[00:01.30] [Network-Agent] Approaching Kasimedu harbour perimeter (5 NM). Coastal 4G acquired (RSSI -76dBm).',
+        nodeStatus2: 'Handshake OK · Sync Ready'
+      },
+      {
+        stage: 2,
+        progress: 65,
+        statusText: 'STAGE 2: Reconnection Handshake & Auth',
+        logClass: 'step2',
+        logText: '[00:01.80] [Sync-Manager] Handshake verified. Mutual TLS established. Packaging 14 buffered voyage payloads.',
+        nodeStatus2: 'Payload batch dispatched'
+      },
+      {
+        stage: 3,
+        progress: 80,
+        statusText: 'STAGE 3: Apache Kafka Event Bus Ingestion',
+        logClass: 'step3',
+        logText: '[00:02.35] [Kafka-Producer] Published batch to topic "catch-reported-events" (Partition 2, Key: TN-08-4129).',
+        nodeStatus3: 'Ack=all · Offset: 84,210'
+      },
+      {
+        stage: 3,
+        progress: 88,
+        statusText: 'STAGE 3: Event Stream Deduplication',
+        logClass: 'step3',
+        logText: '[00:02.80] [Kafka-Broker] Idempotent deduplication check passed. Broker latency: 3.4ms. Stream routed to consumers.',
+        nodeStatus3: 'Stream distributed'
+      },
+      {
+        stage: 4,
+        progress: 95,
+        statusText: 'STAGE 4: Spring Boot Microservices & Caching',
+        logClass: 'step4',
+        logText: '[00:03.30] [CatchEventConsumer] Consumed payload in Java 25 microservice. PostgreSQL Multi-AZ transaction committed.',
+        nodeStatus4: 'PostgreSQL JSONB OK'
+      },
+      {
+        stage: 4,
+        progress: 100,
+        statusText: 'STAGE 4: Dockside Marketplace & Voice AI Dispatched',
+        logClass: 'step4',
+        logText: '[00:03.80] [Redis-Cache] Updated Kasimedu dockside auction volume (+405kg). Latency: 0.9ms.',
+        nodeStatus4: 'Redis Cache Updated'
+      },
+      {
+        stage: 4,
+        progress: 100,
+        statusText: 'SYNC COMPLETE: 100% Data Integrity Reconciled',
+        logClass: 'success',
+        logText: '[00:04.25] [Whisper-Voice-Engine] Tamil Voice Advisory pushed to vessel: "காசிமேடு வரவு பதிவு செய்யப்பட்டது. இடைத்தரகர் கமிஷன் 0%."',
+        nodeStatus4: 'Pre-Orders Live · Middlemen: 0%'
+      }
+    ];
+
+    function appendSimLog(html, className = '') {
+      const logsEl = document.getElementById('sim-console-logs');
+      if (!logsEl) return;
+      const line = document.createElement('div');
+      line.className = `sim-log-line ${className}`;
+      line.textContent = html;
+      logsEl.appendChild(line);
+      logsEl.scrollTop = logsEl.scrollHeight;
+    }
+
+    function clearSimConsole() {
+      const logsEl = document.getElementById('sim-console-logs');
+      if (logsEl) {
+        logsEl.innerHTML = '<div class="sim-log-line info">[CONSOLE CLEARED] Ready for next simulation.</div>';
+      }
+    }
+
+    function resetKadalVazhiSimulation() {
+      if (simInterval) clearInterval(simInterval);
+      isSimRunning = false;
+      simStep = 0;
+
+      const runBtnLabel = document.getElementById('sim-run-btn-label');
+      if (runBtnLabel) runBtnLabel.textContent = 'Run Live Simulation';
+
+      const progressFill = document.getElementById('sim-progress-fill');
+      if (progressFill) progressFill.style.width = '0%';
+
+      const statusIndicator = document.getElementById('sim-status-pill');
+      if (statusIndicator) statusIndicator.classList.remove('active');
+
+      const statusText = document.getElementById('sim-status-text');
+      if (statusText) statusText.textContent = 'SYSTEM IDLE · Ready to simulate voyage sync';
+
+      // Reset nodes
+      for (let i = 1; i <= 4; i++) {
+        const node = document.getElementById(`sim-node-${i}`);
+        if (node) {
+          node.classList.remove('active-stage', 'completed-stage');
+        }
+      }
+
+      // Reset connectors
+      for (let i = 1; i <= 3; i++) {
+        const conn = document.getElementById(`sim-connector-${i}`);
+        if (conn) conn.classList.remove('active-flow');
+      }
+
+      // Reset node statuses
+      const s1 = document.getElementById('sim-node-1-status');
+      if (s1) s1.textContent = 'Deep-sea (12 NM offshore)';
+      const s2 = document.getElementById('sim-node-2-status');
+      if (s2) s2.textContent = 'Awaiting cellular link';
+      const s3 = document.getElementById('sim-node-3-status');
+      if (s3) s3.textContent = 'Partition 2 · Idempotent';
+      const s4 = document.getElementById('sim-node-4-status');
+      if (s4) s4.textContent = 'Dockside Pre-Orders Active';
+
+      appendSimLog('[RESET] Simulation pipeline reset to initial state.', 'info');
+    }
+
+    function runKadalVazhiSimulation() {
+      const simContainer = document.getElementById('kadalvazhi-simulator');
+      if (simContainer) {
+        simContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      if (isSimRunning) return;
+      resetKadalVazhiSimulation();
+      isSimRunning = true;
+
+      const runBtnLabel = document.getElementById('sim-run-btn-label');
+      if (runBtnLabel) runBtnLabel.textContent = 'Simulation Running...';
+
+      const statusIndicator = document.getElementById('sim-status-pill');
+      if (statusIndicator) statusIndicator.classList.add('active');
+
+      appendSimLog('[START] Voyage Sync Simulation started. Vessel TN-08-4129 returning to port Kasimedu.', 'info');
+
+      simInterval = setInterval(() => {
+        if (simStep >= simLogs.length) {
+          clearInterval(simInterval);
+          isSimRunning = false;
+          if (runBtnLabel) runBtnLabel.textContent = 'Replay Simulation';
+          const statusText = document.getElementById('sim-status-text');
+          if (statusText) statusText.textContent = 'VOYAGE SYNC COMPLETE · 100% Data Fidelity';
+          playKeyClick();
+          return;
+        }
+
+        const data = simLogs[simStep];
+
+        // Update progress bar
+        const progressFill = document.getElementById('sim-progress-fill');
+        if (progressFill) progressFill.style.width = `${data.progress}%`;
+
+        // Update status text
+        const statusText = document.getElementById('sim-status-text');
+        if (statusText) statusText.textContent = data.statusText;
+
+        // Append log
+        appendSimLog(data.logText, data.logClass);
+
+        // Update node visual states
+        const currentStage = data.stage;
+        for (let i = 1; i <= 4; i++) {
+          const node = document.getElementById(`sim-node-${i}`);
+          if (node) {
+            if (i < currentStage) {
+              node.classList.remove('active-stage');
+              node.classList.add('completed-stage');
+            } else if (i === currentStage) {
+              node.classList.add('active-stage');
+              node.classList.remove('completed-stage');
+            } else {
+              node.classList.remove('active-stage', 'completed-stage');
+            }
+          }
+        }
+
+        // Update connectors
+        for (let i = 1; i <= 3; i++) {
+          const conn = document.getElementById(`sim-connector-${i}`);
+          if (conn) {
+            if (i < currentStage) {
+              conn.classList.add('active-flow');
+            } else {
+              conn.classList.remove('active-flow');
+            }
+          }
+        }
+
+        // Update node custom status text if present
+        if (data.nodeStatus1) {
+          const s1 = document.getElementById('sim-node-1-status');
+          if (s1) s1.textContent = data.nodeStatus1;
+        }
+        if (data.nodeStatus2) {
+          const s2 = document.getElementById('sim-node-2-status');
+          if (s2) s2.textContent = data.nodeStatus2;
+        }
+        if (data.nodeStatus3) {
+          const s3 = document.getElementById('sim-node-3-status');
+          if (s3) s3.textContent = data.nodeStatus3;
+        }
+        if (data.nodeStatus4) {
+          const s4 = document.getElementById('sim-node-4-status');
+          if (s4) s4.textContent = data.nodeStatus4;
+        }
+
+        simStep++;
+      }, 700);
     }
   </script>
 
