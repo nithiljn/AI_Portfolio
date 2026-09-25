@@ -2071,6 +2071,163 @@
     }
 
     /* -------------------------------------------------------------
+       LEETCODE CONTEST RATING TRAJECTORY & EXPLORER
+    ------------------------------------------------------------- */
+    .leetcode-trajectory-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(245, 158, 11, 0.28);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .trajectory-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .trajectory-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .trajectory-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .trajectory-sub {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      font-family: var(--font-code);
+      margin: 2px 0 0 0;
+    }
+
+    /* Live Contest Inspection HUD */
+    .contest-inspect-hud {
+      background: var(--bg-terminal);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      margin-bottom: 18px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .hud-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hud-label {
+      font-size: 0.65rem;
+      font-family: var(--font-code);
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .hud-val {
+      font-size: 0.95rem;
+      font-family: var(--font-code);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .hud-val.gold {
+      color: #fbbf24;
+    }
+
+    .hud-val.green {
+      color: #34d399;
+    }
+
+    /* SVG Chart Box */
+    .svg-chart-container {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 12px 10px 12px;
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    body.light-theme .svg-chart-container {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+    }
+
+    .chart-dot-interactive {
+      cursor: pointer;
+      transition: r 0.2s ease, fill 0.2s ease, stroke-width 0.2s ease;
+    }
+
+    .chart-dot-interactive:hover,
+    .chart-dot-interactive.active-dot {
+      r: 7;
+      stroke-width: 3;
+      stroke: #ffffff;
+      fill: #f59e0b;
+    }
+
+    .pulse-ring-anim {
+      animation: pulseRingKeyframes 2s infinite ease-out;
+      transform-origin: 730px 53px;
+    }
+
+    @keyframes pulseRingKeyframes {
+      0% { r: 6; opacity: 1; }
+      100% { r: 18; opacity: 0; }
+    }
+
+    .contest-pill-strip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .contest-pill-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-family: var(--font-code);
+      font-size: 0.72rem;
+      padding: 4px 10px;
+      border-radius: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .contest-pill-btn:hover {
+      background: var(--border-subtle);
+      color: var(--text-primary);
+    }
+
+    .contest-pill-btn.active-pill {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: #f59e0b;
+      color: #fbbf24;
+      font-weight: 700;
+    }
+
+    /* -------------------------------------------------------------
        INTERACTIVE TERMINAL (terminal.sh)
     ------------------------------------------------------------- */
     .interactive-term-window {
@@ -4184,14 +4341,14 @@
                 </div>
 
                 <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 800px; margin-bottom: 14px;">
-                  LeetCode Knight with an official <strong>Contest Rating of 1,994</strong>.
-                  Secured a perfect <strong>4/4 score in Weekly Contest 490</strong>, reaching a peak single-contest global rank of <strong>#197 out of 43,027</strong> participants.
+                  LeetCode Knight with an official <strong>Contest Rating of 1,994</strong> (Top 2.73% Worldwide).
+                  Secured multiple <strong>4/4 full-solve performances</strong> in Weekly Contests 517 (<strong>Global Rank #114</strong>), 490 (<strong>Global Rank #197</strong>), and 518 (<strong>Global Rank #393</strong>).
                 </p>
 
                 <div class="knight-rank-metric">
                   <div>
                     <span class="rank-number">1,994</span>
-                    <span class="rank-total">Contest Rating (Knight Tier)</span>
+                    <span class="rank-total">Contest Rating (Knight Tier · Top 2.73%)</span>
                   </div>
                 </div>
 
@@ -4200,7 +4357,9 @@
                   <span>·</span>
                   <span>Attended: 10 Contests</span>
                   <span>·</span>
-                  <span>Peak Single Contest: #197</span>
+                  <span>Best Contest Rank: #114</span>
+                  <span>·</span>
+                  <span>Top 2.73% Worldwide</span>
                 </div>
               </div>
 
@@ -4246,6 +4405,169 @@
                 <div class="problem-count" style="color: #94a3b8;">6</div>
                 <div class="problem-category">Python & Bash</div>
               </div>
+            </div>
+          </div>
+
+          <!-- LeetCode Contest Rating Trajectory & Interactive Explorer -->
+          <div class="leetcode-trajectory-card" id="leetcode-trajectory">
+            <div class="trajectory-header">
+              <div class="trajectory-title-wrap">
+                <i data-lucide="trending-up" style="color: #fbbf24; width: 22px; height: 22px;"></i>
+                <div>
+                  <h3 class="trajectory-title">Contest Rating Trajectory & Performance Curve</h3>
+                  <p class="trajectory-sub">Official Weekly Contests (Dec 2025 - Sep 2026) · Knight Tier Progression</p>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; font-family: var(--font-code); font-size: 0.8rem; flex-wrap: wrap;">
+                <span style="color: #fbbf24; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); padding: 4px 10px; border-radius: 12px; font-weight: 700;">
+                  Peak Rating: 1,994 (Top 2.73%)
+                </span>
+                <span style="color: #34d399; background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52, 211, 153, 0.3); padding: 4px 10px; border-radius: 12px; font-weight: 700;">
+                  Best Rank: #114 (4/4 Solved)
+                </span>
+              </div>
+            </div>
+
+            <!-- Live Contest Inspection HUD -->
+            <div class="contest-inspect-hud" id="contest-hud">
+              <div class="hud-col">
+                <span class="hud-label">Inspected Contest</span>
+                <span class="hud-val gold" id="hud-contest-name">Weekly Contest 519 (Sep 13, 2026)</span>
+              </div>
+              <div class="hud-col">
+                <span class="hud-label">Contest Rating</span>
+                <span class="hud-val gold" id="hud-contest-rating">1,994 ↗ (Peak Rating)</span>
+              </div>
+              <div class="hud-col">
+                <span class="hud-label">Global Rank</span>
+                <span class="hud-val green" id="hud-contest-rank">1,867 (Top 2.73% Global)</span>
+              </div>
+              <div class="hud-col">
+                <span class="hud-label">Problems Solved</span>
+                <span class="hud-val" id="hud-contest-solved">2 / 4 Solved</span>
+              </div>
+              <div class="hud-col">
+                <span class="hud-label">Rating Delta / Highlight</span>
+                <span class="hud-val gold" id="hud-contest-delta">+8 pts · All-Time Peak</span>
+              </div>
+            </div>
+
+            <!-- Interactive SVG Chart Container -->
+            <div class="svg-chart-container">
+              <svg viewBox="0 0 760 250" width="100%" height="auto" style="display: block; overflow: hidden; border-radius: var(--radius-sm);">
+                <defs>
+                  <linearGradient id="ratingGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.30" />
+                    <stop offset="80%" stop-color="#f59e0b" stop-opacity="0.04" />
+                    <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.0" />
+                  </linearGradient>
+                  <filter id="glowGold" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  </filter>
+                </defs>
+
+                <!-- Horizontal Grid Lines -->
+                <line x1="45" y1="50" x2="745" y2="50" stroke="rgba(255, 255, 255, 0.08)" stroke-dasharray="3 3" />
+                <text x="38" y="54" fill="#94a3b8" font-size="10" font-family="monospace" text-anchor="end">2,000</text>
+
+                <line x1="45" y1="100" x2="745" y2="100" stroke="rgba(255, 255, 255, 0.08)" stroke-dasharray="3 3" />
+                <text x="38" y="104" fill="#94a3b8" font-size="10" font-family="monospace" text-anchor="end">1,900</text>
+
+                <!-- Knight Threshold (1,850) Dashed Guide Line -->
+                <line x1="45" y1="125" x2="745" y2="125" stroke="rgba(245, 158, 11, 0.45)" stroke-width="1.5" stroke-dasharray="4 4" />
+                <text x="38" y="129" fill="#fbbf24" font-size="10" font-family="monospace" text-anchor="end" font-weight="bold">1,850</text>
+                <text x="745" y="120" fill="#fbbf24" font-size="9" font-family="monospace" text-anchor="end" font-weight="bold">★ KNIGHT THRESHOLD (1,850)</text>
+
+                <line x1="45" y1="150" x2="745" y2="150" stroke="rgba(255, 255, 255, 0.08)" stroke-dasharray="3 3" />
+                <text x="38" y="154" fill="#94a3b8" font-size="10" font-family="monospace" text-anchor="end">1,800</text>
+
+                <line x1="45" y1="205" x2="745" y2="205" stroke="rgba(255, 255, 255, 0.08)" stroke-dasharray="3 3" />
+                <text x="38" y="209" fill="#94a3b8" font-size="10" font-family="monospace" text-anchor="end">1,700</text>
+
+                <!-- Gradient Fill Area Under Curve -->
+                <path d="M 55,206 C 85,160 105,115 130,111 C 155,108 180,108 205,108 C 230,108 255,109 280,109 C 305,109 330,114 355,116 C 380,118 405,127 430,130 C 455,133 480,143 505,145 C 530,147 555,105 580,88 C 605,71 630,59 655,57 C 680,55 705,53 730,53 L 730,225 L 55,225 Z" fill="url(#ratingGradient)" />
+
+                <!-- The Rating Curve Line -->
+                <path d="M 55,206 C 85,160 105,115 130,111 C 155,108 180,108 205,108 C 230,108 255,109 280,109 C 305,109 330,114 355,116 C 380,118 405,127 430,130 C 455,133 480,143 505,145 C 530,147 555,105 580,88 C 605,71 630,59 655,57 C 680,55 705,53 730,53" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" filter="url(#glowGold)" />
+
+                <!-- Pulsing Outer Beacon for Peak WC 519 -->
+                <circle cx="730" cy="53" r="14" fill="none" stroke="#fbbf24" stroke-width="2" class="pulse-ring-anim" />
+
+                <!-- Milestone Callout: C2 WC 490 (Rank #197) -->
+                <g transform="translate(83, 76)">
+                  <rect x="0" y="0" width="94" height="22" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2" />
+                  <text x="47" y="15" fill="#fbbf24" font-size="9" font-family="monospace" font-weight="bold" text-anchor="middle">★ RANK #197 (4/4)</text>
+                </g>
+
+                <!-- Milestone Callout: C8 WC 517 (Rank #114) -->
+                <g transform="translate(529, 52)">
+                  <rect x="0" y="0" width="102" height="22" rx="4" fill="#0f172a" stroke="#10b981" stroke-width="1.2" />
+                  <text x="51" y="15" fill="#34d399" font-size="9" font-family="monospace" font-weight="bold" text-anchor="middle">★ BEST #114 (4/4)</text>
+                </g>
+
+                <!-- Peak Milestone Callout: C10 WC 519 (Peak 1,994) -->
+                <g transform="translate(635, 16)">
+                  <rect x="0" y="0" width="115" height="24" rx="4" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5" />
+                  <text x="57" y="16" fill="#fbbf24" font-size="10" font-family="monospace" font-weight="bold" text-anchor="middle">★ PEAK 1,994</text>
+                </g>
+
+                <!-- 10 Interactive Contest Nodes -->
+                <!-- C1: Dec 21, 2025 · WC 481 -->
+                <circle cx="55" cy="206" r="4.5" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5" class="chart-dot-interactive" id="dot-1" onmouseenter="inspectContest(1)" onclick="inspectContest(1)" />
+                <text x="55" y="240" fill="#94a3b8" font-size="9.5" font-family="monospace" text-anchor="middle">WC 481</text>
+
+                <!-- C2: Feb 22, 2026 · WC 490 (Knight Unlocked) -->
+                <circle cx="130" cy="111" r="5.5" fill="#f59e0b" stroke="#ffffff" stroke-width="2" class="chart-dot-interactive" id="dot-2" onmouseenter="inspectContest(2)" onclick="inspectContest(2)" />
+                <text x="130" y="240" fill="#f59e0b" font-size="9.5" font-family="monospace" text-anchor="middle" font-weight="bold">WC 490*</text>
+
+                <!-- C3: Mar 01, 2026 · WC 491 -->
+                <circle cx="205" cy="108" r="5" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5" class="chart-dot-interactive" id="dot-3" onmouseenter="inspectContest(3)" onclick="inspectContest(3)" />
+                <text x="205" y="240" fill="#f59e0b" font-size="9.5" font-family="monospace" text-anchor="middle">WC 491</text>
+
+                <!-- C4: Mar 08, 2026 · WC 492 -->
+                <circle cx="280" cy="109" r="5" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5" class="chart-dot-interactive" id="dot-4" onmouseenter="inspectContest(4)" onclick="inspectContest(4)" />
+                <text x="280" y="240" fill="#f59e0b" font-size="9.5" font-family="monospace" text-anchor="middle">WC 492</text>
+
+                <!-- C5: Mar 15, 2026 · WC 493 -->
+                <circle cx="355" cy="116" r="5" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5" class="chart-dot-interactive" id="dot-5" onmouseenter="inspectContest(5)" onclick="inspectContest(5)" />
+                <text x="355" y="240" fill="#f59e0b" font-size="9.5" font-family="monospace" text-anchor="middle">WC 493</text>
+
+                <!-- C6: May 03, 2026 · WC 500 -->
+                <circle cx="430" cy="130" r="4.5" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5" class="chart-dot-interactive" id="dot-6" onmouseenter="inspectContest(6)" onclick="inspectContest(6)" />
+                <text x="430" y="240" fill="#94a3b8" font-size="9.5" font-family="monospace" text-anchor="middle">WC 500</text>
+
+                <!-- C7: Jun 07, 2026 · WC 505 -->
+                <circle cx="505" cy="145" r="4.5" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5" class="chart-dot-interactive" id="dot-7" onmouseenter="inspectContest(7)" onclick="inspectContest(7)" />
+                <text x="505" y="240" fill="#94a3b8" font-size="9.5" font-family="monospace" text-anchor="middle">WC 505</text>
+
+                <!-- C8: Aug 30, 2026 · WC 517 (Rank #114) -->
+                <circle cx="580" cy="88" r="6" fill="#10b981" stroke="#ffffff" stroke-width="2" class="chart-dot-interactive" id="dot-8" onmouseenter="inspectContest(8)" onclick="inspectContest(8)" />
+                <text x="580" y="240" fill="#34d399" font-size="9.5" font-family="monospace" text-anchor="middle" font-weight="bold">WC 517*</text>
+
+                <!-- C9: Sep 06, 2026 · WC 518 -->
+                <circle cx="655" cy="57" r="5.5" fill="#f59e0b" stroke="#ffffff" stroke-width="2" class="chart-dot-interactive" id="dot-9" onmouseenter="inspectContest(9)" onclick="inspectContest(9)" />
+                <text x="655" y="240" fill="#f59e0b" font-size="9.5" font-family="monospace" text-anchor="middle">WC 518</text>
+
+                <!-- C10: Sep 13, 2026 · WC 519 (Peak 1,994) -->
+                <circle cx="730" cy="53" r="7" fill="#fbbf24" stroke="#ffffff" stroke-width="2.5" class="chart-dot-interactive active-dot" id="dot-10" onmouseenter="inspectContest(10)" onclick="inspectContest(10)" />
+                <text x="730" y="240" fill="#fbbf24" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">WC 519*</text>
+              </svg>
+            </div>
+
+            <!-- Contest Fast-Select Strip -->
+            <div class="contest-pill-strip" id="contest-pills">
+              <span style="font-size: 0.72rem; font-family: var(--font-code); color: var(--text-muted); margin-right: 4px;">Jump to:</span>
+              <button class="contest-pill-btn" onclick="inspectContest(1)" id="pill-1">C1: WC 481 (1,689)</button>
+              <button class="contest-pill-btn" onclick="inspectContest(2)" id="pill-2">C2: WC 490 (1,879 · #197)</button>
+              <button class="contest-pill-btn" onclick="inspectContest(3)" id="pill-3">C3: WC 491 (1,884)</button>
+              <button class="contest-pill-btn" onclick="inspectContest(4)" id="pill-4">C4: WC 492 (1,883)</button>
+              <button class="contest-pill-btn" onclick="inspectContest(5)" id="pill-5">C5: WC 493 (1,869)</button>
+              <button class="contest-pill-btn" onclick="inspectContest(6)" id="pill-6">C6: WC 500 (1,841)</button>
+              <button class="contest-pill-btn" onclick="inspectContest(7)" id="pill-7">C7: WC 505 (1,811)</button>
+              <button class="contest-pill-btn" onclick="inspectContest(8)" id="pill-8">C8: WC 517 (1,924 · #114)</button>
+              <button class="contest-pill-btn" onclick="inspectContest(9)" id="pill-9">C9: WC 518 (1,986 · #393)</button>
+              <button class="contest-pill-btn active-pill" onclick="inspectContest(10)" id="pill-10">★ C10: WC 519 (1,994 Peak)</button>
             </div>
           </div>
 
@@ -5215,10 +5537,11 @@ Featured Projects:
 `,
       'knight': `
 LeetCode Knight Badge:
-• Contest Rating: 1,994 (Knight Tier)
+• Contest Rating: 1,994 (Knight Tier · Top 2.73% Worldwide)
 • Overall Global Ranking: 23,201 / 883,546
-• Attended Contests: 10
-• Best Single Contest: Weekly Contest 490 (Rank #197 / 43,027, Solved 4/4 Problems)
+• Attended Contests: 10 Official Contests
+• Best Single Contest Rank: Weekly Contest 517 (Global Rank #114, Solved 4/4 Problems)
+• Other 4/4 Solves: Weekly Contest 490 (Rank #197), Weekly Contest 518 (Rank #393)
 • Total Solved: 700+ Problems
 • Solved Breakdown by Language:
   - Java: 446 problems solved (Trees, Graphs, BFS/DFS, DP, Recursion, Two Pointers, Greedy)
@@ -5614,6 +5937,117 @@ Contact Information:
 
         simStep++;
       }, 700);
+    }
+
+    // -------------------------------------------------------------
+    // LEETCODE CONTEST RATING EXPLORER (OFFICIAL PROFILE DATA)
+    // -------------------------------------------------------------
+    const contestDetails = {
+      1: {
+        name: 'Weekly Contest 481 (Dec 21, 2025)',
+        rating: '1,689 ↗',
+        rank: '1,387',
+        solved: '3 / 4 Solved',
+        delta: 'Initial Profile Rating · Top 2.73%'
+      },
+      2: {
+        name: 'Weekly Contest 490 (Feb 22, 2026)',
+        rating: '1,879 ↗ (Knight Milestone)',
+        rank: '#197 / 43k (Global Top #197)',
+        solved: '4 / 4 Solved (100% Score)',
+        delta: '+190 pts · Crossed Knight 1,850'
+      },
+      3: {
+        name: 'Weekly Contest 491 (Mar 01, 2026)',
+        rating: '1,884 ↗',
+        rank: '4,916',
+        solved: '2 / 4 Solved',
+        delta: '+5 pts (Knight Tier)'
+      },
+      4: {
+        name: 'Weekly Contest 492 (Mar 08, 2026)',
+        rating: '1,883 ↘',
+        rank: '5,508',
+        solved: '2 / 4 Solved',
+        delta: '-1 pt (Knight Tier)'
+      },
+      5: {
+        name: 'Weekly Contest 493 (Mar 15, 2026)',
+        rating: '1,869 ↘',
+        rank: '8,433',
+        solved: '2 / 4 Solved',
+        delta: '-14 pts (Knight Tier)'
+      },
+      6: {
+        name: 'Weekly Contest 500 (May 03, 2026)',
+        rating: '1,841 ↘',
+        rank: '8,361',
+        solved: '2 / 4 Solved',
+        delta: '-28 pts'
+      },
+      7: {
+        name: 'Weekly Contest 505 (Jun 07, 2026)',
+        rating: '1,811 ↘',
+        rank: '10,907',
+        solved: '2 / 4 Solved',
+        delta: '-30 pts'
+      },
+      8: {
+        name: 'Weekly Contest 517 (Aug 30, 2026)',
+        rating: '1,924 ↗',
+        rank: '#114 (All-Time Peak Global Rank!)',
+        solved: '4 / 4 Solved (100% Score)',
+        delta: '+113 pts · Strong Knight Rebound'
+      },
+      9: {
+        name: 'Weekly Contest 518 (Sep 06, 2026)',
+        rating: '1,986 ↗',
+        rank: '#393 (Global Top 400)',
+        solved: '4 / 4 Solved (100% Score)',
+        delta: '+62 pts · Reached 1,986'
+      },
+      10: {
+        name: 'Weekly Contest 519 (Sep 13, 2026)',
+        rating: '1,994 ↗ (Official Peak)',
+        rank: '1,867 (Top 2.73% Global)',
+        solved: '2 / 4 Solved',
+        delta: '+8 pts · All-Time Peak Rating'
+      }
+    };
+
+    function inspectContest(id) {
+      const data = contestDetails[id];
+      if (!data) return;
+
+      const nameEl = document.getElementById('hud-contest-name');
+      const ratingEl = document.getElementById('hud-contest-rating');
+      const rankEl = document.getElementById('hud-contest-rank');
+      const solvedEl = document.getElementById('hud-contest-solved');
+      const deltaEl = document.getElementById('hud-contest-delta');
+
+      if (nameEl) nameEl.textContent = data.name;
+      if (ratingEl) ratingEl.textContent = data.rating;
+      if (rankEl) rankEl.textContent = data.rank;
+      if (solvedEl) solvedEl.textContent = data.solved;
+      if (deltaEl) deltaEl.textContent = data.delta;
+
+      for (let i = 1; i <= 10; i++) {
+        const dot = document.getElementById(`dot-${i}`);
+        if (dot) {
+          if (i === id) dot.classList.add('active-dot');
+          else dot.classList.remove('active-dot');
+        }
+      }
+
+      for (let i = 1; i <= 10; i++) {
+        const pill = document.getElementById(`pill-${i}`);
+        if (pill) {
+          if (i === id) pill.classList.add('active-pill');
+          else pill.classList.remove('active-pill');
+        }
+      }
+
+      if (typeof playKeyClick === 'function') playKeyClick();
     }
   </script>
 
