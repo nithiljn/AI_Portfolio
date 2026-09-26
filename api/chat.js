@@ -44,7 +44,7 @@ JAMES NITHIL V - BACKGROUND & ACHIEVEMENTS
 • Academic Score: CGPA 8.1 / 10.0.
 
 6. CONTACT & AVAILABILITY:
-• Email: jamesnithil2003@gmail.com
+• Email: jamnithil@gmail.com
 • Portfolio: https://jamesnithil.vercel.app
 • GitHub: https://github.com/nithiljn
 • LinkedIn: https://www.linkedin.com/in/jamesnithil-v
@@ -100,7 +100,7 @@ module.exports = async function handler(req, res) {
     const apiKey = process.env.GROQ_API_KEY;
     if (!apiKey) {
       return res.status(200).json({
-        reply: "James AI is currently being initialized on Vercel (GROQ_API_KEY pending). In the meantime, feel free to explore James's projects, download his resume, or contact him directly at jamesnithil2003@gmail.com!",
+        reply: "James AI is currently being initialized on Vercel (GROQ_API_KEY pending). In the meantime, feel free to explore James's projects, download his resume, or contact him directly at jamnithil@gmail.com!",
         status: 'pending_config'
       });
     }
@@ -163,7 +163,7 @@ module.exports = async function handler(req, res) {
 
     if (!aiResponseText) {
       // Graceful fallback message if all models hit limits
-      aiResponseText = "James AI is currently receiving high recruiter traffic! ⚡ While the AI engine recharges, feel free to explore the interactive KadalVazhi simulator, download James's resume, or reach out directly at jamesnithil2003@gmail.com.";
+      aiResponseText = "James AI is currently receiving high recruiter traffic! ⚡ While the AI engine recharges, feel free to explore the interactive KadalVazhi simulator, download James's resume, or reach out directly at jamnithil@gmail.com.";
     }
 
     return res.status(200).json({
