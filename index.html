@@ -571,11 +571,50 @@
       align-items: center;
       gap: 6px;
       padding: 6px 8px;
-      font-size: 0.82rem;
+      font-size: 0.80rem;
+      font-family: var(--font-code);
       font-weight: 600;
       color: var(--text-secondary);
       border-radius: var(--radius-sm);
       cursor: pointer;
+      user-select: none;
+      transition: var(--transition-smooth);
+    }
+
+    .folder-item:hover {
+      background: var(--border-subtle);
+      color: var(--text-primary);
+    }
+
+    .folder-chevron {
+      width: 14px;
+      height: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .folder-name {
+      letter-spacing: 0.02em;
+    }
+
+    .folder-files-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      overflow: hidden;
+      transition: max-height 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    .folder-files-group.collapsed {
+      max-height: 0 !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      margin: 0 !important;
+      display: none !important;
     }
 
     .file-item {
@@ -4230,44 +4269,51 @@
     <!-- File Explorer Sidebar -->
     <nav class="sidebar" id="main-sidebar">
       <div class="sidebar-header">
-        <span>Explorer: AI_Portfolio</span>
+        <span>JamesNithil.dev</span>
         <i data-lucide="more-horizontal" style="width: 14px; height: 14px; cursor: pointer;"></i>
       </div>
 
       <div class="sidebar-tree">
-        <div class="folder-item">
-          <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
-          <span>JAMES_NITHIL_V</span>
+        <div class="folder-item" id="portfolio-folder-toggle" title="Toggle portfolio folder (Click to collapse/expand)">
+          <span id="folder-chevron-wrap" style="display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px;">
+            <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
+          </span>
+          <span id="folder-icon-wrap" style="display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px;">
+            <i data-lucide="folder-open" style="width: 14px; height: 14px; color: #60a5fa;"></i>
+          </span>
+          <span class="folder-name">portfolio</span>
         </div>
 
-        <div class="file-item active" data-tab="tab-readme" data-file-title="README.md" data-file-icon="devicon-markdown-original">
-          <span class="file-icon"><i class="devicon-markdown-original" style="color: #60a5fa;"></i></span>
-          <span>README.md</span>
-        </div>
+        <div class="folder-files-group" id="portfolio-folder-files">
+          <div class="file-item active" data-tab="tab-readme" data-file-title="README.md" data-file-icon="devicon-markdown-original">
+            <span class="file-icon"><i class="devicon-markdown-original" style="color: #60a5fa;"></i></span>
+            <span>README.md</span>
+          </div>
 
-        <div class="file-item" data-tab="tab-projects" data-file-title="projects.py" data-file-icon="devicon-python-plain">
-          <span class="file-icon"><i class="devicon-python-plain" style="color: #facc15;"></i></span>
-          <span>projects.py</span>
-        </div>
+          <div class="file-item" data-tab="tab-projects" data-file-title="projects.py" data-file-icon="devicon-python-plain">
+            <span class="file-icon"><i class="devicon-python-plain" style="color: #facc15;"></i></span>
+            <span>projects.py</span>
+          </div>
 
-        <div class="file-item" data-tab="tab-experience" data-file-title="experience.json" data-file-icon="devicon-java-plain">
-          <span class="file-icon"><i class="devicon-java-plain" style="color: #f87171;"></i></span>
-          <span>experience.json</span>
-        </div>
+          <div class="file-item" data-tab="tab-experience" data-file-title="experience.json" data-file-icon="devicon-java-plain">
+            <span class="file-icon"><i class="devicon-java-plain" style="color: #f87171;"></i></span>
+            <span>experience.json</span>
+          </div>
 
-        <div class="file-item" data-tab="tab-skills" data-file-title="skills.ts" data-file-icon="devicon-typescript-plain">
-          <span class="file-icon"><i class="devicon-typescript-plain" style="color: #38bdf8;"></i></span>
-          <span>skills.ts</span>
-        </div>
+          <div class="file-item" data-tab="tab-skills" data-file-title="skills.ts" data-file-icon="devicon-typescript-plain">
+            <span class="file-icon"><i class="devicon-typescript-plain" style="color: #38bdf8;"></i></span>
+            <span>skills.ts</span>
+          </div>
 
-        <div class="file-item" data-tab="tab-achievements" data-file-title="achievements.md" data-file-icon="devicon-markdown-original">
-          <span class="file-icon">🏆</span>
-          <span>achievements.md</span>
-        </div>
+          <div class="file-item" data-tab="tab-achievements" data-file-title="achievements.md" data-file-icon="devicon-markdown-original">
+            <span class="file-icon">🏆</span>
+            <span>achievements.md</span>
+          </div>
 
-        <div class="file-item" data-tab="tab-terminal" data-file-title="terminal.sh" data-file-icon="devicon-bash-plain">
-          <span class="file-icon"><i class="devicon-bash-plain" style="color: #4ade80;"></i></span>
-          <span>terminal.sh</span>
+          <div class="file-item" data-tab="tab-terminal" data-file-title="terminal.sh" data-file-icon="devicon-bash-plain">
+            <span class="file-icon"><i class="devicon-bash-plain" style="color: #4ade80;"></i></span>
+            <span>terminal.sh</span>
+          </div>
         </div>
 
         <div class="sidebar-section-title">CONNECT & PROFILES</div>
@@ -6153,6 +6199,14 @@
           document.getElementById('cli-input-field').focus();
         }, 80);
       }
+
+      // Auto-expand portfolio folder if collapsed
+      if (typeof togglePortfolioFolder === 'function') {
+        const toggleEl = document.getElementById('portfolio-folder-toggle');
+        if (toggleEl && toggleEl.classList.contains('collapsed')) {
+          togglePortfolioFolder(true);
+        }
+      }
     }
 
     // Attach click handlers to tabs
@@ -6214,6 +6268,53 @@
     if (sidebarBackdrop) {
       sidebarBackdrop.addEventListener('click', () => {
         closeMobileSidebar();
+      });
+    }
+
+    // -------------------------------------------------------------
+    // EXPLORER FOLDER TOGGLE (PORTFOLIO ROOT EXPAND/COLLAPSE)
+    // -------------------------------------------------------------
+    const portfolioFolderToggle = document.getElementById('portfolio-folder-toggle');
+    const portfolioFolderFiles = document.getElementById('portfolio-folder-files');
+    const folderChevronWrap = document.getElementById('folder-chevron-wrap');
+    const folderIconWrap = document.getElementById('folder-icon-wrap');
+
+    function togglePortfolioFolder(forceOpen = null) {
+      if (!portfolioFolderToggle || !portfolioFolderFiles) return;
+
+      const isCurrentlyCollapsed = portfolioFolderToggle.classList.contains('collapsed');
+      const shouldCollapse = forceOpen === null ? !isCurrentlyCollapsed : !forceOpen;
+
+      if (shouldCollapse) {
+        portfolioFolderToggle.classList.add('collapsed');
+        portfolioFolderFiles.classList.add('collapsed');
+        if (folderChevronWrap) {
+          folderChevronWrap.innerHTML = '<i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>';
+        }
+        if (folderIconWrap) {
+          folderIconWrap.innerHTML = '<i data-lucide="folder" style="width: 14px; height: 14px; color: #60a5fa;"></i>';
+        }
+      } else {
+        portfolioFolderToggle.classList.remove('collapsed');
+        portfolioFolderFiles.classList.remove('collapsed');
+        if (folderChevronWrap) {
+          folderChevronWrap.innerHTML = '<i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>';
+        }
+        if (folderIconWrap) {
+          folderIconWrap.innerHTML = '<i data-lucide="folder-open" style="width: 14px; height: 14px; color: #60a5fa;"></i>';
+        }
+      }
+      lucide.createIcons();
+      playKeyClick();
+    }
+
+    window.togglePortfolioFolder = togglePortfolioFolder;
+
+    if (portfolioFolderToggle) {
+      portfolioFolderToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        togglePortfolioFolder();
       });
     }
 
