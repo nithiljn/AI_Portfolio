@@ -4502,7 +4502,7 @@
                 <i data-lucide="layers" style="width: 16px; height: 16px;"></i> View Flagship Projects
               </button>
               <a href="https://www.linkedin.com/in/jamesnithil-v/" target="_blank" class="btn-action">
-                <i data-lucide="linkedin" style="width: 16px; height: 16px;"></i> LinkedIn Profile
+                <i class="devicon-linkedin-plain" style="font-size: 14px; color: #0ea5e9;"></i> LinkedIn Profile
               </a>
               <button class="btn-action" onclick="switchTab('tab-terminal')">
                 <i data-lucide="terminal" style="width: 16px; height: 16px;"></i> Run Dev Terminal
@@ -4557,10 +4557,10 @@
             </div>
             <div style="display: flex; align-items: center; gap: 10px;">
               <a href="https://www.linkedin.com/in/jamesnithil-v/" target="_blank" class="btn-action" style="padding: 7px 14px; font-size: 0.82rem;">
-                <i data-lucide="linkedin" style="width: 14px; height: 14px;"></i> LinkedIn
+                <i class="devicon-linkedin-plain" style="font-size: 13px; color: #0ea5e9;"></i> LinkedIn
               </a>
               <a href="https://github.com/nithiljn" target="_blank" class="btn-action" style="padding: 7px 14px; font-size: 0.82rem;">
-                <i data-lucide="github" style="width: 14px; height: 14px;"></i> GitHub
+                <i class="devicon-github-original" style="font-size: 13px;"></i> GitHub
               </a>
             </div>
           </div>
@@ -6125,12 +6125,12 @@
           </button>
 
           <a href="https://www.linkedin.com/in/jamesnithil-v/" target="_blank" rel="noopener noreferrer" class="recruiter-action-btn recruiter-btn-link" title="LinkedIn Profile">
-            <i data-lucide="linkedin" style="width: 15px; height: 15px;"></i>
+            <i class="devicon-linkedin-plain" style="font-size: 15px; color: #0ea5e9;"></i>
             <span>LinkedIn</span>
           </a>
 
           <a href="https://github.com/nithiljn" target="_blank" rel="noopener noreferrer" class="recruiter-action-btn recruiter-btn-link" title="GitHub Profile">
-            <i data-lucide="github" style="width: 15px; height: 15px;"></i>
+            <i class="devicon-github-original" style="font-size: 15px;"></i>
             <span>GitHub</span>
           </a>
 
@@ -6905,6 +6905,7 @@ KadalVazhi (கடல் வழி): Maritime Microservices & AI Platform (2026)
     const cliResponses = {
       'help': `
 Available Commands:
+  ask <query>  Ask dynamic questions to Ask James AI
   whoami       Display identity, role, and competitive ranking
   skills       Print technical skills matrix
   projects     List featured engineering projects
@@ -7035,6 +7036,28 @@ Contact Information:
         link.href = 'James_Nithil_Resume.pdf';
         link.download = 'James_Nithil_Resume.pdf';
         link.click();
+        return;
+      }
+
+      if (cmd.startsWith('ask ') || cmd.startsWith('ai ')) {
+        const query = rawCmd.replace(/^(ask|ai)\s+/i, '').trim();
+        if (!query) {
+          appendTermLine('Usage: <span style="color: var(--accent-blue);">ask &lt;your question&gt;</span> (e.g. ask why did you use Kafka?)', 'cmd-output');
+          return;
+        }
+        appendTermLine('<span style="color: #38bdf8;">[Ask James AI]</span> Querying neural copilot...', 'cmd-output');
+        if (typeof window.queryAskJamesAI === 'function') {
+          window.queryAskJamesAI(query)
+            .then(reply => {
+              const formatted = (reply || '').replace(/\n/g, '<br>');
+              appendTermLine(`<span style="color: #4ade80; font-weight: 600;">[James AI]</span><br>${formatted}`, 'cmd-success');
+            })
+            .catch(err => {
+              appendTermLine('<span style="color: #f87171;">[James AI]</span> Network error connecting to AI copilot. Please check your connection.', 'cmd-output');
+            });
+        } else {
+          appendTermLine('<span style="color: #f87171;">[James AI]</span> AI engine initializing. Please try again in a moment.', 'cmd-output');
+        }
         return;
       }
 
@@ -7708,6 +7731,913 @@ Contact Information:
 
       if (typeof playKeyClick === 'function') playKeyClick();
     }
+  </script>
+
+  <!-- =========================================================
+       ASK JAMES AI - PROFESSIONAL DEVELOPER COPILOT UI
+  ========================================================== -->
+  <style>
+    /* Floating Widget Root */
+    #ask-james-root {
+      position: fixed;
+      bottom: 28px;
+      right: 26px;
+      z-index: 1200;
+      font-family: var(--font-ui);
+      pointer-events: none;
+    }
+
+    #ask-james-root * {
+      pointer-events: auto;
+      box-sizing: border-box;
+    }
+
+    /* Bespoke Floating Trigger Button */
+    .copilot-trigger-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 16px 6px 7px;
+      background: rgba(15, 20, 31, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(99, 102, 241, 0.28);
+      border-radius: 9999px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55), 0 0 15px rgba(99, 102, 241, 0.12);
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+    }
+
+    .copilot-trigger-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(129, 140, 248, 0.55);
+      background: rgba(20, 26, 42, 0.98);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.65), 0 0 22px rgba(99, 102, 241, 0.25);
+    }
+
+    .copilot-avatar-core {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      overflow: visible;
+      flex-shrink: 0;
+    }
+
+    .copilot-avatar-img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 1.5px solid rgba(129, 140, 248, 0.4);
+    }
+
+    .copilot-beacon-dot {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      border: 1.5px solid #0f141f;
+      box-shadow: 0 0 6px #10b981;
+    }
+
+    .copilot-trigger-label {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      letter-spacing: -0.01em;
+    }
+
+    /* Minimalist Callout Banner */
+    .copilot-callout {
+      position: absolute;
+      bottom: 48px;
+      right: 0;
+      width: 230px;
+      background: rgba(15, 20, 31, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      border-radius: 12px;
+      padding: 9px 12px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+      transform-origin: bottom right;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: callout-slide 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .copilot-callout:hover {
+      border-color: rgba(129, 140, 248, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .copilot-callout.hidden {
+      opacity: 0;
+      transform: scale(0.9) translateY(8px);
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    @keyframes callout-slide {
+      0% { opacity: 0; transform: scale(0.9) translateY(8px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .callout-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2px;
+    }
+
+    .callout-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #818cf8;
+      letter-spacing: 0.02em;
+    }
+
+    .callout-pill .live-pulse {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 6px #10b981;
+    }
+
+    .callout-close {
+      background: none;
+      border: none;
+      color: #64748b;
+      font-size: 0.75rem;
+      cursor: pointer;
+      padding: 2px;
+      line-height: 1;
+      border-radius: 4px;
+      transition: color 0.15s;
+    }
+
+    .callout-close:hover {
+      color: #f1f5f9;
+    }
+
+    .callout-sub {
+      font-size: 0.74rem;
+      line-height: 1.4;
+      color: #cbd5e1;
+    }
+
+    /* Handcrafted Assistant Drawer */
+    .ai-chat-drawer {
+      position: absolute;
+      bottom: 54px;
+      right: 0;
+      width: 380px;
+      height: 520px;
+      max-height: calc(100vh - 100px);
+      background: rgba(13, 17, 27, 0.98);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(99, 102, 241, 0.22);
+      border-radius: 16px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(99, 102, 241, 0.08);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform-origin: bottom right;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1210;
+    }
+
+    .ai-chat-drawer.hidden {
+      opacity: 0;
+      transform: scale(0.94) translateY(14px);
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    /* Window Header - Clean & Human (NO fake macOS window dots!) */
+    .drawer-header {
+      padding: 12px 16px;
+      background: rgba(18, 24, 38, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .drawer-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .drawer-header-avatar {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .drawer-header-avatar img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 1.5px solid rgba(129, 140, 248, 0.4);
+    }
+
+    .drawer-header-avatar .status-dot {
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      border: 1.5px solid #121826;
+      box-shadow: 0 0 6px #10b981;
+    }
+
+    .drawer-header-titles {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .drawer-header-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #f8fafc;
+      letter-spacing: -0.01em;
+    }
+
+    .drawer-header-sub {
+      font-size: 0.70rem;
+      color: #94a3b8;
+    }
+
+    .drawer-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .drawer-btn-icon {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+
+    .drawer-btn-icon:hover {
+      color: #f8fafc;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Suggestion Chips */
+    .drawer-chips-wrap {
+      padding: 9px 12px;
+      background: rgba(15, 20, 31, 0.6);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      flex-shrink: 0;
+    }
+
+    .drawer-chip {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      padding: 7px 6px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .drawer-chip:hover {
+      background: rgba(99, 102, 241, 0.12);
+      border-color: rgba(129, 140, 248, 0.38);
+      color: #e0e7ff;
+      transform: translateY(-1px);
+    }
+
+    .drawer-chip .chip-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #818cf8;
+      transition: color 0.18s ease;
+    }
+
+    .drawer-chip:hover .chip-icon {
+      color: #a5b4fc;
+    }
+
+    .drawer-chip .chip-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      white-space: nowrap;
+      letter-spacing: -0.01em;
+    }
+
+    /* Message Thread */
+    .drawer-messages-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scrollbar-width: thin;
+    }
+
+    .chat-msg {
+      display: flex;
+      gap: 9px;
+      max-width: 88%;
+      animation: msg-fade-in 0.2s ease;
+    }
+
+    @keyframes msg-fade-in {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .chat-msg.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .chat-msg.ai {
+      align-self: flex-start;
+    }
+
+    .chat-msg-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      overflow: hidden;
+      margin-top: 2px;
+    }
+
+    .chat-msg-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border: 1px solid rgba(129, 140, 248, 0.3);
+    }
+
+    .chat-msg-bubble {
+      padding: 9px 13px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      line-height: 1.55;
+      word-break: break-word;
+    }
+
+    .chat-msg.user .chat-msg-bubble {
+      background: linear-gradient(135deg, #4f46e5, #4338ca);
+      color: #ffffff;
+      border-bottom-right-radius: 3px;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.28);
+    }
+
+    .chat-msg.ai .chat-msg-bubble {
+      background: rgba(22, 28, 44, 0.85);
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-bottom-left-radius: 3px;
+    }
+
+    .chat-msg.ai .chat-msg-bubble strong {
+      color: #a5b4fc;
+      font-weight: 600;
+    }
+
+    .chat-msg.ai .chat-msg-bubble ul {
+      margin: 6px 0;
+      padding-left: 18px;
+    }
+
+    .chat-msg.ai .chat-msg-bubble li {
+      margin-bottom: 4px;
+    }
+
+    /* Typing Indicator */
+    .typing-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 12px;
+      background: rgba(22, 28, 44, 0.7);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .typing-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #818cf8;
+      animation: typing-bounce 1.2s infinite ease-in-out;
+    }
+
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typing-bounce {
+      0%, 80%, 100% { transform: translateY(0); opacity: 0.35; }
+      40% { transform: translateY(-4px); opacity: 1; }
+    }
+
+    /* Footer & Input Bar */
+    .drawer-footer {
+      padding: 10px 12px;
+      background: rgba(15, 20, 31, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      flex-shrink: 0;
+    }
+
+    .drawer-input-form {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(24, 31, 48, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 10px;
+      padding: 5px 6px 5px 12px;
+      transition: all 0.2s;
+    }
+
+    .drawer-input-form:focus-within {
+      border-color: #6366f1;
+      box-shadow: 0 0 14px rgba(99, 102, 241, 0.25);
+    }
+
+    .drawer-input-field {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #f8fafc;
+      font-size: 0.82rem;
+      font-family: inherit;
+    }
+
+    .drawer-input-field::placeholder {
+      color: #64748b;
+    }
+
+    .drawer-send-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: #4f46e5;
+      border: none;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+    }
+
+    .drawer-send-btn:hover:not(:disabled) {
+      background: #6366f1;
+      transform: scale(1.05);
+    }
+
+    .drawer-send-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .drawer-footer-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+      padding: 0 4px;
+      font-size: 0.66rem;
+      color: #64748b;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      #ask-james-root {
+        bottom: 24px;
+        right: 14px;
+      }
+
+      .copilot-trigger-btn {
+        padding: 5px 12px 5px 5px;
+      }
+
+      .copilot-callout {
+        bottom: 46px;
+        right: 0;
+        width: 240px;
+      }
+
+      .ai-chat-drawer {
+        bottom: 50px;
+        right: 0;
+        width: calc(100vw - 28px);
+        max-width: 360px;
+        height: 480px;
+        max-height: 72vh;
+      }
+    }
+  </style>
+
+  <div id="ask-james-root">
+    <!-- Minimalist Callout Banner -->
+    <div class="copilot-callout" id="ai-speech-bubble" onclick="toggleAiDrawer(true)">
+      <div class="callout-header">
+        <div class="callout-pill">
+          <span class="live-pulse"></span>
+          <span>Ask James</span>
+        </div>
+        <button class="callout-close" id="bubble-close-btn" onclick="dismissSpeechBubble(event)" title="Dismiss">✕</button>
+      </div>
+      <div class="callout-sub">Have a question about James? Click to chat</div>
+    </div>
+
+    <!-- Bespoke Floating Trigger Button -->
+    <button class="copilot-trigger-btn" id="ai-robot-btn" onclick="toggleAiDrawer()" title="Ask James" aria-label="Ask James">
+      <div class="copilot-avatar-core">
+        <img src="assets/images/James_Nithil.jpeg" class="copilot-avatar-img" alt="James" />
+        <span class="copilot-beacon-dot"></span>
+      </div>
+      <span class="copilot-trigger-label">Ask James</span>
+    </button>
+
+    <!-- Handcrafted Assistant Window -->
+    <div class="ai-chat-drawer hidden" id="ai-chat-drawer">
+      <!-- Window Title Bar -->
+      <div class="drawer-header">
+        <div class="drawer-header-left">
+          <div class="drawer-header-avatar">
+            <img src="assets/images/James_Nithil.jpeg" alt="James" />
+            <span class="status-dot"></span>
+          </div>
+          <div class="drawer-header-titles">
+            <span class="drawer-header-title">James Assistant</span>
+            <span class="drawer-header-sub">Online · Quick replies</span>
+          </div>
+        </div>
+        <div class="drawer-actions">
+          <button class="drawer-btn-icon" onclick="clearAiChat()" title="Reset conversation" aria-label="Clear chat">
+            <i data-lucide="rotate-ccw" style="width: 14px; height: 14px;"></i>
+          </button>
+          <button class="drawer-btn-icon" onclick="toggleAiDrawer(false)" title="Close window" aria-label="Close drawer">
+            <i data-lucide="x" style="width: 15px; height: 15px;"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 3 Natural Suggestion Chips -->
+      <div class="drawer-chips-wrap">
+        <button class="drawer-chip" onclick="handleChipClick('Who is James Nithil? Give a concise overview of his profile and strengths.')">
+          <span class="chip-icon">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </span>
+          <span class="chip-label">About James</span>
+        </button>
+        <button class="drawer-chip" onclick="handleChipClick('What is James\'s core tech stack, backend skills, and problem-solving metrics?')">
+          <span class="chip-icon">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
+              <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
+              <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
+            </svg>
+          </span>
+          <span class="chip-label">Tech Stack</span>
+        </button>
+        <button class="drawer-chip" onclick="handleChipClick('Where is James currently working and what is his role at Vaken Technology?')">
+          <span class="chip-icon">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="14" x="2" y="7" rx="2" ry="2"/>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+          </span>
+          <span class="chip-label">Current Role</span>
+        </button>
+      </div>
+
+      <!-- Message History Thread -->
+      <div class="drawer-messages-body" id="ai-messages-body">
+        <div class="chat-msg ai">
+          <div class="chat-msg-avatar">
+            <img src="assets/images/James_Nithil.jpeg" alt="James" />
+          </div>
+          <div class="chat-msg-bubble">
+            Hi! Feel free to ask anything about James's experience, backend architecture, or featured projects. How can I help?
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer & Input -->
+      <div class="drawer-footer">
+        <form class="drawer-input-form" id="ai-chat-form" onsubmit="handleAiSubmit(event)">
+          <input
+            type="text"
+            class="drawer-input-field"
+            id="ai-chat-input"
+            placeholder="Ask a question about James..."
+            maxlength="250"
+            autocomplete="off"
+          />
+          <button type="submit" class="drawer-send-btn" id="ai-send-btn" title="Send question" aria-label="Send">
+            <i data-lucide="arrow-up" style="width: 14px; height: 14px; stroke-width: 2.5;"></i>
+          </button>
+        </form>
+        <div class="drawer-footer-meta">
+          <span>Press Enter to send</span>
+          <span>Trained on James's resume & projects</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ask James AI Controller Script -->
+  <script>
+    (function () {
+      let isAiDrawerOpen = false;
+      let robotState = 'happy'; // 'happy', 'sad', 'excited'
+      let inactivityTimer = null;
+      let conversationHistory = [];
+      const MAX_SESSION_QUERIES = 10;
+      let sessionQueriesCount = 0;
+
+      const robotBtn = document.getElementById('ai-robot-btn');
+      const speechBubble = document.getElementById('ai-speech-bubble');
+      const bubbleMsgText = document.getElementById('bubble-message-text');
+      const chatDrawer = document.getElementById('ai-chat-drawer');
+      const messagesBody = document.getElementById('ai-messages-body');
+      const chatInput = document.getElementById('ai-chat-input');
+      const sendBtn = document.getElementById('ai-send-btn');
+      const queryQuotaLabel = document.getElementById('ai-query-quota');
+
+      // Auto-minimize callout banner after 30s to keep recruiter view clean
+      function resetInactivityTimer() {
+        if (inactivityTimer) clearTimeout(inactivityTimer);
+        inactivityTimer = setTimeout(() => {
+          if (!isAiDrawerOpen && speechBubble) {
+            speechBubble.classList.add('hidden');
+          }
+        }, 30000); // 30 seconds
+      }
+
+      // Toggle Chat Drawer Window
+      window.toggleAiDrawer = function (forceOpen = null) {
+        const nextState = forceOpen !== null ? forceOpen : !isAiDrawerOpen;
+        isAiDrawerOpen = nextState;
+
+        if (isAiDrawerOpen) {
+          if (speechBubble) speechBubble.classList.add('hidden');
+          if (chatDrawer) chatDrawer.classList.remove('hidden');
+          if (inactivityTimer) clearTimeout(inactivityTimer);
+          if (chatInput) {
+            setTimeout(() => chatInput.focus(), 150);
+          }
+        } else {
+          if (chatDrawer) chatDrawer.classList.add('hidden');
+          resetInactivityTimer();
+        }
+
+        if (window.lucide) lucide.createIcons();
+        if (typeof playKeyClick === 'function') playKeyClick();
+      };
+
+      // Dismiss Speech Bubble
+      window.dismissSpeechBubble = function (e) {
+        if (e) e.stopPropagation();
+        if (speechBubble) speechBubble.classList.add('hidden');
+        if (typeof playKeyClick === 'function') playKeyClick();
+      };
+
+      // Quick Suggestion Chip Click
+      window.handleChipClick = function (query) {
+        if (chatInput) {
+          chatInput.value = query;
+          const fakeEvent = { preventDefault: () => {} };
+          handleAiSubmit(fakeEvent);
+        }
+      };
+
+      const AI_AVATAR_HTML = `<img src="assets/images/James_Nithil.jpeg" alt="James" />`;
+
+      // Clear AI Chat Thread
+      window.clearAiChat = function () {
+        conversationHistory = [];
+        if (messagesBody) {
+          messagesBody.innerHTML = `
+            <div class="chat-msg ai">
+              <div class="chat-msg-avatar">
+                ${AI_AVATAR_HTML}
+              </div>
+              <div class="chat-msg-bubble">
+                Hi! Feel free to ask anything about James's experience, backend architecture, or featured projects. How can I help?
+              </div>
+            </div>
+          `;
+        }
+        if (typeof playKeyClick === 'function') playKeyClick();
+      };
+
+      // Append Message to Thread
+      function appendChatMessage(role, text) {
+        if (!messagesBody) return null;
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `chat-msg ${role}`;
+
+        if (role === 'ai') {
+          const avatarDiv = document.createElement('div');
+          avatarDiv.className = 'chat-msg-avatar';
+          avatarDiv.innerHTML = AI_AVATAR_HTML;
+          msgDiv.appendChild(avatarDiv);
+        }
+
+        const bubbleDiv = document.createElement('div');
+        bubbleDiv.className = 'chat-msg-bubble';
+
+        if (role === 'user') {
+          bubbleDiv.textContent = text;
+        } else {
+          // Format markdown basic bold and bullet lists
+          bubbleDiv.innerHTML = formatAiMarkdown(text);
+        }
+
+        msgDiv.appendChild(bubbleDiv);
+        messagesBody.appendChild(msgDiv);
+        messagesBody.scrollTop = messagesBody.scrollHeight;
+        return bubbleDiv;
+      }
+
+      // Basic Markdown Formatter for AI output
+      function formatAiMarkdown(text) {
+        if (!text) return '';
+        let escaped = text
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+
+        // Bold **text**
+        escaped = escaped.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        // Bullet points
+        escaped = escaped.replace(/(?:^|\n)[•\-*]\s+(.+)/g, '<br>• $1');
+        // Double newlines into paragraph breaks
+        escaped = escaped.replace(/\n\n/g, '<br><br>');
+        return escaped;
+      }
+
+      // Universal Ask James AI Query Engine (Vercel Serverless + Local LiveServer Fallback)
+      const JAMES_AI_DOSSIER = `You are the portfolio assistant representing James Nithil V.
+- Role: Junior Software Developer at Vaken Technology (working on Sovablu Enterprise Low-Code Platform).
+- Stack: Java 21, Spring Boot REST APIs, Apache Kafka, Redis caching, PostgreSQL, DynamoDB, Claude SDK, Jenkins CI/CD, AWS (EC2, S3, Lambda, CodeCommit).
+- Production Impact: Designed scalable REST APIs in Java 21, added Redis caching across database hot paths, configured CI/CD automation pipelines with Jenkins, and integrated Claude SDK workflows.
+- Flagship Project: KadalVazhi (Maritime Microservices & AI Ecosystem). Microservices backend in Java 21, Kafka event streaming, SQLite deep-sea offline sync (12+ NM offshore with no cellular signal), automated mechanic dispatch, boat crew matchmaking, Tamil & Malayalam i18n voice IVR/SMS, Whisper voice AI transcription.
+- Problem Solving: LeetCode Knight Badge (Contest Rating 1,994, Peak Global Contest Rank #114 / 43,027+ contestants, top 2.73%). 700+ problems solved (446 in Java, 443 in Python3).
+- Other Projects: FarmVista (Smart agriculture with CNN plant disease detection, SIH Hackathon Leader), SymptoMedAI (Healthcare triage assistant), InterviewBot (AI technical mock interview platform).
+- Education: B.Tech in Artificial Intelligence & Data Science, Knowledge Institute of Technology (KIOT), CGPA 8.1 / 10.
+- Contact: Email: jamesnithil2003@gmail.com | Portfolio: https://jamesnithil.vercel.app | LinkedIn: linkedin.com/in/jamesnithil-v.
+Guidelines: Be natural, articulate, concise, and professional (under 130 words). Speak conversationally as James's portfolio assistant. Do NOT use buzzwords like 'ground-truth' or 'zero-hallucination'. Do NOT spam hyphen bullet points or multiple dashes. Format text cleanly and elegantly.`;
+
+      window.queryAskJamesAI = async function (query, history = []) {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: query, history })
+        });
+
+        if (!res.ok) {
+          throw new Error(`Server returned ${res.status}`);
+        }
+
+        const data = await res.json();
+        return data.reply || "James's assistant is ready to help!";
+      };
+
+      // Handle Form Submit
+      window.handleAiSubmit = async function (e) {
+        if (e && e.preventDefault) e.preventDefault();
+        if (!chatInput) return;
+
+        const query = chatInput.value.trim();
+        if (!query) return;
+
+        // Check Session Quota Guard
+        if (sessionQueriesCount >= MAX_SESSION_QUERIES) {
+          appendChatMessage('ai', "You have reached the maximum questions limit for this browser session! 🛡️ Feel free to connect directly with James on LinkedIn or email him at **jamesnithil2003@gmail.com**.");
+          return;
+        }
+
+        sessionQueriesCount++;
+        if (queryQuotaLabel) {
+          const remaining = MAX_SESSION_QUERIES - sessionQueriesCount;
+          queryQuotaLabel.innerHTML = `<span class="quota-dot"></span>${remaining} question${remaining === 1 ? '' : 's'} remaining`;
+        }
+
+        // Add user message to UI
+        appendChatMessage('user', query);
+        chatInput.value = '';
+        if (sendBtn) sendBtn.disabled = true;
+
+        // Show typing indicator
+        const typingIndicator = document.createElement('div');
+        typingIndicator.className = 'chat-msg ai';
+        typingIndicator.id = 'ai-typing-indicator';
+        typingIndicator.innerHTML = `
+          <div class="chat-msg-avatar">
+            ${AI_AVATAR_HTML}
+          </div>
+          <div class="typing-indicator">
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+          </div>
+        `;
+        messagesBody.appendChild(typingIndicator);
+        messagesBody.scrollTop = messagesBody.scrollHeight;
+
+        try {
+          const aiReply = await window.queryAskJamesAI(query, conversationHistory);
+
+          // Remove typing indicator
+          const indicatorEl = document.getElementById('ai-typing-indicator');
+          if (indicatorEl) indicatorEl.remove();
+
+          // Record in conversation history
+          conversationHistory.push({ role: 'user', content: query });
+          conversationHistory.push({ role: 'assistant', content: aiReply });
+
+          // Stream / typewriter effect for AI reply
+          const bubble = appendChatMessage('ai', '');
+          let charIndex = 0;
+          const streamSpeed = 12; // ms per chunk
+
+          const streamInterval = setInterval(() => {
+            charIndex += 4;
+            if (charIndex >= aiReply.length) {
+              bubble.innerHTML = formatAiMarkdown(aiReply);
+              clearInterval(streamInterval);
+              messagesBody.scrollTop = messagesBody.scrollHeight;
+            } else {
+              bubble.innerHTML = formatAiMarkdown(aiReply.slice(0, charIndex) + '▌');
+              messagesBody.scrollTop = messagesBody.scrollHeight;
+            }
+          }, streamSpeed);
+
+        } catch (error) {
+          console.error('Ask James AI Error:', error);
+          const indicatorEl = document.getElementById('ai-typing-indicator');
+          if (indicatorEl) indicatorEl.remove();
+
+          appendChatMessage(
+            'ai',
+            "James AI encountered a brief network glitch! ⚡ Feel free to check out James's **Download Resume** link or email him at **jamesnithil2003@gmail.com**."
+          );
+        } finally {
+          if (sendBtn) sendBtn.disabled = false;
+          if (chatInput) chatInput.focus();
+        }
+      };
+
+      // Start initial timer
+      resetInactivityTimer();
+    })();
   </script>
 
   <!-- Vercel Web Analytics -->
