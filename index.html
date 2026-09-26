@@ -1422,6 +1422,77 @@
       color: #ffffff;
     }
 
+    /* SCENARIO SELECTOR */
+    .sim-scenario-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .sim-scenario-label {
+      font-size: 0.70rem;
+      font-family: var(--font-code);
+      font-weight: 700;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .sim-scenario-pills {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .sim-scenario-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      font-size: 0.74rem;
+      font-family: var(--font-code);
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .sim-scenario-pill:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+      border-color: var(--border-accent);
+    }
+
+    .sim-scenario-pill.active {
+      background: rgba(59, 130, 246, 0.18);
+      border-color: var(--accent-blue);
+      color: #ffffff;
+      font-weight: 600;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.25);
+    }
+
+    .sim-pill-badge {
+      font-size: 0.58rem;
+      font-weight: 800;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: #10b981;
+      color: #042f2e;
+      letter-spacing: 0.04em;
+    }
+
     .sim-progress-track {
       width: 100%;
       height: 3px;
@@ -4609,6 +4680,27 @@
                 </div>
               </div>
 
+              <!-- Scenario Selector Bar -->
+              <div class="sim-scenario-selector">
+                <span class="sim-scenario-label"><i data-lucide="git-branch" style="width: 12px; height: 12px;"></i> Scenario:</span>
+                <div class="sim-scenario-pills">
+                  <button class="sim-scenario-pill active" id="sim-tab-catch" onclick="switchSimScenario('catch')">
+                    <i data-lucide="anchor" style="width: 13px; height: 13px;"></i>
+                    <span>1. Catch Telemetry Sync</span>
+                  </button>
+                  <button class="sim-scenario-pill" id="sim-tab-mechanic" onclick="switchSimScenario('mechanic')">
+                    <i data-lucide="wrench" style="width: 13px; height: 13px;"></i>
+                    <span>2. Emergency Mechanic Dispatch</span>
+                    <span class="sim-pill-badge">NEW</span>
+                  </button>
+                  <button class="sim-scenario-pill" id="sim-tab-crew" onclick="switchSimScenario('crew')">
+                    <i data-lucide="users" style="width: 13px; height: 13px;"></i>
+                    <span>3. Crew Job Matchmaking</span>
+                    <span class="sim-pill-badge">NEW</span>
+                  </button>
+                </div>
+              </div>
+
               <!-- Pipeline Progress Track -->
               <div class="sim-progress-track">
                 <div class="sim-progress-bar" id="sim-progress-fill"></div>
@@ -4619,11 +4711,11 @@
                 <!-- Node 1: Vessel Client -->
                 <div class="sim-node" id="sim-node-1">
                   <div class="sim-node-badge">STAGE 1</div>
-                  <div class="sim-node-icon-wrap">
+                  <div class="sim-node-icon-wrap" id="sim-node-1-icon">
                     <i data-lucide="anchor" style="width: 18px; height: 18px;"></i>
                   </div>
-                  <h4 class="sim-node-title">Offshore Vessel</h4>
-                  <div class="sim-node-tech">SQLite WAL Mode</div>
+                  <h4 class="sim-node-title" id="sim-node-1-title">Offshore Vessel</h4>
+                  <div class="sim-node-tech" id="sim-node-1-tech">SQLite WAL Mode</div>
                   <div class="sim-node-status" id="sim-node-1-status">Deep-sea (12 NM offshore)</div>
                 </div>
 
@@ -4635,11 +4727,11 @@
                 <!-- Node 2: 4G Coastal Relay -->
                 <div class="sim-node" id="sim-node-2">
                   <div class="sim-node-badge">STAGE 2</div>
-                  <div class="sim-node-icon-wrap">
+                  <div class="sim-node-icon-wrap" id="sim-node-2-icon">
                     <i data-lucide="radio" style="width: 18px; height: 18px;"></i>
                   </div>
-                  <h4 class="sim-node-title">Coastal 4G Relay</h4>
-                  <div class="sim-node-tech">Kasimedu Tower (5 NM)</div>
+                  <h4 class="sim-node-title" id="sim-node-2-title">Coastal 4G Relay</h4>
+                  <div class="sim-node-tech" id="sim-node-2-tech">Kasimedu Tower (5 NM)</div>
                   <div class="sim-node-status" id="sim-node-2-status">Awaiting cellular link</div>
                 </div>
 
@@ -4651,11 +4743,11 @@
                 <!-- Node 3: Kafka Event Hub -->
                 <div class="sim-node" id="sim-node-3">
                   <div class="sim-node-badge">STAGE 3</div>
-                  <div class="sim-node-icon-wrap">
+                  <div class="sim-node-icon-wrap" id="sim-node-3-icon">
                     <i data-lucide="layers" style="width: 18px; height: 18px;"></i>
                   </div>
-                  <h4 class="sim-node-title">Kafka Event Stream</h4>
-                  <div class="sim-node-tech">catch-reported-events</div>
+                  <h4 class="sim-node-title" id="sim-node-3-title">Kafka Event Stream</h4>
+                  <div class="sim-node-tech" id="sim-node-3-tech">catch-reported-events</div>
                   <div class="sim-node-status" id="sim-node-3-status">Partition 2 · Idempotent</div>
                 </div>
 
@@ -4667,11 +4759,11 @@
                 <!-- Node 4: Spring Boot Microservices -->
                 <div class="sim-node" id="sim-node-4">
                   <div class="sim-node-badge">STAGE 4</div>
-                  <div class="sim-node-icon-wrap">
+                  <div class="sim-node-icon-wrap" id="sim-node-4-icon">
                     <i data-lucide="server" style="width: 18px; height: 18px;"></i>
                   </div>
-                  <h4 class="sim-node-title">Cloud Microservices</h4>
-                  <div class="sim-node-tech">PostgreSQL & Redis</div>
+                  <h4 class="sim-node-title" id="sim-node-4-title">Cloud Microservices</h4>
+                  <div class="sim-node-tech" id="sim-node-4-tech">PostgreSQL & Redis</div>
                   <div class="sim-node-status" id="sim-node-4-status">Dockside Pre-Orders Active</div>
                 </div>
               </div>
@@ -4682,7 +4774,7 @@
                   <span class="sim-console-dot red"></span>
                   <span class="sim-console-dot yellow"></span>
                   <span class="sim-console-dot green"></span>
-                  <span class="sim-console-title">kafka-sync-worker.log : Live Event Telemetry Stream</span>
+                  <span class="sim-console-title" id="sim-console-title">kafka-sync-worker.log : Live Event Telemetry Stream</span>
                   <span class="sim-console-clear" onclick="clearSimConsole()">Clear</span>
                 </div>
                 <div class="sim-console-stream" id="sim-console-logs">
@@ -6568,10 +6660,16 @@ $ tech_highlights
       }
     }
 
-    // Trigger typewriter on load
+    // Trigger typewriter on load and support direct hash tab linking
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(runTypewriter, 200);
       updateDynamicTenure();
+      if (window.location.hash) {
+        const target = window.location.hash.replace('#', '');
+        if (document.getElementById(target)) {
+          setTimeout(() => switchTab(target), 150);
+        }
+      }
     });
 
     // Dynamic Tenure Counter for Vaken (Aug 2025 to Present)
@@ -7032,86 +7130,263 @@ Contact Information:
     }
 
     // -------------------------------------------------------------
-    // KADALVAZHI DISTRIBUTED DATA FLOW SIMULATOR
+    // KADALVAZHI DISTRIBUTED ARCHITECTURE MULTI-SCENARIO SIMULATOR
     // -------------------------------------------------------------
     let simInterval = null;
     let simStep = 0;
     let isSimRunning = false;
+    let currentSimScenario = 'catch';
 
-    const simLogs = [
-      {
-        stage: 1,
-        progress: 25,
-        statusText: 'STAGE 1: Deep-Sea Offline Capture (Zero 4G)',
-        logClass: 'step1',
-        logText: '[00:00.15] [Vessel TN-08-4129] Status: 12 NM offshore Kasimedu. Zero 4G connectivity.',
-        nodeStatus1: '14 catches in buffer'
+    const simScenarios = {
+      catch: {
+        id: 'catch',
+        name: 'Catch Telemetry Sync',
+        consoleTitle: 'kafka-sync-worker.log : Live Event Telemetry Stream',
+        initLog: '[INIT] Catch Telemetry Scenario loaded. Click \'Run Live Simulation\' to trigger boat-to-cloud sync pipeline.',
+        startLog: '[START] Voyage Sync Simulation started. Vessel TN-08-4129 returning to port Kasimedu with 405kg catch.',
+        completeStatus: 'VOYAGE SYNC COMPLETE · 100% Data Fidelity',
+        nodes: {
+          node1: { title: 'Offshore Vessel', tech: 'SQLite WAL Mode', initialStatus: 'Deep-sea (12 NM offshore)', icon: 'anchor' },
+          node2: { title: 'Coastal 4G Relay', tech: 'Kasimedu Tower (5 NM)', initialStatus: 'Awaiting cellular link', icon: 'radio' },
+          node3: { title: 'Kafka Event Stream', tech: 'catch-reported-events', initialStatus: 'Partition 2 · Idempotent', icon: 'layers' },
+          node4: { title: 'Cloud Microservices', tech: 'PostgreSQL & Redis', initialStatus: 'Dockside Pre-Orders Active', icon: 'server' }
+        },
+        logs: [
+          {
+            stage: 1,
+            progress: 25,
+            statusText: 'STAGE 1: Deep-Sea Offline Capture (Zero 4G)',
+            logClass: 'step1',
+            logText: '[00:00.15] [Vessel TN-08-4129] Status: 12 NM offshore Kasimedu. Zero 4G connectivity.',
+            nodeStatus1: '14 catches in buffer'
+          },
+          {
+            stage: 1,
+            progress: 35,
+            statusText: 'STAGE 1: Local SQLite Write (WAL Mode)',
+            logClass: 'step1',
+            logText: '[00:00.65] [SQLite-Client] Appended: 320kg Yellowfin Tuna + 85kg Seer Fish (Trip ID: VYG-89102). Idempotent UUID generated.',
+            nodeStatus1: 'Delta buffer committed'
+          },
+          {
+            stage: 2,
+            progress: 55,
+            statusText: 'STAGE 2: Coastal 4G Handshake Detected',
+            logClass: 'step2',
+            logText: '[00:01.30] [Network-Agent] Approaching Kasimedu harbour perimeter (5 NM). Coastal 4G acquired (RSSI -76dBm).',
+            nodeStatus2: 'Handshake OK · Sync Ready'
+          },
+          {
+            stage: 2,
+            progress: 65,
+            statusText: 'STAGE 2: Reconnection Handshake & Auth',
+            logClass: 'step2',
+            logText: '[00:01.80] [Sync-Manager] Handshake verified. Mutual TLS established. Packaging 14 buffered voyage payloads.',
+            nodeStatus2: 'Payload batch dispatched'
+          },
+          {
+            stage: 3,
+            progress: 80,
+            statusText: 'STAGE 3: Apache Kafka Event Bus Ingestion',
+            logClass: 'step3',
+            logText: '[00:02.35] [Kafka-Producer] Published batch to topic "catch-reported-events" (Partition 2, Key: TN-08-4129).',
+            nodeStatus3: 'Ack=all · Offset: 84,210'
+          },
+          {
+            stage: 3,
+            progress: 88,
+            statusText: 'STAGE 3: Event Stream Deduplication',
+            logClass: 'step3',
+            logText: '[00:02.80] [Kafka-Broker] Idempotent deduplication check passed. Broker latency: 3.4ms. Stream routed to consumers.',
+            nodeStatus3: 'Stream distributed'
+          },
+          {
+            stage: 4,
+            progress: 95,
+            statusText: 'STAGE 4: Spring Boot Microservices & Caching',
+            logClass: 'step4',
+            logText: '[00:03.30] [CatchEventConsumer] Consumed payload in Java 21 microservice. PostgreSQL Multi-AZ transaction committed.',
+            nodeStatus4: 'PostgreSQL JSONB OK'
+          },
+          {
+            stage: 4,
+            progress: 100,
+            statusText: 'STAGE 4: Dockside Marketplace & Voice AI Dispatched',
+            logClass: 'step4',
+            logText: '[00:03.80] [Redis-Cache] Updated Kasimedu dockside auction volume (+405kg). Latency: 0.9ms.',
+            nodeStatus4: 'Redis Cache Updated'
+          },
+          {
+            stage: 4,
+            progress: 100,
+            statusText: 'SYNC COMPLETE: 100% Data Integrity Reconciled',
+            logClass: 'success',
+            logText: '[00:04.25] [Whisper-Voice-Engine] Tamil Voice Advisory pushed to vessel: "காசிமேடு வரவு பதிவு செய்யப்பட்டது. இடைத்தரகர் கமிஷன் 0%."',
+            nodeStatus4: 'Pre-Orders Live · Middlemen: 0%'
+          }
+        ]
       },
-      {
-        stage: 1,
-        progress: 35,
-        statusText: 'STAGE 1: Local SQLite Write (WAL Mode)',
-        logClass: 'step1',
-        logText: '[00:00.65] [SQLite-Client] Appended: 320kg Yellowfin Tuna + 85kg Seer Fish (Trip ID: VYG-89102). Idempotent UUID generated.',
-        nodeStatus1: 'Delta buffer committed'
+      mechanic: {
+        id: 'mechanic',
+        name: 'Emergency Mechanic Dispatch',
+        consoleTitle: 'kafka-emergency-worker.log : Live SOS & Agent Dispatch Stream',
+        initLog: '[INIT] Emergency Mechanic Dispatch Scenario loaded. Mid-sea boat breakdown & agentic dispatch pipeline ready.',
+        startLog: '[START] SOS Emergency Simulation started. Vessel TN-08-4129 reports engine overheating at sea (14 NM offshore).',
+        completeStatus: 'AGENT DISPATCH COMPLETE · Marine Mechanic En Route',
+        nodes: {
+          node1: { title: 'Offshore Vessel SOS', tech: 'Diagnostic SQLite Logger', initialStatus: 'Engine Overheat · Fault 402', icon: 'alert-triangle' },
+          node2: { title: 'Coastal SOS Relay', tech: 'Emergency Packet Mesh', initialStatus: 'GPS Broadcast (13.12°N, 80.32°E)', icon: 'radio' },
+          node3: { title: 'Kafka Emergency Bus', tech: 'vessel-emergency-stream', initialStatus: 'Priority 0 · Zero-Drop Ack', icon: 'zap' },
+          node4: { title: 'LangGraph Dispatch Agent', tech: 'Claude SDK + Spring Boot', initialStatus: 'Technician Assigned · ETA 35m', icon: 'wrench' }
+        },
+        logs: [
+          {
+            stage: 1,
+            progress: 20,
+            statusText: 'STAGE 1: Mid-Sea Engine Anomaly Detected',
+            logClass: 'step1',
+            logText: '[00:00.12] [Diagnostics-Engine] Vessel TN-08-4129: Coolant pressure anomaly detected (P < 1.1 bar). Engine temp: 98°C.',
+            nodeStatus1: 'Fault logged in SQLite'
+          },
+          {
+            stage: 1,
+            progress: 35,
+            statusText: 'STAGE 1: Local SQLite Diagnostic Snapshot Written',
+            logClass: 'step1',
+            logText: '[00:00.58] [SQLite-Client] Stored emergency snapshot: Fault Code ERR_COOLANT_402 with GPS coordinates and fuel telemetry.',
+            nodeStatus1: 'Emergency payload ready'
+          },
+          {
+            stage: 2,
+            progress: 55,
+            statusText: 'STAGE 2: Emergency Coastal Link Acquired',
+            logClass: 'step2',
+            logText: '[00:01.20] [SOS-Relay] Coastal cellular mesh link acquired. High-priority SOS distress packet dispatched with priority flag 0x01.',
+            nodeStatus2: 'SOS Dispatched · Signal OK'
+          },
+          {
+            stage: 3,
+            progress: 75,
+            statusText: 'STAGE 3: Apache Kafka High-Priority Ingestion',
+            logClass: 'step3',
+            logText: '[00:01.85] [Kafka-Producer] Published to topic "vessel-emergency-stream" (Partition 0, Key: TN-08-4129, SLA: <10ms).',
+            nodeStatus3: 'Ack=all · Quorum Confirmed'
+          },
+          {
+            stage: 4,
+            progress: 88,
+            statusText: 'STAGE 4: Spring Boot Microservices Validation',
+            logClass: 'step4',
+            logText: '[00:02.40] [Java-SpringBoot] Validated incident payload. Wrote incident to PostgreSQL & synchronized telemetry to DynamoDB.',
+            nodeStatus4: 'Incident Recorded in DB'
+          },
+          {
+            stage: 4,
+            progress: 94,
+            statusText: 'STAGE 4: LangGraph Agent + Claude SDK Matching',
+            logClass: 'step4',
+            logText: '[00:03.00] [LangGraph-Agent] Claude SDK invoked "MechanicDispatchAgent": matched certified technician "Murugan Marine Works" (Kasimedu Pier 4).',
+            nodeStatus4: 'Mechanic Assigned: Murugan'
+          },
+          {
+            stage: 4,
+            progress: 100,
+            statusText: 'DISPATCH CONFIRMED: Multilingual i18n Alert Pushed',
+            logClass: 'success',
+            logText: '[00:03.70] [i18n-Audio-Engine] Tamil Voice & SMS sent to skipper: "பழுதுபார்க்கும் மெக்கானிக் முருகன் படகுக்கு அனுப்பப்பட்டார். வருகை: 35 நிமிடங்கள்."',
+            nodeStatus4: 'Technician En Route · ETA: 35m'
+          },
+          {
+            stage: 4,
+            progress: 100,
+            statusText: 'INCIDENT RESOLVED: Live Telemetry Handshake Active',
+            logClass: 'success',
+            logText: '[00:04.20] [Telemetry-Sync] Live SQLite telemetry streaming to technician tablet. Replacement impeller part #IMP-204 prepped.',
+            nodeStatus4: 'Part Prepped · Live Link OK'
+          }
+        ]
       },
-      {
-        stage: 2,
-        progress: 55,
-        statusText: 'STAGE 2: Coastal 4G Handshake Detected',
-        logClass: 'step2',
-        logText: '[00:01.30] [Network-Agent] Approaching Kasimedu harbour perimeter (5 NM). Coastal 4G acquired (RSSI -76dBm).',
-        nodeStatus2: 'Handshake OK · Sync Ready'
-      },
-      {
-        stage: 2,
-        progress: 65,
-        statusText: 'STAGE 2: Reconnection Handshake & Auth',
-        logClass: 'step2',
-        logText: '[00:01.80] [Sync-Manager] Handshake verified. Mutual TLS established. Packaging 14 buffered voyage payloads.',
-        nodeStatus2: 'Payload batch dispatched'
-      },
-      {
-        stage: 3,
-        progress: 80,
-        statusText: 'STAGE 3: Apache Kafka Event Bus Ingestion',
-        logClass: 'step3',
-        logText: '[00:02.35] [Kafka-Producer] Published batch to topic "catch-reported-events" (Partition 2, Key: TN-08-4129).',
-        nodeStatus3: 'Ack=all · Offset: 84,210'
-      },
-      {
-        stage: 3,
-        progress: 88,
-        statusText: 'STAGE 3: Event Stream Deduplication',
-        logClass: 'step3',
-        logText: '[00:02.80] [Kafka-Broker] Idempotent deduplication check passed. Broker latency: 3.4ms. Stream routed to consumers.',
-        nodeStatus3: 'Stream distributed'
-      },
-      {
-        stage: 4,
-        progress: 95,
-        statusText: 'STAGE 4: Spring Boot Microservices & Caching',
-        logClass: 'step4',
-        logText: '[00:03.30] [CatchEventConsumer] Consumed payload in Java 25 microservice. PostgreSQL Multi-AZ transaction committed.',
-        nodeStatus4: 'PostgreSQL JSONB OK'
-      },
-      {
-        stage: 4,
-        progress: 100,
-        statusText: 'STAGE 4: Dockside Marketplace & Voice AI Dispatched',
-        logClass: 'step4',
-        logText: '[00:03.80] [Redis-Cache] Updated Kasimedu dockside auction volume (+405kg). Latency: 0.9ms.',
-        nodeStatus4: 'Redis Cache Updated'
-      },
-      {
-        stage: 4,
-        progress: 100,
-        statusText: 'SYNC COMPLETE: 100% Data Integrity Reconciled',
-        logClass: 'success',
-        logText: '[00:04.25] [Whisper-Voice-Engine] Tamil Voice Advisory pushed to vessel: "காசிமேடு வரவு பதிவு செய்யப்பட்டது. இடைத்தரகர் கமிஷன் 0%."',
-        nodeStatus4: 'Pre-Orders Live · Middlemen: 0%'
+      crew: {
+        id: 'crew',
+        name: 'Crew Job Matchmaking',
+        consoleTitle: 'crew-requisition-worker.log : Live Vacancy & Match Stream',
+        initLog: '[INIT] Crew Job Matchmaking Scenario loaded. Rapid fisherman and boat crew staffing pipeline ready.',
+        startLog: '[START] Crew Vacancy Simulation started. Boat TN-08-4129 announces urgent need for 2 deep-sea operators.',
+        completeStatus: 'CREW MATCH COMPLETE · 2 Positions Filled in 8 Seconds',
+        nodes: {
+          node1: { title: 'Skipper Requisition', tech: 'Voyage Portal (SQLite)', initialStatus: 'Need 2 Net Operators', icon: 'users' },
+          node2: { title: 'Harbour 4G Relay', tech: 'Kasimedu Repeater', initialStatus: 'Job Vacancy Dispatched', icon: 'radio' },
+          node3: { title: 'Kafka Event Bus', tech: 'crew-requisition-events', initialStatus: 'Partition 1 · Fast Route', icon: 'layers' },
+          node4: { title: 'Matchmaking Engine', tech: 'Spring Boot + i18n IVR', initialStatus: 'Roster Finalized (5/5)', icon: 'check-circle-2' }
+        },
+        logs: [
+          {
+            stage: 1,
+            progress: 20,
+            statusText: 'STAGE 1: Skipper Publishes Urgent Vacancy',
+            logClass: 'step1',
+            logText: '[00:00.15] [Skipper-Client] Boat TN-08-4129 scheduled for 3-day deep-sea voyage at 04:00 AM. 2 crew members absent.',
+            nodeStatus1: '2 crew vacancies posted'
+          },
+          {
+            stage: 1,
+            progress: 35,
+            statusText: 'STAGE 1: Wage Guarantee & Voyage Details Logged',
+            logClass: 'step1',
+            logText: '[00:00.60] [SQLite-Client] Vacancy committed: 2 Deep-sea net operators (Wage: ₹2,500/day + 10% catch profit share).',
+            nodeStatus1: 'Requisition packet sealed'
+          },
+          {
+            stage: 2,
+            progress: 55,
+            statusText: 'STAGE 2: Harbour Edge Network Handshake',
+            logClass: 'step2',
+            logText: '[00:01.20] [Network-Relay] Requisition payload dispatched to cloud edge via Kasimedu harbour high-bandwidth relay.',
+            nodeStatus2: 'Payload Relayed'
+          },
+          {
+            stage: 3,
+            progress: 75,
+            statusText: 'STAGE 3: Kafka Event Bus Ingestion',
+            logClass: 'step3',
+            logText: '[00:01.80] [Kafka-Producer] Ingested into topic "crew-requisition-events" (Partition 1, EventID: CREW-REQ-9012).',
+            nodeStatus3: 'Distributed to match consumers'
+          },
+          {
+            stage: 4,
+            progress: 88,
+            statusText: 'STAGE 4: Spring Boot Microservices Candidate Matching',
+            logClass: 'step4',
+            logText: '[00:02.35] [Spring-Boot-Backend] Java 21 microservice queried PostgreSQL Registry: filtered 4 active certified operators within 3km.',
+            nodeStatus4: '4 Candidates Filtered'
+          },
+          {
+            stage: 4,
+            progress: 94,
+            statusText: 'STAGE 4: Multilingual i18n Automated Broadcast',
+            logClass: 'step4',
+            logText: '[00:02.95] [i18n-Broadcast] Instant Tamil & Malayalam IVR Voice call & SMS dispatched: "காசிமேடு படகு TN-08-4129-க்கு 2 பேர் தேவை."',
+            nodeStatus4: 'SMS & IVR Dispatched'
+          },
+          {
+            stage: 4,
+            progress: 100,
+            statusText: 'MATCH CONFIRMED: 2 Crew Accepted via 1-Tap Response',
+            logClass: 'success',
+            logText: '[00:03.65] [Crew-Response] 2 operators accepted via 1-tap SMS response: K. Velu (Badge #1184) & M. Selvam (Badge #2091).',
+            nodeStatus4: '2 Positions Filled'
+          },
+          {
+            stage: 4,
+            progress: 100,
+            statusText: 'CREW ROSTER LOCKED: Departure Clearance Granted',
+            logClass: 'success',
+            logText: '[00:04.15] [Voyage-Manager] Crew manifest finalized (5/5) in PostgreSQL. Departure clearance issued for 04:00 AM. Zero voyage delay!',
+            nodeStatus4: 'Roster Locked · 5/5 Ready'
+          }
+        ]
       }
-    ];
+    };
 
     function appendSimLog(html, className = '') {
       const logsEl = document.getElementById('sim-console-logs');
@@ -7130,10 +7405,62 @@ Contact Information:
       }
     }
 
-    function resetKadalVazhiSimulation() {
+    function switchSimScenario(scenarioKey) {
+      if (!simScenarios[scenarioKey]) return;
+      if (isSimRunning) {
+        if (simInterval) clearInterval(simInterval);
+        isSimRunning = false;
+      }
+      currentSimScenario = scenarioKey;
+
+      // Update pills
+      ['catch', 'mechanic', 'crew'].forEach(key => {
+        const btn = document.getElementById(`sim-tab-${key}`);
+        if (btn) {
+          if (key === scenarioKey) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        }
+      });
+
+      const sc = simScenarios[scenarioKey];
+
+      // Update console title
+      const consoleTitle = document.getElementById('sim-console-title');
+      if (consoleTitle) consoleTitle.textContent = sc.consoleTitle;
+
+      // Update node titles, techs, statuses, and icons
+      for (let i = 1; i <= 4; i++) {
+        const nodeData = sc.nodes[`node${i}`];
+        if (nodeData) {
+          const t = document.getElementById(`sim-node-${i}-title`);
+          if (t) t.textContent = nodeData.title;
+          const tech = document.getElementById(`sim-node-${i}-tech`);
+          if (tech) tech.textContent = nodeData.tech;
+          const status = document.getElementById(`sim-node-${i}-status`);
+          if (status) status.textContent = nodeData.initialStatus;
+          const iconWrap = document.getElementById(`sim-node-${i}-icon`);
+          if (iconWrap && nodeData.icon) {
+            iconWrap.innerHTML = `<i data-lucide="${nodeData.icon}" style="width: 18px; height: 18px;"></i>`;
+          }
+        }
+      }
+
+      if (window.lucide) lucide.createIcons();
+
+      // Reset pipeline state with scenario message
+      resetKadalVazhiSimulation(true);
+      playKeyClick();
+    }
+
+    function resetKadalVazhiSimulation(silent = false) {
       if (simInterval) clearInterval(simInterval);
       isSimRunning = false;
       simStep = 0;
+
+      const sc = simScenarios[currentSimScenario] || simScenarios.catch;
 
       const runBtnLabel = document.getElementById('sim-run-btn-label');
       if (runBtnLabel) runBtnLabel.textContent = 'Run Live Simulation';
@@ -7145,13 +7472,18 @@ Contact Information:
       if (statusIndicator) statusIndicator.classList.remove('active');
 
       const statusText = document.getElementById('sim-status-text');
-      if (statusText) statusText.textContent = 'SYSTEM IDLE · Ready to simulate voyage sync';
+      if (statusText) statusText.textContent = `SYSTEM IDLE · Ready to simulate: ${sc.name}`;
 
       // Reset nodes
       for (let i = 1; i <= 4; i++) {
         const node = document.getElementById(`sim-node-${i}`);
         if (node) {
           node.classList.remove('active-stage', 'completed-stage');
+        }
+        const nodeData = sc.nodes[`node${i}`];
+        if (nodeData) {
+          const s = document.getElementById(`sim-node-${i}-status`);
+          if (s) s.textContent = nodeData.initialStatus;
         }
       }
 
@@ -7161,17 +7493,11 @@ Contact Information:
         if (conn) conn.classList.remove('active-flow');
       }
 
-      // Reset node statuses
-      const s1 = document.getElementById('sim-node-1-status');
-      if (s1) s1.textContent = 'Deep-sea (12 NM offshore)';
-      const s2 = document.getElementById('sim-node-2-status');
-      if (s2) s2.textContent = 'Awaiting cellular link';
-      const s3 = document.getElementById('sim-node-3-status');
-      if (s3) s3.textContent = 'Partition 2 · Idempotent';
-      const s4 = document.getElementById('sim-node-4-status');
-      if (s4) s4.textContent = 'Dockside Pre-Orders Active';
-
-      appendSimLog('[RESET] Simulation pipeline reset to initial state.', 'info');
+      if (!silent) {
+        appendSimLog(`[RESET] Simulation pipeline reset (${sc.name}).`, 'info');
+      } else {
+        appendSimLog(sc.initLog, 'info');
+      }
     }
 
     function runKadalVazhiSimulation() {
@@ -7181,8 +7507,11 @@ Contact Information:
       }
 
       if (isSimRunning) return;
-      resetKadalVazhiSimulation();
+      resetKadalVazhiSimulation(true);
       isSimRunning = true;
+
+      const sc = simScenarios[currentSimScenario] || simScenarios.catch;
+      const logs = sc.logs;
 
       const runBtnLabel = document.getElementById('sim-run-btn-label');
       if (runBtnLabel) runBtnLabel.textContent = 'Simulation Running...';
@@ -7190,20 +7519,20 @@ Contact Information:
       const statusIndicator = document.getElementById('sim-status-pill');
       if (statusIndicator) statusIndicator.classList.add('active');
 
-      appendSimLog('[START] Voyage Sync Simulation started. Vessel TN-08-4129 returning to port Kasimedu.', 'info');
+      appendSimLog(sc.startLog, 'info');
 
       simInterval = setInterval(() => {
-        if (simStep >= simLogs.length) {
+        if (simStep >= logs.length) {
           clearInterval(simInterval);
           isSimRunning = false;
           if (runBtnLabel) runBtnLabel.textContent = 'Replay Simulation';
           const statusText = document.getElementById('sim-status-text');
-          if (statusText) statusText.textContent = 'VOYAGE SYNC COMPLETE · 100% Data Fidelity';
+          if (statusText) statusText.textContent = sc.completeStatus;
           playKeyClick();
           return;
         }
 
-        const data = simLogs[simStep];
+        const data = logs[simStep];
 
         // Update progress bar
         const progressFill = document.getElementById('sim-progress-fill');
