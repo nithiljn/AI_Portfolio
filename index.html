@@ -555,6 +555,30 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--border-subtle);
+      flex-shrink: 0;
+    }
+
+    .sidebar-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sidebar-close-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      line-height: 1;
+    }
+
+    .sidebar-close-btn:hover {
+      color: var(--text-primary);
+      background: var(--border-subtle);
     }
 
     .sidebar-tree {
@@ -563,7 +587,11 @@
       flex-direction: column;
       gap: 2px;
       overflow-y: auto;
-      flex: 1;
+      flex: 1 1 0px;
+      min-height: 0;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      overscroll-behavior-y: contain;
     }
 
     .folder-item {
@@ -3880,18 +3908,42 @@
       .sidebar {
         position: fixed;
         top: 44px;
-        bottom: 24px;
+        bottom: calc(24px + env(safe-area-inset-bottom, 0px));
         left: 0;
-        width: 270px;
+        width: 290px;
+        max-width: 86vw;
+        height: calc(100vh - 68px);
+        height: calc(100dvh - 68px - env(safe-area-inset-bottom, 0px));
+        max-height: calc(100dvh - 68px - env(safe-area-inset-bottom, 0px));
         z-index: 500;
         transform: translateX(-100%);
         transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         box-shadow: none;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
       }
 
       .sidebar.mobile-open {
         transform: translateX(0);
         box-shadow: 12px 0 35px rgba(0, 0, 0, 0.6);
+      }
+
+      .sidebar-close-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .sidebar-tree {
+        flex: 1 1 0px !important;
+        min-height: 0 !important;
+        height: auto !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        touch-action: pan-y !important;
+        overscroll-behavior-y: contain;
+        padding-bottom: max(110px, calc(70px + env(safe-area-inset-bottom, 20px))) !important; /* ensures terminal.sh, connect profiles, and live card easily scroll well into view */
       }
 
       .sidebar-backdrop {
@@ -3926,8 +3978,13 @@
       }
 
       .tabs-bar {
-        height: 36px;
-        -webkit-overflow-scrolling: touch;
+        height: 38px;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        touch-action: pan-x !important;
+        display: flex !important;
+        flex-wrap: nowrap !important;
         scrollbar-width: none;
       }
 
@@ -3936,9 +3993,10 @@
       }
 
       .tab-element {
-        padding: 0 10px;
-        font-size: 0.75rem;
-        flex-shrink: 0;
+        padding: 0 12px;
+        font-size: 0.78rem;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
       }
 
       .editor-content {
@@ -4343,7 +4401,10 @@
     <nav class="sidebar" id="main-sidebar">
       <div class="sidebar-header">
         <span>JamesNithil.dev</span>
-        <i data-lucide="more-horizontal" style="width: 14px; height: 14px; cursor: pointer;"></i>
+        <div class="sidebar-header-actions">
+          <i data-lucide="more-horizontal" style="width: 14px; height: 14px; cursor: pointer;"></i>
+          <button class="sidebar-close-btn" onclick="closeMobileSidebar()" title="Close Explorer" aria-label="Close sidebar">✕</button>
+        </div>
       </div>
 
       <div class="sidebar-tree">
@@ -4514,7 +4575,7 @@
             <div class="stat-card stat-purple">
               <div class="stat-value">Microservices</div>
               <div class="stat-label">KadalVazhi Platform</div>
-              <div class="stat-sub">Java 25, Kafka, LangGraph, Offline Sync</div>
+              <div class="stat-sub">Java 21, Kafka, LangGraph, Offline Sync</div>
             </div>
             <div class="stat-card">
               <div class="stat-value">700+</div>
@@ -4524,7 +4585,7 @@
             <div class="stat-card stat-gold">
               <div class="stat-value">1,994</div>
               <div class="stat-label">LeetCode Contest Rating</div>
-              <div class="stat-sub">Knight Badge, Global Rank #197 / 43,027</div>
+              <div class="stat-sub">Knight Badge, Peak Rank #114 (Top 2.73%)</div>
             </div>
           </div>
 
@@ -6617,27 +6678,19 @@
     // TYPEWRITER TEXT FOR README TAB
     // -------------------------------------------------------------
     const typewriterText = `
-$ whoami
-James Nithil V, Junior Software Developer at Vaken Technology (Sovablu)
-Competitive Programmer: LeetCode Knight (Contest Rating 1,994, Rank #197 / 43,027)
+$ cat runtime.env
+PRIMARY_STACK=Java 21, Spring Boot, Python, Apache Kafka, Redis
+DATA_PLATFORMS=PostgreSQL, DynamoDB, SQLite
+AI_ORCHESTRATION=LangGraph Multi Agent Workflows, Claude SDK
 
-$ current_focus.json
-{
-  "role": "Junior Software Developer at Vaken Technology",
-  "product": "Sovablu Low-Code Platform (Java 21, Spring Boot REST APIs, Redis, Claude SDK)",
-  "personal_flagship": "KadalVazhi: Real-Time Maritime Microservices & AI (Java 25, Kafka, Whisper)",
-  "competitive_ranking": "LeetCode Knight, 700+ Problems Solved (446 Java, 443 Python3)",
-  "education": "B.Tech in Artificial Intelligence and Data Science (KIOT, CGPA 8.1)",
-  "focus": "Engineering distributed backend services and real-world AI systems."
-}
+$ git log --oneline -n 1
+4f9a120 feat: optimize query latency via Redis caching and pool tuning
 
-$ tech_highlights
-• Built and maintained production REST APIs in Java and Spring Boot with rate limiting and Singleton design pattern.
-• Integrated Redis caching to reduce database query latency across hot paths with PostgreSQL.
-• Automated CI/CD deployment pipelines using Jenkins with AWS services (EC2, S3, Lambda, CodeCommit).
-• Architected KadalVazhi microservices with Java 25, Kafka event streaming, and offline SQLite sync.
-
-[Open for high-impact software engineering roles and collaboration]
+$ ./check_metrics.sh
+Algorithms   : 700+ solved (446 Java, 443 Python, 40 SQL, 31 C++)
+LeetCode     : Knight Badge · Rating 1994 · Peak Global Rank #114
+Academic     : B.Tech in Artificial Intelligence and Data Science (CGPA 8.1)
+Availability : Open for Software Development & AI Agent Development
 `;
 
     const terminalTarget = document.getElementById('readme-typewriter-text');
@@ -6665,9 +6718,13 @@ $ tech_highlights
       setTimeout(runTypewriter, 200);
       updateDynamicTenure();
       if (window.location.hash) {
-        const target = window.location.hash.replace('#', '');
-        if (document.getElementById(target)) {
-          setTimeout(() => switchTab(target), 150);
+        if (window.location.hash === '#sidebar') {
+          setTimeout(openMobileSidebar, 150);
+        } else {
+          const target = window.location.hash.replace('#', '');
+          if (document.getElementById(target)) {
+            setTimeout(() => switchTab(target), 150);
+          }
         }
       }
     });
