@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>James Nithil V - Resume</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.38in 0.46in 0.36in 0.46in;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: "Times New Roman", Times, "Nimbus Roman No9 L", serif;
+    color: #000;
+    background: #fff;
+    font-size: 9.7pt;
+    line-height: 1.29;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+  
+  /* HEADER */
+  .header {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 22pt;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+    margin-bottom: 4px;
+  }
+  .header .contact-line {
+    font-size: 9.1pt;
+    word-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .header .separator {
+    margin: 0 4.5px;
+    color: #222;
+  }
+
+  /* SECTION */
+  .section {
+    margin-top: 8px;
+    margin-bottom: 3px;
+  }
+  .section-title {
+    font-size: 11pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    border-bottom: 0.8pt solid #000;
+    padding-bottom: 1.5px;
+    margin-bottom: 4.5px;
+  }
+
+  /* SUBHEADING / ROW */
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 9.8pt;
+  }
+  .item-header-title {
+    font-weight: bold;
+  }
+  .item-header-date {
+    font-weight: bold;
+    font-size: 9.4pt;
+  }
+  .item-subheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-style: italic;
+    font-size: 9.3pt;
+    margin-bottom: 2px;
+  }
+
+  /* LISTS */
+  ul.bullet-list {
+    margin-left: 17px;
+    padding-left: 0;
+    list-style-type: disc;
+  }
+  ul.bullet-list li {
+    font-size: 9.4pt;
+    line-height: 1.28;
+    margin-bottom: 2.2px;
+    text-align: justify;
+  }
+  ul.bullet-list li strong {
+    font-weight: bold;
+  }
+
+  /* SKILLS & ONE-LINERS */
+  .skills-list {
+    font-size: 9.4pt;
+    line-height: 1.32;
+  }
+  .skills-list p {
+    margin-bottom: 2px;
+  }
+  .skills-list strong {
+    font-weight: bold;
+  }
+
+  .cert-list {
+    font-size: 9.4pt;
+    line-height: 1.30;
+  }
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>James Nithil V</h1>
+    <div class="contact-line">
+      <span>+91 8220173595</span>
+      <span class="separator">|</span>
+      <a href="mailto:jamnithil@gmail.com">jamnithil@gmail.com</a>
+      <span class="separator">|</span>
+      <a href="https://jamesnithil.vercel.app/">jamesnithil.vercel.app</a>
+      <span class="separator">|</span>
+      <a href="https://linkedin.com/in/jamesnithil-v/">linkedin/jamesnithil-v</a>
+      <span class="separator">|</span>
+      <a href="https://github.com/nithiljn">github/nithiljn</a>
+      <span class="separator">|</span>
+      <a href="https://leetcode.com/u/NITHIL07/">leetcode/NITHIL07</a>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Experience</div>
+    <div class="item-header">
+      <span class="item-header-title">Junior Software Developer</span>
+      <span class="item-header-date">Aug 2025 to Present</span>
+    </div>
+    <div class="item-subheader">
+      <span>Vaken Technology | Product: Sovablu</span>
+      <span>Trichy, India</span>
+    </div>
+    <ul class="bullet-list">
+      <li>Engineered scalable REST microservices and APIs with <strong>Java 21</strong>, <strong>Spring Boot</strong>, and <strong>PostgreSQL</strong> for the Sovablu enterprise platform, implementing rate limiting and Singleton design pattern for high availability.</li>
+      <li>Optimized database query performance through <strong>query tuning, connection pooling, and Redis caching</strong> at critical hotspots, substantially reducing DB response latency.</li>
+      <li>Engineered features for <strong>Galaxy One, an Agentic AI workflow system</strong>, leveraging <strong>Claude SDK model switching</strong> and <strong>AWS Bedrock</strong> to accelerate software development workflows and reduce engineering overhead.</li>
+      <li>Maintained automated <strong>Jenkins CI/CD</strong> pipelines (JAR build, automated testing, and deployments) across <strong>AWS EC2, S3, and Lambda</strong> for cloud infrastructure.</li>
+      <li>Developed frontend features in <strong>Vue.js</strong> and configured CORS and proxy for secure client server communication.</li>
+    </ul>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-title">Projects</div>
+    <div class="item-header">
+      <span class="item-header-title">KadalVazhi: Autonomous Maritime Intelligence Platform</span>
+      <span class="item-header-date">2026</span>
+    </div>
+    <div class="item-subheader">
+      <span>Java, Spring Boot, Python, LangGraph, Kafka, PostgreSQL, DynamoDB, gRPC</span>
+      <span>Production Microservices</span>
+    </div>
+    <ul class="bullet-list">
+      <li>Architected distributed maritime engine with <strong>Java</strong> and <strong>Spring Boot</strong> for core backend security and <strong>Python</strong> for <strong>LangGraph multi agent orchestration</strong> and <strong>Claude SDK model routing</strong>.</li>
+      <li>Engineered microservices communication layer utilizing <strong>Spring Boot, REST APIs, GraphQL, and gRPC</strong> for high throughput vessel telemetry, direct fish trade, and automated <strong>emergency mechanic dispatch agents</strong> for at sea boat repairs.</li>
+      <li>Implemented <strong>dual database architecture with PostgreSQL and DynamoDB</strong>, backed by <strong>Apache Kafka</strong> event streaming to scale concurrent vessel telemetry and power dynamic <strong>fisherman and boat crew job matchmaking</strong>.</li>
+      <li>Designed resilient <strong>offline first synchronization engine</strong>: logs vessel telemetry in local SQLite at sea and auto syncs to cloud PostgreSQL upon cellular reconnection, with a 3 attempt fallback loop for weather safety.</li>
+      <li>Built comprehensive fish catch analytics engine aggregating historical catch data for data driven voyage decisions, supporting multilingual accessibility across <strong>Tamil, English, and Malayalam via i18n</strong>.</li>
+    </ul>
+  </div>
+
+  <!-- TECHNICAL SKILLS -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-list">
+      <p><strong>Languages:</strong> Java (Core &amp; 21), Python, SQL, C++, JavaScript</p>
+      <p><strong>Backend &amp; APIs:</strong> Spring Boot, FastAPI, REST APIs, GraphQL, gRPC, Microservices</p>
+      <p><strong>Distributed Systems &amp; Cloud:</strong> Apache Kafka, Distributed Systems, Redis Caching, Rate Limiting, Docker, Jenkins CI/CD, AWS (EC2, S3, Lambda, Bedrock)</p>
+      <p><strong>Databases:</strong> PostgreSQL, DynamoDB, MySQL, Redis, SQLite</p>
+      <p><strong>AI &amp; Systems:</strong> LangGraph, Agentic AI, Multi Agent Orchestration, Claude SDK, LangSmith, i18n</p>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div class="section">
+    <div class="section-title">Achievements</div>
+    <div class="item-header">
+      <span class="item-header-title">LeetCode Knight Badge</span>
+      <span class="item-header-date">Global Rank #114 / 43,000+</span>
+    </div>
+    <div class="item-subheader">
+      <span>Contest Rating 1,994 (Top 2.73% Global)</span>
+      <span>LeetCode</span>
+    </div>
+    <ul class="bullet-list">
+      <li>Earned the <strong>LeetCode Knight badge</strong> (Top 2.73% worldwide) with an official <strong>Contest Rating of 1,994</strong>; achieved multiple 4/4 perfect solves with a peak <strong>Global Rank #114</strong> in Weekly Contest 517 and <strong>Rank #197</strong> in Contest 490.</li>
+      <li>Solved <strong>700+ algorithmic problems</strong>: 446 in <strong>Java</strong> (Graphs, Trees, DP, BFS/DFS, Linked Lists), 443 in <strong>Python3</strong>, 40 in <strong>MySQL/SQL</strong>, and 31 in <strong>C++</strong>.</li>
+    </ul>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="item-header">
+      <span class="item-header-title">Knowledge Institute of Technology</span>
+      <span class="item-header-date" style="font-weight: normal; font-style: italic;">Salem, India</span>
+    </div>
+    <div class="item-subheader">
+      <span>B.Tech in Artificial Intelligence and Data Science | CGPA: 8.1</span>
+      <span style="font-style: normal;">2021 to 2025</span>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="section">
+    <div class="section-title">Certifications</div>
+    <div class="cert-list">
+      Core Java &amp; SQL (EBox) | MySQL Database (IBM) | Machine Learning (Simplilearn) | Deep Learning PyTorch (Guvi)
+    </div>
+  </div>
+
+</body>
+</html>
