@@ -4217,7 +4217,7 @@
         <span class="recruiter-btn-label">30s Brief</span>
       </button>
 
-      <a href="James_Nithil_Resume.pdf" download class="btn-topbar btn-primary" title="Download Updated Resume PDF">
+      <a href="James_Nithil_Resume.pdf" download="James_Nithil_Resume.pdf" class="btn-topbar btn-primary" title="Download Updated Resume PDF">
         <i data-lucide="download" style="width: 13px; height: 13px;"></i>
         <span>Resume</span>
       </a>
@@ -4340,7 +4340,7 @@
           <span>huggingface/JamesGenAI</span>
         </a>
 
-        <a href="James_Nithil_Resume.pdf" download class="file-item" style="color: var(--accent-blue); font-weight: 600;">
+        <a href="James_Nithil_Resume.pdf" download="James_Nithil_Resume.pdf" class="file-item" style="color: var(--accent-blue); font-weight: 600;">
           <span class="file-icon"><i data-lucide="download" style="width: 14px; height: 14px;"></i></span>
           <span>Download_Resume.pdf</span>
         </a>
@@ -4418,7 +4418,7 @@
             </p>
 
             <div class="hero-actions">
-              <a href="James_Nithil_Resume.pdf" download class="btn-action btn-accent">
+              <a href="James_Nithil_Resume.pdf" download="James_Nithil_Resume.pdf" class="btn-action btn-accent">
                 <i data-lucide="file-down" style="width: 16px; height: 16px;"></i> Download Updated Resume
               </a>
               <button class="btn-action" onclick="switchTab('tab-projects')">
@@ -5808,7 +5808,7 @@
           </div>
           <span class="palette-shortcut-key">Tab 6</span>
         </div>
-        <div class="palette-item" onclick="window.location.href='James_Nithil_Resume.pdf'">
+        <div class="palette-item" onclick="downloadResumeFile()">
           <div class="palette-item-left">
             <i data-lucide="download" style="width: 15px; height: 15px; color: var(--accent-blue);"></i>
             <span>Download Updated Resume (PDF)</span>
@@ -6016,7 +6016,7 @@
       <!-- Instant 1-Click Action Dock -->
       <div class="recruiter-modal-footer">
         <div class="recruiter-footer-actions">
-          <a href="James_Nithil_Resume.pdf" download class="recruiter-action-btn recruiter-btn-download" title="Download Official Resume PDF">
+          <a href="James_Nithil_Resume.pdf" download="James_Nithil_Resume.pdf" class="recruiter-action-btn recruiter-btn-download" title="Download Official Resume PDF">
             <i data-lucide="download" style="width: 15px; height: 15px;"></i>
             <span>Download Resume (PDF)</span>
           </a>
@@ -6383,6 +6383,16 @@
 
     function setThemeAndClose(name) {
       setTheme(name);
+      closePalette();
+    }
+
+    function downloadResumeFile() {
+      const link = document.createElement('a');
+      link.href = 'James_Nithil_Resume.pdf';
+      link.download = 'James_Nithil_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
       closePalette();
     }
 

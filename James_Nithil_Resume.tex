@@ -1,0 +1,172 @@
+%-------------------------
+% Resume in LaTeX
+% Author : James Nithil V
+% Based on: Jake Gutierrez's Resume Template
+% License : MIT
+%-------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge James Nithil V} \\ \vspace{4pt}
+    \small +91 8220173595 $|$ 
+    \href{mailto:jamnithil@gmail.com}{\underline{jamnithil@gmail.com}} $|$ 
+    \href{https://jamesnithil.vercel.app/}{\underline{jamesnithil.vercel.app}} $|$ 
+    \href{https://linkedin.com/in/jamesnithil-v/}{\underline{linkedin/jamesnithil-v}} $|$
+    \href{https://github.com/nithiljn}{\underline{github/nithiljn}} $|$
+    \href{https://leetcode.com/u/NITHIL07/}{\underline{leetcode/NITHIL07}}
+\end{center}
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Junior Software Developer}{Aug 2025 to Present}
+      {Vaken Technology $|$ Product: Sovablu}{Trichy, India}
+      \resumeItemListStart
+        \resumeItem{Engineered scalable REST microservices and APIs with \textbf{Java 21}, \textbf{Spring Boot}, and \textbf{PostgreSQL} for the Sovablu enterprise platform, implementing rate limiting and Singleton design pattern for high availability.}
+        \resumeItem{Optimized database query performance through \textbf{query tuning, connection pooling, and Redis caching} at critical hotspots, substantially reducing DB response latency.}
+        \resumeItem{Engineered features for \textbf{Galaxy One, an Agentic AI workflow system}, leveraging \textbf{Claude SDK model switching} and \textbf{AWS Bedrock} to accelerate software development workflows and reduce engineering overhead.}
+        \resumeItem{Maintained automated \textbf{Jenkins CI/CD} pipelines (JAR build, automated testing, and deployments) across \textbf{AWS EC2, S3, and Lambda} for cloud infrastructure.}
+        \resumeItem{Developed frontend features in \textbf{Vue.js} and configured CORS and proxy for secure client server communication.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+  \resumeSubHeadingListStart
+
+    \resumeProjectHeading
+      {KadalVazhi: Autonomous Maritime Intelligence Platform}{2026}
+      {Java, Spring Boot, Python, LangGraph, Kafka, PostgreSQL, DynamoDB, gRPC}{Production Microservices}
+      \resumeItemListStart
+        \resumeItem{Architected distributed maritime engine with \textbf{Java} and \textbf{Spring Boot} for core backend security and \textbf{Python} for \textbf{LangGraph multi agent orchestration} and \textbf{Claude SDK model routing}.}
+        \resumeItem{Engineered microservices communication layer utilizing \textbf{Spring Boot, REST APIs, GraphQL, and gRPC} for high throughput vessel telemetry, direct fish trade, and automated \textbf{emergency mechanic dispatch agents} for at sea boat repairs.}
+        \resumeItem{Implemented \textbf{dual database architecture with PostgreSQL and DynamoDB}, backed by \textbf{Apache Kafka} event streaming to scale concurrent vessel telemetry and power dynamic \textbf{fisherman and boat crew job matchmaking}.}
+        \resumeItem{Designed resilient \textbf{offline first synchronization engine}: logs vessel telemetry in local SQLite at sea and auto syncs to cloud PostgreSQL upon cellular reconnection, with a 3 attempt fallback loop for weather safety.}
+        \resumeItem{Built comprehensive fish catch analytics engine aggregating historical catch data for data driven voyage decisions, supporting multilingual accessibility across \textbf{Tamil, English, and Malayalam via i18n}.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Java (Core \& 21), Python, SQL, C++, JavaScript} \\
+     \textbf{Backend \& APIs}{: Spring Boot, FastAPI, REST APIs, GraphQL, gRPC, Microservices} \\
+     \textbf{Distributed Systems \& Cloud}{: Apache Kafka, Distributed Systems, Redis Caching, Rate Limiting, Docker, Jenkins CI/CD, AWS (EC2, S3, Lambda, Bedrock)} \\
+     \textbf{Databases}{: PostgreSQL, DynamoDB, MySQL, Redis, SQLite} \\
+     \textbf{AI \& Systems}{: LangGraph, Agentic AI, Multi Agent Orchestration, Claude SDK, LangSmith, i18n}
+    }}
+ \end{itemize}
+
+%-----------ACHIEVEMENTS-----------
+\section{Achievements}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {LeetCode Knight Badge}{Global Rank \#114 / 43,000+}
+      {Contest Rating 1,994 (Top 2.73\% Global)}{LeetCode}
+      \resumeItemListStart
+        \resumeItem{Earned the \textbf{LeetCode Knight badge} (Top 2.73\% worldwide) with an official \textbf{Contest Rating of 1,994}; achieved multiple 4/4 perfect solves with a peak \textbf{Global Rank \#114} in Weekly Contest 517 and \textbf{Rank \#197} in Contest 490.}
+        \resumeItem{Solved \textbf{700+ algorithmic problems}: 446 in \textbf{Java} (Graphs, Trees, DP, BFS/DFS, Linked Lists), 443 in \textbf{Python3}, 40 in \textbf{MySQL/SQL}, and 31 in \textbf{C++}.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Knowledge Institute of Technology}{Salem, India}
+      {B.Tech in Artificial Intelligence and Data Science $|$ CGPA: 8.1}{2021 to 2025}
+  \resumeSubHeadingListEnd
+
+%-----------CERTIFICATIONS-----------
+\section{Certifications}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     Core Java \& SQL (EBox) $|$ MySQL Database (IBM) $|$ Machine Learning (Simplilearn) $|$ Deep Learning PyTorch (Guvi)
+    }}
+ \end{itemize}
+
+%-------------------------------------------
+\end{document}
