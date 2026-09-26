@@ -1989,7 +1989,7 @@
     }
 
     /* -------------------------------------------------------------
-       ACHIEVEMENTS (achievements.md)
+       ACHIEVEMENTS (achievements.yaml)
     ------------------------------------------------------------- */
     .knight-spotlight-card {
       background: var(--bg-card);
@@ -4183,13 +4183,15 @@
           <span>Junior Software Developer at <span class="ticker-highlight">Vaken Technology (Sovablu)</span></span>
         </div>
         <div class="ticker-item">
-          <span>⚡ <span class="ticker-highlight">KadalVazhi</span>: LangGraph Multi-Agent RAG and Maritime Safety Platform</span>
+          <span class="pulse-dot"></span>
+          <span class="ticker-highlight">KadalVazhi</span>: LangGraph Multi-Agent RAG and Maritime Safety Platform</span>
         </div>
         <div class="ticker-item">
-          <span>🚀 Enterprise Backend: Java 21, Spring Boot, Microservices and PostgreSQL</span>
+          <span>Enterprise Backend: Java 21, Spring Boot, Microservices and PostgreSQL</span>
         </div>
         <div class="ticker-item">
-          <span>🏆 <span class="ticker-highlight">LeetCode Knight (Rating 1,994)</span> | 700+ Algorithmic Problems Solved</span>
+          <span class="pulse-dot"></span>
+          <span class="ticker-highlight">LeetCode Knight (Rating 1,994)</span> | 700+ Algorithmic Problems Solved</span>
         </div>
       </div>
     </div>
@@ -4210,7 +4212,7 @@
         <span>Badge</span>
       </button>
 
-      <button class="btn-topbar btn-recruiter-mode" id="recruiter-mode-btn" onclick="toggleRecruiterModal()" title="Recruiter 30-Second Executive Brief (Press 'R' or Click)">
+      <button class="btn-topbar btn-recruiter-mode" id="recruiter-mode-btn" onclick="toggleRecruiterModal()" title="Recruiter 30-Second Executive Brief (Press Space or R)">
         <i data-lucide="zap" style="width: 13px; height: 13px;"></i>
         <span class="recruiter-btn-label">30s Brief</span>
       </button>
@@ -4295,8 +4297,8 @@
             <span>projects.py</span>
           </div>
 
-          <div class="file-item" data-tab="tab-experience" data-file-title="experience.json" data-file-icon="devicon-java-plain">
-            <span class="file-icon"><i class="devicon-java-plain" style="color: #f87171;"></i></span>
+          <div class="file-item" data-tab="tab-experience" data-file-title="experience.json" data-file-icon="devicon-json-plain">
+            <span class="file-icon"><i class="devicon-json-plain" style="color: #f59e0b;"></i></span>
             <span>experience.json</span>
           </div>
 
@@ -4305,9 +4307,9 @@
             <span>skills.ts</span>
           </div>
 
-          <div class="file-item" data-tab="tab-achievements" data-file-title="achievements.md" data-file-icon="devicon-markdown-original">
-            <span class="file-icon">🏆</span>
-            <span>achievements.md</span>
+          <div class="file-item" data-tab="tab-achievements" data-file-title="achievements.yaml" data-file-icon="devicon-yaml-plain">
+            <span class="file-icon"><i class="devicon-yaml-plain" style="color: #fb7185;"></i></span>
+            <span>achievements.yaml</span>
           </div>
 
           <div class="file-item" data-tab="tab-terminal" data-file-title="terminal.sh" data-file-icon="devicon-bash-plain">
@@ -4370,7 +4372,7 @@
           <span class="tab-close">×</span>
         </div>
         <div class="tab-element" data-tab="tab-experience">
-          <i class="devicon-java-plain" style="color: #f87171; font-size: 0.9rem;"></i>
+          <i class="devicon-json-plain" style="color: #f59e0b; font-size: 0.9rem;"></i>
           <span>experience.json</span>
           <span class="tab-close">×</span>
         </div>
@@ -4380,8 +4382,8 @@
           <span class="tab-close">×</span>
         </div>
         <div class="tab-element" data-tab="tab-achievements">
-          <span>🏆</span>
-          <span>achievements.md</span>
+          <i class="devicon-yaml-plain" style="color: #fb7185; font-size: 0.9rem;"></i>
+          <span>achievements.yaml</span>
           <span class="tab-close">×</span>
         </div>
         <div class="tab-element" data-tab="tab-terminal">
@@ -4412,8 +4414,7 @@
             </div>
 
             <p class="hero-bio">
-              Software Developer at <strong>Vaken Technology</strong>, engineering enterprise backend services and REST APIs for the <strong>Sovablu low-code platform</strong> using <strong>Java 21, Spring Boot, Redis, PostgreSQL</strong>, and <strong>Claude SDK</strong>.
-              Concurrently architecting <strong>KadalVazhi</strong> as an independent engineering initiative, an enterprise-grade real-time maritime microservices and AI guidance platform built with <strong>Java 25, Python, LangGraph</strong>, and <strong>Apache Kafka</strong>.
+              Software Developer at <strong>Vaken Technology</strong>, building scalable backend services and REST APIs for <strong>Sovablu</strong> using <strong>Java</strong>, <strong>Spring Boot</strong>, <strong>Redis</strong>, <strong>PostgreSQL</strong>, <strong>Jenkins CI/CD</strong>, and <strong>Claude SDK</strong>. Simultaneously, architecting <strong>KadalVazhi</strong> to handle more users. The architecture uses <strong>REST APIs, GraphQL, and gRPC</strong> for microservices communication. AI tasks are optimized via <strong>Claude SDK model switching</strong> for cost efficiency. The system is built with <strong>Java, Python, Kafka</strong>, and a dual-database strategy of <strong>PostgreSQL and DynamoDB</strong>, ensuring efficient scaling.
             </p>
 
             <div class="hero-actions">
@@ -5265,7 +5266,7 @@
         </section>
 
         <!-- ========================================================
-             TAB 5: achievements.md (LEETCODE KNIGHT & HONORS)
+             TAB 5: achievements.yaml (LEETCODE KNIGHT & HONORS)
         ========================================================= -->
         <section id="tab-achievements" class="tab-pane">
 
@@ -5760,10 +5761,10 @@
       <div class="palette-results-list" id="palette-results">
         <div class="palette-item" onclick="openRecruiterModalFromPalette()">
           <div class="palette-item-left">
-            <span>⚡</span>
-            <span style="font-weight: 600; color: #38bdf8;">Recruiter 30-Second Mode (TL;DR Executive Summary)</span>
+            <span class="pulse-dot"></span>
+            <span style="font-weight: 600; color: #38bdf8;">30 Second Mode (Executive Summary)</span>
           </div>
-          <span class="palette-shortcut-key">Key 'R'</span>
+          <span class="palette-shortcut-key"><kbd>Space</kbd> / <kbd>R</kbd></span>
         </div>
         <div class="palette-item" onclick="selectPalette('tab-readme')">
           <div class="palette-item-left">
@@ -5781,7 +5782,7 @@
         </div>
         <div class="palette-item" onclick="selectPalette('tab-experience')">
           <div class="palette-item-left">
-            <i class="devicon-java-plain" style="color: #f87171;"></i>
+            <i class="devicon-json-plain" style="color: #f59e0b;"></i>
             <span>experience.json (Vaken Technology, Sovablu)</span>
           </div>
           <span class="palette-shortcut-key">Tab 3</span>
@@ -5795,8 +5796,8 @@
         </div>
         <div class="palette-item" onclick="selectPalette('tab-achievements')">
           <div class="palette-item-left">
-            <span>🏆</span>
-            <span>achievements.md (LeetCode Knight 1,994 | Rank #114)</span>
+            <i class="devicon-yaml-plain" style="color: #fb7185;"></i>
+            <span>achievements.yaml (LeetCode Knight 1,994 | Rank #114)</span>
           </div>
           <span class="palette-shortcut-key">Tab 5</span>
         </div>
@@ -5866,7 +5867,7 @@
           </div>
         </div>
         <div class="recruiter-header-right">
-          <span class="recruiter-shortcut-hint">Press <kbd>ESC</kbd> or <kbd>R</kbd></span>
+          <span class="recruiter-shortcut-hint">Press <kbd>ESC</kbd>, <kbd>Space</kbd>, or <kbd>R</kbd></span>
           <button class="recruiter-close-btn" onclick="closeRecruiterModal()" title="Close Brief (ESC)">✕</button>
         </div>
       </div>
@@ -6130,9 +6131,9 @@
     const fileMetaMap = {
       'tab-readme': { title: 'README.md', icon: 'file-text', color: '#60a5fa' },
       'tab-projects': { title: 'projects.py', icon: 'code-2', color: '#facc15' },
-      'tab-experience': { title: 'experience.json', icon: 'briefcase', color: '#f87171' },
+      'tab-experience': { title: 'experience.json', icon: 'braces', color: '#f59e0b' },
       'tab-skills': { title: 'skills.ts', icon: 'cpu', color: '#38bdf8' },
-      'tab-achievements': { title: 'achievements.md', icon: 'award', color: '#fbbf24' },
+      'tab-achievements': { title: 'achievements.yaml', icon: 'award', color: '#fb7185' },
       'tab-terminal': { title: 'terminal.sh', icon: 'terminal', color: '#4ade80' }
     };
 
@@ -6643,9 +6644,13 @@ $ tech_highlights
           closeRecruiterModal();
         }
       }
-      if (e.key.toLowerCase() === 'r' && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      // Toggle 30s Executive Brief with 'Space' or 'R' (Universal Mac & Windows)
+      const isR = e.key.toLowerCase() === 'r';
+      const isSpace = e.code === 'Space' || e.key === ' ';
+      if ((isR || isSpace) && !e.metaKey && !e.ctrlKey && !e.altKey) {
         const activeTag = document.activeElement ? document.activeElement.tagName : '';
-        if (activeTag !== 'INPUT' && activeTag !== 'TEXTAREA') {
+        const isInputField = activeTag === 'INPUT' || activeTag === 'TEXTAREA' || (document.activeElement && document.activeElement.isContentEditable);
+        if (!isInputField) {
           e.preventDefault();
           toggleRecruiterModal();
         }
