@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <!-- Primary Meta Tags -->
+  
   <title>James Nithil V | Junior Software Developer & AI Systems Engineer</title>
   <meta name="title" content="James Nithil V | Junior Software Developer & AI Systems Engineer" />
   <meta name="description" content="Portfolio of James Nithil V, Junior Software Developer at Vaken Technology (Sovablu). LeetCode Knight (Rating 1,994, Rank #197), specializing in Java, Spring Boot, Python, LangGraph, and Distributed Systems." />
   <meta name="author" content="James Nithil V" />
   <meta name="keywords" content="James Nithil, Software Developer, Java, Spring Boot, LangGraph, AI, LeetCode Knight, Vaken Technology, Portfolio" />
 
-  <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+  
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jamesnithil.vercel.app/" />
   <meta property="og:title" content="James Nithil V | Junior Software Developer & AI Systems Engineer" />
@@ -23,38 +23,36 @@
   <meta property="og:image:height" content="628" />
   <meta property="og:image:alt" content="James Nithil V Portfolio Preview" />
 
-  <!-- Twitter / X -->
+  
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://jamesnithil.vercel.app/" />
   <meta property="twitter:title" content="James Nithil V | Junior Software Developer & AI Systems Engineer" />
   <meta property="twitter:description" content="LeetCode Knight (Rating 1,994, Rank #197). Production Java & Spring Boot APIs, Redis caching, and LangGraph multi-agent AI systems at Vaken Technology." />
   <meta property="twitter:image" content="https://jamesnithil.vercel.app/assets/images/James_Nithil.jpeg" />
 
-  <!-- Theme & Mobile App Bar Color -->
+  
   <meta name="theme-color" content="#0a0b0e" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
   <link rel="icon" href="assets/images/logo_image.png" type="image/png" />
 
-  <!-- Fonts: Inter for UI & JetBrains Mono for Code -->
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Icons -->
+  
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
   <style>
-    /* -------------------------------------------------------------
-       CSS DESIGN TOKENS & CURATED THEMES
-    ------------------------------------------------------------- */
+    
     :root {
       --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-code: 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, monospace;
 
-      /* DEFAULT: Obsidian Studio (Crafted Senior-Engineer Dark Theme) */
+      
       --bg-body: #0a0b0e;
       --bg-activity: #0e1014;
       --bg-sidebar: #12141a;
@@ -102,7 +100,7 @@
       --transition-smooth: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* THEME 2: Tokyo Night Pro (Midnight Indigo Developer Aesthetic) */
+    
     body.theme-tokyo-night {
       --bg-body: #16161e;
       --bg-activity: #1a1b26;
@@ -144,7 +142,7 @@
       --btn-primary-hover: #89b4fa;
     }
 
-    /* THEME 3: Catppuccin Mocha (Warm Espresso Ergonomic Aesthetic) */
+    
     body.theme-catppuccin {
       --bg-body: #181825;
       --bg-activity: #11111b;
@@ -186,7 +184,7 @@
       --btn-primary-hover: #bac2de;
     }
 
-    /* THEME 4: GitHub Light (Clean Document Light Mode) */
+    
     body.light-theme {
       --bg-body: #f6f8fa;
       --bg-activity: #eaeef2;
@@ -230,9 +228,7 @@
       --badge-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12);
     }
 
-    /* -------------------------------------------------------------
-       GLOBAL RESETS & SCROLLBAR
-    ------------------------------------------------------------- */
+    
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -284,9 +280,7 @@
       font-family: var(--font-code);
     }
 
-    /* -------------------------------------------------------------
-       TOPBAR & BREADCRUMBS
-    ------------------------------------------------------------- */
+    
     .topbar {
       position: fixed;
       top: 0;
@@ -433,9 +427,7 @@
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
     }
 
-    /* -------------------------------------------------------------
-       MAIN APPLICATION LAYOUT
-    ------------------------------------------------------------- */
+    
     .app-container {
       display: flex;
       height: calc(100vh - 44px);
@@ -445,9 +437,7 @@
       position: relative;
     }
 
-    /* -------------------------------------------------------------
-       ACTIVITY BAR (FAR LEFT)
-    ------------------------------------------------------------- */
+    
     .activity-bar {
       width: 50px;
       background: var(--bg-activity);
@@ -524,9 +514,7 @@
       transform: translateX(0);
     }
 
-    /* -------------------------------------------------------------
-       EXPLORER SIDEBAR
-    ------------------------------------------------------------- */
+    
     .sidebar {
       width: 250px;
       background: var(--bg-sidebar);
@@ -694,9 +682,7 @@
       100% { opacity: 0.4; transform: scale(0.9); }
     }
 
-    /* -------------------------------------------------------------
-       EDITOR AREA & TABS
-    ------------------------------------------------------------- */
+    
     .editor-wrapper {
       flex: 1;
       display: flex;
@@ -772,9 +758,7 @@
       background: var(--border-subtle);
     }
 
-    /* -------------------------------------------------------------
-       TAB PANELS (CONTENT AREA)
-    ------------------------------------------------------------- */
+    
     .editor-content {
       flex: 1;
       overflow-y: auto;
@@ -804,9 +788,7 @@
       }
     }
 
-    /* -------------------------------------------------------------
-       MODERN HERO & TYPED README
-    ------------------------------------------------------------- */
+    
     .hero-banner {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -913,9 +895,7 @@
       transform: translateY(-1px);
     }
 
-    /* -------------------------------------------------------------
-       QUICK STATS GRID
-    ------------------------------------------------------------- */
+    
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -974,9 +954,7 @@
       margin-top: 4px;
     }
 
-    /* -------------------------------------------------------------
-       TERMINAL VIEWER FOR README
-    ------------------------------------------------------------- */
+    
     .terminal-container {
       background: var(--bg-terminal);
       border: 1px solid var(--border-subtle);
@@ -1025,9 +1003,7 @@
       50%, 100% { opacity: 0; }
     }
 
-    /* -------------------------------------------------------------
-       PROJECT CARDS (projects.py)
-    ------------------------------------------------------------- */
+    
     .section-headline {
       display: flex;
       align-items: center;
@@ -1174,7 +1150,7 @@
       border-color: var(--border-accent);
     }
 
-    /* Lightbox Modal */
+    
     .image-lightbox-modal {
       position: fixed;
       inset: 0;
@@ -1336,9 +1312,7 @@
       flex-wrap: wrap;
     }
 
-    /* -------------------------------------------------------------
-       KADALVAZHI DISTRIBUTED ARCHITECTURE SIMULATOR
-    ------------------------------------------------------------- */
+    
     .kadalvazhi-sim-panel {
       background: var(--bg-terminal);
       border: 1px solid var(--border-subtle);
@@ -1422,7 +1396,7 @@
       color: #ffffff;
     }
 
-    /* SCENARIO SELECTOR */
+    
     .sim-scenario-selector {
       display: flex;
       align-items: center;
@@ -1702,9 +1676,7 @@
     .sim-log-line.step4 { color: #34d399; }
     .sim-log-line.success { color: #4ade80; font-weight: 700; }
 
-    /* -------------------------------------------------------------
-       WORK EXPERIENCE (experience.json)
-    ------------------------------------------------------------- */
+    
     .timeline-modern {
       position: relative;
       padding-left: 32px;
@@ -1827,7 +1799,7 @@
       color: var(--text-primary);
     }
 
-    /* Multi-role company tree (LinkedIn style) */
+    
     .company-brand-header {
       display: flex;
       align-items: center;
@@ -1964,9 +1936,7 @@
       background: var(--border-subtle);
     }
 
-    /* -------------------------------------------------------------
-       SKILLS MATRIX (skills.json)
-    ------------------------------------------------------------- */
+    
     .skills-filter-bar {
       display: flex;
       gap: 8px;
@@ -2059,9 +2029,7 @@
       font-size: 1.1rem;
     }
 
-    /* -------------------------------------------------------------
-       ACHIEVEMENTS (achievements.yaml)
-    ------------------------------------------------------------- */
+    
     .knight-spotlight-card {
       background: var(--bg-card);
       border: 1px solid rgba(245, 158, 11, 0.28);
@@ -2180,9 +2148,7 @@
       margin-top: 4px;
     }
 
-    /* -------------------------------------------------------------
-       LEETCODE CONTEST RATING TRAJECTORY & EXPLORER
-    ------------------------------------------------------------- */
+    
     .leetcode-trajectory-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -2221,7 +2187,7 @@
       margin: 2px 0 0 0;
     }
 
-    /* Live Contest Inspection HUD */
+    
     .contest-inspect-hud {
       background: rgba(13, 15, 20, 0.6);
       border: 1px solid var(--border-subtle);
@@ -2269,7 +2235,7 @@
       color: #34d399;
     }
 
-    /* SVG Chart Box */
+    
     .svg-chart-container {
       width: 100%;
       background: rgba(10, 11, 14, 0.5);
@@ -2342,9 +2308,7 @@
       font-weight: 600;
     }
 
-    /* -------------------------------------------------------------
-       INTERACTIVE TERMINAL (terminal.sh)
-    ------------------------------------------------------------- */
+    
     .interactive-term-window {
       background: var(--bg-terminal);
       border: 1px solid var(--border-subtle);
@@ -2454,9 +2418,7 @@
       font-size: 0.85rem;
     }
 
-    /* -------------------------------------------------------------
-       PLASTIC ID BADGE (SLEEK & MODERN GLASS BADGE)
-    ------------------------------------------------------------- */
+    
     .id-badge-container {
       position: fixed;
       top: 60px;
@@ -2533,7 +2495,7 @@
       box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.14);
     }
 
-    /* Slot punch where lanyard clip attaches */
+    
     .badge-slot-punch {
       width: 34px;
       height: 4px;
@@ -2592,7 +2554,7 @@
       background: var(--border-subtle);
     }
 
-    /* Rectangular Portrait Photo Container */
+    
     .badge-photo-container {
       width: 96px;
       height: 116px;
@@ -2618,7 +2580,7 @@
       transform: scale(1.03);
     }
 
-    /* Identity Details */
+    
     .badge-identity {
       margin-bottom: 8px;
       text-align: center;
@@ -2649,7 +2611,7 @@
       line-height: 1.2;
     }
 
-    /* Spec Grid */
+    
     .badge-spec-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -2696,7 +2658,7 @@
       color: var(--accent-green);
     }
 
-    /* Contact Row */
+    
     .badge-contact-row {
       display: flex;
       align-items: center;
@@ -2732,7 +2694,7 @@
       font-size: 0.70rem;
     }
 
-    /* Bottom Barcode & Serial */
+    
     .badge-card-footer {
       border-top: 1px solid var(--border-subtle);
       padding-top: 6px;
@@ -2757,9 +2719,7 @@
       user-select: none;
     }
 
-    /* -------------------------------------------------------------
-       COMMAND PALETTE (CMD + K)
-    ------------------------------------------------------------- */
+    
     .command-palette-backdrop {
       position: fixed;
       top: 0;
@@ -2845,9 +2805,7 @@
       font-family: var(--font-code);
     }
 
-    /* -------------------------------------------------------------
-       RECRUITER 30-SECOND MODE (EXECUTIVE CANDIDATE BRIEF)
-    ------------------------------------------------------------- */
+    
     .btn-recruiter-mode {
       background: rgba(234, 179, 8, 0.04);
       border: 1px solid rgba(234, 179, 8, 0.32);
@@ -2879,7 +2837,7 @@
       color: #0969da;
     }
 
-    /* Modal Backdrop */
+    
     .recruiter-modal-backdrop {
       position: fixed;
       top: 0;
@@ -2904,7 +2862,7 @@
       opacity: 1;
     }
 
-    /* Modal Card - Executive Slate Aesthetic with Refined Top Border */
+    
     .recruiter-modal-card {
       width: 100%;
       max-width: 820px;
@@ -2934,7 +2892,7 @@
       to { transform: scale(1) translateY(0); opacity: 1; }
     }
 
-    /* Modal Header */
+    
     .recruiter-modal-header {
       display: flex;
       align-items: center;
@@ -3051,7 +3009,7 @@
       border-color: rgba(255, 255, 255, 0.25);
     }
 
-    /* Modal Body */
+    
     .recruiter-modal-body {
       padding: 22px 24px;
       overflow-y: auto;
@@ -3061,7 +3019,7 @@
       gap: 20px;
     }
 
-    /* Profile Banner - With Left Accent Border */
+    
     .recruiter-profile-banner {
       display: flex;
       align-items: center;
@@ -3189,7 +3147,7 @@
       color: #334155;
     }
 
-    /* Section Heading */
+    
     .recruiter-section-heading {
       display: flex;
       align-items: center;
@@ -3204,7 +3162,7 @@
       text-transform: uppercase;
     }
 
-    /* Metrics Grid (4 columns) - Distinct Purposeful Colored Top Borders */
+    
     .recruiter-metrics-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -3220,7 +3178,7 @@
       flex-direction: column;
     }
 
-    /* Card 1: Gold / Amber for LeetCode Knight */
+    
     .recruiter-metric-card.metric-card-gold {
       border: 1px solid rgba(245, 158, 11, 0.18);
       border-top: 2px solid rgba(251, 191, 36, 0.75);
@@ -3239,7 +3197,7 @@
       background: rgba(245, 158, 11, 0.06);
     }
 
-    /* Card 2: Enterprise Blue for Java 21 & Spring Boot */
+    
     .recruiter-metric-card.metric-card-blue {
       border: 1px solid rgba(96, 165, 250, 0.18);
       border-top: 2px solid rgba(96, 165, 250, 0.75);
@@ -3258,7 +3216,7 @@
       background: rgba(96, 165, 250, 0.06);
     }
 
-    /* Card 3: Deep Violet for LangGraph & Agentic AI */
+    
     .recruiter-metric-card.metric-card-purple {
       border: 1px solid rgba(192, 132, 252, 0.18);
       border-top: 2px solid rgba(192, 132, 252, 0.75);
@@ -3277,7 +3235,7 @@
       background: rgba(192, 132, 252, 0.06);
     }
 
-    /* Card 4: Emerald for Full Lifecycle & Ship Velocity */
+    
     .recruiter-metric-card.metric-card-emerald {
       border: 1px solid rgba(52, 211, 153, 0.18);
       border-top: 2px solid rgba(52, 211, 153, 0.75);
@@ -3348,7 +3306,7 @@
       margin-top: auto;
     }
 
-    /* Bento Grid (2 columns) - Left Accent Borders */
+    
     .recruiter-bento-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -3470,7 +3428,7 @@
       color: var(--text-primary);
     }
 
-    /* Skills Strip - Left Accent Border */
+    
     .recruiter-skills-bar {
       display: flex;
       flex-direction: column;
@@ -3529,7 +3487,7 @@
       color: #334155;
     }
 
-    /* Modal Footer (Action Dock) */
+    
     .recruiter-modal-footer {
       padding: 14px 24px;
       background: rgba(255, 255, 255, 0.02);
@@ -3652,7 +3610,7 @@
       border-color: rgba(255, 255, 255, 0.20);
     }
 
-    /* Floating Toast Notification */
+    
     .recruiter-toast {
       position: fixed;
       bottom: 36px;
@@ -3681,7 +3639,7 @@
       pointer-events: auto;
     }
 
-    /* Mobile Responsive */
+    
     @media (max-width: 768px) {
       .recruiter-modal-backdrop {
         padding: 12px;
@@ -3727,9 +3685,7 @@
       }
     }
 
-    /* -------------------------------------------------------------
-       BOTTOM STATUS BAR
-    ------------------------------------------------------------- */
+    
     .status-bar {
       position: fixed;
       bottom: 0;
@@ -3791,9 +3747,7 @@
       display: none;
     }
 
-    /* -------------------------------------------------------------
-       MOBILE RESPONSIVENESS & TOUCH OPTIMIZATION
-    ------------------------------------------------------------- */
+    
     .sidebar-backdrop {
       display: none;
     }
@@ -4228,9 +4182,7 @@
 
 <body>
 
-  <!-- ---------------------------------------------------------
-       TOPBAR & BREADCRUMB NAVIGATION
-  ---------------------------------------------------------- -->
+  
   <header class="topbar">
     <div class="topbar-left">
       <div class="window-controls">
@@ -4252,7 +4204,7 @@
       </div>
     </div>
 
-    <!-- Live Status Ticker -->
+    
     <div class="topbar-center">
       <div class="ticker-track">
         <div class="ticker-item">
@@ -4301,12 +4253,10 @@
     </div>
   </header>
 
-  <!-- ---------------------------------------------------------
-       MAIN WORKSPACE
-  ---------------------------------------------------------- -->
+  
   <div class="app-container">
 
-    <!-- Activity Bar (VS Code left rail) -->
+    
     <aside class="activity-bar">
       <div class="activity-group">
         <div class="activity-icon active" data-tab-target="tab-readme" data-tooltip="Explorer (README)">
@@ -4342,10 +4292,10 @@
       </div>
     </aside>
 
-    <!-- Mobile Sidebar Backdrop -->
+    
     <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 
-    <!-- File Explorer Sidebar -->
+    
     <nav class="sidebar" id="main-sidebar">
       <div class="sidebar-header">
         <span>JamesNithil.dev</span>
@@ -4422,7 +4372,7 @@
           <span>Download_Resume.pdf</span>
         </a>
 
-        <!-- Live Status Card in Sidebar -->
+        
         <div class="quick-status-card">
           <div class="status-badge-live">
             <span class="pulse-dot"></span> Active in Production
@@ -4433,10 +4383,10 @@
       </div>
     </nav>
 
-    <!-- Editor Central Area -->
+    
     <main class="editor-wrapper">
 
-      <!-- Editor Tabs Bar -->
+      
       <div class="tabs-bar" id="editor-tabs">
         <div class="tab-element active" data-tab="tab-readme">
           <i class="devicon-markdown-original" style="color: #60a5fa; font-size: 0.9rem;"></i>
@@ -4470,15 +4420,13 @@
         </div>
       </div>
 
-      <!-- Scrollable Tab Panes -->
+      
       <div class="editor-content">
 
-        <!-- ========================================================
-             TAB 1: README.md (OVERVIEW)
-        ========================================================= -->
+        
         <section id="tab-readme" class="tab-pane active">
 
-          <!-- Hero Greeting -->
+          
           <div class="hero-banner">
             <div class="hero-title-row">
               <h1 class="hero-title">James Nithil V</h1>
@@ -4510,7 +4458,7 @@
             </div>
           </div>
 
-          <!-- Quick Metrics Grid -->
+          
           <div class="stats-grid">
             <div class="stat-card stat-green">
               <div class="stat-value">Production</div>
@@ -4534,7 +4482,7 @@
             </div>
           </div>
 
-          <!-- Live Terminal-style Bio Output -->
+          
           <div class="terminal-container">
             <div class="terminal-header">
               <span>bash: profile.sh</span>
@@ -4543,7 +4491,7 @@
             <div class="terminal-body" id="readme-typewriter-text"><span class="terminal-cursor"></span></div>
           </div>
 
-          <!-- Quick Contact Footer Bar -->
+          
           <div class="quick-contact-bar" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
             <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 0.88rem; color: var(--text-secondary);">
               <button class="btn-action" id="copy-email-btn" onclick="copyEmailToClipboard(this)" title="Click to copy email address" style="background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-primary); padding: 7px 14px; font-size: 0.86rem; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.2s ease;">
@@ -4567,9 +4515,7 @@
 
         </section>
 
-        <!-- ========================================================
-             TAB 2: projects.py (PROJECTS SHOWCASE)
-        ========================================================= -->
+        
         <section id="tab-projects" class="tab-pane">
 
           <div class="section-headline">
@@ -4582,7 +4528,7 @@
             </span>
           </div>
 
-          <!-- PROJECT 1: KadalVazhi -->
+          
           <div class="project-card-modern featured">
             <div class="project-thumb-wrap flagship-thumb" onclick="openImageLightbox('assets/images/project-kadalvazhi.jpg', 'KadalVazhi Maritime Microservices Platform (Full Architecture View)')" title="Click to view full architectural dashboard in high resolution">
               <img src="assets/images/project-kadalvazhi.jpg" alt="KadalVazhi Maritime Microservices Platform Dashboard" class="project-thumb-img" loading="lazy">
@@ -4627,7 +4573,7 @@
               </li>
             </ul>
 
-            <!-- Java / Kafka event snippet for KadalVazhi -->
+            
             <div class="code-preview-block">
               <span class="syntax-com">// CatchEventConsumer.java: Kafka-driven Offshore Catch & Marketplace Processing</span><br>
               <span class="syntax-kw">@Component</span><br>
@@ -4666,7 +4612,7 @@
               </span>
             </div>
 
-            <!-- Interactive Architecture Simulator Panel -->
+            
             <div class="kadalvazhi-sim-panel" id="kadalvazhi-simulator">
               <div class="sim-header">
                 <div class="sim-header-left">
@@ -4686,7 +4632,7 @@
                 </div>
               </div>
 
-              <!-- Scenario Selector Bar -->
+              
               <div class="sim-scenario-selector">
                 <span class="sim-scenario-label"><i data-lucide="git-branch" style="width: 12px; height: 12px;"></i> Scenario:</span>
                 <div class="sim-scenario-pills">
@@ -4707,14 +4653,14 @@
                 </div>
               </div>
 
-              <!-- Pipeline Progress Track -->
+              
               <div class="sim-progress-track">
                 <div class="sim-progress-bar" id="sim-progress-fill"></div>
               </div>
 
-              <!-- Pipeline Nodes Grid -->
+              
               <div class="sim-nodes-grid">
-                <!-- Node 1: Vessel Client -->
+                
                 <div class="sim-node" id="sim-node-1">
                   <div class="sim-node-badge">STAGE 1</div>
                   <div class="sim-node-icon-wrap" id="sim-node-1-icon">
@@ -4725,12 +4671,12 @@
                   <div class="sim-node-status" id="sim-node-1-status">Deep-sea (12 NM offshore)</div>
                 </div>
 
-                <!-- Connector 1 -->
+                
                 <div class="sim-connector" id="sim-connector-1">
                   <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
                 </div>
 
-                <!-- Node 2: 4G Coastal Relay -->
+                
                 <div class="sim-node" id="sim-node-2">
                   <div class="sim-node-badge">STAGE 2</div>
                   <div class="sim-node-icon-wrap" id="sim-node-2-icon">
@@ -4741,12 +4687,12 @@
                   <div class="sim-node-status" id="sim-node-2-status">Awaiting cellular link</div>
                 </div>
 
-                <!-- Connector 2 -->
+                
                 <div class="sim-connector" id="sim-connector-2">
                   <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
                 </div>
 
-                <!-- Node 3: Kafka Event Hub -->
+                
                 <div class="sim-node" id="sim-node-3">
                   <div class="sim-node-badge">STAGE 3</div>
                   <div class="sim-node-icon-wrap" id="sim-node-3-icon">
@@ -4757,12 +4703,12 @@
                   <div class="sim-node-status" id="sim-node-3-status">Partition 2 · Idempotent</div>
                 </div>
 
-                <!-- Connector 3 -->
+                
                 <div class="sim-connector" id="sim-connector-3">
                   <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
                 </div>
 
-                <!-- Node 4: Spring Boot Microservices -->
+                
                 <div class="sim-node" id="sim-node-4">
                   <div class="sim-node-badge">STAGE 4</div>
                   <div class="sim-node-icon-wrap" id="sim-node-4-icon">
@@ -4774,7 +4720,7 @@
                 </div>
               </div>
 
-              <!-- Terminal Event Stream Console -->
+              
               <div class="sim-console-wrap">
                 <div class="sim-console-top">
                   <span class="sim-console-dot red"></span>
@@ -4790,7 +4736,7 @@
             </div>
           </div>
 
-          <!-- PROJECT 2: AI InterviewBot -->
+          
           <div class="project-card-modern">
             <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-interviewbot.jpg', 'AI InterviewBot: Dynamic Voice Interviewer Dashboard')" title="Click to view preview in high resolution">
               <img src="assets/images/project-interviewbot.jpg" alt="AI InterviewBot Voice Interview System Dashboard" class="project-thumb-img" loading="lazy">
@@ -4841,7 +4787,7 @@
             </div>
           </div>
 
-          <!-- PROJECT 3: SymptoMedAI -->
+          
           <div class="project-card-modern">
             <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-symptomedai.jpg', 'SymptoMedAI: Disease Prediction Platform')" title="Click to view preview in high resolution">
               <img src="assets/images/project-symptomedai.jpg" alt="SymptoMedAI Disease Prediction Platform" class="project-thumb-img" loading="lazy">
@@ -4890,7 +4836,7 @@
             </div>
           </div>
 
-          <!-- PROJECT 4: FarmVista (SIH) -->
+          
           <div class="project-card-modern">
             <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-farmvista.jpg', 'FarmVista: Smart Agriculture Advisory Dashboard')" title="Click to view preview in high resolution">
               <img src="assets/images/project-farmvista.jpg" alt="FarmVista Smart Agriculture Advisory Dashboard" class="project-thumb-img" loading="lazy">
@@ -4941,9 +4887,7 @@
 
         </section>
 
-        <!-- ========================================================
-             TAB 3: experience.json (WORK EXPERIENCE)
-        ========================================================= -->
+        
         <section id="tab-experience" class="tab-pane">
 
           <div class="section-headline">
@@ -4958,11 +4902,11 @@
 
           <div class="timeline-modern">
 
-            <!-- EXPERIENCE 1: Vaken Technologies (LinkedIn-style Progressive Multi-Role) -->
+            
             <div class="timeline-node">
               <div class="timeline-dot"></div>
               <div class="experience-card">
-                <!-- Company Header -->
+                
                 <div class="company-brand-header">
                   <div class="company-brand-left">
                     <img src="assets/images/vaken-logo.png" alt="Vaken Technologies Logo" class="company-logo-img" onerror="this.src='https://github.com/nithiljn/AI_Portfolio/raw/main/assets/images/vaken-logo.png'">
@@ -4979,10 +4923,10 @@
                   </div>
                 </div>
 
-                <!-- Sub-timeline connecting roles -->
+                
                 <div class="roles-sub-timeline">
 
-                  <!-- Role 1: Junior Software Engineer (Full-time) -->
+                  
                   <div class="sub-role-node">
                     <div class="sub-role-dot"></div>
                     <div class="sub-role-header">
@@ -5025,7 +4969,7 @@
                     </div>
                   </div>
 
-                  <!-- Role 2: Intern (Internship) -->
+                  
                   <div class="sub-role-node">
                     <div class="sub-role-dot"></div>
                     <div class="sub-role-header">
@@ -5059,7 +5003,7 @@
               </div>
             </div>
 
-            <!-- EXPERIENCE 2: SpreadTech Solutions -->
+            
             <div class="timeline-node">
               <div class="timeline-dot" style="border-color: #3b82f6;"></div>
               <div class="experience-card">
@@ -5106,7 +5050,7 @@
               </div>
             </div>
 
-            <!-- EDUCATION: Knowledge Institute of Technology (KIOT) -->
+            
             <div class="timeline-node">
               <div class="timeline-dot" style="border-color: var(--accent-green);"></div>
               <div class="experience-card">
@@ -5149,7 +5093,7 @@
               </div>
             </div>
 
-            <!-- Certifications -->
+            
             <div class="timeline-node">
               <div class="timeline-dot" style="border-color: var(--accent-purple);"></div>
               <div class="experience-card">
@@ -5185,9 +5129,7 @@
 
         </section>
 
-        <!-- ========================================================
-             TAB 4: skills.ts (TECHNICAL SKILLS)
-        ========================================================= -->
+        
         <section id="tab-skills" class="tab-pane">
 
           <div class="section-headline">
@@ -5200,7 +5142,7 @@
             </span>
           </div>
 
-          <!-- Skills Filter -->
+          
           <div class="skills-filter-bar">
             <button class="filter-btn active" onclick="filterSkills('all', this)">All Categories</button>
             <button class="filter-btn" onclick="filterSkills('backend', this)">Backend & Systems</button>
@@ -5212,7 +5154,7 @@
 
           <div class="skills-category-grid" id="skills-matrix">
 
-            <!-- Category: Languages -->
+            
             <div class="skill-cat-card" data-category="languages">
               <h3 class="skill-cat-title">
                 <i class="devicon-code-plain" style="color: var(--accent-blue);"></i> Languages
@@ -5233,7 +5175,7 @@
               </div>
             </div>
 
-            <!-- Category: Backend & Architecture -->
+            
             <div class="skill-cat-card" data-category="backend">
               <h3 class="skill-cat-title">
                 <i class="devicon-spring-plain" style="color: #4ade80;"></i> Backend Engineering
@@ -5260,7 +5202,7 @@
               </div>
             </div>
 
-            <!-- Category: Systems & Distributed -->
+            
             <div class="skill-cat-card" data-category="backend">
               <h3 class="skill-cat-title">
                 <i data-lucide="server" style="color: var(--accent-purple);"></i> Systems & Architecture
@@ -5284,7 +5226,7 @@
               </div>
             </div>
 
-            <!-- Category: Databases -->
+            
             <div class="skill-cat-card" data-category="database">
               <h3 class="skill-cat-title">
                 <i class="devicon-redis-plain" style="color: #ef4444;"></i> Databases & Caching
@@ -5308,7 +5250,7 @@
               </div>
             </div>
 
-            <!-- Category: AI & Machine Learning -->
+            
             <div class="skill-cat-card" data-category="aiml">
               <h3 class="skill-cat-title">
                 <i data-lucide="brain" style="color: var(--accent-pink);"></i> AI & Machine Learning
@@ -5338,7 +5280,7 @@
               </div>
             </div>
 
-            <!-- Category: Cloud & DevOps -->
+            
             <div class="skill-cat-card" data-category="cloud">
               <h3 class="skill-cat-title">
                 <i class="devicon-amazonwebservices-plain-wordmark" style="color: #f59e0b;"></i> Cloud & DevOps
@@ -5363,9 +5305,7 @@
 
         </section>
 
-        <!-- ========================================================
-             TAB 5: achievements.yaml (LEETCODE KNIGHT & HONORS)
-        ========================================================= -->
+        
         <section id="tab-achievements" class="tab-pane">
 
           <div class="section-headline">
@@ -5378,7 +5318,7 @@
             </a>
           </div>
 
-          <!-- Knight Spotlight Card -->
+          
           <div class="knight-spotlight-card">
             <div class="knight-spotlight-inner">
               <div class="knight-info-col">
@@ -5409,7 +5349,7 @@
                 </div>
               </div>
 
-              <!-- Official LeetCode Rating Card Image -->
+              
               <div class="leetcode-screenshot-wrap">
                 <img src="assets/images/leetcode_knight.png" alt="LeetCode Knight Rating 1994, James Nithil V" class="leetcode-screenshot-img" />
                 <div class="leetcode-screenshot-caption">
@@ -5454,7 +5394,7 @@
             </div>
           </div>
 
-          <!-- LeetCode Contest Rating Trajectory & Interactive Explorer -->
+          
           <div class="leetcode-trajectory-card" id="leetcode-trajectory">
             <div class="trajectory-header">
               <div class="trajectory-title-wrap">
@@ -5474,7 +5414,7 @@
               </div>
             </div>
 
-            <!-- Live Contest Inspection HUD -->
+            
             <div class="contest-inspect-hud" id="contest-hud">
               <div class="hud-col">
                 <span class="hud-label">Inspected Contest</span>
@@ -5498,7 +5438,7 @@
               </div>
             </div>
 
-            <!-- Interactive SVG Chart Container -->
+            
             <div class="svg-chart-container">
               <svg viewBox="0 0 760 250" width="100%" height="auto" style="display: block; overflow: hidden; border-radius: var(--radius-sm);">
                 <defs>
@@ -5513,14 +5453,14 @@
                   </filter>
                 </defs>
 
-                <!-- Horizontal Grid Lines -->
+                
                 <line x1="45" y1="50" x2="745" y2="50" stroke="rgba(255, 255, 255, 0.05)" stroke-dasharray="3 3" />
                 <text x="38" y="54" fill="#64748b" font-size="10" font-family="monospace" text-anchor="end">2,000</text>
 
                 <line x1="45" y1="100" x2="745" y2="100" stroke="rgba(255, 255, 255, 0.05)" stroke-dasharray="3 3" />
                 <text x="38" y="104" fill="#64748b" font-size="10" font-family="monospace" text-anchor="end">1,900</text>
 
-                <!-- Knight Threshold (1,850) Dashed Guide Line -->
+                
                 <line x1="45" y1="125" x2="745" y2="125" stroke="rgba(245, 158, 11, 0.32)" stroke-width="1" stroke-dasharray="4 4" />
                 <text x="38" y="129" fill="#eab308" font-size="10" font-family="monospace" text-anchor="end" font-weight="600">1,850</text>
                 <text x="745" y="119" fill="#94a3b8" font-size="8.5" font-family="monospace" text-anchor="end"><tspan fill="#eab308">★</tspan> KNIGHT THRESHOLD (1,850)</text>
@@ -5531,72 +5471,72 @@
                 <line x1="45" y1="205" x2="745" y2="205" stroke="rgba(255, 255, 255, 0.05)" stroke-dasharray="3 3" />
                 <text x="38" y="209" fill="#64748b" font-size="10" font-family="monospace" text-anchor="end">1,700</text>
 
-                <!-- Gradient Fill Area Under Curve -->
+                
                 <path d="M 55,206 C 85,160 105,115 130,111 C 155,108 180,108 205,108 C 230,108 255,109 280,109 C 305,109 330,114 355,116 C 380,118 405,127 430,130 C 455,133 480,143 505,145 C 530,147 555,105 580,88 C 605,71 630,59 655,57 C 680,55 705,53 730,53 L 730,225 L 55,225 Z" fill="url(#ratingGradient)" />
 
-                <!-- The Rating Curve Line -->
+                
                 <path d="M 55,206 C 85,160 105,115 130,111 C 155,108 180,108 205,108 C 230,108 255,109 280,109 C 305,109 330,114 355,116 C 380,118 405,127 430,130 C 455,133 480,143 505,145 C 530,147 555,105 580,88 C 605,71 630,59 655,57 C 680,55 705,53 730,53" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#subtleGlow)" />
 
-                <!-- Pulsing Outer Beacon for Peak WC 519 -->
+                
                 <circle cx="730" cy="53" r="13" fill="none" stroke="#38bdf8" stroke-width="1.5" class="pulse-ring-anim" />
 
-                <!-- Standout Milestone Callout: C8 WC 517 (Best Rank #114) -->
+                
                 <g transform="translate(518, 46)">
                   <rect x="0" y="0" width="124" height="24" rx="12" fill="rgba(10, 15, 26, 0.95)" stroke="rgba(52, 211, 153, 0.5)" stroke-width="1.2" />
                   <text x="62" y="16" fill="#f8fafc" font-size="9.5" font-family="monospace" font-weight="600" text-anchor="middle"><tspan fill="#34d399" font-weight="700">★</tspan> BEST RANK <tspan fill="#34d399" font-weight="700">#114</tspan></text>
                 </g>
 
-                <!-- Peak Milestone Callout: C10 WC 519 (Peak 1,994) -->
+                
                 <g transform="translate(636, 14)">
                   <rect x="0" y="0" width="112" height="24" rx="12" fill="rgba(10, 15, 26, 0.95)" stroke="rgba(56, 189, 248, 0.55)" stroke-width="1.2" />
                   <text x="56" y="16" fill="#f8fafc" font-size="9.5" font-family="monospace" font-weight="600" text-anchor="middle"><tspan fill="#38bdf8" font-weight="700">★</tspan> PEAK <tspan fill="#38bdf8" font-weight="700">1,994</tspan></text>
                 </g>
 
-                <!-- 10 Interactive Contest Nodes -->
-                <!-- C1: Dec 21, 2025 · WC 481 -->
+                
+                
                 <circle cx="55" cy="206" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-1" onmouseenter="inspectContest(1)" onclick="inspectContest(1)" />
                 <text x="55" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 481</text>
 
-                <!-- C2: Feb 22, 2026 · WC 490 (Knight Unlocked) -->
+                
                 <circle cx="130" cy="111" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-2" onmouseenter="inspectContest(2)" onclick="inspectContest(2)" />
                 <text x="130" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 490</text>
 
-                <!-- C3: Mar 01, 2026 · WC 491 -->
+                
                 <circle cx="205" cy="108" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-3" onmouseenter="inspectContest(3)" onclick="inspectContest(3)" />
                 <text x="205" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 491</text>
 
-                <!-- C4: Mar 08, 2026 · WC 492 -->
+                
                 <circle cx="280" cy="109" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-4" onmouseenter="inspectContest(4)" onclick="inspectContest(4)" />
                 <text x="280" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 492</text>
 
-                <!-- C5: Mar 15, 2026 · WC 493 -->
+                
                 <circle cx="355" cy="116" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-5" onmouseenter="inspectContest(5)" onclick="inspectContest(5)" />
                 <text x="355" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 493</text>
 
-                <!-- C6: May 03, 2026 · WC 500 -->
+                
                 <circle cx="430" cy="130" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-6" onmouseenter="inspectContest(6)" onclick="inspectContest(6)" />
                 <text x="430" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 500</text>
 
-                <!-- C7: Jun 07, 2026 · WC 505 -->
+                
                 <circle cx="505" cy="145" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-7" onmouseenter="inspectContest(7)" onclick="inspectContest(7)" />
                 <text x="505" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 505</text>
 
-                <!-- C8: Aug 30, 2026 · WC 517 (Best Global Rank #114) -->
+                
                 <circle cx="580" cy="88" r="5.5" fill="#10b981" stroke="#ffffff" stroke-width="2" class="chart-dot-interactive" id="dot-8" onmouseenter="inspectContest(8)" onclick="inspectContest(8)" />
                 <circle cx="580" cy="88" r="10" fill="none" stroke="rgba(52, 211, 153, 0.4)" stroke-width="1.2" stroke-dasharray="2 2" />
                 <text x="580" y="240" fill="#34d399" font-size="9" font-family="monospace" text-anchor="middle" font-weight="700">WC 517*</text>
 
-                <!-- C9: Sep 06, 2026 · WC 518 -->
+                
                 <circle cx="655" cy="57" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-9" onmouseenter="inspectContest(9)" onclick="inspectContest(9)" />
                 <text x="655" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 518</text>
 
-                <!-- C10: Sep 13, 2026 · WC 519 (Peak 1,994) -->
+                
                 <circle cx="730" cy="53" r="6" fill="#38bdf8" stroke="#ffffff" stroke-width="2" class="chart-dot-interactive active-dot" id="dot-10" onmouseenter="inspectContest(10)" onclick="inspectContest(10)" />
                 <text x="730" y="240" fill="#38bdf8" font-size="9.5" font-family="monospace" text-anchor="middle" font-weight="700">WC 519*</text>
               </svg>
             </div>
 
-            <!-- Contest Fast-Select Strip -->
+            
             <div class="contest-pill-strip" id="contest-pills">
               <span style="font-size: 0.72rem; font-family: var(--font-code); color: var(--text-muted); margin-right: 4px;">Jump to:</span>
               <button class="contest-pill-btn" onclick="inspectContest(1)" id="pill-1">C1: WC 481 (1,689)</button>
@@ -5612,7 +5552,7 @@
             </div>
           </div>
 
-          <!-- Languages & Skill Distribution Card -->
+          
           <div class="project-card-modern">
             <h3 style="color: var(--text-primary); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
               <i data-lucide="code-2" style="width: 20px; height: 20px; color: var(--accent-blue);"></i> Solved Problems by Language & Algorithmic Skills
@@ -5690,7 +5630,7 @@
             </div>
           </div>
 
-          <!-- DSA Topic Mastery Breakdown -->
+          
           <div class="project-card-modern">
             <h3 style="color: var(--text-primary); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px;">
               <i data-lucide="git-merge" style="width: 18px; height: 18px; color: var(--accent-blue); vertical-align: middle;"></i> Core Algorithmic Domains Mastered
@@ -5712,7 +5652,7 @@
             </div>
           </div>
 
-          <!-- Hackathon & Leadership -->
+          
           <div class="project-card-modern">
             <h3 style="color: var(--text-primary); font-size: 1.15rem; margin-top: 0; margin-bottom: 10px;">
               <i data-lucide="users" style="width: 18px; height: 18px; color: var(--accent-green); vertical-align: middle;"></i> Smart India Hackathon (SIH) Team Leader
@@ -5725,9 +5665,7 @@
 
         </section>
 
-        <!-- ========================================================
-             TAB 6: terminal.sh (INTERACTIVE SHELL)
-        ========================================================= -->
+        
         <section id="tab-terminal" class="tab-pane">
 
           <div class="section-headline">
@@ -5758,7 +5696,7 @@
               </div>
             </div>
 
-            <!-- Quick click-to-run buttons -->
+            
             <div class="term-quick-pills">
               <button class="term-pill-btn" onclick="runCliBtn('whoami')">whoami</button>
               <button class="term-pill-btn" onclick="runCliBtn('skills')">skills</button>
@@ -5783,9 +5721,7 @@
     </main>
   </div>
 
-  <!-- ---------------------------------------------------------
-       PLASTIC / GLASS DEVELOPER ID BADGE
-  ---------------------------------------------------------- -->
+  
   <div class="id-badge-container" id="id-badge-card">
     <div class="lanyard-clip-assembly">
       <div class="lanyard-strap"></div>
@@ -5846,9 +5782,7 @@
     </div>
   </div>
 
-  <!-- ---------------------------------------------------------
-       COMMAND PALETTE (CMD + K / CTRL + K)
-  ---------------------------------------------------------- -->
+  
   <div class="command-palette-backdrop" id="command-palette">
     <div class="command-palette-card">
       <div class="palette-input-box">
@@ -5945,12 +5879,10 @@
     </div>
   </div>
 
-  <!-- ---------------------------------------------------------
-       RECRUITER 30-SECOND MODE (EXECUTIVE TL;DR MODAL)
-  ---------------------------------------------------------- -->
+  
   <div class="recruiter-modal-backdrop" id="recruiter-modal" onclick="handleRecruiterBackdropClick(event)">
     <div class="recruiter-modal-card">
-      <!-- Modal Header -->
+      
       <div class="recruiter-modal-header">
         <div class="recruiter-header-left">
           <div class="recruiter-icon-badge">
@@ -5970,9 +5902,9 @@
         </div>
       </div>
 
-      <!-- Modal Body (Scrollable) -->
+      
       <div class="recruiter-modal-body">
-        <!-- Candidate Identity Row -->
+        
         <div class="recruiter-profile-banner">
           <div class="recruiter-avatar-wrap">
             <img src="assets/images/jamesnithil.jpeg" alt="James Nithil" class="recruiter-avatar-img">
@@ -5996,12 +5928,12 @@
           </div>
         </div>
 
-        <!-- 4-Pillar High-Impact Verified Metrics -->
+        
         <div class="recruiter-section-heading">
           <span>Verified Competency Snapshot</span>
         </div>
         <div class="recruiter-metrics-grid">
-          <!-- Card 1 -->
+          
           <div class="recruiter-metric-card metric-card-gold">
             <div class="metric-top">
               <span class="metric-icon"><i data-lucide="award" style="width: 16px; height: 16px; color: #f59e0b;"></i></span>
@@ -6012,7 +5944,7 @@
             <div class="metric-desc">Peak Rank #114 / 43,000+ · 700+ DSA Problems Solved</div>
           </div>
 
-          <!-- Card 2 -->
+          
           <div class="recruiter-metric-card metric-card-blue">
             <div class="metric-top">
               <span class="metric-icon"><i data-lucide="server" style="width: 16px; height: 16px; color: #60a5fa;"></i></span>
@@ -6023,7 +5955,7 @@
             <div class="metric-desc">REST APIs, Jenkins CI/CD, PostgreSQL, Redis, Clean Architecture</div>
           </div>
 
-          <!-- Card 3 -->
+          
           <div class="recruiter-metric-card metric-card-purple">
             <div class="metric-top">
               <span class="metric-icon"><i data-lucide="cpu" style="width: 16px; height: 16px; color: #a78bfa;"></i></span>
@@ -6034,7 +5966,7 @@
             <div class="metric-desc">Amazon Bedrock, Multi-Agent Orchestration, Offline-First Sync</div>
           </div>
 
-          <!-- Card 4 -->
+          
           <div class="recruiter-metric-card metric-card-emerald">
             <div class="metric-top">
               <span class="metric-icon"><i data-lucide="layers" style="width: 16px; height: 16px; color: #34d399;"></i></span>
@@ -6046,12 +5978,12 @@
           </div>
         </div>
 
-        <!-- Top 2 Work & Engineering Impact Bento -->
+        
         <div class="recruiter-section-heading">
           <span>Production & Engineering Impact</span>
         </div>
         <div class="recruiter-bento-grid">
-          <!-- Bento 1 -->
+          
           <div class="recruiter-bento-card bento-card-vaken">
             <div class="bento-badge bento-badge-vaken">Enterprise Production · Current Role</div>
             <h5 class="bento-title">Vaken Technology (Sovablu Platform)</h5>
@@ -6064,7 +5996,7 @@
             </ul>
           </div>
 
-          <!-- Bento 2 -->
+          
           <div class="recruiter-bento-card bento-card-kadalvazhi">
             <div class="bento-badge bento-badge-kadalvazhi">Flagship Architecture</div>
             <h5 class="bento-title">KadalVazhi · Autonomous Maritime AI Engine</h5>
@@ -6077,7 +6009,7 @@
           </div>
         </div>
 
-        <!-- Core Tech Stack Matrix -->
+        
         <div class="recruiter-section-heading">
           <span>Core Technical Matrix</span>
         </div>
@@ -6111,7 +6043,7 @@
         </div>
       </div>
 
-      <!-- Instant 1-Click Action Dock -->
+      
       <div class="recruiter-modal-footer">
         <div class="recruiter-footer-actions">
           <a href="James_Nithil_Resume.pdf" download="James_Nithil_Resume.pdf" class="recruiter-action-btn recruiter-btn-download" title="Download Official Resume PDF">
@@ -6148,15 +6080,13 @@
     </div>
   </div>
 
-  <!-- Recruiter Action Toast Notification -->
+  
   <div class="recruiter-toast" id="recruiter-toast">
     <i data-lucide="check-circle" style="width: 16px; height: 16px; color: #10b981;"></i>
     <span id="recruiter-toast-msg">Email copied: jamnithil@gmail.com</span>
   </div>
 
-  <!-- ---------------------------------------------------------
-       FULLSCREEN IMAGE LIGHTBOX MODAL
-  ---------------------------------------------------------- -->
+  
   <div class="image-lightbox-modal" id="image-lightbox" onclick="closeImageLightbox(event)">
     <div class="lightbox-content-box">
       <div class="lightbox-header">
@@ -6172,9 +6102,7 @@
     </div>
   </div>
 
-  <!-- ---------------------------------------------------------
-       BOTTOM STATUS BAR (VS CODE FOOTER)
-  ---------------------------------------------------------- -->
+  
   <footer class="status-bar">
     <div class="status-bar-left">
       <div class="status-bar-item status-item-branch" onclick="switchTab('tab-readme')" title="Active Git Branch">
@@ -6207,19 +6135,12 @@
     </div>
   </footer>
 
-  <!-- ---------------------------------------------------------
-       CLIENT JAVASCRIPT LOGIC
-  ---------------------------------------------------------- -->
+  
   <script>
-    // Lucide Icons Initialization
     lucide.createIcons();
 
-    // Sound FX (disabled per user request)
     function playKeyClick() {}
 
-    // -------------------------------------------------------------
-    // TAB SWITCHING (SMOOTH & INSTANT)
-    // -------------------------------------------------------------
     const tabPanes = document.querySelectorAll('.tab-pane');
     const tabElements = document.querySelectorAll('.tab-element');
     const sidebarFiles = document.querySelectorAll('.file-item[data-tab]');
@@ -6238,16 +6159,13 @@
     function switchTab(tabId) {
       playKeyClick();
 
-      // Deactivate all panes
       tabPanes.forEach(pane => pane.classList.remove('active'));
 
-      // Activate targeted pane
       const targetPane = document.getElementById(tabId);
       if (targetPane) {
         targetPane.classList.add('active');
       }
 
-      // Update Editor tabs bar
       tabElements.forEach(el => {
         if (el.getAttribute('data-tab') === tabId) {
           el.classList.add('active');
@@ -6257,7 +6175,6 @@
         }
       });
 
-      // Update Sidebar items
       sidebarFiles.forEach(el => {
         if (el.getAttribute('data-tab') === tabId) {
           el.classList.add('active');
@@ -6266,7 +6183,6 @@
         }
       });
 
-      // Update Activity Bar icons
       activityIcons.forEach(icon => {
         if (icon.getAttribute('data-tab-target') === tabId) {
           icon.classList.add('active');
@@ -6275,7 +6191,6 @@
         }
       });
 
-      // Auto close mobile drawer when switching tabs
       if (window.innerWidth <= 768) {
         closeMobileSidebar();
       }
@@ -6283,7 +6198,6 @@
         closeBadge();
       }
 
-      // Update Breadcrumb
       if (fileMetaMap[tabId] && breadcrumbLabel) {
         breadcrumbLabel.innerHTML = `
           <i data-lucide="${fileMetaMap[tabId].icon}" style="width: 13px; height: 13px; color: ${fileMetaMap[tabId].color};"></i>
@@ -6292,14 +6206,12 @@
         lucide.createIcons();
       }
 
-      // If terminal tab opened, focus input
       if (tabId === 'tab-terminal') {
         setTimeout(() => {
           document.getElementById('cli-input-field').focus();
         }, 80);
       }
 
-      // Auto-expand portfolio folder if collapsed
       if (typeof togglePortfolioFolder === 'function') {
         const toggleEl = document.getElementById('portfolio-folder-toggle');
         if (toggleEl && toggleEl.classList.contains('collapsed')) {
@@ -6308,7 +6220,6 @@
       }
     }
 
-    // Attach click handlers to tabs
     tabElements.forEach(tab => {
       tab.addEventListener('click', (e) => {
         if (e.target.classList.contains('tab-close')) return;
@@ -6317,7 +6228,6 @@
       });
     });
 
-    // Attach click handlers to sidebar file items
     sidebarFiles.forEach(item => {
       item.addEventListener('click', () => {
         const tabId = item.getAttribute('data-tab');
@@ -6325,7 +6235,6 @@
       });
     });
 
-    // Attach click handlers to activity bar icons
     activityIcons.forEach(icon => {
       icon.addEventListener('click', () => {
         const tabTarget = icon.getAttribute('data-tab-target');
@@ -6333,7 +6242,6 @@
       });
     });
 
-    // Toggle Sidebar & Mobile Drawer
     const toggleSidebarBtn = document.getElementById('toggle-sidebar-btn');
     const mainSidebar = document.getElementById('main-sidebar');
     const sidebarBackdrop = document.getElementById('sidebar-backdrop');
@@ -6370,9 +6278,6 @@
       });
     }
 
-    // -------------------------------------------------------------
-    // EXPLORER FOLDER TOGGLE (PORTFOLIO ROOT EXPAND/COLLAPSE)
-    // -------------------------------------------------------------
     const portfolioFolderToggle = document.getElementById('portfolio-folder-toggle');
     const portfolioFolderFiles = document.getElementById('portfolio-folder-files');
     const folderChevronWrap = document.getElementById('folder-chevron-wrap');
@@ -6417,9 +6322,6 @@
       });
     }
 
-    // -------------------------------------------------------------
-    // THEME ENGINE (Obsidian Studio, Tokyo Night, Catppuccin, Light)
-    // -------------------------------------------------------------
     const themeBtn = document.getElementById('theme-toggle-btn');
     const themeIcon = document.getElementById('theme-icon');
     const themeBtnLabel = document.getElementById('theme-btn-label');
@@ -6503,13 +6405,9 @@
       });
     }
 
-    // Restore saved theme or default to obsidian
     const initialSavedTheme = localStorage.getItem('preferred-theme') || (localStorage.getItem('theme') === 'light' ? 'light' : 'obsidian');
     setTheme(initialSavedTheme);
 
-    // -------------------------------------------------------------
-    // ID BADGE: TOGGLE & INTERACTIVE 3D PERSPECTIVE TILT
-    // -------------------------------------------------------------
     const badgeContainer = document.getElementById('id-badge-card');
     const interactiveCard = document.getElementById('interactive-card');
     const toggleBadgeBtn = document.getElementById('badge-toggle-btn');
@@ -6528,7 +6426,6 @@
       if (window.innerWidth <= 768) {
         closeMobileSidebar();
       }
-      // If Ask James assistant is open, close it to avoid overlap
       if (typeof window.toggleAiDrawer === 'function') {
         window.toggleAiDrawer(false);
       }
@@ -6576,7 +6473,6 @@
       });
     }
 
-    // Tap dark overlay to close mobile badge modal
     if (badgeContainer) {
       badgeContainer.addEventListener('click', (e) => {
         if (window.innerWidth <= 900 && e.target === badgeContainer) {
@@ -6586,14 +6482,12 @@
       });
     }
 
-    // Responsive resize cleanup
     window.addEventListener('resize', () => {
       if (badgeContainer && window.innerWidth > 900 && badgeContainer.classList.contains('mobile-open')) {
         badgeContainer.classList.remove('mobile-open');
       }
     });
 
-    // 3D Tilt on Mouse Move
     if (interactiveCard) {
       interactiveCard.addEventListener('mousemove', (e) => {
         const rect = interactiveCard.getBoundingClientRect();
@@ -6609,9 +6503,6 @@
       });
     }
 
-    // -------------------------------------------------------------
-    // SKILLS FILTERING
-    // -------------------------------------------------------------
     function filterSkills(category, btnElement) {
       playKeyClick();
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -6627,9 +6518,6 @@
       });
     }
 
-    // -------------------------------------------------------------
-    // TYPEWRITER TEXT FOR README TAB
-    // -------------------------------------------------------------
     const typewriterText = `
 $ cat runtime.env
 PRIMARY_STACK=Java 21, Spring Boot, Python, Apache Kafka, Redis
@@ -6666,7 +6554,6 @@ Availability : Open for Software Development & AI Agent Development
       }
     }
 
-    // Trigger typewriter on load and support direct hash tab linking
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(runTypewriter, 200);
       updateDynamicTenure();
@@ -6682,11 +6569,9 @@ Availability : Open for Software Development & AI Agent Development
       }
     });
 
-    // Dynamic Tenure Counter for Vaken (Aug 2025 to Present)
     function updateDynamicTenure() {
       const now = new Date();
 
-      // Total Vaken Tenure (from Aug 2025)
       const vakenStart = new Date(2025, 7, 1);
       const totalMonths = (now.getFullYear() - vakenStart.getFullYear()) * 12 + (now.getMonth() - vakenStart.getMonth()) + 1;
       const elTotal = document.getElementById('vaken-duration-counter');
@@ -6703,7 +6588,6 @@ Availability : Open for Software Development & AI Agent Development
         elTotal.textContent = durationStr.trim();
       }
 
-      // Full-time Junior Software Engineer Tenure (from Oct 2025)
       const ftStart = new Date(2025, 9, 1);
       const ftMonths = (now.getFullYear() - ftStart.getFullYear()) * 12 + (now.getMonth() - ftStart.getMonth()) + 1;
       const elFt = document.getElementById('vaken-ft-duration');
@@ -6721,9 +6605,6 @@ Availability : Open for Software Development & AI Agent Development
       }
     }
 
-    // -------------------------------------------------------------
-    // COMMAND PALETTE (CMD + K / CTRL + K)
-    // -------------------------------------------------------------
     const paletteBackdrop = document.getElementById('command-palette');
     const paletteInput = document.getElementById('palette-search-input');
     const cmdBtn = document.getElementById('cmd-palette-btn');
@@ -6762,7 +6643,6 @@ Availability : Open for Software Development & AI Agent Development
           closeRecruiterModal();
         }
       }
-      // Toggle 30s Executive Brief with 'Space' or 'R' (Universal Mac & Windows)
       const isR = e.key.toLowerCase() === 'r';
       const isSpace = e.code === 'Space' || e.key === ' ';
       if ((isR || isSpace) && !e.metaKey && !e.ctrlKey && !e.altKey) {
@@ -6801,9 +6681,6 @@ Availability : Open for Software Development & AI Agent Development
       filterPaletteItems(e.target.value);
     });
 
-    // -------------------------------------------------------------
-    // RECRUITER 30-SECOND MODE CONTROLLER
-    // -------------------------------------------------------------
     const recruiterModal = document.getElementById('recruiter-modal');
 
     function openRecruiterModal() {
@@ -6890,9 +6767,6 @@ Availability : Open for Software Development & AI Agent Development
       }
     }
 
-    // -------------------------------------------------------------
-    // INTERACTIVE TERMINAL (terminal.sh)
-    // -------------------------------------------------------------
     const cliScrollView = document.getElementById('terminal-scroll-view');
     const cliInput = document.getElementById('cli-input-field');
 
@@ -7135,7 +7009,6 @@ Contact Information:
       document.body.removeChild(input);
     }
 
-    // Image Lightbox Functions
     function openImageLightbox(src, caption) {
       const modal = document.getElementById('image-lightbox');
       const img = document.getElementById('lightbox-img');
@@ -7162,9 +7035,6 @@ Contact Information:
       }
     }
 
-    // -------------------------------------------------------------
-    // KADALVAZHI DISTRIBUTED ARCHITECTURE MULTI-SCENARIO SIMULATOR
-    // -------------------------------------------------------------
     let simInterval = null;
     let simStep = 0;
     let isSimRunning = false;
@@ -7446,7 +7316,6 @@ Contact Information:
       }
       currentSimScenario = scenarioKey;
 
-      // Update pills
       ['catch', 'mechanic', 'crew'].forEach(key => {
         const btn = document.getElementById(`sim-tab-${key}`);
         if (btn) {
@@ -7460,11 +7329,9 @@ Contact Information:
 
       const sc = simScenarios[scenarioKey];
 
-      // Update console title
       const consoleTitle = document.getElementById('sim-console-title');
       if (consoleTitle) consoleTitle.textContent = sc.consoleTitle;
 
-      // Update node titles, techs, statuses, and icons
       for (let i = 1; i <= 4; i++) {
         const nodeData = sc.nodes[`node${i}`];
         if (nodeData) {
@@ -7483,7 +7350,6 @@ Contact Information:
 
       if (window.lucide) lucide.createIcons();
 
-      // Reset pipeline state with scenario message
       resetKadalVazhiSimulation(true);
       playKeyClick();
     }
@@ -7507,7 +7373,6 @@ Contact Information:
       const statusText = document.getElementById('sim-status-text');
       if (statusText) statusText.textContent = `SYSTEM IDLE · Ready to simulate: ${sc.name}`;
 
-      // Reset nodes
       for (let i = 1; i <= 4; i++) {
         const node = document.getElementById(`sim-node-${i}`);
         if (node) {
@@ -7520,7 +7385,6 @@ Contact Information:
         }
       }
 
-      // Reset connectors
       for (let i = 1; i <= 3; i++) {
         const conn = document.getElementById(`sim-connector-${i}`);
         if (conn) conn.classList.remove('active-flow');
@@ -7567,18 +7431,14 @@ Contact Information:
 
         const data = logs[simStep];
 
-        // Update progress bar
         const progressFill = document.getElementById('sim-progress-fill');
         if (progressFill) progressFill.style.width = `${data.progress}%`;
 
-        // Update status text
         const statusText = document.getElementById('sim-status-text');
         if (statusText) statusText.textContent = data.statusText;
 
-        // Append log
         appendSimLog(data.logText, data.logClass);
 
-        // Update node visual states
         const currentStage = data.stage;
         for (let i = 1; i <= 4; i++) {
           const node = document.getElementById(`sim-node-${i}`);
@@ -7595,7 +7455,6 @@ Contact Information:
           }
         }
 
-        // Update connectors
         for (let i = 1; i <= 3; i++) {
           const conn = document.getElementById(`sim-connector-${i}`);
           if (conn) {
@@ -7607,7 +7466,6 @@ Contact Information:
           }
         }
 
-        // Update node custom status text if present
         if (data.nodeStatus1) {
           const s1 = document.getElementById('sim-node-1-status');
           if (s1) s1.textContent = data.nodeStatus1;
@@ -7629,9 +7487,6 @@ Contact Information:
       }, 700);
     }
 
-    // -------------------------------------------------------------
-    // LEETCODE CONTEST RATING EXPLORER (OFFICIAL PROFILE DATA)
-    // -------------------------------------------------------------
     const contestDetails = {
       1: {
         name: 'Weekly Contest 481 (Dec 21, 2025)',
@@ -7741,11 +7596,9 @@ Contact Information:
     }
   </script>
 
-  <!-- =========================================================
-       ASK JAMES AI - PROFESSIONAL DEVELOPER COPILOT UI
-  ========================================================== -->
+  
   <style>
-    /* Floating Widget Root */
+    
     #ask-james-root {
       position: fixed;
       bottom: 28px;
@@ -7760,7 +7613,7 @@ Contact Information:
       box-sizing: border-box;
     }
 
-    /* Bespoke Floating Trigger Button */
+    
     .copilot-trigger-btn {
       display: inline-flex;
       align-items: center;
@@ -7821,7 +7674,7 @@ Contact Information:
       letter-spacing: -0.01em;
     }
 
-    /* Minimalist Callout Banner */
+    
     .copilot-callout {
       position: absolute;
       bottom: 48px;
@@ -7904,7 +7757,7 @@ Contact Information:
       color: #cbd5e1;
     }
 
-    /* Handcrafted Assistant Drawer */
+    
     .ai-chat-drawer {
       position: absolute;
       bottom: 54px;
@@ -7933,7 +7786,7 @@ Contact Information:
       visibility: hidden;
     }
 
-    /* Window Header - Clean & Human (NO fake macOS window dots!) */
+    
     .drawer-header {
       padding: 12px 16px;
       background: rgba(18, 24, 38, 0.9);
@@ -8021,7 +7874,7 @@ Contact Information:
       background: rgba(255, 255, 255, 0.08);
     }
 
-    /* Suggestion Chips */
+    
     .drawer-chips-wrap {
       padding: 9px 12px;
       background: rgba(15, 20, 31, 0.6);
@@ -8073,7 +7926,7 @@ Contact Information:
       letter-spacing: -0.01em;
     }
 
-    /* Message Thread */
+    
     .drawer-messages-body {
       flex: 1;
       overflow-y: auto;
@@ -8158,7 +8011,7 @@ Contact Information:
       margin-bottom: 4px;
     }
 
-    /* Typing Indicator */
+    
     .typing-indicator {
       display: inline-flex;
       align-items: center;
@@ -8185,7 +8038,7 @@ Contact Information:
       40% { transform: translateY(-4px); opacity: 1; }
     }
 
-    /* Footer & Input Bar */
+    
     .drawer-footer {
       padding: 10px 12px;
       background: rgba(15, 20, 31, 0.95);
@@ -8258,7 +8111,7 @@ Contact Information:
       color: #64748b;
     }
 
-    /* Mobile Responsive */
+    
     @media (max-width: 768px) {
       #ask-james-root {
         bottom: 20px;
@@ -8290,7 +8143,7 @@ Contact Information:
         width: 240px;
       }
 
-      /* Full Screen Mobile Chat Drawer */
+      
       .ai-chat-drawer {
         position: fixed !important;
         top: 0 !important;
@@ -8476,7 +8329,7 @@ Contact Information:
   </style>
 
   <div id="ask-james-root">
-    <!-- Minimalist Callout Banner -->
+    
     <div class="copilot-callout" id="ai-speech-bubble" onclick="toggleAiDrawer(true)">
       <div class="callout-header">
         <div class="callout-pill">
@@ -8488,7 +8341,7 @@ Contact Information:
       <div class="callout-sub">Have a question about James? Click to chat</div>
     </div>
 
-    <!-- Bespoke Floating Trigger Button -->
+    
     <button class="copilot-trigger-btn" id="ai-assistant-btn" onclick="toggleAiDrawer()" title="Ask James" aria-label="Ask James">
       <div class="copilot-avatar-core">
         <img src="assets/images/James_Nithil.jpeg" class="copilot-avatar-img" alt="James" />
@@ -8497,9 +8350,9 @@ Contact Information:
       <span class="copilot-trigger-label">Ask James</span>
     </button>
 
-    <!-- Handcrafted Assistant Window -->
+    
     <div class="ai-chat-drawer hidden" id="ai-chat-drawer">
-      <!-- Window Title Bar -->
+      
       <div class="drawer-header">
         <div class="drawer-header-left">
           <div class="drawer-header-avatar">
@@ -8521,7 +8374,7 @@ Contact Information:
         </div>
       </div>
 
-      <!-- 3 Natural Suggestion Chips -->
+      
       <div class="drawer-chips-wrap">
         <button class="drawer-chip" onclick="handleChipClick('Who is James Nithil? Give a concise overview of his profile and strengths.')">
           <span class="chip-icon">
@@ -8553,7 +8406,7 @@ Contact Information:
         </button>
       </div>
 
-      <!-- Message History Thread -->
+      
       <div class="drawer-messages-body" id="ai-messages-body">
         <div class="chat-msg ai">
           <div class="chat-msg-avatar">
@@ -8565,7 +8418,7 @@ Contact Information:
         </div>
       </div>
 
-      <!-- Footer & Input -->
+      
       <div class="drawer-footer">
         <form class="drawer-input-form" id="ai-chat-form" onsubmit="handleAiSubmit(event)">
           <input
@@ -8588,7 +8441,7 @@ Contact Information:
     </div>
   </div>
 
-  <!-- Ask James Assistant Controller Script -->
+  
   <script>
     (function () {
       let isAiDrawerOpen = false;
@@ -8604,7 +8457,6 @@ Contact Information:
       const chatInput = document.getElementById('ai-chat-input');
       const sendBtn = document.getElementById('ai-send-btn');
 
-      // Auto-minimize callout banner after 30s to keep recruiter view clean
       function resetInactivityTimer() {
         if (inactivityTimer) clearTimeout(inactivityTimer);
         inactivityTimer = setTimeout(() => {
@@ -8614,13 +8466,11 @@ Contact Information:
         }, 30000); // 30 seconds
       }
 
-      // Toggle Chat Drawer Window
       window.toggleAiDrawer = function (forceOpen = null) {
         const nextState = forceOpen !== null ? forceOpen : !isAiDrawerOpen;
         isAiDrawerOpen = nextState;
 
         if (isAiDrawerOpen) {
-          // Gracefully close ID Badge to eliminate any collision
           if (typeof window.closeBadge === 'function') {
             window.closeBadge();
           } else if (typeof closeBadge === 'function') {
@@ -8656,21 +8506,18 @@ Contact Information:
         if (typeof playKeyClick === 'function') playKeyClick();
       };
 
-      // Close Ask James drawer on Escape key
       window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && isAiDrawerOpen) {
           window.toggleAiDrawer(false);
         }
       });
 
-      // Dismiss Speech Bubble
       window.dismissSpeechBubble = function (e) {
         if (e) e.stopPropagation();
         if (speechBubble) speechBubble.classList.add('hidden');
         if (typeof playKeyClick === 'function') playKeyClick();
       };
 
-      // Quick Suggestion Chip Click
       window.handleChipClick = function (query) {
         if (chatInput) {
           chatInput.value = query;
@@ -8681,7 +8528,6 @@ Contact Information:
 
       const AI_AVATAR_HTML = `<img src="assets/images/James_Nithil.jpeg" alt="James" />`;
 
-      // Clear AI Chat Thread
       window.clearAiChat = function () {
         conversationHistory = [];
         if (messagesBody) {
@@ -8699,7 +8545,6 @@ Contact Information:
         if (typeof playKeyClick === 'function') playKeyClick();
       };
 
-      // Append Message to Thread
       function appendChatMessage(role, text) {
         if (!messagesBody) return null;
         const msgDiv = document.createElement('div');
@@ -8718,7 +8563,6 @@ Contact Information:
         if (role === 'user') {
           bubbleDiv.textContent = text;
         } else {
-          // Format markdown basic bold and bullet lists
           bubbleDiv.innerHTML = formatAiMarkdown(text);
         }
 
@@ -8728,7 +8572,6 @@ Contact Information:
         return bubbleDiv;
       }
 
-      // Basic Markdown Formatter for AI output
       function formatAiMarkdown(text) {
         if (!text) return '';
         let escaped = text
@@ -8736,16 +8579,12 @@ Contact Information:
           .replace(/</g, '&lt;')
           .replace(/>/g, '&gt;');
 
-        // Bold **text**
         escaped = escaped.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-        // Bullet points
         escaped = escaped.replace(/(?:^|\n)[•\-*]\s+(.+)/g, '<br>• $1');
-        // Double newlines into paragraph breaks
         escaped = escaped.replace(/\n\n/g, '<br><br>');
         return escaped;
       }
 
-      // Universal Ask James AI Query Engine (Vercel Serverless + Local LiveServer Fallback)
       const JAMES_AI_DOSSIER = `You are the portfolio assistant representing James Nithil V.
 - Role: Junior Software Developer at Vaken Technology (working on Sovablu Enterprise Low-Code Platform).
 - Stack: Java 21, Spring Boot REST APIs, Apache Kafka, Redis caching, PostgreSQL, DynamoDB, Claude SDK, Jenkins CI/CD, AWS (EC2, S3, Lambda, CodeCommit).
@@ -8772,7 +8611,6 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         return data.reply || "James's assistant is ready to help!";
       };
 
-      // Handle Form Submit
       window.handleAiSubmit = async function (e) {
         if (e && e.preventDefault) e.preventDefault();
         if (!chatInput) return;
@@ -8780,7 +8618,6 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         const query = chatInput.value.trim();
         if (!query) return;
 
-        // Check Session Quota Guard
         if (sessionQueriesCount >= MAX_SESSION_QUERIES) {
           appendChatMessage('ai', "You have reached the maximum questions limit for this browser session! 🛡️ Feel free to connect directly with James on LinkedIn or email him at **jamnithil@gmail.com**.");
           return;
@@ -8788,12 +8625,10 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
 
         sessionQueriesCount++;
 
-        // Add user message to UI
         appendChatMessage('user', query);
         chatInput.value = '';
         if (sendBtn) sendBtn.disabled = true;
 
-        // Show typing indicator
         const typingIndicator = document.createElement('div');
         typingIndicator.className = 'chat-msg ai';
         typingIndicator.id = 'ai-typing-indicator';
@@ -8813,15 +8648,12 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         try {
           const aiReply = await window.queryAskJamesAI(query, conversationHistory);
 
-          // Remove typing indicator
           const indicatorEl = document.getElementById('ai-typing-indicator');
           if (indicatorEl) indicatorEl.remove();
 
-          // Record in conversation history
           conversationHistory.push({ role: 'user', content: query });
           conversationHistory.push({ role: 'assistant', content: aiReply });
 
-          // Stream / typewriter effect for AI reply
           const bubble = appendChatMessage('ai', '');
           let charIndex = 0;
           const streamSpeed = 12; // ms per chunk
@@ -8853,12 +8685,11 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         }
       };
 
-      // Start initial timer
       resetInactivityTimer();
     })();
   </script>
 
-  <!-- Vercel Web Analytics -->
+  
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
