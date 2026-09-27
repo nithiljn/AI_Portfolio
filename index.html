@@ -9437,6 +9437,56 @@ Contact Information:
       cursor: not-allowed;
     }
 
+    .drawer-mic-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .drawer-mic-btn:hover {
+      background: rgba(99, 102, 241, 0.15);
+      border-color: rgba(99, 102, 241, 0.4);
+      color: #818cf8;
+      transform: scale(1.05);
+    }
+
+    .drawer-mic-btn.listening {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: #ef4444;
+      color: #ef4444;
+      animation: micPulseGlow 1.2s infinite ease-in-out;
+    }
+
+    @keyframes micPulseGlow {
+      0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 0 7px rgba(239, 68, 68, 0);
+        transform: scale(1.08);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+        transform: scale(1);
+      }
+    }
+
+    .drawer-input-form.mic-active {
+      border-color: #ef4444 !important;
+      box-shadow: 0 0 14px rgba(239, 68, 68, 0.3) !important;
+    }
+
     .drawer-footer-meta {
       display: flex;
       align-items: center;
@@ -9657,7 +9707,8 @@ Contact Information:
         font-size: 16px !important;
       }
 
-      .drawer-send-btn {
+      .drawer-send-btn,
+      .drawer-mic-btn {
         width: 34px !important;
         height: 34px !important;
       }
@@ -9765,6 +9816,9 @@ Contact Information:
             maxlength="250"
             autocomplete="off"
           />
+          <button type="button" class="drawer-mic-btn" id="ai-mic-btn" onclick="toggleVoiceInput(event)" title="Speak question (Voice Input)" aria-label="Voice Input">
+            <i data-lucide="mic" style="width: 14px; height: 14px;"></i>
+          </button>
           <button type="submit" class="drawer-send-btn" id="ai-send-btn" title="Send question" aria-label="Send">
             <i data-lucide="arrow-up" style="width: 14px; height: 14px; stroke-width: 2.5;"></i>
           </button>
@@ -9792,6 +9846,12 @@ Contact Information:
       const messagesBody = document.getElementById('ai-messages-body');
       const chatInput = document.getElementById('ai-chat-input');
       const sendBtn = document.getElementById('ai-send-btn');
+      const micBtn = document.getElementById('ai-mic-btn');
+      const chatForm = document.getElementById('ai-chat-form');
+      let recognition = null;
+      let isVoiceListening = false;
+      let voiceAutoSubmitTimer = null;
+      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
 
       function resetInactivityTimer() {
         if (inactivityTimer) clearTimeout(inactivityTimer);
@@ -9833,6 +9893,10 @@ Contact Information:
             setTimeout(() => chatInput.focus(), 150);
           }
         } else {
+          if (typeof stopVoiceInput === 'function' && isVoiceListening) {
+            if (recognition) { try { recognition.abort(); } catch (err) {} }
+            stopVoiceInput();
+          }
           if (chatDrawer) chatDrawer.classList.add('hidden');
           document.body.classList.remove('ai-drawer-open');
           resetInactivityTimer();
@@ -9954,6 +10018,11 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         const query = chatInput.value.trim();
         if (!query) return;
 
+        if (isVoiceListening) {
+          if (recognition) { try { recognition.abort(); } catch (err) {} }
+          stopVoiceInput();
+        }
+
         if (sessionQueriesCount >= MAX_SESSION_QUERIES) {
           appendChatMessage('ai', "You have reached the maximum questions limit for this browser session! 🛡️ Feel free to connect directly with James on LinkedIn or email him at **jamnithil@gmail.com**.");
           return;
@@ -10021,6 +10090,157 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         }
       };
 
+      function initSpeechRecognition() {
+        if (!SpeechRec) {
+          if (micBtn) {
+            micBtn.title = "Voice recognition not supported in this browser";
+            micBtn.style.opacity = "0.45";
+            micBtn.style.cursor = "not-allowed";
+          }
+          return null;
+        }
+
+        try {
+          const rec = new SpeechRec();
+          rec.continuous = false;
+          rec.interimResults = true;
+          rec.lang = 'en-US';
+
+          rec.onstart = function () {
+            isVoiceListening = true;
+            if (micBtn) {
+              micBtn.classList.add('listening');
+              micBtn.title = "Listening... Click to stop";
+            }
+            if (chatForm) chatForm.classList.add('mic-active');
+            if (chatInput) {
+              chatInput.placeholder = "🎙️ Listening... speak your question now...";
+            }
+            if (typeof playKeyClick === 'function') playKeyClick();
+          };
+
+          rec.onresult = function (event) {
+            let interimTranscript = '';
+            let finalTranscript = '';
+
+            for (let i = event.resultIndex; i < event.results.length; ++i) {
+              const transcript = event.results[i][0].transcript;
+              if (event.results[i].isFinal) {
+                finalTranscript += transcript;
+              } else {
+                interimTranscript += transcript;
+              }
+            }
+
+            const currentText = finalTranscript || interimTranscript;
+            if (chatInput && currentText) {
+              chatInput.value = currentText;
+            }
+
+            if (finalTranscript.trim().length > 0) {
+              stopVoiceInput();
+              if (voiceAutoSubmitTimer) clearTimeout(voiceAutoSubmitTimer);
+              voiceAutoSubmitTimer = setTimeout(() => {
+                if (chatInput && chatInput.value.trim().length > 0) {
+                  const fakeEvent = { preventDefault: () => {} };
+                  handleAiSubmit(fakeEvent);
+                }
+              }, 400);
+            }
+          };
+
+          rec.onerror = function (event) {
+            console.warn('Speech recognition error:', event.error);
+            stopVoiceInput();
+            if (event.error === 'not-allowed') {
+              showMicToast("Microphone access denied. Please allow mic permissions in browser.");
+            } else if (event.error === 'no-speech') {
+              if (chatInput && !chatInput.value) {
+                chatInput.placeholder = "No speech detected. Click mic to try again!";
+                setTimeout(() => {
+                  if (chatInput && !isVoiceListening) {
+                    chatInput.placeholder = "Ask a question about James...";
+                  }
+                }, 2200);
+              }
+            }
+          };
+
+          rec.onend = function () {
+            stopVoiceInput();
+          };
+
+          return rec;
+        } catch (err) {
+          console.error('Speech recognition init error:', err);
+          return null;
+        }
+      }
+
+      window.toggleVoiceInput = function (e) {
+        if (e && e.preventDefault) e.preventDefault();
+
+        if (!SpeechRec) {
+          showMicToast("Voice recognition not supported in this browser. Please use Chrome, Safari, or Edge.");
+          return;
+        }
+
+        if (isVoiceListening) {
+          if (recognition) {
+            try { recognition.abort(); } catch (err) {}
+          }
+          stopVoiceInput();
+        } else {
+          try {
+            if (!recognition) {
+              recognition = initSpeechRecognition();
+            }
+            if (recognition) {
+              recognition.start();
+            }
+          } catch (err) {
+            console.warn('Recognition start error:', err);
+            stopVoiceInput();
+          }
+        }
+      };
+
+      function stopVoiceInput() {
+        isVoiceListening = false;
+        if (micBtn) {
+          micBtn.classList.remove('listening');
+          micBtn.title = "Speak question (Voice Input)";
+        }
+        if (chatForm) chatForm.classList.remove('mic-active');
+        if (chatInput && chatInput.placeholder.includes('Listening')) {
+          chatInput.placeholder = "Ask a question about James...";
+        }
+      }
+
+      function showMicToast(msg) {
+        const toast = document.createElement('div');
+        toast.textContent = msg;
+        toast.style.cssText = `
+          position: fixed;
+          bottom: 84px;
+          right: 28px;
+          background: #1e1b4b;
+          color: #c7d2fe;
+          border: 1px solid #4338ca;
+          padding: 8px 14px;
+          border-radius: 8px;
+          font-size: 0.78rem;
+          font-family: var(--font-code);
+          z-index: 999999;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+          pointer-events: none;
+        `;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+      }
+
+      if (window.lucide) lucide.createIcons();
+      initSpeechRecognition();
       resetInactivityTimer();
     })();
   </script>
