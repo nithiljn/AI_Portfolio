@@ -7750,7 +7750,7 @@ Contact Information:
       position: fixed;
       bottom: 28px;
       right: 26px;
-      z-index: 1200;
+      z-index: 2500;
       font-family: var(--font-ui);
       pointer-events: none;
     }
@@ -8263,11 +8263,16 @@ Contact Information:
       #ask-james-root {
         bottom: 20px;
         right: 16px;
+        z-index: 99999 !important;
       }
 
       body.ai-drawer-open {
         overflow: hidden !important;
         touch-action: none;
+      }
+
+      body.ai-drawer-open .topbar {
+        display: none !important;
       }
 
       body.ai-drawer-open .copilot-trigger-btn,
@@ -8331,28 +8336,83 @@ Contact Information:
       }
 
       .drawer-header {
-        padding: max(14px, env(safe-area-inset-top)) 16px 14px 16px !important;
+        padding: max(16px, env(safe-area-inset-top)) 16px 14px 16px !important;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        background: #0d111b !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        flex-shrink: 0 !important;
+      }
+
+      .drawer-header-left {
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
       }
 
       .drawer-header-avatar {
-        width: 34px !important;
-        height: 34px !important;
+        position: relative !important;
+        width: 38px !important;
+        height: 38px !important;
+        flex-shrink: 0 !important;
       }
 
       .drawer-header-avatar img {
-        width: 34px !important;
-        height: 34px !important;
+        width: 38px !important;
+        height: 38px !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
+        display: block !important;
+        border: 1.5px solid rgba(129, 140, 248, 0.5) !important;
+      }
+
+      .drawer-header-avatar .status-dot {
+        position: absolute !important;
+        bottom: 0px !important;
+        right: 0px !important;
+        width: 9px !important;
+        height: 9px !important;
+        border-radius: 50% !important;
+        background: #10b981 !important;
+        border: 2px solid #0d111b !important;
+      }
+
+      .drawer-header-titles {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        gap: 2px !important;
       }
 
       .drawer-header-title {
         font-size: 0.95rem !important;
+        font-weight: 600 !important;
+        color: #f8fafc !important;
+        line-height: 1.2 !important;
+      }
+
+      .drawer-header-sub {
+        font-size: 0.72rem !important;
+        color: #94a3b8 !important;
+        line-height: 1.2 !important;
+      }
+
+      .drawer-actions {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
       }
 
       .drawer-btn-icon {
         width: 36px !important;
         height: 36px !important;
         border-radius: 8px !important;
+        background: rgba(255, 255, 255, 0.06) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: #cbd5e1 !important;
       }
 
       .drawer-chips-wrap {
