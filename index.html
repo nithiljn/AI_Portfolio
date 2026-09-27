@@ -6207,6 +6207,8 @@
               <button class="term-pill-btn" onclick="runCliBtn('skills')">skills</button>
               <button class="term-pill-btn" onclick="runCliBtn('projects')">projects</button>
               <button class="term-pill-btn" onclick="runCliBtn('kadalvazhi')">kadalvazhi</button>
+              <button class="term-pill-btn" onclick="runCliBtn('git log')">git log</button>
+              <button class="term-pill-btn" onclick="runCliBtn('git show')">git show</button>
               <button class="term-pill-btn" onclick="runCliBtn('experience')">experience</button>
               <button class="term-pill-btn" onclick="runCliBtn('knight')">knight</button>
               <button class="term-pill-btn" onclick="runCliBtn('resume')">resume</button>
@@ -6216,7 +6218,7 @@
 
             <div class="term-input-row">
               <span class="term-prompt-label">james@dev:~$</span>
-              <input type="text" id="cli-input-field" class="term-input-field" placeholder="Type a command (e.g. skills, kadalvazhi, knight)..." autocomplete="off" spellcheck="false" />
+              <input type="text" id="cli-input-field" class="term-input-field" placeholder="Type a command (e.g. git show 5d30b3c, git log, kadalvazhi, ask)..." autocomplete="off" spellcheck="false" />
             </div>
           </div>
 
@@ -7337,17 +7339,21 @@ KadalVazhi (கடல் வழி): Maritime Microservices & AI Platform (2026)
     const cliResponses = {
       'help': `
 Available Commands:
-  ask <query>  Ask dynamic questions to Ask James AI
-  whoami       Display identity, role, and competitive ranking
-  skills       Print technical skills matrix
-  projects     List featured engineering projects
-  kadalvazhi   Details on KadalVazhi LangGraph multi-agent architecture
-  experience   Production highlights at Vaken Technology (Sovablu)
-  knight       LeetCode Knight statistics and contest rankings
-  resume       Trigger download of James_Nithil_Resume.pdf
-  contact      Direct email, phone, and profile links
-  clear        Clear terminal history
-  theme        Toggle light and dark theme
+  ask <query>    Ask dynamic questions to Ask James AI
+  git show <sha> Inspect commit details, diff stats & engineering rationale
+  git log        Show recent git commits in repository
+  git status     Check git working tree status
+  git graph      Switch to visual interactive Git Graph
+  whoami         Display identity, role, and competitive ranking
+  skills         Print technical skills matrix
+  projects       List featured engineering projects
+  kadalvazhi     Details on KadalVazhi LangGraph multi-agent architecture
+  experience     Production highlights at Vaken Technology (Sovablu)
+  knight         LeetCode Knight statistics and contest rankings
+  resume         Trigger download of James_Nithil_Resume.pdf
+  contact        Direct email, phone, and profile links
+  clear          Clear terminal history
+  theme          Toggle light and dark theme
 `,
       'whoami': `
 James Nithil V
@@ -7490,6 +7496,112 @@ Contact Information:
         } else {
           appendTermLine('<span style="color: #f87171;">[James AI]</span> AI engine initializing. Please try again in a moment.', 'cmd-output');
         }
+        return;
+      }
+
+      if (cmd === 'git log' || cmd === 'git-log') {
+        const list = (typeof gitCommitsData !== 'undefined' ? gitCommitsData : []).slice(0, 8);
+        const logHtml = `
+<div style="font-family: var(--font-code); font-size: 0.8rem; line-height: 1.6;">
+  <div style="color: var(--text-muted); margin-bottom: 6px;">commit history (HEAD -> main)</div>
+  ${list.map(c => `
+    <div style="margin-bottom: 4px;">
+      <span style="color: #fbbf24; font-weight: 600; cursor: pointer;" onclick="executeCommand('git show ${c.hash}')" title="Click to inspect">${c.hash}</span>
+      <span style="color: #38bdf8;">[${c.branch}]</span>
+      ${c.tags && c.tags.length ? `<span style="color: #34d399;">(${c.tags.join(', ')})</span>` : ''}
+      <span style="color: var(--text-primary);">${c.message}</span>
+      <span style="color: var(--text-muted); font-size: 0.72rem;">(${c.date})</span>
+    </div>
+  `).join('')}
+  <div style="margin-top: 8px; color: var(--text-muted); font-size: 0.75rem;">
+    Showing 8 of ${typeof gitCommitsData !== 'undefined' ? gitCommitsData.length : 18} commits. Run <span style="color: var(--accent-blue);">git show &lt;hash&gt;</span> or open <button class="btn-action" style="padding: 2px 7px; font-size: 0.7rem; margin-left: 4px;" onclick="switchTab('tab-gitgraph')">Git Graph Visualizer →</button>
+  </div>
+</div>`;
+        appendTermLine(logHtml, 'cmd-output');
+        return;
+      }
+
+      if (cmd.startsWith('git show') || cmd === 'git show') {
+        const parts = rawCmd.trim().split(/\s+/);
+        const queryHash = parts.length > 2 ? parts[2].toLowerCase() : (parts.length === 2 && parts[1].toLowerCase() !== 'show' ? parts[1].toLowerCase() : '');
+        const commits = typeof gitCommitsData !== 'undefined' ? gitCommitsData : [];
+        let target = null;
+        if (!queryHash) {
+          target = commits[0];
+        } else {
+          target = commits.find(c => c.hash.toLowerCase().startsWith(queryHash) || c.fullHash.toLowerCase().startsWith(queryHash));
+        }
+
+        if (!target) {
+          appendTermLine(`
+<span style="color: #f87171;">fatal: ambiguous argument '${queryHash}': unknown revision or path not in the working tree.</span><br>
+<span style="color: var(--text-muted); font-size: 0.75rem;">Tip: Type <span style="color: var(--accent-blue); cursor: pointer;" onclick="executeCommand('git log')">git log</span> to view all commit hashes, or open the <a href="#" onclick="switchTab('tab-gitgraph'); return false;" style="color: var(--accent-blue);">Git Graph</a>.</span>
+          `, 'cmd-output');
+          return;
+        }
+
+        const filesRows = (target.files || []).map(f => `
+  <div style="display: flex; align-items: center; justify-content: space-between; max-width: 480px; padding: 2px 0;">
+    <span style="color: var(--text-primary); font-family: var(--font-code);">${f.name}</span>
+    <span style="font-family: var(--font-code); font-size: 0.72rem;"><span style="color: #4ade80;">+${f.adds}</span> <span style="color: #f87171;">-${f.dels}</span></span>
+  </div>
+        `).join('');
+
+        const showHtml = `
+<div style="font-family: var(--font-code); font-size: 0.8rem; line-height: 1.5; color: var(--text-primary);">
+  <div style="color: #fbbf24; font-weight: 600;">commit ${target.fullHash}</div>
+  <div style="color: #38bdf8; font-size: 0.75rem;">Branch: <strong>${target.branch}</strong> ${target.tags && target.tags.length ? `· Tags: (${target.tags.join(', ')})` : ''}</div>
+  <div style="color: var(--text-secondary); font-size: 0.75rem;">Author: ${target.author} &lt;${target.email}&gt;</div>
+  <div style="color: var(--text-secondary); font-size: 0.75rem;">Date:   ${target.date}</div>
+  <div style="margin: 8px 0; padding-left: 10px; border-left: 2px solid var(--accent-blue); color: var(--text-primary); font-weight: 600;">
+    ${target.message}
+  </div>
+  <div style="color: var(--text-secondary); font-size: 0.76rem; margin-bottom: 8px; line-height: 1.4;">
+    <strong>Rationale & Impact:</strong> ${target.context}
+  </div>
+  <div style="margin-top: 8px; border-top: 1px dashed var(--border-subtle); padding-top: 6px; font-size: 0.75rem;">
+    <div style="color: var(--text-muted); margin-bottom: 4px;">Diff Summary (${target.files.length} changed files):</div>
+    ${filesRows}
+  </div>
+  <div style="margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
+    <button class="btn-action" style="padding: 3px 9px; font-size: 0.72rem;" onclick="switchTab('tab-gitgraph'); selectCommit('${target.hash}');">
+      Inspect in Git Graph 🌳
+    </button>
+    ${target.relatedTab ? `
+    <button class="btn-action" style="padding: 3px 9px; font-size: 0.72rem;" onclick="switchTab('${target.relatedTab}');">
+      ${target.relatedLabel || 'View Related Architecture'} →
+    </button>` : ''}
+  </div>
+</div>`;
+        appendTermLine(showHtml, 'cmd-output');
+        return;
+      }
+
+      if (cmd === 'git status') {
+        appendTermLine(`
+<div style="font-family: var(--font-code); font-size: 0.8rem; line-height: 1.5; color: var(--text-secondary);">
+  On branch <span style="color: #38bdf8; font-weight: 600;">main</span><br>
+  Your branch is up to date with '<span style="color: #818cf8;">origin/main</span>'.<br><br>
+  nothing to commit, working tree clean 🛡️
+</div>`, 'cmd-output');
+        return;
+      }
+
+      if (cmd === 'git branch' || cmd === 'git branch -a') {
+        appendTermLine(`
+<div style="font-family: var(--font-code); font-size: 0.8rem; line-height: 1.5;">
+  <span style="color: #4ade80; font-weight: 600;">* main</span><br>
+  <span style="color: var(--text-secondary);">&nbsp;&nbsp;feat/vaken-sovablu</span><br>
+  <span style="color: var(--text-secondary);">&nbsp;&nbsp;feat/kadalvazhi</span><br>
+  <span style="color: var(--text-secondary);">&nbsp;&nbsp;feat/algorithms</span><br>
+  <span style="color: var(--text-secondary);">&nbsp;&nbsp;feat/farmvista-sih</span>
+</div>`, 'cmd-output');
+        return;
+      }
+
+      if (cmd === 'git graph' || cmd === 'git-graph' || cmd === 'gitgraph' || cmd === 'git') {
+        appendTermLine('<span style="color: #38bdf8;">Opening interactive Git Graph visualization...</span>', 'cmd-success');
+        switchTab('tab-gitgraph');
         return;
       }
 
@@ -8795,7 +8907,7 @@ Contact Information:
     function copyCommitHash(hash) {
       navigator.clipboard.writeText(hash).then(() => {
         const toast = document.createElement('div');
-        toast.textContent = `Copied commit ${hash} to clipboard!`;
+        toast.innerHTML = `<span style="display: inline-flex; align-items: center; gap: 8px;"><span>Copied SHA <strong>${hash}</strong>!</span> <span style="opacity: 0.8; font-size: 0.72rem;">Try <code>git show ${hash}</code> in terminal.sh</span></span>`;
         toast.style.cssText = `
           position: fixed;
           bottom: 24px;
@@ -8813,7 +8925,7 @@ Contact Information:
           pointer-events: none;
         `;
         document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 1800);
+        setTimeout(() => toast.remove(), 2600);
       });
     }
 
