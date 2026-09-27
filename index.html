@@ -10294,6 +10294,7 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
           }
           stopVoiceInput();
         } else {
+          stopSpeaking();
           try {
             if (!recognition) {
               recognition = initSpeechRecognition();
@@ -10342,10 +10343,12 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         setTimeout(() => toast.remove(), 3000);
       }
 
-      // Natural Voice Output (TTS) Engine
+      // Natural Voice Output (TTS) Engine: ElevenLabs Studio Voice with Browser Web Speech Fallback
       let isAutoVoiceEnabled = localStorage.getItem('james_auto_voice') === 'true';
       let activeSpeakingBtn = null;
       let currentUtterance = null;
+      let currentAudio = null;
+      let activeTtsAbortCtrl = null;
 
       function updateAutoVoiceUI() {
         const toggleBtn = document.getElementById('ai-voice-toggle');
@@ -10451,13 +10454,84 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         speakAiText(fullText, btn);
       };
 
-      function speakAiText(fullText, btn) {
-        if (!window.speechSynthesis) return;
-
-        window.speechSynthesis.cancel();
+      async function speakAiText(fullText, btn) {
+        stopSpeaking();
         const cleanText = sanitizeTextForSpeech(fullText);
         if (!cleanText) return;
 
+        if (btn) {
+          activeSpeakingBtn = btn;
+          btn.classList.add('speaking');
+          btn.innerHTML = `
+            <span class="speech-wave">
+              <span></span><span></span><span></span>
+            </span>
+            <span class="speech-btn-label">Stop</span>
+          `;
+        }
+
+        // Attempt 1: Studio ElevenLabs Soft Male Voice via serverless proxy
+        const abortCtrl = new AbortController();
+        activeTtsAbortCtrl = abortCtrl;
+        const timeoutId = setTimeout(() => {
+          try { abortCtrl.abort(); } catch (e) {}
+        }, 4500);
+
+        try {
+          const res = await fetch('/api/tts', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: cleanText }),
+            signal: abortCtrl.signal
+          });
+
+          clearTimeout(timeoutId);
+
+          const contentType = res.headers.get('content-type') || '';
+          if (res.ok && contentType.includes('audio/mpeg')) {
+            const audioBlob = await res.blob();
+            const blobUrl = URL.createObjectURL(audioBlob);
+            const audio = new Audio(blobUrl);
+            currentAudio = audio;
+
+            audio.onended = function () {
+              URL.revokeObjectURL(blobUrl);
+              if (currentAudio === audio) currentAudio = null;
+              if (activeSpeakingBtn === btn) resetSpeakingButton(btn);
+            };
+
+            audio.onerror = function () {
+              URL.revokeObjectURL(blobUrl);
+              if (currentAudio === audio) currentAudio = null;
+              // Audio element failed -> Seamless fallback to browser TTS
+              speakWithBrowserTts(cleanText, btn);
+            };
+
+            await audio.play();
+            return;
+          }
+
+          // If response is fallback JSON (quota exceeded, no key, or rate limited), use browser TTS
+          speakWithBrowserTts(cleanText, btn);
+
+        } catch (fetchErr) {
+          clearTimeout(timeoutId);
+          // Network offline, timeout, or aborted -> Seamless fallback to browser TTS
+          speakWithBrowserTts(cleanText, btn);
+        } finally {
+          if (activeTtsAbortCtrl === abortCtrl) {
+            activeTtsAbortCtrl = null;
+          }
+        }
+      }
+
+      function speakWithBrowserTts(cleanText, btn) {
+        if (!window.speechSynthesis) {
+          if (btn) resetSpeakingButton(btn);
+          return;
+        }
+
+        window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(cleanText);
         const bestVoice = getBestNeuralVoice();
         if (bestVoice) {
@@ -10465,9 +10539,9 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         }
 
         // Soft MALE acoustic calibration: warm, calm, unhurried, non-harsh
-        utterance.rate = 0.98;   // Gentle, unhurried cadence
-        utterance.pitch = 0.98;  // Warm, natural male frequency (soft tone, no robotic bass)
-        utterance.volume = 0.92; // Pleasant and gentle on ears
+        utterance.rate = 0.98;   // Gentle cadence
+        utterance.pitch = 0.98;  // Warm male tone
+        utterance.volume = 0.92; // Pleasant ear level
 
         if (btn) {
           activeSpeakingBtn = btn;
@@ -10481,11 +10555,13 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         }
 
         utterance.onend = function () {
-          resetSpeakingButton(btn);
+          if (activeSpeakingBtn === btn) resetSpeakingButton(btn);
+          if (currentUtterance === utterance) currentUtterance = null;
         };
 
         utterance.onerror = function () {
-          resetSpeakingButton(btn);
+          if (activeSpeakingBtn === btn) resetSpeakingButton(btn);
+          if (currentUtterance === utterance) currentUtterance = null;
         };
 
         currentUtterance = utterance;
@@ -10493,9 +10569,24 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
       }
 
       function stopSpeaking() {
-        if (window.speechSynthesis) {
-          window.speechSynthesis.cancel();
+        if (activeTtsAbortCtrl) {
+          try { activeTtsAbortCtrl.abort(); } catch (e) {}
+          activeTtsAbortCtrl = null;
         }
+        if (currentAudio) {
+          try {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            if (currentAudio.src && currentAudio.src.startsWith('blob:')) {
+              URL.revokeObjectURL(currentAudio.src);
+            }
+          } catch (e) {}
+          currentAudio = null;
+        }
+        if (window.speechSynthesis) {
+          try { window.speechSynthesis.cancel(); } catch (e) {}
+        }
+        currentUtterance = null;
         if (activeSpeakingBtn) {
           resetSpeakingButton(activeSpeakingBtn);
           activeSpeakingBtn = null;
