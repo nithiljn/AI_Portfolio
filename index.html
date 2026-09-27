@@ -8292,7 +8292,7 @@ Contact Information:
     </div>
 
     <!-- Bespoke Floating Trigger Button -->
-    <button class="copilot-trigger-btn" id="ai-robot-btn" onclick="toggleAiDrawer()" title="Ask James" aria-label="Ask James">
+    <button class="copilot-trigger-btn" id="ai-assistant-btn" onclick="toggleAiDrawer()" title="Ask James" aria-label="Ask James">
       <div class="copilot-avatar-core">
         <img src="assets/images/James_Nithil.jpeg" class="copilot-avatar-img" alt="James" />
         <span class="copilot-beacon-dot"></span>
@@ -8391,24 +8391,21 @@ Contact Information:
     </div>
   </div>
 
-  <!-- Ask James AI Controller Script -->
+  <!-- Ask James Assistant Controller Script -->
   <script>
     (function () {
       let isAiDrawerOpen = false;
-      let robotState = 'happy'; // 'happy', 'sad', 'excited'
       let inactivityTimer = null;
       let conversationHistory = [];
       const MAX_SESSION_QUERIES = 10;
       let sessionQueriesCount = 0;
 
-      const robotBtn = document.getElementById('ai-robot-btn');
+      const triggerBtn = document.getElementById('ai-assistant-btn');
       const speechBubble = document.getElementById('ai-speech-bubble');
-      const bubbleMsgText = document.getElementById('bubble-message-text');
       const chatDrawer = document.getElementById('ai-chat-drawer');
       const messagesBody = document.getElementById('ai-messages-body');
       const chatInput = document.getElementById('ai-chat-input');
       const sendBtn = document.getElementById('ai-send-btn');
-      const queryQuotaLabel = document.getElementById('ai-query-quota');
 
       // Auto-minimize callout banner after 30s to keep recruiter view clean
       function resetInactivityTimer() {
@@ -8565,10 +8562,6 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         }
 
         sessionQueriesCount++;
-        if (queryQuotaLabel) {
-          const remaining = MAX_SESSION_QUERIES - sessionQueriesCount;
-          queryQuotaLabel.innerHTML = `<span class="quota-dot"></span>${remaining} question${remaining === 1 ? '' : 's'} remaining`;
-        }
 
         // Add user message to UI
         appendChatMessage('user', query);
