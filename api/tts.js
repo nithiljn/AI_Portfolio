@@ -47,9 +47,9 @@ module.exports = async function handler(req, res) {
     // Clean and cap length to preserve quota (max 450 characters per speech turn)
     const textToSpeak = rawText.trim().slice(0, 450);
 
-    // Default Soft Male Voice: George (Warm, Captivating Storyteller)
+    // Default Soft Male Voice: Eric (Smooth, Trustworthy, Conversational)
     // Optional override via ELEVENLABS_VOICE_ID env variable
-    const voiceId = process.env.ELEVENLABS_VOICE_ID || 'JBFqnCBsd6RMkjVDRZzb';
+    const voiceId = process.env.ELEVENLABS_VOICE_ID || 'cjVigY5qzO86Huf0OWal';
 
     const response = await fetch(
       `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}?output_format=mp3_44100_128`,
@@ -64,7 +64,7 @@ module.exports = async function handler(req, res) {
           text: textToSpeak,
           model_id: 'eleven_flash_v2_5', // Ultra-low latency, 0.5x credit cost, natural soft prosody
           voice_settings: {
-            stability: 0.65,
+            stability: 0.58,
             similarity_boost: 0.85,
             style: 0.0,
             use_speaker_boost: true
