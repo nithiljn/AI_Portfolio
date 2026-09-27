@@ -3752,6 +3752,495 @@
       display: none;
     }
 
+    .gitgraph-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: calc(100vh - 120px);
+      background: var(--bg-body);
+      color: var(--text-primary);
+    }
+
+    .gitgraph-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 16px;
+      background: var(--bg-sidebar);
+      border-bottom: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+    }
+
+    .gitgraph-toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .gitgraph-repo-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .gitgraph-repo-pill .branch-tag {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-family: var(--font-code);
+    }
+
+    .gitgraph-branch-filters {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .git-branch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 9px;
+      border-radius: var(--radius-sm);
+      font-size: 0.72rem;
+      font-weight: 500;
+      font-family: var(--font-code);
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .git-branch-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+      border-color: var(--border-active);
+    }
+
+    .git-branch-btn.active {
+      background: rgba(99, 102, 241, 0.15);
+      color: #818cf8;
+      border-color: rgba(99, 102, 241, 0.4);
+      font-weight: 600;
+    }
+
+    .git-branch-btn .branch-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .gitgraph-toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .gitgraph-search-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: var(--bg-body);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      transition: var(--transition-fast);
+    }
+
+    .gitgraph-search-box:focus-within {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 1px var(--accent-blue);
+    }
+
+    .gitgraph-search-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 0.76rem;
+      color: var(--text-primary);
+      width: 170px;
+      font-family: inherit;
+    }
+
+    .gitgraph-stats-chip {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-family: var(--font-code);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .gitgraph-workspace {
+      display: grid;
+      grid-template-columns: 1fr 390px;
+      flex: 1;
+      overflow: hidden;
+      min-height: 560px;
+    }
+
+    .gitgraph-table-col {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      border-right: 1px solid var(--border-subtle);
+      background: var(--bg-body);
+    }
+
+    .gitgraph-table-header {
+      display: flex;
+      align-items: center;
+      padding: 8px 14px;
+      background: var(--bg-sidebar);
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .gitgraph-header-graph { width: 120px; flex-shrink: 0; }
+    .gitgraph-header-msg { flex: 1; }
+    .gitgraph-header-hash { width: 75px; flex-shrink: 0; }
+    .gitgraph-header-author { width: 110px; flex-shrink: 0; }
+    .gitgraph-header-date { width: 85px; flex-shrink: 0; text-align: right; }
+
+    .gitgraph-rows-wrapper {
+      position: relative;
+    }
+
+    .gitgraph-svg-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 120px;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .git-row {
+      display: flex;
+      align-items: center;
+      height: 44px;
+      padding: 0 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+      transition: background 0.12s ease;
+    }
+
+    .git-row:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .git-row.active {
+      background: rgba(99, 102, 241, 0.1);
+      border-left: 3px solid #6366f1;
+    }
+
+    .git-cell-graph {
+      width: 120px;
+      flex-shrink: 0;
+      height: 100%;
+    }
+
+    .git-cell-msg {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      padding-right: 12px;
+    }
+
+    .git-tag-pill {
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-family: var(--font-code);
+      flex-shrink: 0;
+    }
+
+    .git-branch-tag {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+
+    .git-release-tag {
+      background: rgba(52, 211, 153, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(52, 211, 153, 0.3);
+    }
+
+    .git-msg-text {
+      font-size: 0.8rem;
+      color: var(--text-primary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .git-row.active .git-msg-text {
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .git-cell-hash {
+      width: 75px;
+      flex-shrink: 0;
+      font-family: var(--font-code);
+      font-size: 0.73rem;
+      color: var(--accent-blue);
+    }
+
+    .git-cell-author {
+      width: 110px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .git-author-avatar {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .git-cell-date {
+      width: 85px;
+      flex-shrink: 0;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .gitgraph-inspector {
+      background: var(--bg-sidebar);
+      border-left: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 18px;
+      gap: 16px;
+    }
+
+    .inspector-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .inspector-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      font-family: var(--font-code);
+      width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .inspector-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    .inspector-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      background: var(--bg-body);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+    }
+
+    .inspector-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .inspector-meta-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .inspector-meta-val {
+      font-size: 0.76rem;
+      color: var(--text-primary);
+      font-family: var(--font-code);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .inspector-context-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+    }
+
+    .inspector-context-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .inspector-context-desc {
+      font-size: 0.8rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+    }
+
+    .inspector-files-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .inspector-files-header {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .inspector-file-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: var(--bg-body);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-family: var(--font-code);
+      font-size: 0.72rem;
+    }
+
+    .inspector-file-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--text-secondary);
+      flex: 1;
+    }
+
+    .inspector-diff-stats {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .diff-add { color: #34d399; }
+    .diff-del { color: #f87171; }
+
+    .inspector-action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 9px 14px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      border-radius: var(--radius-sm);
+      color: #e0e7ff;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      margin-top: 4px;
+    }
+
+    .inspector-action-btn:hover {
+      background: rgba(99, 102, 241, 0.28);
+      border-color: rgba(99, 102, 241, 0.6);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 900px) {
+      .gitgraph-workspace {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+      }
+      .gitgraph-inspector {
+        border-left: none;
+        border-top: 1px solid var(--border-subtle);
+        max-height: 400px;
+      }
+      .gitgraph-header-author, .git-cell-author {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .gitgraph-header-date, .git-cell-date {
+        display: none;
+      }
+      .gitgraph-header-graph, .git-cell-graph, .gitgraph-svg-canvas {
+        width: 70px;
+      }
+    }
+
     @media (max-width: 900px) {
       .topbar {
         z-index: 1600;
@@ -4277,6 +4766,9 @@
         <div class="activity-icon" data-tab-target="tab-terminal" data-tooltip="Interactive Terminal">
           <i data-lucide="terminal"></i>
         </div>
+        <div class="activity-icon" data-tab-target="tab-gitgraph" data-tooltip="Git Graph (Branches & Commits)">
+          <i data-lucide="git-branch"></i>
+        </div>
       </div>
 
       <div class="activity-group">
@@ -4342,6 +4834,11 @@
           <div class="file-item" data-tab="tab-terminal" data-file-title="terminal.sh" data-file-icon="devicon-bash-plain">
             <span class="file-icon"><i class="devicon-bash-plain" style="color: #4ade80;"></i></span>
             <span>terminal.sh</span>
+          </div>
+
+          <div class="file-item" data-tab="tab-gitgraph" data-file-title="git-graph.log" data-file-icon="git-branch">
+            <span class="file-icon"><i data-lucide="git-branch" style="color: #a855f7; width: 14px; height: 14px;"></i></span>
+            <span>git-graph.log</span>
           </div>
         </div>
 
@@ -4418,6 +4915,11 @@
           <span>terminal.sh</span>
           <span class="tab-close">×</span>
         </div>
+        <div class="tab-element" data-tab="tab-gitgraph">
+          <i data-lucide="git-branch" style="color: #a855f7; width: 14px; height: 14px;"></i>
+          <span>git-graph.log</span>
+          <span class="tab-close">×</span>
+        </div>
       </div>
 
       
@@ -4452,6 +4954,9 @@
               <a href="https://www.linkedin.com/in/jamesnithil-v/" target="_blank" class="btn-action">
                 <i class="devicon-linkedin-plain" style="font-size: 14px; color: #0ea5e9;"></i> LinkedIn Profile
               </a>
+              <button class="btn-action" onclick="switchTab('tab-gitgraph')">
+                <i data-lucide="git-branch" style="width: 16px; height: 16px; color: #a855f7;"></i> Git Graph
+              </button>
               <button class="btn-action" onclick="switchTab('tab-terminal')">
                 <i data-lucide="terminal" style="width: 16px; height: 16px;"></i> Run Dev Terminal
               </button>
@@ -5717,6 +6222,46 @@
 
         </section>
 
+        <section id="tab-gitgraph" class="tab-pane">
+          <div class="gitgraph-container">
+            <div class="gitgraph-toolbar">
+              <div class="gitgraph-toolbar-left">
+                <div class="gitgraph-repo-pill">
+                  <i data-lucide="folder-git-2" style="width: 14px; height: 14px; color: var(--accent-blue);"></i>
+                  <span>AI_Portfolio</span>
+                  <span class="branch-tag">main</span>
+                </div>
+                <div class="gitgraph-branch-filters" id="gitgraph-branch-filters"></div>
+              </div>
+              <div class="gitgraph-toolbar-right">
+                <div class="gitgraph-search-box">
+                  <i data-lucide="search" style="width: 13px; height: 13px;"></i>
+                  <input type="text" id="gitgraph-search-input" class="gitgraph-search-input" placeholder="Search commits, tags, hashes..." oninput="handleGitSearch(this.value)" />
+                </div>
+                <div class="gitgraph-stats-chip" id="gitgraph-commits-count">18 Commits</div>
+              </div>
+            </div>
+
+            <div class="gitgraph-workspace">
+              <div class="gitgraph-table-col" id="gitgraph-table-col">
+                <div class="gitgraph-table-header">
+                  <div class="gitgraph-header-graph">GRAPH</div>
+                  <div class="gitgraph-header-msg">COMMIT DESCRIPTION & BRANCH TAGS</div>
+                  <div class="gitgraph-header-hash">HASH</div>
+                  <div class="gitgraph-header-author">AUTHOR</div>
+                  <div class="gitgraph-header-date">DATE</div>
+                </div>
+                <div class="gitgraph-rows-wrapper" id="gitgraph-rows-wrapper">
+                  <svg class="gitgraph-svg-canvas" id="gitgraph-svg-canvas"></svg>
+                  <div id="gitgraph-rows-container"></div>
+                </div>
+              </div>
+
+              <div class="gitgraph-inspector" id="gitgraph-inspector"></div>
+            </div>
+          </div>
+        </section>
+
       </div>
     </main>
   </div>
@@ -6153,7 +6698,8 @@
       'tab-experience': { title: 'experience.json', icon: 'braces', color: '#f59e0b' },
       'tab-skills': { title: 'skills.ts', icon: 'cpu', color: '#38bdf8' },
       'tab-achievements': { title: 'achievements.yaml', icon: 'award', color: '#fb7185' },
-      'tab-terminal': { title: 'terminal.sh', icon: 'terminal', color: '#4ade80' }
+      'tab-terminal': { title: 'terminal.sh', icon: 'terminal', color: '#4ade80' },
+      'tab-gitgraph': { title: 'git-graph.log', icon: 'git-branch', color: '#a855f7' }
     };
 
     function switchTab(tabId) {
@@ -6164,6 +6710,10 @@
       const targetPane = document.getElementById(tabId);
       if (targetPane) {
         targetPane.classList.add('active');
+      }
+
+      if (tabId === 'tab-gitgraph') {
+        renderGitGraph();
       }
 
       tabElements.forEach(el => {
@@ -7594,6 +8144,680 @@ Contact Information:
 
       if (typeof playKeyClick === 'function') playKeyClick();
     }
+
+    const GIT_BRANCH_COLORS = {
+      'main': '#38bdf8',
+      'feat/vaken-sovablu': '#a855f7',
+      'feat/kadalvazhi': '#34d399',
+      'feat/algorithms': '#f59e0b',
+      'feat/farmvista-sih': '#ec4899'
+    };
+
+    const gitCommitsData = [
+      {
+        hash: '5d30b3c',
+        fullHash: '5d30b3c8f1e9402a7b6c5d4e3f2a1b0c9e8d7f6a',
+        branch: 'main',
+        lane: 0,
+        parentLanes: [0, 1],
+        tags: ['v1.2.0-prod', 'HEAD'],
+        type: 'merge',
+        message: 'merge: pull request #14 from feat/vaken-sovablu into main',
+        date: 'Sep 2026',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Merged enterprise Sovablu low-code platform enhancements with Java 21 REST services, Redis hot-path caching, and Claude SDK dynamic model switching.',
+        files: [
+          { name: 'src/main/java/com/vaken/sovablu/controller/TenantEngineController.java', adds: 184, dels: 12 },
+          { name: 'src/main/java/com/vaken/sovablu/config/RedisCacheConfig.java', adds: 92, dels: 4 },
+          { name: 'src/main/java/com/vaken/sovablu/ai/ClaudeWorkflowService.java', adds: 148, dels: 0 }
+        ],
+        relatedTab: 'tab-experience',
+        relatedLabel: 'View Work Experience'
+      },
+      {
+        hash: 'a7c91e4',
+        fullHash: 'a7c91e49d8c7b6a5e4f3a2b1c0e9d8f7a6b5c4d3',
+        branch: 'feat/vaken-sovablu',
+        lane: 1,
+        parentLanes: [1],
+        tags: [],
+        type: 'feat',
+        message: 'feat(ai): integrate Claude SDK dynamic model switching for low-code workflows',
+        date: 'Sep 2026',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Implemented intelligent model tiering via Anthropic Claude SDK, routing quick logic to lighter models and complex enterprise workflows to higher-order models for cost and latency optimization.',
+        files: [
+          { name: 'src/main/java/com/vaken/sovablu/ai/ClaudeWorkflowService.java', adds: 148, dels: 0 },
+          { name: 'src/main/resources/application.yml', adds: 24, dels: 6 }
+        ],
+        relatedTab: 'tab-experience',
+        relatedLabel: 'View Work Experience'
+      },
+      {
+        hash: 'c4e82b1',
+        fullHash: 'c4e82b18a7f6e5d4c3b2a1f0e9d8c7b6a5e4f3a2',
+        branch: 'feat/vaken-sovablu',
+        lane: 1,
+        parentLanes: [1],
+        tags: [],
+        type: 'perf',
+        message: 'perf(cache): implement Redis caching layer on high-frequency PostgreSQL hot paths',
+        date: 'Aug 2026',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Added Redis distributed cache annotations and cache eviction policies for tenant authorization and metadata lookups, cutting average DB query latency significantly.',
+        files: [
+          { name: 'src/main/java/com/vaken/sovablu/config/RedisCacheConfig.java', adds: 92, dels: 4 },
+          { name: 'src/main/java/com/vaken/sovablu/service/TenantService.java', adds: 64, dels: 18 }
+        ],
+        relatedTab: 'tab-experience',
+        relatedLabel: 'View Work Experience'
+      },
+      {
+        hash: '8f2d6a3',
+        fullHash: '8f2d6a37e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1',
+        branch: 'feat/vaken-sovablu',
+        lane: 1,
+        parentLanes: [1],
+        tags: [],
+        type: 'ci',
+        message: 'ci(pipeline): configure automated Jenkins CI/CD deployment with AWS EC2 & CodeCommit',
+        date: 'Jul 2026',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Engineered multi-stage Jenkins declarative pipeline with automated unit testing, SonarQube quality gate verification, Docker container packaging, and staging deployment on AWS EC2.',
+        files: [
+          { name: 'Jenkinsfile', adds: 112, dels: 15 },
+          { name: 'docker-compose.prod.yml', adds: 48, dels: 8 }
+        ],
+        relatedTab: 'tab-experience',
+        relatedLabel: 'View Work Experience'
+      },
+      {
+        hash: 'e1a53f0',
+        fullHash: 'e1a53f06d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0',
+        branch: 'feat/vaken-sovablu',
+        lane: 1,
+        parentLanes: [0],
+        tags: ['vaken-core'],
+        type: 'feat',
+        message: 'feat(api): design scalable Spring Boot REST APIs for multi-tenant low-code core',
+        date: 'Jun 2026',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Built core Java 21 REST controllers and service contracts for Sovablu enterprise platform, handling tenant isolation, dynamic schema mapping, and role-based access control.',
+        files: [
+          { name: 'src/main/java/com/vaken/sovablu/controller/TenantEngineController.java', adds: 210, dels: 0 },
+          { name: 'src/main/java/com/vaken/sovablu/repository/TenantRepository.java', adds: 76, dels: 0 }
+        ],
+        relatedTab: 'tab-experience',
+        relatedLabel: 'View Work Experience'
+      },
+      {
+        hash: 'b3917dc',
+        fullHash: 'b3917dc5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0f9',
+        branch: 'main',
+        lane: 0,
+        parentLanes: [0, 2],
+        tags: ['v1.1.0-kadalvazhi'],
+        type: 'merge',
+        message: 'merge: pull request #11 from feat/kadalvazhi into main',
+        date: 'Jun 2026',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Merged KadalVazhi maritime microservices platform. Complete event streaming pipeline, offline deep-sea sync, multilingual voice broadcasts, and automated mechanic dispatch.',
+        files: [
+          { name: 'src/main/java/com/kadalvazhi/telemetry/CatchEventConsumer.java', adds: 248, dels: 12 },
+          { name: 'src/main/java/com/kadalvazhi/offline/MarineSQLiteSyncManager.java', adds: 312, dels: 0 },
+          { name: 'src/main/java/com/kadalvazhi/voice/WhisperTranscriptionService.java', adds: 165, dels: 4 }
+        ],
+        relatedTab: 'tab-projects',
+        relatedLabel: 'View KadalVazhi Architecture'
+      },
+      {
+        hash: '7d24a91',
+        fullHash: '7d24a914b3a2f1e0d9c8b7a6f5e4d3c2b1a0f9e8',
+        branch: 'feat/kadalvazhi',
+        lane: 2,
+        parentLanes: [2],
+        tags: [],
+        type: 'feat',
+        message: 'feat(offline): SQLite local client cache for 12+ NM offshore zero-cellular sync',
+        date: 'May 2026',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Designed offline-first marine client using embedded SQLite. Logs vessel telemetry, fish catch records, and fuel metrics deep offshore with zero network, auto-syncing seamlessly to cloud when crossing 4G coastal thresholds.',
+        files: [
+          { name: 'src/main/java/com/kadalvazhi/offline/MarineSQLiteSyncManager.java', adds: 312, dels: 0 },
+          { name: 'src/main/java/com/kadalvazhi/offline/SyncQueueProcessor.java', adds: 88, dels: 14 }
+        ],
+        relatedTab: 'tab-projects',
+        relatedLabel: 'View KadalVazhi Architecture'
+      },
+      {
+        hash: '4e92fc7',
+        fullHash: '4e92fc73a2f1e0d9c8b7a6f5e4d3c2b1a0f9e8d7',
+        branch: 'feat/kadalvazhi',
+        lane: 2,
+        parentLanes: [2],
+        tags: [],
+        type: 'feat',
+        message: 'feat(kafka): distributed Apache Kafka event topics for catch telemetry and SOS signals',
+        date: 'May 2026',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Configured high-throughput Kafka topics (vessel.catch.stream, vessel.emergency.sos) with partition keys on Harbour IDs for ordered, real-time message delivery under heavy spikes.',
+        files: [
+          { name: 'src/main/java/com/kadalvazhi/telemetry/CatchEventConsumer.java', adds: 248, dels: 12 },
+          { name: 'src/main/resources/kafka-cluster.yml', adds: 64, dels: 0 }
+        ],
+        relatedTab: 'tab-projects',
+        relatedLabel: 'View KadalVazhi Architecture'
+      },
+      {
+        hash: '9a318eb',
+        fullHash: '9a318eb2f1e0d9c8b7a6f5e4d3c2b1a0f9e8d7c6',
+        branch: 'feat/kadalvazhi',
+        lane: 2,
+        parentLanes: [2],
+        tags: [],
+        type: 'feat',
+        message: 'feat(i18n): automated Tamil & Malayalam IVR voice synthesis with Whisper AI notes',
+        date: 'Apr 2026',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Built localized multi-lingual voice engine translating structured fish auction announcements and safety broadcasts into Tamil and Malayalam audio IVR, plus Whisper AI voice-note transcription.',
+        files: [
+          { name: 'src/main/java/com/kadalvazhi/voice/WhisperTranscriptionService.java', adds: 165, dels: 4 },
+          { name: 'src/main/java/com/kadalvazhi/voice/IVRBroadcastEngine.java', adds: 130, dels: 18 }
+        ],
+        relatedTab: 'tab-projects',
+        relatedLabel: 'View KadalVazhi Architecture'
+      },
+      {
+        hash: '6b45e12',
+        fullHash: '6b45e121e0d9c8b7a6f5e4d3c2b1a0f9e8d7c6b5',
+        branch: 'feat/kadalvazhi',
+        lane: 2,
+        parentLanes: [0],
+        tags: ['kadalvazhi-init'],
+        type: 'feat',
+        message: 'feat(dispatch): certified dockside emergency mechanic geo-locator & dispatch algorithm',
+        date: 'Apr 2026',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Calculates nearest harbour mechanics based on GPS coordinates and specialized boat engine certification (e.g. Yanmar, Ashok Leyland Marine), dispatching SMS requests within 4 seconds of breakdown alert.',
+        files: [
+          { name: 'src/main/java/com/kadalvazhi/dispatch/MechanicMatchmaker.java', adds: 182, dels: 0 },
+          { name: 'src/main/java/com/kadalvazhi/model/HarbourDockStation.java', adds: 94, dels: 0 }
+        ],
+        relatedTab: 'tab-projects',
+        relatedLabel: 'View KadalVazhi Architecture'
+      },
+      {
+        hash: 'f289410',
+        fullHash: 'f2894100d9c8b7a6f5e4d3c2b1a0f9e8d7c6b5a4',
+        branch: 'main',
+        lane: 0,
+        parentLanes: [0, 3],
+        tags: ['knight-1994'],
+        type: 'merge',
+        message: 'merge: pull request #8 from feat/algorithms into main',
+        date: 'Mar 2026',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Merged competitive programming achievements and algorithmic solution repository. Verified LeetCode Knight badge (1,994 rating, top 2.73% worldwide).',
+        files: [
+          { name: 'leetcode/solutions/dynamic_programming/hard_problems.java', adds: 340, dels: 0 },
+          { name: 'leetcode/solutions/graphs/network_flow.java', adds: 215, dels: 0 },
+          { name: 'leetcode/METRICS.md', adds: 42, dels: 6 }
+        ],
+        relatedTab: 'tab-achievements',
+        relatedLabel: 'View LeetCode Knight Stats'
+      },
+      {
+        hash: '1d62c8e',
+        fullHash: '1d62c8e9c8b7a6f5e4d3c2b1a0f9e8d7c6b5a4f3',
+        branch: 'feat/algorithms',
+        lane: 3,
+        parentLanes: [3],
+        tags: ['rank-114'],
+        type: 'milestone',
+        message: 'milestone(leetcode): achieve Peak Global Contest Rank #114 / 43,027+ contestants',
+        date: 'Mar 2026',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Participated in LeetCode Biweekly & Weekly Contests, solving all 4 algorithmic challenges in under 35 minutes to achieve peak global rank 114 out of 43,000+ international participants.',
+        files: [
+          { name: 'leetcode/contests/biweekly_128/solution_q4.java', adds: 88, dels: 0 },
+          { name: 'leetcode/contests/biweekly_128/contest_summary.json', adds: 28, dels: 0 }
+        ],
+        relatedTab: 'tab-achievements',
+        relatedLabel: 'View LeetCode Knight Stats'
+      },
+      {
+        hash: '5a73e49',
+        fullHash: '5a73e498b7a6f5e4d3c2b1a0f9e8d7c6b5a4f3e2',
+        branch: 'feat/algorithms',
+        lane: 3,
+        parentLanes: [3],
+        tags: [],
+        type: 'feat',
+        message: 'feat(algo): solve 700+ problems across DP, graph traversals, and concurrency in Java',
+        date: 'Feb 2026',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Structured problem sets covering Advanced Graph Algorithms, Multi-Source BFS/DFS, Segment Trees, Trie Structures, Concurrency with Java Virtual Threads, and Python3 dynamic optimization.',
+        files: [
+          { name: 'leetcode/solutions/dynamic_programming/hard_problems.java', adds: 340, dels: 0 },
+          { name: 'leetcode/solutions/concurrency/BoundedBlockingQueue.java', adds: 74, dels: 0 }
+        ],
+        relatedTab: 'tab-achievements',
+        relatedLabel: 'View LeetCode Knight Stats'
+      },
+      {
+        hash: '0c84b72',
+        fullHash: '0c84b727a6f5e4d3c2b1a0f9e8d7c6b5a4f3e2d1',
+        branch: 'feat/algorithms',
+        lane: 3,
+        parentLanes: [0],
+        tags: [],
+        type: 'init',
+        message: 'init(competitive): establish algorithm practice track with Java 21 & Python3',
+        date: 'Jan 2026',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Initialized daily problem-solving regimen focusing on time-complexity optimization, memory bounds, and zero-allocation data structures.',
+        files: [
+          { name: 'leetcode/README.md', adds: 55, dels: 0 },
+          { name: 'leetcode/templates/FastIO.java', adds: 42, dels: 0 }
+        ],
+        relatedTab: 'tab-achievements',
+        relatedLabel: 'View LeetCode Knight Stats'
+      },
+      {
+        hash: '3e19a45',
+        fullHash: '3e19a456f5e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0',
+        branch: 'main',
+        lane: 0,
+        parentLanes: [0, 4],
+        tags: ['sih-leader'],
+        type: 'merge',
+        message: 'merge: pull request #4 from feat/farmvista-sih into main',
+        date: 'Dec 2025',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Merged FarmVista smart agriculture project. Team Leader in Smart India Hackathon (SIH) Internal Hackathon.',
+        files: [
+          { name: 'ml/cnn_model_leaf_disease.py', adds: 380, dels: 0 },
+          { name: 'iot/esp32_sensor_telemetry.cpp', adds: 140, dels: 8 },
+          { name: 'docs/SIH_Presentation.pdf', adds: 1, dels: 0 }
+        ],
+        relatedTab: 'tab-projects',
+        relatedLabel: 'View FarmVista Project'
+      },
+      {
+        hash: '9f02c61',
+        fullHash: '9f02c615e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9',
+        branch: 'feat/farmvista-sih',
+        lane: 4,
+        parentLanes: [0],
+        tags: ['sih-winner'],
+        type: 'milestone',
+        message: 'milestone(hackathon): Smart India Hackathon (SIH) Internal Hackathon Leader',
+        date: 'Nov 2025',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Led 6-member engineering team to design, prototype, and pitch FarmVista: AI-powered plant pathology diagnostic system with live moisture and NPK sensor telemetry.',
+        files: [
+          { name: 'ml/cnn_model_leaf_disease.py', adds: 380, dels: 0 },
+          { name: 'iot/esp32_sensor_telemetry.cpp', adds: 140, dels: 8 }
+        ],
+        relatedTab: 'tab-projects',
+        relatedLabel: 'View FarmVista Project'
+      },
+      {
+        hash: '8d14e30',
+        fullHash: '8d14e304d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8',
+        branch: 'main',
+        lane: 0,
+        parentLanes: [0],
+        tags: ['kiot-graduate'],
+        type: 'milestone',
+        message: 'milestone(academics): graduate B.Tech in Artificial Intelligence & Data Science (CGPA 8.1)',
+        date: 'May 2025',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Completed B.Tech AI & Data Science at Knowledge Institute of Technology (Anna University) with 8.1 CGPA. Strong foundations in data structures, distributed systems, operating systems, and ML.',
+        files: [
+          { name: 'academics/TRANSCRIPT_SUMMARY.md', adds: 32, dels: 0 },
+          { name: 'academics/final_year_thesis.pdf', adds: 1, dels: 0 }
+        ],
+        relatedTab: 'tab-skills',
+        relatedLabel: 'View Academics & Skills'
+      },
+      {
+        hash: '2a49f81',
+        fullHash: '2a49f813c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7',
+        branch: 'main',
+        lane: 0,
+        parentLanes: [],
+        tags: ['v0.1.0-init'],
+        type: 'init',
+        message: 'init(portfolio): initialize James Nithil software engineering repository & profile',
+        date: 'Jan 2025',
+        author: 'James Nithil V',
+        email: 'jamnithil@gmail.com',
+        context: 'Initialized developer workspace with modular architecture, VS Code themed developer experience, interactive terminal, and dossier indexing.',
+        files: [
+          { name: 'README.md', adds: 95, dels: 0 },
+          { name: 'portfolio.config.json', adds: 28, dels: 0 }
+        ],
+        relatedTab: 'tab-readme',
+        relatedLabel: 'View Overview (README)'
+      }
+    ];
+
+    let currentGitBranchFilter = 'all';
+    let currentGitSearchQuery = '';
+    let selectedCommitHash = '5d30b3c';
+
+    function initGitGraph() {
+      renderGitBranchFilters();
+      renderGitGraph();
+    }
+
+    function renderGitBranchFilters() {
+      const container = document.getElementById('gitgraph-branch-filters');
+      if (!container) return;
+
+      const branches = [
+        { id: 'all', label: 'All', count: gitCommitsData.length, color: '#818cf8' },
+        { id: 'main', label: 'main', count: gitCommitsData.filter(c => c.branch === 'main').length, color: '#38bdf8' },
+        { id: 'feat/vaken-sovablu', label: 'feat/vaken-sovablu', count: gitCommitsData.filter(c => c.branch === 'feat/vaken-sovablu').length, color: '#a855f7' },
+        { id: 'feat/kadalvazhi', label: 'feat/kadalvazhi', count: gitCommitsData.filter(c => c.branch === 'feat/kadalvazhi').length, color: '#34d399' },
+        { id: 'feat/algorithms', label: 'feat/algorithms', count: gitCommitsData.filter(c => c.branch === 'feat/algorithms').length, color: '#f59e0b' },
+        { id: 'feat/farmvista-sih', label: 'feat/farmvista-sih', count: gitCommitsData.filter(c => c.branch === 'feat/farmvista-sih').length, color: '#ec4899' }
+      ];
+
+      container.innerHTML = branches.map(b => `
+        <button class="git-branch-btn ${currentGitBranchFilter === b.id ? 'active' : ''}" onclick="setGitBranchFilter('${b.id}')">
+          <span class="branch-dot" style="background: ${b.color};"></span>
+          <span>${b.label}</span>
+          <span style="opacity: 0.6; font-size: 0.65rem;">(${b.count})</span>
+        </button>
+      `).join('');
+    }
+
+    function setGitBranchFilter(branchId) {
+      currentGitBranchFilter = branchId;
+      renderGitBranchFilters();
+      renderGitGraph();
+      if (typeof playKeyClick === 'function') playKeyClick();
+    }
+
+    function handleGitSearch(query) {
+      currentGitSearchQuery = (query || '').toLowerCase().trim();
+      renderGitGraph();
+    }
+
+    function getFilteredCommits() {
+      return gitCommitsData.filter(commit => {
+        const matchesBranch = (currentGitBranchFilter === 'all') || (commit.branch === currentGitBranchFilter);
+        if (!matchesBranch) return false;
+
+        if (!currentGitSearchQuery) return true;
+        const q = currentGitSearchQuery;
+        return (
+          commit.message.toLowerCase().includes(q) ||
+          commit.hash.toLowerCase().includes(q) ||
+          commit.branch.toLowerCase().includes(q) ||
+          commit.author.toLowerCase().includes(q) ||
+          commit.tags.some(t => t.toLowerCase().includes(q))
+        );
+      });
+    }
+
+    function renderGitGraph() {
+      const rowsContainer = document.getElementById('gitgraph-rows-container');
+      const svgCanvas = document.getElementById('gitgraph-svg-canvas');
+      const countLabel = document.getElementById('gitgraph-commits-count');
+      if (!rowsContainer || !svgCanvas) return;
+
+      const filtered = getFilteredCommits();
+      if (countLabel) {
+        countLabel.textContent = `${filtered.length} Commit${filtered.length === 1 ? '' : 's'}`;
+      }
+
+      if (filtered.length === 0) {
+        rowsContainer.innerHTML = `
+          <div style="padding: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+            No commits matching "<strong>${currentGitSearchQuery}</strong>" in <code>${currentGitBranchFilter}</code>.
+          </div>
+        `;
+        svgCanvas.innerHTML = '';
+        renderCommitInspector(null);
+        return;
+      }
+
+      const ROW_H = 44;
+      const LANE_W = 18;
+      const START_X = 18;
+      const totalH = filtered.length * ROW_H;
+      svgCanvas.setAttribute('height', totalH);
+
+      let svgHtml = '';
+      const nodeCoords = filtered.map((c, i) => ({
+        x: START_X + (c.lane * LANE_W),
+        y: i * ROW_H + (ROW_H / 2),
+        lane: c.lane,
+        color: GIT_BRANCH_COLORS[c.branch] || '#818cf8'
+      }));
+
+      for (let i = 0; i < filtered.length - 1; i++) {
+        const curr = nodeCoords[i];
+        const next = nodeCoords[i + 1];
+
+        if (curr.lane === next.lane) {
+          svgHtml += `<line x1="${curr.x}" y1="${curr.y}" x2="${next.x}" y2="${next.y}" stroke="${curr.color}" stroke-width="2" opacity="0.75" />`;
+        } else {
+          const midY = (curr.y + next.y) / 2;
+          const strokeColor = curr.lane > 0 ? curr.color : next.color;
+          svgHtml += `<path d="M ${curr.x} ${curr.y} C ${curr.x} ${midY}, ${next.x} ${midY}, ${next.x} ${next.y}" fill="none" stroke="${strokeColor}" stroke-width="2" opacity="0.75" />`;
+        }
+      }
+
+      filtered.forEach((c, i) => {
+        if (c.type === 'merge' && c.parentLanes && c.parentLanes.length > 1) {
+          const curr = nodeCoords[i];
+          const mergedLane = c.parentLanes[1];
+          const mergeTargetX = START_X + (mergedLane * LANE_W);
+          const nextMergeIndex = filtered.findIndex((other, idx) => idx > i && other.lane === mergedLane);
+          if (nextMergeIndex !== -1) {
+            const target = nodeCoords[nextMergeIndex];
+            const midY = (curr.y + target.y) / 2;
+            const branchColor = GIT_BRANCH_COLORS[filtered[nextMergeIndex].branch] || '#a855f7';
+            svgHtml += `<path d="M ${mergeTargetX} ${target.y} C ${mergeTargetX} ${midY}, ${curr.x} ${midY}, ${curr.x} ${curr.y}" fill="none" stroke="${branchColor}" stroke-dasharray="3,3" stroke-width="1.8" opacity="0.65" />`;
+          }
+        }
+      });
+
+      nodeCoords.forEach((node, i) => {
+        const c = filtered[i];
+        const isSelected = c.hash === selectedCommitHash;
+
+        if (isSelected) {
+          svgHtml += `<circle cx="${node.x}" cy="${node.y}" r="8" fill="none" stroke="${node.color}" stroke-width="2" opacity="0.9" />`;
+        }
+
+        if (c.type === 'merge') {
+          svgHtml += `<circle cx="${node.x}" cy="${node.y}" r="5.5" fill="${node.color}" stroke="#0a0b0e" stroke-width="2" />`;
+          svgHtml += `<circle cx="${node.x}" cy="${node.y}" r="2" fill="#ffffff" />`;
+        } else {
+          svgHtml += `<circle cx="${node.x}" cy="${node.y}" r="5" fill="${node.color}" stroke="#0a0b0e" stroke-width="2" />`;
+        }
+      });
+
+      svgCanvas.innerHTML = svgHtml;
+
+      rowsContainer.innerHTML = filtered.map((c, i) => {
+        const isSelected = c.hash === selectedCommitHash;
+        const branchColor = GIT_BRANCH_COLORS[c.branch] || '#818cf8';
+
+        const tagsHtml = c.tags.map(t => {
+          const isRelease = t.startsWith('v') || t.includes('prod');
+          return `<span class="git-tag-pill ${isRelease ? 'git-release-tag' : 'git-branch-tag'}">${t}</span>`;
+        }).join('');
+
+        return `
+          <div class="git-row ${isSelected ? 'active' : ''}" onclick="selectCommit('${c.hash}')">
+            <div class="git-cell-graph"></div>
+            <div class="git-cell-msg">
+              <span class="git-tag-pill" style="background: ${branchColor}22; color: ${branchColor}; border: 1px solid ${branchColor}44;">
+                ${c.branch}
+              </span>
+              ${tagsHtml}
+              <span class="git-msg-text" title="${c.message}">${c.message}</span>
+            </div>
+            <div class="git-cell-hash" title="Click to copy hash" onclick="event.stopPropagation(); copyCommitHash('${c.hash}')">
+              ${c.hash}
+            </div>
+            <div class="git-cell-author">
+              <img src="assets/images/James_Nithil.jpeg" class="git-author-avatar" alt="James" />
+              <span>${c.author}</span>
+            </div>
+            <div class="git-cell-date">${c.date}</div>
+          </div>
+        `;
+      }).join('');
+
+      const cur = filtered.find(c => c.hash === selectedCommitHash) || filtered[0];
+      if (cur) {
+        selectedCommitHash = cur.hash;
+        renderCommitInspector(cur);
+      }
+    }
+
+    function selectCommit(hash) {
+      selectedCommitHash = hash;
+      const filtered = getFilteredCommits();
+      const target = filtered.find(c => c.hash === hash);
+      if (target) {
+        renderCommitInspector(target);
+        renderGitGraph();
+        if (typeof playKeyClick === 'function') playKeyClick();
+      }
+    }
+
+    function renderCommitInspector(commit) {
+      const panel = document.getElementById('gitgraph-inspector');
+      if (!panel) return;
+
+      if (!commit) {
+        panel.innerHTML = `<div style="color: var(--text-muted); padding: 20px;">No commit selected.</div>`;
+        return;
+      }
+
+      const branchColor = GIT_BRANCH_COLORS[commit.branch] || '#818cf8';
+
+      const filesHtml = commit.files.map(f => `
+        <div class="inspector-file-item">
+          <span class="inspector-file-name" title="${f.name}">${f.name}</span>
+          <span class="inspector-diff-stats">
+            <span class="diff-add">+${f.adds}</span>
+            <span class="diff-del">-${f.dels}</span>
+          </span>
+        </div>
+      `).join('');
+
+      panel.innerHTML = `
+        <div class="inspector-header">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+            <span class="inspector-type-badge" style="background: ${branchColor}22; color: ${branchColor}; border: 1px solid ${branchColor}44;">
+              ${commit.type} · ${commit.branch}
+            </span>
+            <span style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-code);">Verified Commit 🛡️</span>
+          </div>
+          <div class="inspector-title">${commit.message}</div>
+        </div>
+
+        <div class="inspector-meta-grid">
+          <div class="inspector-meta-item">
+            <span class="inspector-meta-label">Commit SHA</span>
+            <span class="inspector-meta-val" title="${commit.fullHash}" style="cursor: pointer;" onclick="copyCommitHash('${commit.hash}')">
+              ${commit.hash} <i data-lucide="copy" style="width: 11px; height: 11px; display: inline-block;"></i>
+            </span>
+          </div>
+          <div class="inspector-meta-item">
+            <span class="inspector-meta-label">Authored Date</span>
+            <span class="inspector-meta-val">${commit.date}</span>
+          </div>
+          <div class="inspector-meta-item" style="grid-column: span 2;">
+            <span class="inspector-meta-label">Author</span>
+            <div style="display: flex; align-items: center; gap: 7px; margin-top: 2px;">
+              <img src="assets/images/James_Nithil.jpeg" style="width: 20px; height: 20px; border-radius: 50%; object-fit: cover;" alt="James" />
+              <span class="inspector-meta-val">${commit.author} &lt;${commit.email}&gt;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="inspector-context-box">
+          <div class="inspector-context-title">
+            <i data-lucide="file-check-2" style="width: 13px; height: 13px; color: ${branchColor};"></i>
+            <span>Engineering Rationale & Impact</span>
+          </div>
+          <div class="inspector-context-desc">${commit.context}</div>
+        </div>
+
+        <div class="inspector-files-box">
+          <div class="inspector-files-header">
+            <span>Changed Files (${commit.files.length})</span>
+            <span style="font-size: 0.68rem; opacity: 0.7;">Git Working Tree</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            ${filesHtml}
+          </div>
+        </div>
+
+        ${commit.relatedTab ? `
+          <button class="inspector-action-btn" onclick="switchTab('${commit.relatedTab}')">
+            <span>${commit.relatedLabel || 'View Related Architecture'}</span>
+            <i data-lucide="arrow-right" style="width: 13px; height: 13px;"></i>
+          </button>
+        ` : ''}
+      `;
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function copyCommitHash(hash) {
+      navigator.clipboard.writeText(hash).then(() => {
+        const toast = document.createElement('div');
+        toast.textContent = `Copied commit ${hash} to clipboard!`;
+        toast.style.cssText = `
+          position: fixed;
+          bottom: 24px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: #1e1b4b;
+          color: #c7d2fe;
+          border: 1px solid #4338ca;
+          padding: 8px 16px;
+          border-radius: 8px;
+          font-size: 0.78rem;
+          font-family: var(--font-code);
+          z-index: 999999;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+          pointer-events: none;
+        `;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 1800);
+      });
+    }
+
+    setTimeout(initGitGraph, 80);
   </script>
 
   
