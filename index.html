@@ -6528,6 +6528,10 @@
       if (window.innerWidth <= 768) {
         closeMobileSidebar();
       }
+      // If Ask James assistant is open, close it to avoid overlap
+      if (typeof window.toggleAiDrawer === 'function') {
+        window.toggleAiDrawer(false);
+      }
       badgeContainer.classList.remove('hidden-badge');
       if (window.innerWidth <= 900) {
         badgeContainer.classList.add('mobile-open');
@@ -6543,6 +6547,10 @@
       badgeContainer.classList.add('hidden-badge');
       if (toggleBadgeBtn) toggleBadgeBtn.classList.remove('active');
     }
+
+    window.openBadge = openBadge;
+    window.closeBadge = closeBadge;
+    window.isBadgeOpen = isBadgeOpen;
 
     function toggleBadge() {
       if (isBadgeOpen()) {
@@ -8253,8 +8261,18 @@ Contact Information:
     /* Mobile Responsive */
     @media (max-width: 768px) {
       #ask-james-root {
-        bottom: 24px;
-        right: 14px;
+        bottom: 20px;
+        right: 16px;
+      }
+
+      body.ai-drawer-open {
+        overflow: hidden !important;
+        touch-action: none;
+      }
+
+      body.ai-drawer-open .copilot-trigger-btn,
+      body.ai-drawer-open .copilot-callout {
+        display: none !important;
       }
 
       .copilot-trigger-btn {
@@ -8267,13 +8285,132 @@ Contact Information:
         width: 240px;
       }
 
+      /* Full Screen Mobile Chat Drawer */
       .ai-chat-drawer {
-        bottom: 50px;
-        right: 0;
-        width: calc(100vw - 28px);
-        max-width: 360px;
-        height: 480px;
-        max-height: 72vh;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+        border-radius: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        z-index: 99999 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        touch-action: auto;
+      }
+
+      .ai-chat-drawer.hidden {
+        opacity: 0 !important;
+        transform: translateY(100%) !important;
+        pointer-events: none !important;
+        visibility: hidden !important;
+      }
+
+      .ai-chat-drawer:not(.hidden) {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        animation: mobile-drawer-slide-up 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+
+      @keyframes mobile-drawer-slide-up {
+        from {
+          opacity: 0;
+          transform: translateY(100%);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .drawer-header {
+        padding: max(14px, env(safe-area-inset-top)) 16px 14px 16px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+      }
+
+      .drawer-header-avatar {
+        width: 34px !important;
+        height: 34px !important;
+      }
+
+      .drawer-header-avatar img {
+        width: 34px !important;
+        height: 34px !important;
+      }
+
+      .drawer-header-title {
+        font-size: 0.95rem !important;
+      }
+
+      .drawer-btn-icon {
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 8px !important;
+      }
+
+      .drawer-chips-wrap {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 8px !important;
+        padding: 10px 14px !important;
+        scrollbar-width: none !important;
+      }
+
+      .drawer-chips-wrap::-webkit-scrollbar {
+        display: none !important;
+      }
+
+      .drawer-chip {
+        flex: 0 0 auto !important;
+        flex-direction: row !important;
+        gap: 7px !important;
+        padding: 8px 14px !important;
+        border-radius: 9999px !important;
+      }
+
+      .drawer-chip .chip-label {
+        font-size: 0.74rem !important;
+      }
+
+      .drawer-messages-body {
+        padding: 16px 14px !important;
+        gap: 14px !important;
+      }
+
+      .chat-msg {
+        max-width: 90% !important;
+      }
+
+      .chat-msg-bubble {
+        font-size: 0.88rem !important;
+        line-height: 1.6 !important;
+        padding: 11px 15px !important;
+      }
+
+      .drawer-footer {
+        padding: 10px 14px max(14px, env(safe-area-inset-bottom)) 14px !important;
+      }
+
+      .drawer-input-form {
+        padding: 6px 8px 6px 14px !important;
+      }
+
+      .drawer-input-field {
+        font-size: 16px !important;
+      }
+
+      .drawer-send-btn {
+        width: 34px !important;
+        height: 34px !important;
       }
     }
   </style>
@@ -8423,20 +8560,48 @@ Contact Information:
         isAiDrawerOpen = nextState;
 
         if (isAiDrawerOpen) {
+          // Gracefully close ID Badge to eliminate any collision
+          if (typeof window.closeBadge === 'function') {
+            window.closeBadge();
+          } else if (typeof closeBadge === 'function') {
+            closeBadge();
+          } else {
+            const badgeEl = document.getElementById('id-badge-card');
+            if (badgeEl) {
+              badgeEl.classList.add('hidden-badge');
+              badgeEl.classList.remove('mobile-open');
+            }
+            const badgeBtn = document.getElementById('badge-toggle-btn');
+            if (badgeBtn) badgeBtn.classList.remove('active');
+          }
+
           if (speechBubble) speechBubble.classList.add('hidden');
           if (chatDrawer) chatDrawer.classList.remove('hidden');
           if (inactivityTimer) clearTimeout(inactivityTimer);
+
+          if (window.innerWidth <= 768) {
+            document.body.classList.add('ai-drawer-open');
+          }
+
           if (chatInput) {
             setTimeout(() => chatInput.focus(), 150);
           }
         } else {
           if (chatDrawer) chatDrawer.classList.add('hidden');
+          document.body.classList.remove('ai-drawer-open');
           resetInactivityTimer();
         }
 
         if (window.lucide) lucide.createIcons();
         if (typeof playKeyClick === 'function') playKeyClick();
       };
+
+      // Close Ask James drawer on Escape key
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isAiDrawerOpen) {
+          window.toggleAiDrawer(false);
+        }
+      });
 
       // Dismiss Speech Bubble
       window.dismissSpeechBubble = function (e) {
