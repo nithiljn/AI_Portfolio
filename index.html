@@ -9347,6 +9347,73 @@ Contact Information:
       margin-bottom: 4px;
     }
 
+    .speech-ctrl-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 8px;
+      padding-top: 5px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .speech-play-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 5px;
+      padding: 2px 7px;
+      font-size: 0.68rem;
+      font-family: var(--font-code);
+      color: #94a3b8;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .speech-play-btn:hover {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+    }
+
+    .speech-play-btn.speaking {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: #38bdf8;
+      color: #38bdf8;
+    }
+
+    .speech-wave {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      height: 10px;
+    }
+
+    .speech-wave span {
+      display: inline-block;
+      width: 2px;
+      height: 100%;
+      background: #38bdf8;
+      border-radius: 1px;
+      animation: speechWaveBounce 0.8s ease-in-out infinite alternate;
+    }
+
+    .speech-wave span:nth-child(2) { animation-delay: 0.2s; }
+    .speech-wave span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes speechWaveBounce {
+      0% { height: 3px; }
+      100% { height: 10px; }
+    }
+
+    #ai-voice-toggle.active-voice {
+      color: #38bdf8 !important;
+      background: rgba(56, 189, 248, 0.15) !important;
+      border-color: rgba(56, 189, 248, 0.4) !important;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.25) !important;
+    }
+
     
     .typing-indicator {
       display: inline-flex;
@@ -9752,6 +9819,9 @@ Contact Information:
           </div>
         </div>
         <div class="drawer-actions">
+          <button class="drawer-btn-icon" id="ai-voice-toggle" onclick="toggleAutoVoice()" title="Auto-Voice: Narrate responses aloud" aria-label="Toggle voice output">
+            <i data-lucide="volume-2" style="width: 14px; height: 14px;"></i>
+          </button>
           <button class="drawer-btn-icon" onclick="clearAiChat()" title="Reset conversation" aria-label="Clear chat">
             <i data-lucide="rotate-ccw" style="width: 14px; height: 14px;"></i>
           </button>
@@ -9800,7 +9870,13 @@ Contact Information:
             <img src="assets/images/James_Nithil.jpeg" alt="James" />
           </div>
           <div class="chat-msg-bubble">
-            Hi! Feel free to ask anything about James's experience, backend architecture, or featured projects. How can I help?
+            <div>Hi! Feel free to ask anything about James's experience, backend architecture, or featured projects. How can I help?</div>
+            <div class="speech-ctrl-row">
+              <button class="speech-play-btn" onclick="toggleSpeakMessage(this, 'Hi! Feel free to ask anything about James\'s experience, backend architecture, or featured projects. How can I help?')" title="Listen to response" aria-label="Listen">
+                <span class="speech-btn-icon"><i data-lucide="volume-2" style="width: 12px; height: 12px;"></i></span>
+                <span class="speech-btn-label">Listen</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -9897,6 +9973,9 @@ Contact Information:
             if (recognition) { try { recognition.abort(); } catch (err) {} }
             stopVoiceInput();
           }
+          if (typeof stopSpeaking === 'function') {
+            stopSpeaking();
+          }
           if (chatDrawer) chatDrawer.classList.add('hidden');
           document.body.classList.remove('ai-drawer-open');
           resetInactivityTimer();
@@ -9930,6 +10009,7 @@ Contact Information:
 
       window.clearAiChat = function () {
         conversationHistory = [];
+        if (typeof stopSpeaking === 'function') stopSpeaking();
         if (messagesBody) {
           messagesBody.innerHTML = `
             <div class="chat-msg ai">
@@ -9937,10 +10017,17 @@ Contact Information:
                 ${AI_AVATAR_HTML}
               </div>
               <div class="chat-msg-bubble">
-                Hi! Feel free to ask anything about James's experience, backend architecture, or featured projects. How can I help?
+                <div>Hi! Feel free to ask anything about James's experience, backend architecture, or featured projects. How can I help?</div>
+                <div class="speech-ctrl-row">
+                  <button class="speech-play-btn" onclick="toggleSpeakMessage(this, 'Hi! Feel free to ask anything about James\\'s experience, backend architecture, or featured projects. How can I help?')" title="Listen to response" aria-label="Listen">
+                    <span class="speech-btn-icon"><i data-lucide="volume-2" style="width: 12px; height: 12px;"></i></span>
+                    <span class="speech-btn-label">Listen</span>
+                  </button>
+                </div>
               </div>
             </div>
           `;
+          if (window.lucide) lucide.createIcons();
         }
         if (typeof playKeyClick === 'function') playKeyClick();
       };
@@ -10069,6 +10156,11 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
               bubble.innerHTML = formatAiMarkdown(aiReply);
               clearInterval(streamInterval);
               messagesBody.scrollTop = messagesBody.scrollHeight;
+              attachVoiceButtonToBubble(bubble, aiReply);
+              if (isAutoVoiceEnabled) {
+                const btn = bubble.querySelector('.speech-play-btn');
+                speakAiText(aiReply, btn);
+              }
             } else {
               bubble.innerHTML = formatAiMarkdown(aiReply.slice(0, charIndex) + '▌');
               messagesBody.scrollTop = messagesBody.scrollHeight;
@@ -10239,8 +10331,195 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         setTimeout(() => toast.remove(), 3000);
       }
 
+      // Natural Voice Output (TTS) Engine
+      let isAutoVoiceEnabled = localStorage.getItem('james_auto_voice') === 'true';
+      let activeSpeakingBtn = null;
+      let currentUtterance = null;
+
+      function updateAutoVoiceUI() {
+        const toggleBtn = document.getElementById('ai-voice-toggle');
+        if (!toggleBtn) return;
+        if (isAutoVoiceEnabled) {
+          toggleBtn.classList.add('active-voice');
+          toggleBtn.title = "Auto-Voice: Enabled (Narrating responses aloud). Click to turn off";
+        } else {
+          toggleBtn.classList.remove('active-voice');
+          toggleBtn.title = "Auto-Voice: Disabled. Click to auto-narrate responses";
+        }
+      }
+
+      window.toggleAutoVoice = function () {
+        isAutoVoiceEnabled = !isAutoVoiceEnabled;
+        localStorage.setItem('james_auto_voice', isAutoVoiceEnabled);
+        updateAutoVoiceUI();
+        if (typeof playKeyClick === 'function') playKeyClick();
+        if (!isAutoVoiceEnabled) {
+          stopSpeaking();
+        } else {
+          speakAiText("Auto voice enabled. I'll read my answers aloud.", null);
+        }
+      };
+
+      function sanitizeTextForSpeech(raw) {
+        if (!raw) return '';
+        let clean = raw
+          .replace(/https?:\/\/\S+/gi, 'the website link')
+          .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/gi, 'email address')
+          .replace(/```[\s\S]*?```/g, 'code snippet')
+          .replace(/`([^`]+)`/g, '$1')
+          .replace(/\*\*(.*?)\*\*/g, '$1')
+          .replace(/\*(.*?)\*/g, '$1')
+          .replace(/[#_~>]/g, '')
+          .replace(/•/g, ', ')
+          .replace(/\s+/g, ' ')
+          .trim();
+
+        clean = clean
+          .replace(/\bAI\b/g, 'A.I.')
+          .replace(/\bFastAPI\b/g, 'Fast A.P.I.')
+          .replace(/\bREST\b/g, 'Rest')
+          .replace(/\bAPI\b/g, 'A.P.I.')
+          .replace(/\bAPIs\b/g, 'A.P.I.s')
+          .replace(/\bCI\/CD\b/g, 'C.I. C.D.')
+          .replace(/\bAWS\b/g, 'A.W.S.')
+          .replace(/\bLeetCode\b/g, 'Leet Code')
+          .replace(/\bKadalVazhi\b/g, 'Kadal Vazhi')
+          .replace(/\bSovablu\b/g, 'Sova blu')
+          .replace(/\bKIOT\b/g, 'K.I.O.T.')
+          .replace(/\bCGPA\b/g, 'C.G.P.A.');
+
+        return clean;
+      }
+
+      function getBestNeuralVoice() {
+        if (!window.speechSynthesis) return null;
+        const voices = window.speechSynthesis.getVoices() || [];
+        if (!voices.length) return null;
+
+        const britishNatural = voices.find(v => 
+          (v.lang.startsWith('en-GB') || v.lang.startsWith('en_GB')) &&
+          (v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Enhanced') || v.name.includes('Google') || v.name.includes('Daniel') || v.name.includes('Oliver') || v.name.includes('George'))
+        );
+        if (britishNatural) return britishNatural;
+
+        const usNatural = voices.find(v => 
+          (v.lang.startsWith('en-US') || v.lang.startsWith('en_US')) &&
+          (v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Enhanced') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Guy') || v.name.includes('Christopher'))
+        );
+        if (usNatural) return usNatural;
+
+        const anyNatural = voices.find(v => 
+          v.lang.startsWith('en') &&
+          (v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Enhanced'))
+        );
+        if (anyNatural) return anyNatural;
+
+        const brandedEnglish = voices.find(v => 
+          v.lang.startsWith('en') && (v.name.includes('Google') || v.name.includes('Daniel') || v.name.includes('Samantha') || v.name.includes('Microsoft'))
+        );
+        if (brandedEnglish) return brandedEnglish;
+
+        return voices.find(v => v.lang.startsWith('en')) || voices[0];
+      }
+
+      window.toggleSpeakMessage = function (btn, fullText) {
+        if (typeof playKeyClick === 'function') playKeyClick();
+
+        if (activeSpeakingBtn === btn) {
+          stopSpeaking();
+          return;
+        }
+
+        stopSpeaking();
+        speakAiText(fullText, btn);
+      };
+
+      function speakAiText(fullText, btn) {
+        if (!window.speechSynthesis) return;
+
+        window.speechSynthesis.cancel();
+        const cleanText = sanitizeTextForSpeech(fullText);
+        if (!cleanText) return;
+
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        const bestVoice = getBestNeuralVoice();
+        if (bestVoice) {
+          utterance.voice = bestVoice;
+        }
+
+        utterance.rate = 1.02;
+        utterance.pitch = 0.96;
+
+        if (btn) {
+          activeSpeakingBtn = btn;
+          btn.classList.add('speaking');
+          btn.innerHTML = `
+            <span class="speech-wave">
+              <span></span><span></span><span></span>
+            </span>
+            <span class="speech-btn-label">Stop</span>
+          `;
+        }
+
+        utterance.onend = function () {
+          resetSpeakingButton(btn);
+        };
+
+        utterance.onerror = function () {
+          resetSpeakingButton(btn);
+        };
+
+        currentUtterance = utterance;
+        window.speechSynthesis.speak(utterance);
+      }
+
+      function stopSpeaking() {
+        if (window.speechSynthesis) {
+          window.speechSynthesis.cancel();
+        }
+        if (activeSpeakingBtn) {
+          resetSpeakingButton(activeSpeakingBtn);
+          activeSpeakingBtn = null;
+        }
+      }
+
+      function resetSpeakingButton(btn) {
+        if (!btn) return;
+        btn.classList.remove('speaking');
+        btn.innerHTML = `
+          <span class="speech-btn-icon"><i data-lucide="volume-2" style="width: 12px; height: 12px;"></i></span>
+          <span class="speech-btn-label">Listen</span>
+        `;
+        if (window.lucide) lucide.createIcons();
+        if (activeSpeakingBtn === btn) activeSpeakingBtn = null;
+      }
+
+      function attachVoiceButtonToBubble(bubbleDiv, fullText) {
+        if (!bubbleDiv || !fullText) return;
+        if (bubbleDiv.querySelector('.speech-ctrl-row')) return;
+
+        const row = document.createElement('div');
+        row.className = 'speech-ctrl-row';
+        const encoded = encodeURIComponent(fullText);
+        row.innerHTML = `
+          <button class="speech-play-btn" onclick="toggleSpeakMessage(this, decodeURIComponent('${encoded}'))" title="Listen to response" aria-label="Listen">
+            <span class="speech-btn-icon"><i data-lucide="volume-2" style="width: 12px; height: 12px;"></i></span>
+            <span class="speech-btn-label">Listen</span>
+          </button>
+        `;
+        bubbleDiv.appendChild(row);
+        if (window.lucide) lucide.createIcons();
+      }
+
+      if (window.speechSynthesis && window.speechSynthesis.onvoiceschanged !== undefined) {
+        window.speechSynthesis.onvoiceschanged = () => {
+          getBestNeuralVoice();
+        };
+      }
+
       if (window.lucide) lucide.createIcons();
       initSpeechRecognition();
+      updateAutoVoiceUI();
       resetInactivityTimer();
     })();
   </script>
