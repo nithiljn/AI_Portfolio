@@ -10405,30 +10405,33 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         const voices = window.speechSynthesis.getVoices() || [];
         if (!voices.length) return null;
 
-        const britishNatural = voices.find(v => 
-          (v.lang.startsWith('en-GB') || v.lang.startsWith('en_GB')) &&
-          (v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Enhanced') || v.name.includes('Google') || v.name.includes('Daniel') || v.name.includes('Oliver') || v.name.includes('George'))
-        );
-        if (britishNatural) return britishNatural;
+        // 1. Soft, soothing, gentle voices (Samantha, Google US, Jenny, Flo, Shelley)
+        const preferredSoftVoices = [
+          'Google US English',
+          'Samantha',
+          'Google UK English Female',
+          'Microsoft Jenny Online (Natural)',
+          'Microsoft Aria Online (Natural)',
+          'Flo',
+          'Shelley',
+          'Victoria',
+          'Karen'
+        ];
 
-        const usNatural = voices.find(v => 
-          (v.lang.startsWith('en-US') || v.lang.startsWith('en_US')) &&
-          (v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Enhanced') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Guy') || v.name.includes('Christopher'))
-        );
-        if (usNatural) return usNatural;
+        for (const name of preferredSoftVoices) {
+          const match = voices.find(v => v.name.includes(name));
+          if (match) return match;
+        }
 
-        const anyNatural = voices.find(v => 
-          v.lang.startsWith('en') &&
-          (v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Enhanced'))
+        // 2. Any female or gentle neural voice
+        const gentleFemale = voices.find(v => 
+          v.lang.startsWith('en') && 
+          (v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Enhanced') || v.name.toLowerCase().includes('female'))
         );
-        if (anyNatural) return anyNatural;
+        if (gentleFemale) return gentleFemale;
 
-        const brandedEnglish = voices.find(v => 
-          v.lang.startsWith('en') && (v.name.includes('Google') || v.name.includes('Daniel') || v.name.includes('Samantha') || v.name.includes('Microsoft'))
-        );
-        if (brandedEnglish) return brandedEnglish;
-
-        return voices.find(v => v.lang.startsWith('en')) || voices[0];
+        // 3. Fallback English
+        return voices.find(v => v.lang.startsWith('en-US')) || voices.find(v => v.lang.startsWith('en')) || voices[0];
       }
 
       window.toggleSpeakMessage = function (btn, fullText) {
@@ -10456,8 +10459,10 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
           utterance.voice = bestVoice;
         }
 
-        utterance.rate = 1.02;
-        utterance.pitch = 0.96;
+        // Soft, calm, articulate pacing and warm pitch
+        utterance.rate = 0.98;   // Gentle, unhurried cadence
+        utterance.pitch = 1.02;  // Soft, clear, soothing melody
+        utterance.volume = 0.92; // Pleasant and gentle on ears
 
         if (btn) {
           activeSpeakingBtn = btn;
