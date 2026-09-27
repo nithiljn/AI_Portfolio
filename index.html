@@ -10111,7 +10111,13 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         }
 
         if (sessionQueriesCount >= MAX_SESSION_QUERIES) {
-          appendChatMessage('ai', "You have reached the maximum questions limit for this browser session! 🛡️ Feel free to connect directly with James on LinkedIn or email him at **jamnithil@gmail.com**.");
+          const limitMsg = "You have reached the maximum questions limit for this browser session! 🛡️ Feel free to connect directly with James on LinkedIn or email him at **jamnithil@gmail.com**.";
+          const bubble = appendChatMessage('ai', limitMsg);
+          attachVoiceButtonToBubble(bubble, limitMsg);
+          if (isAutoVoiceEnabled) {
+            const btn = bubble ? bubble.querySelector('.speech-play-btn') : null;
+            speakAiText(limitMsg, btn);
+          }
           return;
         }
 
@@ -10172,10 +10178,13 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
           const indicatorEl = document.getElementById('ai-typing-indicator');
           if (indicatorEl) indicatorEl.remove();
 
-          appendChatMessage(
-            'ai',
-            "James AI encountered a brief network glitch! ⚡ Feel free to check out James's **Download Resume** link or email him at **jamnithil@gmail.com**."
-          );
+          const fallbackText = "James AI encountered a brief network glitch! ⚡ Feel free to check out James's **Download Resume** link or email him at **jamnithil@gmail.com**.";
+          const bubble = appendChatMessage('ai', fallbackText);
+          attachVoiceButtonToBubble(bubble, fallbackText);
+          if (isAutoVoiceEnabled) {
+            const btn = bubble ? bubble.querySelector('.speech-play-btn') : null;
+            speakAiText(fallbackText, btn);
+          }
         } finally {
           if (sendBtn) sendBtn.disabled = false;
           if (chatInput) chatInput.focus();
