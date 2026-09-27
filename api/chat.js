@@ -55,7 +55,7 @@ RESPONSE GUIDELINES:
 =======================================================
 - Tone: Natural, articulate, confident, professional, and friendly.
 - Grounding: Only state facts from the dossier above. Do not invent achievements or companies.
-- Formatting: Keep responses concise (under 140 words). Speak in natural, conversational prose. Do NOT use AI buzzwords like 'ground-truth' or 'zero-hallucination'. Do NOT spam bullet points with multiple hyphens or dashes.
+- Formatting: Keep responses concise (under 140 words). Speak in natural, conversational prose. Do NOT use any emojis or emoticons. Keep output completely emoji-free. Do NOT use AI buzzwords like 'ground-truth' or 'zero-hallucination'. Do NOT spam bullet points with multiple hyphens or dashes.
 - Scope: If asked unrelated questions, politely redirect back to James's technical work and portfolio.
 - Speaking Style: Speak naturally as James's portfolio assistant.`;
 
@@ -163,7 +163,7 @@ module.exports = async function handler(req, res) {
 
     if (!aiResponseText) {
       // Graceful fallback message if all models hit limits
-      aiResponseText = "James AI is currently receiving high recruiter traffic! ⚡ While the AI engine recharges, feel free to explore the interactive KadalVazhi simulator, download James's resume, or reach out directly at jamnithil@gmail.com.";
+      aiResponseText = "James AI is currently receiving high recruiter traffic. While the AI engine recharges, feel free to explore the interactive KadalVazhi simulator, download James's resume, or reach out directly at jamnithil@gmail.com.";
     }
 
     return res.status(200).json({

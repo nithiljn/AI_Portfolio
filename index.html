@@ -10061,7 +10061,9 @@ Contact Information:
 
       function formatAiMarkdown(text) {
         if (!text) return '';
-        let escaped = text
+        // Strip all emojis and emoticons for clean, emoji-free output
+        let noEmojis = text.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F900}-\u{1F9FF}\u{1F018}-\u{1F270}\u{238C}-\u{2454}\u{20D0}-\u{20FF}\u{FE0F}]/gu, '');
+        let escaped = noEmojis
           .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
           .replace(/>/g, '&gt;');
@@ -10081,7 +10083,7 @@ Contact Information:
 - Other Projects: FarmVista (Smart agriculture with CNN plant disease detection, SIH Hackathon Leader), SymptoMedAI (Healthcare triage assistant), InterviewBot (AI technical mock interview platform).
 - Education: B.Tech in Artificial Intelligence & Data Science, Knowledge Institute of Technology (KIOT), CGPA 8.1 / 10.
 - Contact: Email: jamnithil@gmail.com | Portfolio: https://jamesnithil.vercel.app | LinkedIn: linkedin.com/in/jamesnithil-v.
-Guidelines: Be natural, articulate, concise, and professional (under 130 words). Speak conversationally as James's portfolio assistant. Do NOT use buzzwords like 'ground-truth' or 'zero-hallucination'. Do NOT spam hyphen bullet points or multiple dashes. Format text cleanly and elegantly.`;
+Guidelines: Be natural, articulate, concise, and professional (under 130 words). Speak conversationally as James's portfolio assistant. Do NOT use any emojis or emoticons. Keep output completely emoji-free. Do NOT use buzzwords like 'ground-truth' or 'zero-hallucination'. Do NOT spam hyphen bullet points or multiple dashes. Format text cleanly and elegantly.`;
 
       window.queryAskJamesAI = async function (query, history = []) {
         const res = await fetch('/api/chat', {
@@ -10111,7 +10113,7 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         }
 
         if (sessionQueriesCount >= MAX_SESSION_QUERIES) {
-          const limitMsg = "You have reached the maximum questions limit for this browser session! 🛡️ Feel free to connect directly with James on LinkedIn or email him at **jamnithil@gmail.com**.";
+          const limitMsg = "You have reached the maximum questions limit for this browser session. Feel free to connect directly with James on LinkedIn or email him at **jamnithil@gmail.com**.";
           const bubble = appendChatMessage('ai', limitMsg);
           attachVoiceButtonToBubble(bubble, limitMsg);
           if (isAutoVoiceEnabled) {
@@ -10178,7 +10180,7 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
           const indicatorEl = document.getElementById('ai-typing-indicator');
           if (indicatorEl) indicatorEl.remove();
 
-          const fallbackText = "James AI encountered a brief network glitch! ⚡ Feel free to check out James's **Download Resume** link or email him at **jamnithil@gmail.com**.";
+          const fallbackText = "James AI encountered a brief network glitch. Feel free to check out James's **Download Resume** link or email him at **jamnithil@gmail.com**.";
           const bubble = appendChatMessage('ai', fallbackText);
           attachVoiceButtonToBubble(bubble, fallbackText);
           if (isAutoVoiceEnabled) {
@@ -10372,6 +10374,7 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
       function sanitizeTextForSpeech(raw) {
         if (!raw) return '';
         let clean = raw
+          .replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F900}-\u{1F9FF}\u{1F018}-\u{1F270}\u{238C}-\u{2454}\u{20D0}-\u{20FF}\u{FE0F}]/gu, '')
           .replace(/https?:\/\/\S+/gi, 'the website link')
           .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/gi, 'email address')
           .replace(/```[\s\S]*?```/g, 'code snippet')
@@ -10405,33 +10408,35 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         const voices = window.speechSynthesis.getVoices() || [];
         if (!voices.length) return null;
 
-        // 1. Soft, soothing, gentle voices (Samantha, Google US, Jenny, Flo, Shelley)
-        const preferredSoftVoices = [
-          'Google US English',
-          'Samantha',
-          'Google UK English Female',
-          'Microsoft Jenny Online (Natural)',
-          'Microsoft Aria Online (Natural)',
-          'Flo',
-          'Shelley',
-          'Victoria',
-          'Karen'
+        // 1. Soft, articulate, gentle MALE voices (Daniel, Google UK Male, Christopher, Reed, Eddy, Oliver)
+        const preferredSoftMaleVoices = [
+          'Google UK English Male',
+          'Daniel',
+          'Microsoft Christopher Online (Natural)',
+          'Microsoft Guy Online (Natural)',
+          'Reed',
+          'Eddy',
+          'Oliver',
+          'George',
+          'Google US English Male',
+          'Alex'
         ];
 
-        for (const name of preferredSoftVoices) {
+        for (const name of preferredSoftMaleVoices) {
           const match = voices.find(v => v.name.includes(name));
           if (match) return match;
         }
 
-        // 2. Any female or gentle neural voice
-        const gentleFemale = voices.find(v => 
+        // 2. Any male voice with Natural / Neural / Enhanced tag
+        const gentleMale = voices.find(v => 
           v.lang.startsWith('en') && 
-          (v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Enhanced') || v.name.toLowerCase().includes('female'))
+          (v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Enhanced')) &&
+          (v.name.toLowerCase().includes('male') || v.name.includes('Daniel') || v.name.includes('Reed') || v.name.includes('Guy'))
         );
-        if (gentleFemale) return gentleFemale;
+        if (gentleMale) return gentleMale;
 
-        // 3. Fallback English
-        return voices.find(v => v.lang.startsWith('en-US')) || voices.find(v => v.lang.startsWith('en')) || voices[0];
+        // 3. Fallback to Daniel (macOS standard British soft male) or any English
+        return voices.find(v => v.name.includes('Daniel')) || voices.find(v => v.lang.startsWith('en-GB')) || voices.find(v => v.lang.startsWith('en')) || voices[0];
       }
 
       window.toggleSpeakMessage = function (btn, fullText) {
@@ -10459,9 +10464,9 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
           utterance.voice = bestVoice;
         }
 
-        // Soft, calm, articulate pacing and warm pitch
+        // Soft MALE acoustic calibration: warm, calm, unhurried, non-harsh
         utterance.rate = 0.98;   // Gentle, unhurried cadence
-        utterance.pitch = 1.02;  // Soft, clear, soothing melody
+        utterance.pitch = 0.98;  // Warm, natural male frequency (soft tone, no robotic bass)
         utterance.volume = 0.92; // Pleasant and gentle on ears
 
         if (btn) {
