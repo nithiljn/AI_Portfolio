@@ -1,4 +1,4 @@
-// api/chat.js - Vercel Serverless Function for Ask James AI (Groq RAG)
+// api/chat.js
 
 const SYSTEM_PROMPT = `You are the personal portfolio assistant representing James Nithil V.
 Your mission is to help recruiters, engineering managers, and visitors explore James's engineering capabilities, projects, problem-solving skills, and career background.
