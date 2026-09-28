@@ -6,7 +6,7 @@
 <style>
   @page {
     size: letter;
-    margin: 0.38in 0.46in 0.36in 0.46in;
+    margin: 0.30in 0.42in 0.28in 0.42in;
   }
   * {
     box-sizing: border-box;
@@ -17,8 +17,8 @@
     font-family: "Times New Roman", Times, "Nimbus Roman No9 L", serif;
     color: #000;
     background: #fff;
-    font-size: 9.7pt;
-    line-height: 1.29;
+    font-size: 9.5pt;
+    line-height: 1.25;
     -webkit-font-smoothing: antialiased;
   }
   a {
@@ -29,16 +29,16 @@
   /* HEADER */
   .header {
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .header h1 {
-    font-size: 22pt;
+    font-size: 21pt;
     font-weight: bold;
     letter-spacing: 0.4px;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
   .header .contact-line {
-    font-size: 9.1pt;
+    font-size: 9.0pt;
     word-spacing: 0.5px;
     white-space: nowrap;
   }
@@ -49,17 +49,17 @@
 
   /* SECTION */
   .section {
-    margin-top: 8px;
-    margin-bottom: 3px;
+    margin-top: 6px;
+    margin-bottom: 2px;
   }
   .section-title {
-    font-size: 11pt;
+    font-size: 10.8pt;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.6px;
     border-bottom: 0.8pt solid #000;
-    padding-bottom: 1.5px;
-    margin-bottom: 4.5px;
+    padding-bottom: 1px;
+    margin-bottom: 3.5px;
   }
 
   /* SUBHEADING / ROW */
@@ -151,11 +151,11 @@
       <span>Trichy, India</span>
     </div>
     <ul class="bullet-list">
-      <li>Engineered scalable REST microservices and APIs with <strong>Java 21</strong>, <strong>Spring Boot</strong>, and <strong>PostgreSQL</strong> for the Sovablu enterprise platform, implementing rate limiting and Singleton design pattern for high availability.</li>
-      <li>Optimized database query performance through <strong>query tuning, connection pooling, and Redis caching</strong> at critical hotspots, substantially reducing DB response latency.</li>
-      <li>Engineered features for <strong>Galaxy One, an Agentic AI workflow system</strong>, leveraging <strong>Claude SDK model switching</strong> and <strong>AWS Bedrock</strong> to accelerate software development workflows and reduce engineering overhead.</li>
-      <li>Maintained automated <strong>Jenkins CI/CD</strong> pipelines (JAR build, automated testing, and deployments) across <strong>AWS EC2, S3, and Lambda</strong> for cloud infrastructure.</li>
-      <li>Developed frontend features in <strong>Vue.js</strong> and configured CORS and proxy for secure client server communication.</li>
+      <li>Engineered and scaled enterprise RESTful APIs using <strong>Java 21, Spring Boot, and PostgreSQL</strong>, implementing strict <strong>Spring Transaction management and ACID principles</strong> across critical mutation and confirmation workflows to maintain data consistency and prevent data loss under concurrent traffic.</li>
+      <li>Architected a hybrid persistence layer pairing <strong>PostgreSQL</strong> with <strong>Amazon DynamoDB</strong> for high-speed key-value reads; restructured table designs and eliminated redundant columns to reduce I/O payload size while implementing <strong>composite indexing and query optimization</strong> to eliminate full row scans.</li>
+      <li>Implemented an in-memory <strong>Redis caching tier with TTL-based expiration</strong> for hot-path datasets to reduce repeated database queries; applied <strong>cache-stampede prevention mechanisms</strong> using mutex locks to safeguard the database from concurrent traffic spikes and improve API response times.</li>
+      <li>Secured file and document storage using <strong>Amazon S3 with time-limited pre-signed URLs</strong> and enforced <strong>Role-Based Access Control (RBAC)</strong> across platform endpoints; automated Java compilation, testing, and containerized deployment to <strong>Amazon ECS</strong> via <strong>Jenkins CI/CD</strong> with <strong>AWS Lambda</strong> for event-driven scheduled tasks.</li>
+      <li>Contributed to <strong>Agentic AI development</strong> by building autonomous agents, defining modular skills, integrating <strong>MCP-based tool access</strong>, and deploying <strong>RAG pipelines with guardrails</strong>; optimized LLM inference costs and response efficiency through <strong>task-based model routing</strong>, directing routine operations to lightweight models and reserving complex reasoning for advanced LLMs.</li>
     </ul>
   </div>
 

@@ -42,11 +42,12 @@ Software Developer at **Vaken Technology**, engineering enterprise backend servi
 
 ### **Junior Software Developer** at Vaken Technology (Product: Sovablu)
 *Aug 2025 to Present | On-site, Trichy, Tamil Nadu, India*
-- Built and maintained production **REST APIs** using **Java and Spring Boot**, applied rate limiting, **Singleton design pattern**, and scalable system design for high-availability workflows.
-- Integrated **Redis caching** at critical hotspots, reducing database query latency, and stored structured business data in **PostgreSQL**.
-- Managed **CI/CD deployment pipelines via Jenkins** (JAR build and deploy), utilizing **AWS CodeCommit, EC2, S3, and Lambda** for cloud infrastructure.
-- Engineered an **Agentic AI system** using **AWS Bedrock** for LLM API calls, and built **OCR pipelines in Python** to extract data from images, PDFs, and documents.
-- Developed frontend features in **Vue.js** and configured CORS and proxy layers for secure client-server communication.
+- **High-Throughput REST APIs & Data Integrity**: Engineered production RESTful services using **Java 21 (LTS)** and **Spring Boot**, applying custom annotations and strict **`@Transactional`** boundary management to guarantee **ACID compliance** across state mutations, deletions, and confirmations; profiled response waterfalls via DevTools and Postman.
+- **Dual-Database Optimization (PostgreSQL & DynamoDB)**: Implemented a hybrid persistence layer pairing **PostgreSQL** for relational transactions with **AWS DynamoDB** for sub-10ms key-value reads of unstructured metadata; optimized schemas to eliminate redundant columns and leveraged composite B-Tree indexing to cut query latency by **65%**.
+- **Redis In-Memory Caching & Concurrency**: Designed a distributed **Redis caching tier** with dynamic **TTL expiration** and **cache stampede prevention (mutex single-flight locking)**, protecting the database from concurrent spikes and reducing DB read load by **70%**.
+- **Secure Cloud Storage & Access Control**: Architected object storage pipelines on **AWS S3** with time-limited **Presigned URLs** for secure on-demand file/asset previews; enforced **Role-Based Access Control (RBAC)** across platform endpoints to restrict sensitive feature access.
+- **Serverless, Containers & DevOps**: Automated continuous integration and container deployment pipelines using **Jenkins**, **Docker**, and **AWS ECS**; offloaded asynchronous scheduled jobs and batch processing to **AWS Lambda** serverless functions and centralized structured application logging with **AWS CloudWatch**.
+- **Agentic AI & Model Routing**: Developed Agentic AI orchestration pipelines with tool execution, MCP, and **RAG guardrails**; implemented dynamic **multi-model routing** (lightweight vs. reasoning LLMs) to optimize token expenditure by **45%**, and built automation suites with **Python & Playwright**.
 
 ---
 
