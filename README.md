@@ -10,7 +10,7 @@
 
 ## 👨‍💻 About Me
 
-Software Developer at **Vaken Technology**, engineering enterprise backend services and REST APIs for the **Sovablu low-code platform** using **Java 21, Spring Boot, Redis, PostgreSQL**, and **AWS Bedrock**. Concurrently architecting **KadalVazhi** as an independent engineering initiative, an enterprise-grade real-time maritime microservices and AI platform built with **Java 25, Apache Kafka, Python FastAPI**, and **LangGraph**.
+Software Developer at **Vaken Technologies Pvt Ltd**, engineering enterprise backend services and REST APIs for the **Sovablu low-code platform** using **Java 21, Spring Boot, Redis, PostgreSQL**, and **AWS Bedrock**. Concurrently architecting **KadalVazhi** as an independent engineering initiative, an enterprise-grade real-time maritime microservices and AI platform built with **Java 25, Apache Kafka, Python FastAPI**, and **LangGraph**.
 
 ---
 
@@ -21,7 +21,7 @@ Software Developer at **Vaken Technology**, engineering enterprise backend servi
 - **Weekly Contest 490**: Global Rank **#197 out of 43,027** participants (Solved 4/4 problems with 100% accuracy).
 - **LeetCode Problem Solving Breakdown**:
   - **Total Solved**: 700+ problems (446 in Java, 443 in Python3, 40 in MySQL, 31 in C++)
-  - **Java**: 446 problems solved (Trees, Graphs, BFS/DFS, Dynamic Programming, Recursion, Two Pointers, Greedy, Linked Lists)
+  - **Java**: 446 problems solved (Trees, Graphs, BFS/DFS, Dynamic Programming, Sliding Window, Two Pointers, Hash Maps, Linked Lists, Greedy)
   - **Python3**: 443 problems solved (Algorithmic problem solving and data structures)
   - **MySQL**: 40 problems solved (Relational database queries and optimization)
   - **C++**: 31 problems solved
@@ -40,7 +40,7 @@ Software Developer at **Vaken Technology**, engineering enterprise backend servi
 
 ## 💼 Work Experience
 
-### **Junior Software Developer** at Vaken Technology (Product: Sovablu)
+### **Junior Software Developer** at Vaken Technologies Pvt Ltd (Product: Sovablu)
 *Aug 2025 to Present | On-site, Trichy, Tamil Nadu, India*
 - **High Throughput REST APIs & Data Integrity**: Engineered production RESTful services using **Java 21 (LTS)** and **Spring Boot**, applying custom annotations and strict **`@Transactional`** boundary management to guarantee **ACID compliance** across state mutations, deletions, and confirmations; profiled response waterfalls via DevTools and Postman.
 - **Dual Database Optimization (PostgreSQL & DynamoDB)**: Implemented a hybrid persistence layer pairing **PostgreSQL** for relational transactions with **AWS DynamoDB** for fast key value reads of unstructured metadata; optimized schemas to eliminate redundant columns and leveraged composite B-Tree indexing to cut query latency by **65%**.
