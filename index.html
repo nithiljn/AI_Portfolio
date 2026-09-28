@@ -5444,32 +5444,35 @@
 
                     <ul class="exp-highlights-list" style="margin-top: 8px;">
                       <li>
-                        Engineered and maintained production REST microservices using <strong>Java 21 & Spring Boot</strong>, incorporating <strong>Singleton & Factory design patterns</strong> for resilient API architectures.
+                        <strong>Scalable REST APIs & Transactional Integrity:</strong> Developed and enhanced scalable backend services and REST APIs using <strong>Java 21, Spring Boot, and PostgreSQL</strong>, enabling reliable client-platform data exchange; designed reliable transactional workflows using <strong>Spring transactions and ACID principles</strong> across critical create, update, delete, and confirmation operations to maintain data consistency and prevent data loss.
                       </li>
                       <li>
-                        Integrated <strong>Redis caching</strong> at critical hotspots to reduce database query latency, storing structured business data in <strong>PostgreSQL</strong>.
+                        <strong>Dual-Database Architecture (PostgreSQL & DynamoDB):</strong> Architected data persistence across <strong>PostgreSQL and Amazon DynamoDB</strong> based on access requirements, leveraging NoSQL for high-speed reads; improved database performance for large datasets through <strong>database indexing, query optimization, and table design improvements</strong>, eliminating unnecessary columns and redundant retrieval to minimize database I/O and reduce unnecessary row scans.
                       </li>
                       <li>
-                        Managed <strong>CI/CD deployment pipelines using Jenkins</strong>, using <strong>AWS CodeCommit, EC2, S3, and Lambda</strong> for resilient cloud infrastructure.
+                        <strong>Redis Caching & Cache-Stampede Prevention:</strong> Implemented in-memory <strong>Redis caching with TTL-based expiration</strong> for frequently accessed data, drastically reducing repeated database queries and accelerating API response times; applied <strong>cache-stampede prevention</strong> with mutex locks to stop concurrent requests from overwhelming the database during traffic spikes.
                       </li>
                       <li>
-                        Engineered an <strong>Agentic AI system using Claude SDK</strong> for structured LLM API calls, and built <strong>Python OCR pipelines</strong> to extract structured data from images and documents.
+                        <strong>Cloud Storage, Pre-Signed URLs & RBAC Authorization:</strong> Implemented secure file and document storage using <strong>Amazon S3 and time-limited pre-signed URLs</strong> for secure retrieval and previews without exposing direct storage access; enforced <strong>Role-Based Access Control (RBAC)</strong> to restrict feature access based on user permissions, strengthening authorization across all platform capabilities.
                       </li>
                       <li>
-                        Developed frontend features in <strong>Vue.js</strong> and configured <strong>CORS and proxy</strong> for secure client-server communication.
+                        <strong>CI/CD Automation, Serverless & Cloud Infrastructure:</strong> Automated application build and deployment workflows using <strong>Jenkins CI/CD</strong> to standardize Java compilation, packaging, and containerized deployment with <strong>Docker and Amazon ECS</strong>; deployed <strong>AWS Lambda</strong> for event-driven and scheduled batch workloads to optimize compute utilization, and implemented structured application logging with <strong>AWS CloudWatch</strong> for rapid observability and troubleshooting.
+                      </li>
+                      <li>
+                        <strong>Agentic AI, MCP Tools & Cost Optimization:</strong> Contributed to <strong>Agentic AI development</strong> by building autonomous agents, defining reusable skills, integrating <strong>MCP-based tool access</strong>, and deploying <strong>RAG pipelines with safety guardrails</strong> to enable context-aware task execution; optimized <strong>LLM inference costs and response efficiency</strong> through task-based model selection (routing simpler operations to lightweight models and reserving complex tasks for advanced LLMs), and built automation suites with <strong>Python and Playwright</strong>.
                       </li>
                     </ul>
 
                     <div class="tech-pill-list" style="margin-bottom: 0;">
                       <span class="tech-pill highlight">Java 21</span>
                       <span class="tech-pill highlight">Spring Boot</span>
-                      <span class="tech-pill highlight">Redis Caching</span>
+                      <span class="tech-pill highlight">Redis (TTL & Stampede)</span>
                       <span class="tech-pill highlight">PostgreSQL</span>
-                      <span class="tech-pill">Claude SDK</span>
+                      <span class="tech-pill highlight">AWS DynamoDB</span>
+                      <span class="tech-pill">AWS (ECS, Lambda, S3, CloudWatch)</span>
                       <span class="tech-pill">Jenkins CI/CD</span>
-                      <span class="tech-pill">AWS (EC2, S3, Lambda)</span>
-                      <span class="tech-pill">Python OCR</span>
-                      <span class="tech-pill">Vue.js</span>
+                      <span class="tech-pill">Agentic AI & MCP</span>
+                      <span class="tech-pill">Python & Playwright</span>
                       <span class="tech-pill">REST APIs</span>
                     </div>
                   </div>
@@ -6536,10 +6539,11 @@
             <h5 class="bento-title">Vaken Technology (Sovablu Platform)</h5>
             <div class="bento-role-sub">Junior Software Developer · Aug 2025 - Present</div>
             <ul class="bento-bullets">
-              <li>Engineered scalable REST microservices with <strong>Java 21</strong>, <strong>Spring Boot</strong>, and <strong>PostgreSQL</strong> for an enterprise application platform.</li>
-              <li>Optimized database performance through <strong>query tuning, indexing, and connection pooling</strong> to improve response times.</li>
-              <li>Working on <strong>Galaxy One, an Agentic AI system</strong>, to accelerate software development workflows and reduce development effort compared with traditional development approaches.</li>
-              <li>Maintained automated <strong>Jenkins CI/CD</strong> pipelines, accelerating test execution and build delivery.</li>
+              <li>Engineered scalable REST APIs in <strong>Java 21 & Spring Boot</strong> with strict <strong>@Transactional</strong> boundaries for ACID consistency, profiling response waterfalls via DevTools and Postman.</li>
+              <li>Architected dual-database persistence with <strong>PostgreSQL & Amazon DynamoDB</strong>, restructuring schemas and adding composite indexes to cut query latency by <strong>65%</strong>.</li>
+              <li>Implemented in-memory <strong>Redis caching with TTL</strong> and <strong>cache-stampede prevention (mutex locks)</strong>, reducing database read load by <strong>70%</strong>.</li>
+              <li>Secured document storage using <strong>Amazon S3 with pre-signed URLs</strong> and enforced <strong>Role-Based Access Control (RBAC)</strong> with automated <strong>Jenkins CI/CD to AWS ECS</strong>.</li>
+              <li>Contributed to <strong>Agentic AI development</strong> with modular skills, <strong>MCP tool integration</strong>, and <strong>RAG guardrails</strong>, optimizing inference costs by <strong>45%</strong> via task-based model routing.</li>
             </ul>
           </div>
 
@@ -7383,10 +7387,12 @@ Featured Projects:
       'experience': `
 1. Vaken Technologies (Aug 2025 to Present | Trichy, India | Product: Sovablu)
    • Junior Software Engineer (Full-time: Oct 2025 to Present)
-     - Built production REST APIs in Java 21 & Spring Boot with rate limiting & Redis caching.
-     - Automated CI/CD deployment pipelines using Jenkins with AWS (EC2, S3, Lambda, CodeCommit).
-     - Engineered Agentic AI workflows with Claude SDK and built Python OCR extraction pipelines.
-     - Developed frontend features in Vue.js with secure CORS and proxy configurations.
+     - High-Throughput REST APIs in Java 21 & Spring Boot with @Transactional ACID consistency.
+     - Dual-Database Strategy: PostgreSQL & AWS DynamoDB; tuned SQL query plans & indexing by 65%.
+     - Redis In-Memory Caching: TTL & cache stampede (mutex locking) protection, cutting DB load 70%.
+     - AWS S3 Object Storage with time-limited Presigned URLs & fine-grained RBAC access control.
+     - CI/CD & Cloud: Jenkins automation, Docker, AWS ECS containerization, Lambda serverless, CloudWatch.
+     - Agentic AI: Multi-model routing saving 45% tokens, MCP tools, RAG guardrails, Python & Playwright.
    • Intern (Internship: Aug 2025 to Oct 2025 · 3 mos)
      - Platform onboarding & intensive training on Sovablu low-code enterprise platform.
      - Verified Java microservices & assisted in Jenkins CI/CD automation.
@@ -10076,8 +10082,8 @@ Contact Information:
 
       const JAMES_AI_DOSSIER = `You are the portfolio assistant representing James Nithil V.
 - Role: Junior Software Developer at Vaken Technology (working on Sovablu Enterprise Low-Code Platform).
-- Stack: Java 21, Spring Boot REST APIs, Apache Kafka, Redis caching, PostgreSQL, DynamoDB, Claude SDK, Jenkins CI/CD, AWS (EC2, S3, Lambda, CodeCommit).
-- Production Impact: Designed scalable REST APIs in Java 21, added Redis caching across database hot paths, configured CI/CD automation pipelines with Jenkins, and integrated Claude SDK workflows.
+- Stack: Java 21, Spring Boot, PostgreSQL, AWS DynamoDB, Redis, AWS (ECS, Lambda, S3, CloudWatch), Jenkins CI/CD, Agentic AI, Python, Playwright.
+- Production Impact: Engineered high-throughput REST APIs in Java 21 with @Transactional ACID consistency; implemented dual-database strategy with PostgreSQL & DynamoDB cutting query latency by 65%; added Redis caching with TTL & cache stampede protection reducing DB load by 70%; built secure S3 Presigned URLs & RBAC; automated Jenkins CI/CD & ECS deployments; built Agentic AI workflows with multi-model routing saving 45% token cost.
 - Flagship Project: KadalVazhi (Maritime Microservices & AI Ecosystem). Microservices backend in Java 21, Kafka event streaming, SQLite deep-sea offline sync (12+ NM offshore with no cellular signal), automated mechanic dispatch, boat crew matchmaking, Tamil & Malayalam i18n voice IVR/SMS, Whisper voice AI transcription.
 - Problem Solving: LeetCode Knight Badge (Contest Rating 1,994, Peak Global Contest Rank #114 / 43,027+ contestants, top 2.73%). 700+ problems solved (446 in Java, 443 in Python3).
 - Other Projects: FarmVista (Smart agriculture with CNN plant disease detection, SIH Hackathon Leader), SymptoMedAI (Healthcare triage assistant), InterviewBot (AI technical mock interview platform).

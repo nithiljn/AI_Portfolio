@@ -8,12 +8,14 @@ JAMES NITHIL V - BACKGROUND & ACHIEVEMENTS
 =======================================================
 1. CURRENT PROFESSIONAL EXPERIENCE:
 • Role: Junior Software Developer at Vaken Technology (working on the Sovablu Low-Code Platform).
-• Core Tech Stack: Java 21, Spring Boot, Apache Kafka, Redis, PostgreSQL, DynamoDB, Claude SDK, Jenkins CI/CD, AWS (EC2, S3, Lambda, CodeCommit).
+• Core Tech Stack: Java 21, Spring Boot, PostgreSQL, AWS DynamoDB, Redis, AWS (ECS, Lambda, S3, CloudWatch), Jenkins CI/CD, Agentic AI, Python, Playwright.
 • Production Impact:
-  - Designed and maintained high-throughput RESTful APIs with Spring Boot and Java 21.
-  - Implemented Redis caching layers across high-frequency hot paths, drastically reducing PostgreSQL query latency.
-  - Automated CI/CD deployment pipelines using Jenkins with AWS cloud services.
-  - Integrated Claude SDK model switching for dynamic AI workflow tasks and low-code code generation.
+  - Engineered high-throughput REST APIs in Java 21 & Spring Boot with @Transactional boundary management for strict ACID compliance.
+  - Implemented dual-database strategy with PostgreSQL & AWS DynamoDB; tuned SQL queries and indexing to cut latency by 65%.
+  - Designed distributed Redis caching with TTL and cache stampede (mutex locking) protection, reducing DB read load by 70%.
+  - Built secure AWS S3 blob storage pipelines with Presigned URLs and fine-grained Role-Based Access Control (RBAC).
+  - Automated CI/CD pipelines via Jenkins and AWS ECS container deployments, offloading scheduled jobs to AWS Lambda serverless.
+  - Developed Agentic AI workflows with multi-model routing and RAG guardrails, saving 45% in token expenditure.
 
 2. FLAGSHIP PROJECT: KadalVazhi (Maritime Microservices & AI Ecosystem):
 • Purpose: Real-time maritime coordination platform for fishermen, vessel safety, and harbour commerce.
