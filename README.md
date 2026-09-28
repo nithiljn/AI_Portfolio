@@ -2,7 +2,7 @@
 
 🚀 **Live Portfolio**: [jamesnithil.vercel.app](https://jamesnithil.vercel.app)  
 📄 **Resume**: [Download James Nithil Resume (PDF)](./James_Nithil_Resume.pdf)  
-🧠 **LeetCode**: [leetcode.com/u/NITHIL07](https://leetcode.com/u/NITHIL07/) (Knight Rating 1,994, Rank #197 / 43,027)  
+🧠 **LeetCode**: [leetcode.com/u/NITHIL07](https://leetcode.com/u/NITHIL07/) (Knight Rating 1,994, Peak Global Rank #114 / 43,000+)  
 💼 **LinkedIn**: [linkedin.com/in/jamesnithil-v](https://www.linkedin.com/in/jamesnithil-v)  
 🌐 **GitHub**: [github.com/nithiljn](https://github.com/nithiljn)  
 
@@ -16,10 +16,11 @@ Software Developer at **Vaken Technology**, engineering enterprise backend servi
 
 ## 🏆 Key Achievements
 
-- **LeetCode Knight Badge**: Contest Rating **1,994** | Global Ranking **23,201 / 883,546** | Contests Attended: **10**
+- **LeetCode Knight Badge**: Contest Rating **1,994** (Top 2.73% Worldwide) | Global Ranking **23,201 / 883,546** | Contests Attended: **10**
+- **Weekly Contest 517**: Peak Global Rank **#114 out of 43,000+** participants (Solved 4/4 problems with 100% accuracy).
 - **Weekly Contest 490**: Global Rank **#197 out of 43,027** participants (Solved 4/4 problems with 100% accuracy).
 - **LeetCode Problem Solving Breakdown**:
-  - **Total Solved**: 707 unique problems
+  - **Total Solved**: 700+ problems (446 in Java, 443 in Python3, 40 in MySQL, 31 in C++)
   - **Java**: 446 problems solved (Trees, Graphs, BFS/DFS, Dynamic Programming, Recursion, Two Pointers, Greedy, Linked Lists)
   - **Python3**: 443 problems solved (Algorithmic problem solving and data structures)
   - **MySQL**: 40 problems solved (Relational database queries and optimization)
