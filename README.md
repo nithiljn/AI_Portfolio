@@ -30,7 +30,7 @@ Software Developer at **Vaken Technology**, engineering enterprise backend servi
   - **Python**: 5 problems solved
   - **Bash**: 1 problem solved
   - **Core Topic Mastery**: Dynamic Programming (108), Math (136), Hash Table (133), Arrays (380), Strings (161), Sorting (90), Greedy (66)
-- **Smart India Hackathon (SIH)**: Team Leader of a 5-member team designing AI agriculture advisory prototypes.
+- **Smart India Hackathon (SIH) — Team Leader**: Led a 5 member engineering team to design and build **FarmVista**, an AI precision agriculture platform integrating deep learning computer vision for crop disease diagnosis and soil telemetry.
 
 <p align="center">
   <img src="./assets/images/leetcode_knight.png" alt="LeetCode Knight Rating 1994" width="500" />
