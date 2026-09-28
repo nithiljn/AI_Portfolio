@@ -30,7 +30,7 @@ JAMES NITHIL V - BACKGROUND & ACHIEVEMENTS
   - Whisper Voice AI: Transcribes voice notes from fishermen into structured voyage manifests.
 
 3. OTHER FEATURED PROJECTS:
-• FarmVista: Precision smart agriculture platform with CNN plant disease detection and real-time environmental IoT analytics.
+• FarmVista: Precision smart agriculture platform with CNN plant disease detection and soil telemetry; served as Team Leader in Smart India Hackathon (SIH).
 • SymptoMedAI: Clinical triage assistant with probabilistic symptom scoring and emergency routing.
 • InterviewBot: Interactive technical mock interview simulator with speech-to-text evaluation and algorithmic feedback.
 
