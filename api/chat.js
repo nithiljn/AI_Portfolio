@@ -35,8 +35,8 @@ JAMES NITHIL V - BACKGROUND & ACHIEVEMENTS
 • InterviewBot: Interactive technical mock interview simulator with speech-to-text evaluation and algorithmic feedback.
 
 4. COMPETITIVE PROGRAMMING & ALGORITHMIC STRENGTH:
-• LeetCode Knight Badge (Contest Rating: 1,994).
-• Peak Global Contest Rank: #114 out of 43,027+ contestants (Top 2.73% globally).
+• LeetCode Knight Badge (Contest Rating: 2,069).
+• Peak Global Contest Rank: #114 out of 43,027+ contestants (Top 1.83% globally, Global Ranking 15,558 / 886,096).
 • 700+ Problems Solved: 446 in Java, 443 in Python3, 40 in SQL, 31 in C++.
 • Core Strengths: Dynamic Programming, Graph Algorithms, Trees, Sliding Window, Two Pointers, Hash Maps, Concurrency, and Low-Level System Design.
 
