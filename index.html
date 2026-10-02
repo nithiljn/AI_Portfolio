@@ -7392,6 +7392,7 @@
     const sidebarFiles = document.querySelectorAll('.file-item[data-tab]');
     const activityIcons = document.querySelectorAll('.activity-icon[data-tab-target]');
     const breadcrumbLabel = document.getElementById('active-breadcrumb');
+    let userManuallyClosedBadge = false;
 
     const fileMetaMap = {
       'tab-readme': { title: 'README.md', icon: 'file-text', color: '#60a5fa' },
@@ -7580,8 +7581,17 @@
       if (window.innerWidth <= 768) {
         closeMobileSidebar();
       }
-      if (window.innerWidth <= 900) {
-        closeBadge();
+
+      // Automatically hide ID badge on all tabs except readme.md to avoid covering content
+      if (tabId !== 'tab-readme') {
+        if (typeof closeBadge === 'function') {
+          closeBadge();
+        }
+      } else {
+        // When returning to readme.md on desktop, reveal ID badge unless user manually closed it
+        if (typeof openBadge === 'function' && window.innerWidth > 900 && !userManuallyClosedBadge) {
+          openBadge();
+        }
       }
 
       if (fileMetaMap[tabId] && breadcrumbLabel) {
@@ -7867,8 +7877,10 @@
 
     function toggleBadge() {
       if (isBadgeOpen()) {
+        userManuallyClosedBadge = true;
         closeBadge();
       } else {
+        userManuallyClosedBadge = false;
         openBadge();
       }
     }
@@ -7884,6 +7896,7 @@
     if (hideBadgeBtn) {
       hideBadgeBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+        userManuallyClosedBadge = true;
         closeBadge();
         playKeyClick();
       });
