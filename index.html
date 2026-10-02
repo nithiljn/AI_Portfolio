@@ -7,7 +7,7 @@
   
   <title>James Nithil V | Junior Software Developer & AI Systems Engineer</title>
   <meta name="title" content="James Nithil V | Junior Software Developer & AI Systems Engineer" />
-  <meta name="description" content="Portfolio of James Nithil V, Junior Software Developer at Vaken Technologies Pvt Ltd (Sovablu). LeetCode Knight (Rating 1,994, Peak Rank #114), specializing in Java, Spring Boot, Python, LangGraph, and Distributed Systems." />
+  <meta name="description" content="Portfolio of James Nithil V, Junior Software Developer at Vaken Technologies Pvt Ltd (Sovablu). LeetCode Knight (Rating 2,069, Peak Rank #114), specializing in Java, Spring Boot, Python, LangGraph, and Distributed Systems." />
   <meta name="author" content="James Nithil V" />
   <meta name="keywords" content="James Nithil, Software Developer, Java, Spring Boot, LangGraph, AI, LeetCode Knight, Vaken Technologies Pvt Ltd, Portfolio" />
 
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jamesnithil.vercel.app/" />
   <meta property="og:title" content="James Nithil V | Junior Software Developer & AI Systems Engineer" />
-  <meta property="og:description" content="LeetCode Knight (Rating 1,994, Peak Rank #114). Production Java & Spring Boot APIs, Redis caching, and LangGraph multi-agent AI systems at Vaken Technologies Pvt Ltd." />
+  <meta property="og:description" content="LeetCode Knight (Rating 2,069, Peak Rank #114). Production Java & Spring Boot APIs, Redis caching, and LangGraph multi-agent AI systems at Vaken Technologies Pvt Ltd." />
   <meta property="og:image" content="https://jamesnithil.vercel.app/assets/images/James_Nithil.jpeg" />
   <meta property="og:image:secure_url" content="https://jamesnithil.vercel.app/assets/images/James_Nithil.jpeg" />
   <meta property="og:image:type" content="image/jpeg" />
@@ -27,7 +27,7 @@
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://jamesnithil.vercel.app/" />
   <meta property="twitter:title" content="James Nithil V | Junior Software Developer & AI Systems Engineer" />
-  <meta property="twitter:description" content="LeetCode Knight (Rating 1,994, Peak Rank #114). Production Java & Spring Boot APIs, Redis caching, and LangGraph multi-agent AI systems at Vaken Technologies Pvt Ltd." />
+  <meta property="twitter:description" content="LeetCode Knight (Rating 2,069, Peak Rank #114). Production Java & Spring Boot APIs, Redis caching, and LangGraph multi-agent AI systems at Vaken Technologies Pvt Ltd." />
   <meta property="twitter:image" content="https://jamesnithil.vercel.app/assets/images/James_Nithil.jpeg" />
 
   
@@ -44,6 +44,31 @@
 
   
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    window.mermaid = mermaid;
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'dark',
+      securityLevel: 'loose',
+      fontFamily: 'Inter, system-ui, sans-serif',
+      themeVariables: {
+        darkMode: true,
+        background: '#080b12',
+        mainBkg: '#0f172a',
+        textColor: '#f1f5f9',
+        lineColor: '#64748b',
+        nodeBorder: '#38bdf8',
+        clusterBkg: '#090d16',
+        clusterBorder: '#1e293b',
+        edgeLabelBackground: '#0b1120',
+        primaryColor: '#1e293b',
+        primaryTextColor: '#f8fafc',
+        primaryBorderColor: '#38bdf8'
+      }
+    });
+    window.dispatchEvent(new CustomEvent('mermaid-ready'));
+  </script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
   <style>
@@ -1041,7 +1066,7 @@
     }
 
     .project-card-modern.featured {
-      border-color: rgba(59, 130, 246, 0.35);
+      border-color: var(--border-subtle);
       background: var(--bg-card);
     }
 
@@ -1281,6 +1306,341 @@
     .syntax-cls { color: var(--syntax-entity); }
     .syntax-num { color: var(--syntax-number); }
     .syntax-com { color: var(--syntax-comment); }
+
+    /* KadalVazhi Production System Design Sections */
+    .kadalvazhi-spec-section {
+      margin: 22px 0 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .kadalvazhi-section-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 22px 24px;
+      transition: var(--transition-smooth);
+    }
+
+    .kadalvazhi-section-card:hover {
+      border-color: var(--border-accent);
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .kadalvazhi-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      flex-wrap: wrap;
+    }
+
+    .kadalvazhi-card-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-code);
+      letter-spacing: 0.01em;
+    }
+
+    .kadalvazhi-card-tag {
+      font-size: 0.72rem;
+      font-family: var(--font-code);
+      padding: 3px 10px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .kadalvazhi-problems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .kadalvazhi-problem-item {
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      transition: all 0.2s ease;
+    }
+
+    .kadalvazhi-problem-item:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .problem-item-header {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .problem-item-text {
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .kadalvazhi-sysdesign-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .sysdesign-spec-box {
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+    }
+
+    .sysdesign-spec-title {
+      font-family: var(--font-code);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sysdesign-spec-desc {
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .kadalvazhi-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .kadalvazhi-metric-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .metric-value-line {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: var(--font-code);
+    }
+
+    .metric-label-line {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .metric-desc-line {
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* System Design Architecture Container */
+    .arch-diagram-wrapper {
+      margin: 22px 0 20px 0;
+      background: #080b12;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+    }
+
+    .arch-diagram-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      background: rgba(15, 23, 42, 0.92);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .arch-diagram-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-code);
+    }
+
+    .arch-diagram-badges {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .arch-badge {
+      font-size: 0.72rem;
+      font-family: var(--font-code);
+      padding: 3px 8px;
+      border-radius: 10px;
+      background: rgba(56, 189, 248, 0.12);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .arch-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .arch-ctrl-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-secondary);
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .arch-ctrl-btn:hover {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .arch-diagram-canvas {
+      padding: 24px 14px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      min-height: 520px;
+      background: radial-gradient(circle at 50% 50%, #0d1424 0%, #060911 100%);
+      position: relative;
+    }
+
+    .arch-diagram-mount {
+      width: 100%;
+      min-height: 480px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center top;
+    }
+
+    .arch-diagram-mount svg {
+      width: 100% !important;
+      max-width: 1400px !important;
+      height: auto !important;
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.6));
+    }
+
+    /* SVG Label styling overrides for crisp dark-mode readability */
+    .arch-diagram-mount svg .node rect,
+    .arch-diagram-mount svg .node polygon,
+    .arch-diagram-mount svg .node circle,
+    .arch-diagram-mount svg .node path {
+      stroke-width: 1.5px !important;
+    }
+
+    .arch-diagram-mount svg .cluster rect {
+      fill: rgba(15, 23, 42, 0.65) !important;
+      stroke: rgba(56, 189, 248, 0.35) !important;
+      stroke-dasharray: 4 3;
+    }
+
+    .arch-diagram-mount svg .cluster-label span,
+    .arch-diagram-mount svg .cluster-label foreignObject {
+      font-weight: 700 !important;
+      color: #93c5fd !important;
+      font-family: var(--font-ui) !important;
+      letter-spacing: 0.03em;
+    }
+
+    .arch-diagram-mount svg .edgeLabel {
+      background-color: #0b1120 !important;
+      color: #cbd5e1 !important;
+      font-size: 0.76rem !important;
+      font-family: var(--font-code) !important;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .arch-loading-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--text-secondary);
+      font-family: var(--font-code);
+      font-size: 0.84rem;
+      padding: 60px 20px;
+    }
+
+    .spin-icon {
+      animation: archSpin 1.2s linear infinite;
+    }
+
+    @keyframes archSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .arch-diagram-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 18px;
+      background: rgba(15, 23, 42, 0.7);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .arch-footer-hint {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
 
     .tech-pill-list {
       display: flex;
@@ -2419,17 +2779,103 @@
     }
 
     
+    /* ID Badge Lanyard Suspension & Real-World Physics */
     .id-badge-container {
       position: fixed;
       top: 60px;
       right: 24px;
       z-index: 50;
       perspective: 1000px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: 50% -20px;
+      will-change: transform, opacity;
+      animation: badgeHangDropIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+                 badgeAmbientSway 5s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.85s infinite;
+    }
+
+    /* Pause ambient mild sway on hover for comfortable readability and clicking */
+    .id-badge-container:hover {
+      animation-play-state: paused;
+    }
+
+    /* Dynamically dropping in when toggled open */
+    .id-badge-container.badge-dropping {
+      display: block !important;
+      animation: badgeHangDropIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+                 badgeAmbientSway 5s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.85s infinite !important;
+    }
+
+    /* Smooth Retraction / Pull-up Exit (No Immediate Hide!) */
+    .id-badge-container.badge-retracting {
+      display: block !important;
+      pointer-events: none;
+      animation: badgePullUpExit 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
     }
 
     .id-badge-container.hidden-badge {
-      display: none;
+      display: none !important;
+      animation: none !important;
+    }
+
+    /* 1. Realistic Drop-In Physics (starts from top, overshoots & pendulum settles) */
+    @keyframes badgeHangDropIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-280px) rotate(8deg) scale(0.94);
+      }
+      45% {
+        opacity: 1;
+        transform: translateY(16px) rotate(-5deg) scale(1.01);
+      }
+      65% {
+        transform: translateY(-8px) rotate(2.8deg) scale(1);
+      }
+      82% {
+        transform: translateY(3px) rotate(-1.2deg);
+      }
+      94% {
+        transform: translateY(-1px) rotate(0.5deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(1);
+      }
+    }
+
+    /* 2. Continuous Mild Hanging Shake / Ambient Lanyard Sway */
+    @keyframes badgeAmbientSway {
+      0% {
+        transform: translateY(0) rotate(0deg) rotateY(0deg) translateX(0px);
+      }
+      20% {
+        transform: translateY(0.5px) rotate(1.2deg) rotateY(1.8deg) translateX(1.5px);
+      }
+      40% {
+        transform: translateY(-0.4px) rotate(-0.8deg) rotateY(-1.2deg) translateX(-1px);
+      }
+      60% {
+        transform: translateY(0.4px) rotate(1.5deg) rotateY(1.5deg) translateX(1.8px);
+      }
+      80% {
+        transform: translateY(-0.3px) rotate(-1.2deg) rotateY(-1.5deg) translateX(-1.4px);
+      }
+      100% {
+        transform: translateY(0) rotate(0deg) rotateY(0deg) translateX(0px);
+      }
+    }
+
+    /* 3. Smooth Retraction Physics (anticipation dip -> pull up to top) */
+    @keyframes badgePullUpExit {
+      0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+      }
+      22% {
+        transform: translateY(10px) rotate(-2.5deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-300px) rotate(7deg) scale(0.92);
+      }
     }
 
     .lanyard-clip-assembly {
@@ -4267,10 +4713,40 @@
         transform: none !important;
         overflow-y: auto;
         box-sizing: border-box;
+        animation: none !important;
       }
 
       .id-badge-container.mobile-open {
         display: flex !important;
+        animation: mobileBadgeFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+      }
+
+      .id-badge-container.badge-closing {
+        display: flex !important;
+        pointer-events: none;
+        animation: mobileBadgeFadeOut 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+      }
+
+      @keyframes mobileBadgeFadeIn {
+        from {
+          opacity: 0;
+          backdrop-filter: blur(0px);
+        }
+        to {
+          opacity: 1;
+          backdrop-filter: blur(8px);
+        }
+      }
+
+      @keyframes mobileBadgeFadeOut {
+        from {
+          opacity: 1;
+          backdrop-filter: blur(8px);
+        }
+        to {
+          opacity: 0;
+          backdrop-filter: blur(0px);
+        }
       }
 
       .glass-id-card {
@@ -4702,14 +5178,14 @@
         </div>
         <div class="ticker-item">
           <span class="pulse-dot"></span>
-          <span class="ticker-highlight">KadalVazhi</span>: LangGraph Multi-Agent RAG and Maritime Safety Platform</span>
+          <span class="ticker-highlight">KadalVazhi</span>: Maritime Operations and AI Platform</span>
         </div>
         <div class="ticker-item">
           <span>Enterprise Backend: Java 21, Spring Boot, Microservices and PostgreSQL</span>
         </div>
         <div class="ticker-item">
           <span class="pulse-dot"></span>
-          <span class="ticker-highlight">LeetCode Knight (Rating 1,994)</span> | 700+ Algorithmic Problems Solved</span>
+          <span class="ticker-highlight">LeetCode Knight (Rating 2,069)</span> | 700+ Algorithmic Problems Solved</span>
         </div>
       </div>
     </div>
@@ -4725,7 +5201,7 @@
         <span id="theme-btn-label">Theme</span>
       </button>
 
-      <button class="btn-topbar" id="badge-toggle-btn" title="Toggle ID Badge">
+      <button class="btn-topbar active" id="badge-toggle-btn" title="Toggle ID Badge">
         <i data-lucide="id-card" style="width: 13px; height: 13px;"></i>
         <span>Badge</span>
       </button>
@@ -4779,7 +5255,7 @@
           <i class="devicon-linkedin-plain"></i>
         </a>
         <a href="https://leetcode.com/u/NITHIL07/" target="_blank" class="activity-icon" data-tooltip="LeetCode Knight Profile">
-          <i data-lucide="brain"></i>
+          <img src="assets/images/leetcode.svg" alt="LeetCode" width="18" height="18" style="display: block;" />
         </a>
       </div>
     </aside>
@@ -4812,7 +5288,7 @@
           </div>
 
           <div class="file-item" data-tab="tab-projects" data-file-title="projects.py" data-file-icon="devicon-python-plain">
-            <span class="file-icon"><i class="devicon-python-plain" style="color: #facc15;"></i></span>
+            <span class="file-icon"><img src="assets/images/python.svg" alt="Python" width="15" height="15" style="vertical-align: middle; display: inline-block;" /></span>
             <span>projects.py</span>
           </div>
 
@@ -4855,7 +5331,7 @@
         </a>
 
         <a href="https://leetcode.com/u/NITHIL07/" target="_blank" class="file-item">
-          <span class="file-icon">🧠</span>
+          <span class="file-icon"><img src="assets/images/leetcode.svg" alt="LeetCode" width="14" height="14" style="vertical-align: middle; display: inline-block;" /></span>
           <span>leetcode/NITHIL07</span>
         </a>
 
@@ -4891,7 +5367,7 @@
           <span class="tab-close">×</span>
         </div>
         <div class="tab-element" data-tab="tab-projects">
-          <i class="devicon-python-plain" style="color: #facc15; font-size: 0.9rem;"></i>
+          <img src="assets/images/python.svg" alt="Python" width="14" height="14" style="vertical-align: middle; display: inline-block;" />
           <span>projects.py</span>
           <span class="tab-close">×</span>
         </div>
@@ -4936,12 +5412,12 @@
                 <i data-lucide="terminal" style="width: 13px; height: 13px;"></i> Junior Software Developer
               </span>
               <span class="badge-knight-pill">
-                🏆 LeetCode Knight (Rating 1,994)
+                <img src="assets/images/leetcode.svg" alt="LeetCode" width="14" height="14" style="vertical-align: middle; display: inline-block;" /> LeetCode Knight (Rating 2,069)
               </span>
             </div>
 
             <p class="hero-bio">
-              Software Developer at <strong>Vaken Technologies Pvt Ltd</strong>, building scalable backend services and REST APIs for <strong>Sovablu</strong> using <strong>Java</strong>, <strong>Spring Boot</strong>, <strong>Redis</strong>, <strong>PostgreSQL</strong>, <strong>Jenkins CI/CD</strong>, and <strong>Claude SDK</strong>. Simultaneously, architecting <strong>KadalVazhi</strong> to handle more users. The architecture uses <strong>REST APIs, GraphQL, and gRPC</strong> for microservices communication. AI tasks are optimized via <strong>Claude SDK model switching</strong> for cost efficiency. The system is built with <strong>Java, Python, Kafka</strong>, and a dual-database strategy of <strong>PostgreSQL and DynamoDB</strong>, ensuring efficient scaling.
+              Software Developer at <strong>Vaken Technologies Pvt Ltd</strong>, building scalable backend services and REST APIs for <strong>Sovablu</strong> using <strong>Java</strong>, <strong>Spring Boot</strong>, <strong>Redis</strong>, <strong>PostgreSQL</strong>, <strong>Jenkins CI/CD</strong>, and <strong>Claude SDK</strong>. Simultaneously, architecting <strong>KadalVazhi</strong> to handle more users. The architecture uses <strong>REST APIs, GraphQL, and gRPC</strong> for microservices communication. AI tasks are optimized via <strong>Claude SDK model switching</strong> for cost efficiency. The system is built with <strong>Java, Python, Kafka</strong>, and a dual database strategy of <strong>PostgreSQL and DynamoDB</strong>, ensuring efficient scaling.
             </p>
 
             <div class="hero-actions">
@@ -4973,7 +5449,7 @@
             <div class="stat-card stat-purple">
               <div class="stat-value">Microservices</div>
               <div class="stat-label">KadalVazhi Platform</div>
-              <div class="stat-sub">Java 21, Kafka, LangGraph, Offline Sync</div>
+              <div class="stat-sub">Java 25, Spring Boot, Kafka, Offline Sync</div>
             </div>
             <div class="stat-card">
               <div class="stat-value">700+</div>
@@ -4981,9 +5457,9 @@
               <div class="stat-sub">Java (446), Python3 (443), MySQL (40), C++ (31)</div>
             </div>
             <div class="stat-card stat-gold">
-              <div class="stat-value">1,994</div>
+              <div class="stat-value">2,069</div>
               <div class="stat-label">LeetCode Contest Rating</div>
-              <div class="stat-sub">Knight Badge, Peak Rank #114 (Top 2.73%)</div>
+              <div class="stat-sub">Knight Badge, Peak Rank #114 (Top 1.83%)</div>
             </div>
           </div>
 
@@ -5008,14 +5484,6 @@
                 <i data-lucide="map-pin" style="width: 15px; height: 15px; color: var(--accent-purple);"></i> Tamil Nadu, India
               </span>
             </div>
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <a href="https://www.linkedin.com/in/jamesnithil-v/" target="_blank" class="btn-action" style="padding: 7px 14px; font-size: 0.82rem;">
-                <i class="devicon-linkedin-plain" style="font-size: 13px; color: #0ea5e9;"></i> LinkedIn
-              </a>
-              <a href="https://github.com/nithiljn" target="_blank" class="btn-action" style="padding: 7px 14px; font-size: 0.82rem;">
-                <i class="devicon-github-original" style="font-size: 13px;"></i> GitHub
-              </a>
-            </div>
           </div>
 
         </section>
@@ -5026,70 +5494,286 @@
           <div class="section-headline">
             <div class="section-title">
               <i data-lucide="folder-git-2" style="color: var(--accent-yellow);"></i>
-              <span>projects.py: Featured Work</span>
+              <span>projects.py: Engineering Work</span>
             </div>
             <span style="font-family: var(--font-code); font-size: 0.8rem; color: var(--text-muted);">
-              LangGraph, Agentic AI, RAG, Spring Boot
+              Java, Spring Boot, Apache Kafka, Distributed Systems, Applied AI
             </span>
           </div>
 
           
-          <div class="project-card-modern featured">
-            <div class="project-thumb-wrap flagship-thumb" onclick="openImageLightbox('assets/images/project-kadalvazhi.jpg', 'KadalVazhi Maritime Microservices Platform (Full Architecture View)')" title="Click to view full architectural dashboard in high resolution">
-              <img src="assets/images/project-kadalvazhi.jpg" alt="KadalVazhi Maritime Microservices Platform Dashboard" class="project-thumb-img" loading="lazy">
-
-              <div class="thumb-expand-btn">
-                <i data-lucide="maximize-2" style="width: 13px; height: 13px;"></i>
-                <span>Full Picture</span>
-              </div>
-            </div>
-
+          <div class="project-card-modern">
             <div class="project-header">
-              <h2 class="project-name">
-                <span>KadalVazhi (கடல் வழி): Maritime Microservices & AI Platform</span>
-              </h2>
-              <p class="project-tagline">Enterprise polyglot microservices platform for deep-sea fleet voyages, emergency crew exchange, and direct dockside catch pre-orders</p>
+              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+                <h2 class="project-name" style="margin: 0;">
+                  <span>KadalVazhi (கடல் வழி): Maritime Operations & AI Platform</span>
+                </h2>
+                <span style="font-family: var(--font-code); font-size: 0.78rem; color: var(--text-muted); background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-subtle); padding: 3px 10px; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 6px;">
+                  <i data-lucide="calendar" style="width: 12px; height: 12px; color: var(--accent-blue);"></i> Jan 2026 to Present · Active
+                </span>
+              </div>
+              <p class="project-tagline">Maritime operations and direct catch marketplace for deep sea fishing fleets</p>
             </div>
 
             <p class="project-description">
-              An enterprise-grade, polyglot microservices ecosystem tailored for deep-sea fishing communities and fleet owners.
-              Features an offline-first voyage engine, Apache Kafka event streaming, zero-middlemen dockside catch pre-booking,
-              emergency crew replacement, and a Tamil/Malayalam voice AI advisory engine.
+              Deep sea mechanized fishing in South India is a high risk, capital intensive industry where boat captains spend 7 to 15 days offshore with zero cellular network. KadalVazhi is built to modernize maritime operations by eliminating manual paper accounting, bypassing exploitative dockside middlemen through direct catch preorders, providing real time sea weather intelligence, and automating emergency crew and marine mechanic dispatch for coastal fishing communities.
             </p>
 
-            <ul class="project-bullets">
-              <li>
-                <strong>Polyglot Microservices & Event Streaming:</strong> Core transactional services engineered in <strong>Java 25 and Spring Boot</strong> (<code>nn-home-service</code>, <code>fleet-service</code>, <code>crew-exchange-service</code>, <code>marketplace-service</code>) routed via <strong>Spring Cloud Gateway</strong>, using <strong>Apache Kafka</strong> for asynchronous event-driven workflows (trip events, catch declarations, emergency alerts).
-              </li>
-              <li>
-                <strong>Offline-First Zero-Connectivity Sync:</strong> Solved 5-to-10 nautical mile offshore dead zones with local SQLite storage on mobile clients, executing <strong>idempotent background synchronization</strong> to <strong>PostgreSQL</strong> once vessels regain coastal 4G connectivity.
-              </li>
-              <li>
-                <strong>Direct-From-Sea Pre-Order Marketplace:</strong> Built a dockside catch pre-order system enabling captains to declare catches while at sea, linking vessel arrival ETAs at major fish landing centers (Kasimedu, Tuticorin, Rameswaram, Munambam) directly to buyers and eliminating exploitative middlemen.
-              </li>
-              <li>
-                <strong>Voyage Ledger & Subsidized Fuel Quota:</strong> Engine supporting all vessel classes (from 1-day country crafts and FRP fiber boats to 15-day mechanized trawlers), tracking government diesel/kerosene quota balances, ice supplies, crew rosters, and trip P&L.
-              </li>
-              <li>
-                <strong>Emergency Crew Exchange & AI Voice Advisory:</strong> Real-time dispatch board for urgent port crew hiring, paired with a <strong>Python FastAPI AI Voice Engine</strong> using <strong>Whisper STT (Tamil/Malayalam)</strong> and LLM reasoning for marine safety alerts and annual fishing ban compliance.
-              </li>
-              <li>
-                <strong>AWS Cloud & Automated Jenkins CI/CD:</strong> Containerized microservices orchestrated on <strong>AWS EKS Kubernetes</strong> with Application Load Balancers, Multi-AZ RDS PostgreSQL (JSONB), and automated canary deployments via <strong>Jenkins pipelines</strong>.
-              </li>
-            </ul>
+            <div class="kadalvazhi-spec-section">
+              <!-- Section 1: Real World Industry Problems -->
+              <div class="kadalvazhi-section-card">
+                <div class="kadalvazhi-card-header">
+                  <div class="kadalvazhi-card-title">
+                    <i data-lucide="alert-circle" style="width: 17px; height: 17px; color: #f59e0b;"></i>
+                    <span>1. Real World Fishing Challenges Solved</span>
+                  </div>
+                  <span class="kadalvazhi-card-tag">Domain Problems</span>
+                </div>
 
-            
+                <div class="kadalvazhi-problems-grid">
+                  <div class="kadalvazhi-problem-item">
+                    <div class="problem-item-header">
+                      <i data-lucide="file-text" style="width: 15px; height: 15px; color: #f59e0b;"></i>
+                      <span>Paper Logs and Financial Disarray</span>
+                    </div>
+                    <p class="problem-item-text">
+                      Fishermen currently track trip expenses, diesel consumption, ice costs, food provisions, and daily catch weights on loose paper sheets or pocket diaries. Over multi week voyages, receipts get damaged by seawater or lost, leaving boat owners unable to calculate actual net profit, monitor fuel efficiency, or maintain clear accounts.
+                    </p>
+                  </div>
+
+                  <div class="kadalvazhi-problem-item">
+                    <div class="problem-item-header">
+                      <i data-lucide="trending-down" style="width: 15px; height: 15px; color: #f87171;"></i>
+                      <span>Middlemen Price Exploitation</span>
+                    </div>
+                    <p class="problem-item-text">
+                      After battling rough seas for 7 to 15 days catching premium, high demand species like Yellowfin Tuna (சூரை) and Kingfish or Seer Fish (வஞ்சிரம் / Neymeen), fishermen are forced into distress sales. Because captains have no direct access to buyers before docking, harbour commission agents exploit perishable catches by imposing low auction rates, taking up to 25% of the total value.
+                    </p>
+                  </div>
+
+                  <div class="kadalvazhi-problem-item">
+                    <div class="problem-item-header">
+                      <i data-lucide="cloud-lightning" style="width: 15px; height: 15px; color: #38bdf8;"></i>
+                      <span>Delayed Marine Weather and Ocean Current Surges</span>
+                    </div>
+                    <p class="problem-item-text">
+                      Traditional crews rely on morning television news or informal radio chatter from passing boats. Mid sea squalls, high waves, and sudden current changes occur rapidly, leaving deep sea trawlers exposed without immediate, localized weather and current alerts.
+                    </p>
+                  </div>
+
+                  <div class="kadalvazhi-problem-item">
+                    <div class="problem-item-header">
+                      <i data-lucide="users" style="width: 15px; height: 15px; color: #a855f7;"></i>
+                      <span>Sudden Crew Shortages and Stalled Voyages</span>
+                    </div>
+                    <p class="problem-item-text">
+                      Deep sea mechanized trawlers require a full crew of 6 to 12 experienced deckhands to operate safely and haul heavy nets. When 2 or 3 crew members face sudden family or medical emergencies, the boat cannot sail. Captains lose days making frantic phone calls searching for certified deep sea labourers, wasting perishable ice, rations, and scheduled voyage dates.
+                    </p>
+                  </div>
+
+                  <div class="kadalvazhi-problem-item">
+                    <div class="problem-item-header">
+                      <i data-lucide="wrench" style="width: 15px; height: 15px; color: #fb923c;"></i>
+                      <span>Harbour Mechanic Bottlenecks During Trawling Breaks</span>
+                    </div>
+                    <p class="problem-item-text">
+                      When an inboard marine engine fails, finding a qualified diesel mechanic is difficult. This becomes acute during the annual 61 day monsoon trawling ban in Kerala and Tamil Nadu (June and July), when hundreds of trawlers queue up simultaneously at harbours for engine overhauls, stranding vessels for weeks.
+                    </p>
+                  </div>
+
+                  <div class="kadalvazhi-problem-item">
+                    <div class="problem-item-header">
+                      <i data-lucide="shield-alert" style="width: 15px; height: 15px; color: #eab308;"></i>
+                      <span>High Boat Building Costs and Opaque Resale Market</span>
+                    </div>
+                    <p class="problem-item-text">
+                      Building a new mechanized deep sea trawler costs over 1.5 Crore rupees ($180,000+). Ambitious fishermen looking to grow their business must buy pre owned vessels, but currently rely on informal broker circles that charge heavy hidden commissions and conceal engine defects and maintenance history.
+                    </p>
+                  </div>
+
+                  <div class="kadalvazhi-problem-item">
+                    <div class="problem-item-header">
+                      <i data-lucide="mic" style="width: 15px; height: 15px; color: #34d399;"></i>
+                      <span>Absence of a Local Dialect Voice AI Mentor</span>
+                    </div>
+                    <p class="problem-item-text">
+                      Fishermen have no intelligent advisory system to guide them on seasonal fish movements, weather navigation, and business decisions. Existing applications only offer English text interfaces, whereas boat captains need hands free voice guidance in native Tamil and Malayalam coastal dialects.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Section 2: High-Level System Architecture & Scale Specs -->
+              <div class="kadalvazhi-section-card">
+                <div class="kadalvazhi-card-header">
+                  <div class="kadalvazhi-card-title">
+                    <i data-lucide="network" style="width: 17px; height: 17px; color: #38bdf8;"></i>
+                    <span>2. High Level System Architecture and Design Specifications</span>
+                  </div>
+                  <span class="kadalvazhi-card-tag">System Design Blueprint</span>
+                </div>
+
+                <div class="kadalvazhi-sysdesign-grid">
+                  <div class="sysdesign-spec-box">
+                    <div class="sysdesign-spec-title">
+                      <i data-lucide="users" style="width: 14px; height: 14px;"></i>
+                      <span>Target Users and Scale</span>
+                    </div>
+                    <p class="sysdesign-spec-desc">
+                      Engineered to support <strong>120,000+ active fishermen, boat captains, harbour buyers, and marine mechanics</strong> across coastal Tamil Nadu (Kasimedu, Nagapattinam, Rameswaram, Colachel) and Kerala (Kochi, Munambam, Neendakara, Vizhinjam). Concurrency peaks during early morning dockside auction hours (3:00 AM to 7:00 AM).
+                    </p>
+                  </div>
+
+                  <div class="sysdesign-spec-box">
+                    <div class="sysdesign-spec-title">
+                      <i data-lucide="database" style="width: 14px; height: 14px;"></i>
+                      <span>Workload Pattern (Read vs Write)</span>
+                    </div>
+                    <p class="sysdesign-spec-desc">
+                      <strong>Balanced Hybrid Workload:</strong> Write heavy offshore as boat GPS telemetry, engine fuel consumption, and catch declarations are continuously logged to local SQLite queues; Read heavy at dockside as thousands of seafood wholesalers and buyers query live catch listings, market price trends, and mechanic availability.
+                    </p>
+                  </div>
+
+                  <div class="sysdesign-spec-box">
+                    <div class="sysdesign-spec-title">
+                      <i data-lucide="cpu" style="width: 14px; height: 14px;"></i>
+                      <span>CAP Theorem Strategy</span>
+                    </div>
+                    <p class="sysdesign-spec-desc">
+                      <strong>AP (Availability + Partition Tolerance) at Sea:</strong> Marine clients run offline first with embedded SQLite, ensuring uninterrupted logging during total cellular blackouts, syncing with idempotent deduplication upon reaching coastal 4G. <strong>CP (Consistency + Partition Tolerance) at Harbour:</strong> Dockside catch preorders and financial transactions enforce strict relational ACID consistency in PostgreSQL.
+                    </p>
+                  </div>
+
+                  <div class="sysdesign-spec-box">
+                    <div class="sysdesign-spec-title">
+                      <i data-lucide="zap" style="width: 14px; height: 14px;"></i>
+                      <span>Latency and SLA Handling</span>
+                    </div>
+                    <p class="sysdesign-spec-desc">
+                      Edge API gateway response under <strong>50ms</strong> via Spring Cloud Gateway. Asynchronous Kafka event ingestion under <strong>15ms</strong>. Emergency mechanic and crew SOS notifications dispatched in under <strong>4 seconds</strong> via automated SMS and IVR voice broadcasts. Offline queue reconciliation completed in under <strong>2.5 seconds</strong>.
+                    </p>
+                  </div>
+
+                  <div class="sysdesign-spec-box">
+                    <div class="sysdesign-spec-title">
+                      <i data-lucide="dollar-sign" style="width: 14px; height: 14px;"></i>
+                      <span>Cost and Compute Optimization</span>
+                    </div>
+                    <p class="sysdesign-spec-desc">
+                      <strong>45% reduction in LLM inference costs</strong> achieved by routing routine voice requests (weather, harbour timings) to lightweight local models, invoking deep reasoning models only for multi step trip advisory. <strong>70% database load reduction</strong> via Redis Cluster caching for market prices and harbour leaderboards.
+                    </p>
+                  </div>
+
+                  <div class="sysdesign-spec-box">
+                    <div class="sysdesign-spec-title">
+                      <i data-lucide="layers" style="width: 14px; height: 14px;"></i>
+                      <span>Production Technology Stack</span>
+                    </div>
+                    <p class="sysdesign-spec-desc">
+                      <strong>Backend Services:</strong> Java 25 and Spring Boot with Virtual Threads.<br>
+                      <strong>Event Streaming:</strong> Apache Kafka partitioned by Harbour ID.<br>
+                      <strong>AI and Voice Engine:</strong> Python FastAPI, Whisper Voice Engine, and Gemini.<br>
+                      <strong>Persistence:</strong> PostgreSQL, Redis Cluster, pgvector, and S3 Storage.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- System Design Architecture Diagram (Dynamic Code-Engine Visualizer) -->
+            <div class="arch-diagram-wrapper" id="kadalvazhi-system-design">
+              <div class="arch-diagram-header">
+                <div class="arch-diagram-title">
+                  <i data-lucide="network" style="width: 16px; height: 16px; color: #38bdf8;"></i>
+                  <span>System Design & Architecture · KadalVazhi Platform</span>
+                </div>
+                <div class="arch-diagram-badges">
+                  <span class="arch-badge">Java 25 / Spring Boot</span>
+                  <span class="arch-badge">Apache Kafka</span>
+                  <span class="arch-badge">Python FastAPI</span>
+                  <span class="arch-badge">Polyglot Data Tier</span>
+                  <div class="arch-controls">
+                    <button class="arch-ctrl-btn" onclick="zoomArchDiagram(0.12)" title="Zoom In"><i data-lucide="zoom-in" style="width: 14px; height: 14px;"></i></button>
+                    <button class="arch-ctrl-btn" onclick="zoomArchDiagram(-0.12)" title="Zoom Out"><i data-lucide="zoom-out" style="width: 14px; height: 14px;"></i></button>
+                    <button class="arch-ctrl-btn" onclick="resetArchDiagramZoom()" title="Reset Zoom"><i data-lucide="rotate-ccw" style="width: 14px; height: 14px;"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="arch-diagram-canvas" id="kadalvazhi-canvas-container">
+                <div id="kadalvazhi-diagram-mount" class="arch-diagram-mount">
+                  <div class="arch-loading-state">
+                    <i data-lucide="refresh-cw" class="spin-icon" style="width: 20px; height: 20px; color: #38bdf8;"></i>
+                    <span>Compiling distributed microservices topology...</span>
+                  </div>
+                </div>
+              </div>
+              <div class="arch-diagram-footer">
+                <div class="arch-footer-hint">
+                  <i data-lucide="shield-check" style="width: 14px; height: 14px; color: var(--accent-green);"></i>
+                  <span>Production Architecture Topology: Event driven microservices architecture with Kafka, PostgreSQL, and Redis</span>
+                </div>
+              </div>
+            </div>
+
             <div class="code-preview-block">
-              <span class="syntax-com">// CatchEventConsumer.java: Kafka-driven Offshore Catch & Marketplace Processing</span><br>
+              <span class="syntax-com">// CatchEventConsumer.java: Kafka driven Offshore Catch & Marketplace Processing</span><br>
               <span class="syntax-kw">@Component</span><br>
               <span class="syntax-kw">public class</span> <span class="syntax-cls">CatchEventConsumer</span> {<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-kw">@KafkaListener</span>(topics = <span class="syntax-str">"catch-reported-events"</span>, groupId = <span class="syntax-str">"marketplace-v1"</span>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-kw">@KafkaListener</span>(topics = <span class="syntax-str">"catch_reported_events"</span>, groupId = <span class="syntax-str">"marketplace_v1"</span>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-kw">public void</span> <span class="syntax-fn">processOffshoreCatch</span>(CatchDeclaredEvent event) {<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-com">// Idempotent catch registration synced from offline marine client</span><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;marketplaceService.registerDocksidePreOrder(event.getVesselId(), event.getSpecies(), event.getEtaHarbor());<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;redisLeaderboard.updatePortVolume(event.getPortId(), event.getWeightKg());<br>
               &nbsp;&nbsp;&nbsp;&nbsp;}<br>
               }
+            </div>
+
+            <div class="kadalvazhi-section-card" style="margin-top: 18px; margin-bottom: 18px;">
+              <div class="kadalvazhi-card-header">
+                <div class="kadalvazhi-card-title">
+                  <i data-lucide="zap" style="width: 17px; height: 17px; color: #34d399;"></i>
+                  <span>3. System Efficiency and Measurable Production Impact</span>
+                </div>
+                <span class="kadalvazhi-card-tag">Verified Metrics</span>
+              </div>
+
+              <div class="kadalvazhi-metrics-grid">
+                <div class="kadalvazhi-metric-item">
+                  <span class="metric-value-line">10,000+ msgs/s</span>
+                  <span class="metric-label-line">Event Throughput</span>
+                  <p class="metric-desc-line">Sub 15ms message ingestion across Kafka partitions during peak morning harbour docking hours.</p>
+                </div>
+
+                <div class="kadalvazhi-metric-item">
+                  <span class="metric-value-line">100% Zero Loss</span>
+                  <span class="metric-label-line">Offshore Resilience</span>
+                  <p class="metric-desc-line">Mobile SQLite WAL mode local transaction queue with idempotent UUID deduplication across 20+ NM dead zones.</p>
+                </div>
+
+                <div class="kadalvazhi-metric-item">
+                  <span class="metric-value-line">15% to 25% Higher</span>
+                  <span class="metric-label-line">Net Profit Margin</span>
+                  <p class="metric-desc-line">Bypassed commission middlemen on premium Tuna and Seer fish through advance dockside preorders.</p>
+                </div>
+
+                <div class="kadalvazhi-metric-item">
+                  <span class="metric-value-line">80% Faster</span>
+                  <span class="metric-label-line">Harbour Turnaround</span>
+                  <p class="metric-desc-line">Automated crew exchange board and geolocated mechanic dispatch cut harbour idle time from 48 hours to under 3 hours.</p>
+                </div>
+
+                <div class="kadalvazhi-metric-item">
+                  <span class="metric-value-line">₹1.5+ Cr Shield</span>
+                  <span class="metric-label-line">Capital Protection</span>
+                  <p class="metric-desc-line">Transparent pre owned trawler marketplace with verified engine inspection logs protects buyers from broker fraud.</p>
+                </div>
+
+                <div class="kadalvazhi-metric-item">
+                  <span class="metric-value-line">45% Saved</span>
+                  <span class="metric-label-line">LLM Inference Cost</span>
+                  <p class="metric-desc-line">Dynamic query router delegates routine queries to lightweight local models and deep reasoning to flagship LLMs.</p>
+                </div>
+              </div>
             </div>
 
             <div class="tech-pill-list">
@@ -5101,19 +5785,19 @@
               <span class="tech-pill">Whisper Voice AI (Tamil/Malayalam)</span>
               <span class="tech-pill">PostgreSQL (JSONB)</span>
               <span class="tech-pill">Redis Cluster</span>
-              <span class="tech-pill">AWS EKS & Docker</span>
+              <span class="tech-pill">Vector DB (pgvector)</span>
               <span class="tech-pill">Jenkins CI/CD</span>
             </div>
 
             <div class="project-links">
-              <a href="https://github.com/orgs/kadal-vazhi/repositories" target="_blank" class="btn-action">
-                <i data-lucide="github" style="width: 15px; height: 15px;"></i> GitHub Organization
-              </a>
+              <button class="btn-action" onclick="document.getElementById('kadalvazhi-system-design').scrollIntoView({behavior: 'smooth'})" title="View distributed system design architecture flowchart">
+                <i data-lucide="network" style="width: 15px; height: 15px; color: #38bdf8;"></i> View System Design Architecture
+              </button>
               <button class="btn-action btn-accent" id="sim-trigger-btn" onclick="runKadalVazhiSimulation()" title="Run interactive simulation of offline vessel to Kafka & PostgreSQL sync">
                 <i data-lucide="play" style="width: 14px; height: 14px;"></i> Run Live Data Flow Simulation
               </button>
               <span style="font-size: 0.8rem; color: var(--accent-yellow); font-family: var(--font-code); display: inline-flex; align-items: center; gap: 6px;">
-                <span class="pulse-dot" style="background: var(--accent-yellow); width: 7px; height: 7px;"></span> Under Active Development
+                <span class="pulse-dot" style="background: var(--accent-yellow); width: 7px; height: 7px;"></span> Under Active Development · Private Business Core
               </span>
             </div>
 
@@ -5173,7 +5857,7 @@
                   </div>
                   <h4 class="sim-node-title" id="sim-node-1-title">Offshore Vessel</h4>
                   <div class="sim-node-tech" id="sim-node-1-tech">SQLite WAL Mode</div>
-                  <div class="sim-node-status" id="sim-node-1-status">Deep-sea (12 NM offshore)</div>
+                  <div class="sim-node-status" id="sim-node-1-status">Deep sea (12 NM offshore)</div>
                 </div>
 
                 
@@ -5204,7 +5888,7 @@
                     <i data-lucide="layers" style="width: 18px; height: 18px;"></i>
                   </div>
                   <h4 class="sim-node-title" id="sim-node-3-title">Kafka Event Stream</h4>
-                  <div class="sim-node-tech" id="sim-node-3-tech">catch-reported-events</div>
+                  <div class="sim-node-tech" id="sim-node-3-tech">catch_reported_events</div>
                   <div class="sim-node-status" id="sim-node-3-status">Partition 2 · Idempotent</div>
                 </div>
 
@@ -5221,7 +5905,7 @@
                   </div>
                   <h4 class="sim-node-title" id="sim-node-4-title">Cloud Microservices</h4>
                   <div class="sim-node-tech" id="sim-node-4-tech">PostgreSQL & Redis</div>
-                  <div class="sim-node-status" id="sim-node-4-status">Dockside Pre-Orders Active</div>
+                  <div class="sim-node-status" id="sim-node-4-status">Dockside Preorders Active</div>
                 </div>
               </div>
 
@@ -5231,11 +5915,11 @@
                   <span class="sim-console-dot red"></span>
                   <span class="sim-console-dot yellow"></span>
                   <span class="sim-console-dot green"></span>
-                  <span class="sim-console-title" id="sim-console-title">kafka-sync-worker.log : Live Event Telemetry Stream</span>
+                  <span class="sim-console-title" id="sim-console-title">kafka_sync_worker.log : Live Event Telemetry Stream</span>
                   <span class="sim-console-clear" onclick="clearSimConsole()">Clear</span>
                 </div>
                 <div class="sim-console-stream" id="sim-console-logs">
-                  <div class="sim-log-line info">[INIT] Simulator initialized. Click 'Run Live Simulation' to trigger offshore boat-to-cloud sync pipeline.</div>
+                  <div class="sim-log-line info">[INIT] Simulator initialized. Click 'Run Live Simulation' to trigger offshore boat to cloud sync pipeline.</div>
                 </div>
               </div>
             </div>
@@ -5243,8 +5927,8 @@
 
           
           <div class="project-card-modern">
-            <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-interviewbot.jpg', 'AI InterviewBot: Dynamic Voice Interviewer Dashboard')" title="Click to view preview in high resolution">
-              <img src="assets/images/project-interviewbot.jpg" alt="AI InterviewBot Voice Interview System Dashboard" class="project-thumb-img" loading="lazy">
+            <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-interviewbot.jpg', 'James Nithil Personal AI Assistant: Interactive Voice Interface')" title="Click to view preview in high resolution">
+              <img src="assets/images/project-interviewbot.jpg" alt="James Nithil Personal AI Assistant Web Interface" class="project-thumb-img" loading="lazy">
               <div class="thumb-expand-btn">
                 <i data-lucide="maximize-2" style="width: 13px; height: 13px;"></i>
                 <span>Preview</span>
@@ -5252,27 +5936,30 @@
             </div>
 
             <div class="project-header">
-              <h2 class="project-name">
-                <span>AI InterviewBot: Dynamic Voice Interviewer</span>
-              </h2>
-              <p class="project-tagline">Voice-based interview assistant that delivers real-time candidate feedback</p>
+              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+                <h2 class="project-name" style="margin: 0;">
+                  <span>James AI VoiceBot: Personal Interview Assistant</span>
+                </h2>
+                <span style="font-family: var(--font-code); font-size: 0.78rem; color: var(--text-muted); background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-subtle); padding: 3px 10px; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 6px;">
+                  <i data-lucide="calendar" style="width: 12px; height: 12px; color: var(--accent-blue);"></i> Jun 27, 2025
+                </span>
+              </div>
+              <p class="project-tagline">Interactive conversational voice assistant built for interviewers to explore candidate background without manual resume review</p>
             </div>
 
             <p class="project-description">
-              An interactive interview assistant that conducts spoken interviews in real time.
-              Analyzes candidate verbal responses, assesses problem-solving methodology, and provides actionable
-              constructive feedback without resume screening bias.
+              Developed an interactive voice assistant that allows recruiters and technical interviewers to ask questions verbally or via text instead of reading a traditional static resume. The system dynamically answers queries about James, including academic background at Knowledge Institute of Technology, technical proficiencies in Java and Python, core projects, internship track record, and contact details in real time.
             </p>
 
             <ul class="project-bullets">
               <li>
-                <strong>Voice Synthesis and Real-Time LLM:</strong> Integrated <strong>Google Gemini API</strong> for contextual interview question generation alongside <strong>ElevenLabs</strong> and <strong>gTTS</strong> for lifelike low-latency vocal feedback.
+                <strong>Real Time Speech Recognition:</strong> Built an audio capture and voice recognition flow using Web Speech API and Python Flask to transcribe spoken interview questions instantly.
               </li>
               <li>
-                <strong>Automated Candidate Evaluation:</strong> Designed structured JSON schema scoring pipelines assessing technical correctness, depth of explanation, and communication clarity.
+                <strong>Conversational Knowledge Retrieval:</strong> Integrated Google Gemini API with tailored candidate context prompt engineering to articulate accurate responses about engineering skills and past experience.
               </li>
               <li>
-                <strong>Audio Streaming Pipeline:</strong> Created a full-duplex audio capture and speech recognition pipeline with Python and Flask, delivering sub-second response evaluation.
+                <strong>Vocal Feedback Synthesis:</strong> Integrated ElevenLabs Voice API and gTTS for natural sounding audio responses, enabling smooth voice communication between recruiter and assistant.
               </li>
             </ul>
 
@@ -5281,13 +5968,14 @@
               <span class="tech-pill highlight">ElevenLabs Voice API</span>
               <span class="tech-pill">Python</span>
               <span class="tech-pill">Flask</span>
+              <span class="tech-pill">Speech Recognition</span>
+              <span class="tech-pill">Text to Speech</span>
               <span class="tech-pill">gTTS</span>
-              <span class="tech-pill">JSON Schemas</span>
             </div>
 
             <div class="project-links">
               <a href="https://github.com/nithiljn/james-ai-voicebot" target="_blank" class="btn-action">
-                <i data-lucide="github" style="width: 15px; height: 15px;"></i> github/james-ai-voicebot
+                <img src="assets/images/github.svg" alt="GitHub" width="15" height="15" style="vertical-align: middle; display: inline-block;" /> github/james-ai-voicebot
               </a>
             </div>
           </div>
@@ -5303,9 +5991,14 @@
             </div>
 
             <div class="project-header">
-              <h2 class="project-name">
-                <span>SymptoMedAI: Disease Prediction and Healthcare Assistant</span>
-              </h2>
+              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+                <h2 class="project-name" style="margin: 0;">
+                  <span>SymptoMedAI: Disease Prediction and Healthcare Assistant</span>
+                </h2>
+                <span style="font-family: var(--font-code); font-size: 0.78rem; color: var(--text-muted); background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-subtle); padding: 3px 10px; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 6px;">
+                  <i data-lucide="calendar" style="width: 12px; height: 12px; color: var(--accent-blue);"></i> April 19, 2025
+                </span>
+              </div>
               <p class="project-tagline">Machine learning diagnostics with appointment and consultation flow</p>
             </div>
 
@@ -5316,13 +6009,13 @@
 
             <ul class="project-bullets">
               <li>
-                <strong>Predictive Diagnostic Modeling:</strong> Trained and tuned a <strong>Random Forest Classifier</strong> on structured clinical symptom datasets, achieving high multi-class diagnostic precision.
+                <strong>Predictive Diagnostic Modeling:</strong> Trained and tuned a <strong>Random Forest Classifier</strong> on structured clinical symptom datasets, achieving high multi class diagnostic precision.
               </li>
               <li>
-                <strong>High-Performance Microservices:</strong> Built asynchronous REST endpoints using <strong>FastAPI</strong> and <strong>MySQL</strong> for sub-50ms inference times and transactional appointment scheduling.
+                <strong>High Performance Metrics:</strong> Built asynchronous REST endpoints using <strong>FastAPI</strong> and <strong>MySQL</strong> for sub 50ms inference times and transactional appointment scheduling.
               </li>
               <li>
-                <strong>End-to-End Clinical Workflow:</strong> Automated symptom triage, medical specialist mapping, medicine precaution advisories, and diagnostic summary generation.
+                <strong>End to End Clinical Workflow:</strong> Automated symptom triage, medical specialist mapping, medicine precaution advisories, and diagnostic summary generation.
               </li>
             </ul>
 
@@ -5330,48 +6023,44 @@
               <span class="tech-pill highlight">Random Forest</span>
               <span class="tech-pill highlight">FastAPI</span>
               <span class="tech-pill">Python</span>
-              <span class="tech-pill">Flask</span>
               <span class="tech-pill">MySQL</span>
             </div>
 
             <div class="project-links">
               <a href="https://github.com/nithiljn/SymptoMedAi" target="_blank" class="btn-action">
-                <i data-lucide="github" style="width: 15px; height: 15px;"></i> github/SymptoMedAi
+                <img src="assets/images/github.svg" alt="GitHub" width="15" height="15" style="vertical-align: middle; display: inline-block;" /> github/SymptoMedAi
               </a>
             </div>
           </div>
 
           
           <div class="project-card-modern">
-            <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-farmvista.jpg', 'FarmVista: Smart Agriculture Advisory Dashboard')" title="Click to view preview in high resolution">
-              <img src="assets/images/project-farmvista.jpg" alt="FarmVista Smart Agriculture Advisory Dashboard" class="project-thumb-img" loading="lazy">
-              <div class="thumb-expand-btn">
-                <i data-lucide="maximize-2" style="width: 13px; height: 13px;"></i>
-                <span>Preview</span>
-              </div>
-            </div>
-
             <div class="project-header">
-              <h2 class="project-name">
-                <span>FarmVista: Smart Agriculture Advisory</span>
-              </h2>
+              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+                <h2 class="project-name" style="margin: 0;">
+                  <span>FarmVista: Smart Agriculture Advisory</span>
+                </h2>
+                <span style="font-family: var(--font-code); font-size: 0.78rem; color: var(--text-muted); background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-subtle); padding: 3px 10px; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 6px;">
+                  <i data-lucide="calendar" style="width: 12px; height: 12px; color: var(--accent-blue);"></i> Feb 28, 2024
+                </span>
+              </div>
               <p class="project-tagline">Smart India Hackathon (SIH) team lead project</p>
             </div>
 
             <p class="project-description">
-              Led a five-member team in developing an agricultural advisory system that recommends optimal crop patterns
+              Led a five member team in developing an agricultural advisory system that recommends optimal crop patterns
               and fertilizer cycles based on live weather data, regional soil composition, and market demand indices.
             </p>
 
             <ul class="project-bullets">
               <li>
-                <strong>SIH Hackathon Team Leadership:</strong> Directed a 5-member engineering team to design, build, and pitch an end-to-end precision agriculture recommendation platform.
+                <strong>SIH Hackathon Team Leadership:</strong> Directed a 5 member engineering team to design, build, and pitch an end to end precision agriculture recommendation platform.
               </li>
               <li>
                 <strong>Soil Health & Crop Optimization:</strong> Built predictive machine learning models incorporating regional NPK soil nutrients, rainfall forecasts, and market commodity demand.
               </li>
               <li>
-                <strong>Meteorological Integration:</strong> Connected external weather APIs to calculate optimal sowing calendars and provide automated alerts against adverse micro-climate conditions.
+                <strong>Meteorological Integration:</strong> Connected external weather APIs to calculate optimal sowing calendars and provide automated alerts against adverse micro climate conditions.
               </li>
             </ul>
 
@@ -5379,13 +6068,13 @@
               <span class="tech-pill highlight">Machine Learning</span>
               <span class="tech-pill">Weather APIs</span>
               <span class="tech-pill">Python</span>
-              <span class="tech-pill">Flask</span>
+              <span class="tech-pill">Django</span>
               <span class="tech-pill">Soil Analysis Models</span>
             </div>
 
             <div class="project-links">
               <a href="https://github.com/nithiljn/Farmvista/tree/main/Farmvista%20.iva/SIH1" target="_blank" class="btn-action">
-                <i data-lucide="github" style="width: 15px; height: 15px;"></i> github/FarmVista
+                <img src="assets/images/github.svg" alt="GitHub" width="15" height="15" style="vertical-align: middle; display: inline-block;" /> github/FarmVista
               </a>
             </div>
           </div>
@@ -5672,7 +6361,7 @@
                   <i class="devicon-java-plain" style="color: #ea580c;"></i> Java (Spring Boot / DSA)
                 </div>
                 <div class="skill-chip">
-                  <i class="devicon-python-plain" style="color: #38bdf8;"></i> Python (AI / FastAPI / LangGraph)
+                  <img src="assets/images/python.svg" alt="Python" width="15" height="15" style="vertical-align: middle; display: inline-block;" /> Python (AI / FastAPI / LangGraph)
                 </div>
                 <div class="skill-chip">
                   <i class="devicon-postgresql-plain" style="color: #0284c7;"></i> SQL (PostgreSQL & MySQL)
@@ -5822,7 +6511,7 @@
               <span>Achievements and Competitive Coding</span>
             </div>
             <a href="https://leetcode.com/u/NITHIL07/" target="_blank" class="btn-action">
-              <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> Open LeetCode Profile
+              <img src="assets/images/leetcode.svg" alt="LeetCode" width="14" height="14" style="vertical-align: middle; display: inline-block; margin-right: 4px;" /> Open LeetCode Profile
             </a>
           </div>
 
@@ -5831,37 +6520,38 @@
             <div class="knight-spotlight-inner">
               <div class="knight-info-col">
                 <div class="knight-title">
-                  <span>🏆 LeetCode Knight Badge</span>
+                  <img src="assets/images/leetcode.svg" alt="LeetCode" width="24" height="24" style="vertical-align: middle; display: inline-block;" />
+                  <span>LeetCode Knight Badge</span>
                 </div>
 
                 <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 800px; margin-bottom: 14px;">
-                  LeetCode Knight with an official <strong>Contest Rating of 1,994</strong> (Top 2.73% Worldwide).
+                  LeetCode Knight with an official <strong>Contest Rating of 2,069</strong> (Top 1.83% Worldwide).
                   Secured multiple <strong>4/4 full-solve performances</strong> in Weekly Contests 517 (<strong>Global Rank #114</strong>), 490 (<strong>Global Rank #197</strong>), and 518 (<strong>Global Rank #393</strong>).
                 </p>
 
                 <div class="knight-rank-metric">
                   <div>
-                    <span class="rank-number">1,994</span>
-                    <span class="rank-total">Contest Rating (Knight Tier · Top 2.73%)</span>
+                    <span class="rank-number">2,069</span>
+                    <span class="rank-total">Contest Rating (Knight Tier · Top 1.83%)</span>
                   </div>
                 </div>
 
                 <div style="font-size: 0.84rem; color: var(--accent-yellow); font-family: var(--font-code); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                  <span>Global Ranking: 23,201 / 883,546</span>
+                  <span>Global Ranking: 15,558 / 886,096</span>
                   <span>·</span>
-                  <span>Attended: 10 Contests</span>
+                  <span>Attended: 11 Contests</span>
                   <span>·</span>
                   <span>Best Contest Rank: #114</span>
                   <span>·</span>
-                  <span>Top 2.73% Worldwide</span>
+                  <span>Top 1.83% Worldwide</span>
                 </div>
               </div>
 
               
               <div class="leetcode-screenshot-wrap">
-                <img src="assets/images/leetcode_knight.png" alt="LeetCode Knight Rating 1994, James Nithil V" class="leetcode-screenshot-img" />
+                <img src="assets/images/leetcode_knight.png" alt="LeetCode Knight Rating 2069, James Nithil V" class="leetcode-screenshot-img" />
                 <div class="leetcode-screenshot-caption">
-                  <i data-lucide="shield-check" style="width: 14px; height: 14px; color: #34d399;"></i> Official LeetCode Rating Card (Knight 1,994)
+                  <i data-lucide="shield-check" style="width: 14px; height: 14px; color: #34d399;"></i> Official LeetCode Rating Card (Knight 2,069)
                 </div>
               </div>
             </div>
@@ -5914,7 +6604,7 @@
               </div>
               <div style="display: flex; align-items: center; gap: 8px; font-family: var(--font-code); font-size: 0.8rem; flex-wrap: wrap;">
                 <span style="color: #38bdf8; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 4px 10px; border-radius: 12px; font-weight: 600;">
-                  Peak Rating: 1,994 (Top 2.73%)
+                  Peak Rating: 2,069 (Top 1.83%)
                 </span>
                 <span style="color: #34d399; background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.25); padding: 4px 10px; border-radius: 12px; font-weight: 600;">
                   Best Rank: #114 (4/4 Solved)
@@ -5926,23 +6616,23 @@
             <div class="contest-inspect-hud" id="contest-hud">
               <div class="hud-col">
                 <span class="hud-label">Inspected Contest</span>
-                <span class="hud-val" id="hud-contest-name">Weekly Contest 519 (Sep 13, 2026)</span>
+                <span class="hud-val" id="hud-contest-name">Weekly Contest 520 (Sep 20, 2026)</span>
               </div>
               <div class="hud-col">
                 <span class="hud-label">Contest Rating</span>
-                <span class="hud-val cyan" id="hud-contest-rating">1,994 ↗ (Peak Rating)</span>
+                <span class="hud-val cyan" id="hud-contest-rating">2,069 ↗ (Peak Rating)</span>
               </div>
               <div class="hud-col">
                 <span class="hud-label">Global Rank</span>
-                <span class="hud-val green" id="hud-contest-rank">1,867 (Top 2.73% Global)</span>
+                <span class="hud-val green" id="hud-contest-rank">15,558 (Top 1.83% Global)</span>
               </div>
               <div class="hud-col">
                 <span class="hud-label">Problems Solved</span>
-                <span class="hud-val" id="hud-contest-solved">2 / 4 Solved</span>
+                <span class="hud-val" id="hud-contest-solved">3 / 4 Solved</span>
               </div>
               <div class="hud-col">
                 <span class="hud-label">Rating Delta / Highlight</span>
-                <span class="hud-val cyan" id="hud-contest-delta">+8 pts · All-Time Peak</span>
+                <span class="hud-val cyan" id="hud-contest-delta">+75 pts · Crossed 2,000 Milestone</span>
               </div>
             </div>
 
@@ -5980,67 +6670,71 @@
                 <text x="38" y="209" fill="#64748b" font-size="10" font-family="monospace" text-anchor="end">1,700</text>
 
                 
-                <path d="M 55,206 C 85,160 105,115 130,111 C 155,108 180,108 205,108 C 230,108 255,109 280,109 C 305,109 330,114 355,116 C 380,118 405,127 430,130 C 455,133 480,143 505,145 C 530,147 555,105 580,88 C 605,71 630,59 655,57 C 680,55 705,53 730,53 L 730,225 L 55,225 Z" fill="url(#ratingGradient)" />
+                <path d="M 50,206 C 75,160 95,115 118,111 C 142,108 162,108 186,108 C 210,108 232,109 254,109 C 276,109 300,114 322,116 C 344,118 368,127 390,130 C 412,133 436,143 458,145 C 480,147 504,105 526,88 C 550,71 572,59 594,57 C 616,55 640,53 662,53 C 685,53 708,24 730,24 L 730,225 L 50,225 Z" fill="url(#ratingGradient)" />
 
                 
-                <path d="M 55,206 C 85,160 105,115 130,111 C 155,108 180,108 205,108 C 230,108 255,109 280,109 C 305,109 330,114 355,116 C 380,118 405,127 430,130 C 455,133 480,143 505,145 C 530,147 555,105 580,88 C 605,71 630,59 655,57 C 680,55 705,53 730,53" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#subtleGlow)" />
+                <path d="M 50,206 C 75,160 95,115 118,111 C 142,108 162,108 186,108 C 210,108 232,109 254,109 C 276,109 300,114 322,116 C 344,118 368,127 390,130 C 412,133 436,143 458,145 C 480,147 504,105 526,88 C 550,71 572,59 594,57 C 616,55 640,53 662,53 C 685,53 708,24 730,24" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#subtleGlow)" />
 
                 
-                <circle cx="730" cy="53" r="13" fill="none" stroke="#38bdf8" stroke-width="1.5" class="pulse-ring-anim" />
+                <circle cx="730" cy="24" r="13" fill="none" stroke="#38bdf8" stroke-width="1.5" class="pulse-ring-anim" />
 
                 
-                <g transform="translate(518, 46)">
+                <g transform="translate(464, 46)">
                   <rect x="0" y="0" width="124" height="24" rx="12" fill="rgba(10, 15, 26, 0.95)" stroke="rgba(52, 211, 153, 0.5)" stroke-width="1.2" />
                   <text x="62" y="16" fill="#f8fafc" font-size="9.5" font-family="monospace" font-weight="600" text-anchor="middle"><tspan fill="#34d399" font-weight="700">★</tspan> BEST RANK <tspan fill="#34d399" font-weight="700">#114</tspan></text>
                 </g>
 
                 
-                <g transform="translate(636, 14)">
-                  <rect x="0" y="0" width="112" height="24" rx="12" fill="rgba(10, 15, 26, 0.95)" stroke="rgba(56, 189, 248, 0.55)" stroke-width="1.2" />
-                  <text x="56" y="16" fill="#f8fafc" font-size="9.5" font-family="monospace" font-weight="600" text-anchor="middle"><tspan fill="#38bdf8" font-weight="700">★</tspan> PEAK <tspan fill="#38bdf8" font-weight="700">1,994</tspan></text>
+                <g transform="translate(620, 6)">
+                  <rect x="0" y="0" width="118" height="24" rx="12" fill="rgba(10, 15, 26, 0.95)" stroke="rgba(56, 189, 248, 0.55)" stroke-width="1.2" />
+                  <text x="59" y="16" fill="#f8fafc" font-size="9.5" font-family="monospace" font-weight="600" text-anchor="middle"><tspan fill="#38bdf8" font-weight="700">★</tspan> PEAK <tspan fill="#38bdf8" font-weight="700">2,069</tspan></text>
                 </g>
 
                 
                 
-                <circle cx="55" cy="206" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-1" onmouseenter="inspectContest(1)" onclick="inspectContest(1)" />
-                <text x="55" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 481</text>
+                <circle cx="50" cy="206" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-1" onmouseenter="inspectContest(1)" onclick="inspectContest(1)" />
+                <text x="50" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 481</text>
 
                 
-                <circle cx="130" cy="111" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-2" onmouseenter="inspectContest(2)" onclick="inspectContest(2)" />
-                <text x="130" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 490</text>
+                <circle cx="118" cy="111" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-2" onmouseenter="inspectContest(2)" onclick="inspectContest(2)" />
+                <text x="118" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 490</text>
 
                 
-                <circle cx="205" cy="108" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-3" onmouseenter="inspectContest(3)" onclick="inspectContest(3)" />
-                <text x="205" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 491</text>
+                <circle cx="186" cy="108" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-3" onmouseenter="inspectContest(3)" onclick="inspectContest(3)" />
+                <text x="186" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 491</text>
 
                 
-                <circle cx="280" cy="109" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-4" onmouseenter="inspectContest(4)" onclick="inspectContest(4)" />
-                <text x="280" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 492</text>
+                <circle cx="254" cy="109" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-4" onmouseenter="inspectContest(4)" onclick="inspectContest(4)" />
+                <text x="254" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 492</text>
 
                 
-                <circle cx="355" cy="116" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-5" onmouseenter="inspectContest(5)" onclick="inspectContest(5)" />
-                <text x="355" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 493</text>
+                <circle cx="322" cy="116" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-5" onmouseenter="inspectContest(5)" onclick="inspectContest(5)" />
+                <text x="322" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 493</text>
 
                 
-                <circle cx="430" cy="130" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-6" onmouseenter="inspectContest(6)" onclick="inspectContest(6)" />
-                <text x="430" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 500</text>
+                <circle cx="390" cy="130" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-6" onmouseenter="inspectContest(6)" onclick="inspectContest(6)" />
+                <text x="390" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 500</text>
 
                 
-                <circle cx="505" cy="145" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-7" onmouseenter="inspectContest(7)" onclick="inspectContest(7)" />
-                <text x="505" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 505</text>
+                <circle cx="458" cy="145" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-7" onmouseenter="inspectContest(7)" onclick="inspectContest(7)" />
+                <text x="458" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 505</text>
 
                 
-                <circle cx="580" cy="88" r="5.5" fill="#10b981" stroke="#ffffff" stroke-width="2" class="chart-dot-interactive" id="dot-8" onmouseenter="inspectContest(8)" onclick="inspectContest(8)" />
-                <circle cx="580" cy="88" r="10" fill="none" stroke="rgba(52, 211, 153, 0.4)" stroke-width="1.2" stroke-dasharray="2 2" />
-                <text x="580" y="240" fill="#34d399" font-size="9" font-family="monospace" text-anchor="middle" font-weight="700">WC 517*</text>
+                <circle cx="526" cy="88" r="5.5" fill="#10b981" stroke="#ffffff" stroke-width="2" class="chart-dot-interactive" id="dot-8" onmouseenter="inspectContest(8)" onclick="inspectContest(8)" />
+                <circle cx="526" cy="88" r="10" fill="none" stroke="rgba(52, 211, 153, 0.4)" stroke-width="1.2" stroke-dasharray="2 2" />
+                <text x="526" y="240" fill="#34d399" font-size="9" font-family="monospace" text-anchor="middle" font-weight="700">WC 517*</text>
 
                 
-                <circle cx="655" cy="57" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-9" onmouseenter="inspectContest(9)" onclick="inspectContest(9)" />
-                <text x="655" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 518</text>
+                <circle cx="594" cy="57" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-9" onmouseenter="inspectContest(9)" onclick="inspectContest(9)" />
+                <text x="594" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 518</text>
 
                 
-                <circle cx="730" cy="53" r="6" fill="#38bdf8" stroke="#ffffff" stroke-width="2" class="chart-dot-interactive active-dot" id="dot-10" onmouseenter="inspectContest(10)" onclick="inspectContest(10)" />
-                <text x="730" y="240" fill="#38bdf8" font-size="9.5" font-family="monospace" text-anchor="middle" font-weight="700">WC 519*</text>
+                <circle cx="662" cy="53" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8" class="chart-dot-interactive" id="dot-10" onmouseenter="inspectContest(10)" onclick="inspectContest(10)" />
+                <text x="662" y="240" fill="#64748b" font-size="9" font-family="monospace" text-anchor="middle">WC 519</text>
+
+                
+                <circle cx="730" cy="24" r="6" fill="#38bdf8" stroke="#ffffff" stroke-width="2" class="chart-dot-interactive active-dot" id="dot-11" onmouseenter="inspectContest(11)" onclick="inspectContest(11)" />
+                <text x="730" y="240" fill="#38bdf8" font-size="9.5" font-family="monospace" text-anchor="middle" font-weight="700">WC 520*</text>
               </svg>
             </div>
 
@@ -6056,7 +6750,8 @@
               <button class="contest-pill-btn" onclick="inspectContest(7)" id="pill-7">C7: WC 505 (1,811)</button>
               <button class="contest-pill-btn" onclick="inspectContest(8)" id="pill-8">C8: WC 517 (1,924 · #114)</button>
               <button class="contest-pill-btn" onclick="inspectContest(9)" id="pill-9">C9: WC 518 (1,986 · #393)</button>
-              <button class="contest-pill-btn active-pill" onclick="inspectContest(10)" id="pill-10">★ C10: WC 519 (1,994 Peak)</button>
+              <button class="contest-pill-btn" onclick="inspectContest(10)" id="pill-10">C10: WC 519 (1,994)</button>
+              <button class="contest-pill-btn active-pill" onclick="inspectContest(11)" id="pill-11">★ C11: WC 520 (2,069 Peak)</button>
             </div>
           </div>
 
@@ -6078,7 +6773,7 @@
               </div>
               <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
                 <span style="font-family: var(--font-code); font-size: 0.85rem; color: #38bdf8; display: flex; align-items: center; gap: 6px;">
-                  <i class="devicon-python-plain"></i> Python3
+                  <img src="assets/images/python.svg" alt="Python" width="14" height="14" style="vertical-align: middle; display: inline-block;" /> Python3
                 </span>
                 <span style="font-family: var(--font-code); font-weight: 700; color: var(--text-primary);">443 solved</span>
               </div>
@@ -6108,7 +6803,7 @@
               </div>
               <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
                 <span style="font-family: var(--font-code); font-size: 0.85rem; color: #4ade80; display: flex; align-items: center; gap: 6px;">
-                  <i class="devicon-python-plain"></i> Python
+                  <img src="assets/images/python.svg" alt="Python" width="14" height="14" style="vertical-align: middle; display: inline-block;" /> Python
                 </span>
                 <span style="font-family: var(--font-code); font-weight: 700; color: var(--text-primary);">5 solved</span>
               </div>
@@ -6199,7 +6894,7 @@
                 Type <span style="color: #38bdf8;">help</span> to see all available commands, or click any quick command below.
               </div>
               <div class="term-line cmd-highlight">
-                ★ Status: Junior Software Developer at Vaken Technologies Pvt Ltd (Sovablu), LeetCode Knight (1,994)
+                ★ Status: Junior Software Developer at Vaken Technologies Pvt Ltd (Sovablu), LeetCode Knight (2,069)
               </div>
             </div>
 
@@ -6296,7 +6991,7 @@
       <div class="badge-identity">
         <h3 class="badge-name">James Nithil V</h3>
         <p class="badge-role">Software Developer</p>
-        <p class="badge-division">Agentic AI & Core Platform</p>
+        <p class="badge-division">AI Innovation & Development</p>
       </div>
 
       <div class="badge-spec-grid">
@@ -6326,7 +7021,7 @@
 
       <div class="badge-card-footer">
         <div class="badge-barcode-lines">||||| | ||| |||| | ||||| ||| | || |||||</div>
-        <div class="badge-serial-code">SEC-ID: VK-SOVABLU-2026-JN</div>
+        <div class="badge-serial-code">SEC ID: VK-SOVABLU-2026-JN</div>
       </div>
     </div>
   </div>
@@ -6356,7 +7051,7 @@
         </div>
         <div class="palette-item" onclick="selectPalette('tab-projects')">
           <div class="palette-item-left">
-            <i class="devicon-python-plain" style="color: #facc15;"></i>
+            <img src="assets/images/python.svg" alt="Python" width="15" height="15" style="vertical-align: middle; display: inline-block; margin-right: 6px;" />
             <span>projects.py (KadalVazhi and AI Projects)</span>
           </div>
           <span class="palette-shortcut-key">Tab 2</span>
@@ -6378,7 +7073,7 @@
         <div class="palette-item" onclick="selectPalette('tab-achievements')">
           <div class="palette-item-left">
             <i class="devicon-yaml-plain" style="color: #fb7185;"></i>
-            <span>achievements.yaml (LeetCode Knight 1,994 | Rank #114)</span>
+            <span>achievements.yaml (LeetCode Knight 2,069 | Rank #114)</span>
           </div>
           <span class="palette-shortcut-key">Tab 5</span>
         </div>
@@ -6486,9 +7181,9 @@
           <div class="recruiter-metric-card metric-card-gold">
             <div class="metric-top">
               <span class="metric-icon"><i data-lucide="award" style="width: 16px; height: 16px; color: #f59e0b;"></i></span>
-              <span class="metric-pill">Top 2.73% Global</span>
+              <span class="metric-pill">Top 1.83% Global</span>
             </div>
-            <div class="metric-number">1,994</div>
+            <div class="metric-number">2,069</div>
             <div class="metric-label">LeetCode Knight Rating</div>
             <div class="metric-desc">Peak Rank #114 / 43,000+ · 700+ DSA Problems Solved</div>
           </div>
@@ -6617,8 +7312,8 @@
           </a>
 
           <a href="https://leetcode.com/u/NITHIL07/" target="_blank" rel="noopener noreferrer" class="recruiter-action-btn recruiter-btn-link" title="LeetCode Profile">
-            <i data-lucide="code-2" style="width: 15px; height: 15px;"></i>
-            <span>LeetCode (1,994)</span>
+            <img src="assets/images/leetcode.svg" alt="LeetCode" width="15" height="15" style="vertical-align: middle; display: inline-block;" />
+            <span>LeetCode (2,069)</span>
           </a>
 
           <button class="recruiter-action-btn recruiter-btn-explore" onclick="closeRecruiterModal()" title="Return to Interactive IDE Tabs">
@@ -6664,8 +7359,9 @@
         <span>0 errors, 0 warnings</span>
       </div>
       <div class="status-bar-item status-item-rank" onclick="switchTab('tab-achievements')" title="LeetCode Knight Rank">
-        <span class="rank-full">🏆 Knight Peak Rank: #114</span>
-        <span class="rank-short">🏆 Knight #114</span>
+        <img src="assets/images/leetcode.svg" alt="LeetCode" width="12" height="12" style="vertical-align: middle; display: inline-block; margin-right: 4px;" />
+        <span class="rank-full">Knight Peak Rank: #114</span>
+        <span class="rank-short">Knight #114</span>
       </div>
     </div>
     <div class="status-bar-right">
@@ -6707,6 +7403,135 @@
       'tab-gitgraph': { title: 'git-graph.log', icon: 'git-branch', color: '#a855f7' }
     };
 
+    const KADALVAZHI_SYSTEM_DESIGN_SPEC = `flowchart TD
+    subgraph Clients["Clients (Mobile App & Web App)"]
+        Mobile["Flutter / React Native Mobile"]
+        Web["Next.js Web Portal (Admin & Fleet Dashboard)"]
+    end
+
+    subgraph Edge["Edge / API Gateway"]
+        Gateway["API Gateway (Spring Cloud Gateway / Envoy)<br/>- Rate Limiting (Token Bucket)<br/>- JWT Auth Verification<br/>- mTLS & SSL Termination<br/>- i18n Header Routing ('Accept-Language')"]
+    end
+
+    subgraph CoreJava["Core Business Services (Java 25 / Spring Boot)"]
+        UserService["User & Social Service<br/>(Profile, Follows, Port Location)"]
+        FleetService["Fleet & Voyage Service<br/>(10-Day Trips, Diesel, Food, P&L, Fleet Leaderboard)"]
+        MarketService["Marketplace & Pre-Order Service<br/>(At-Sea Catch Pre-booking, Zero-Middlemen)"]
+        CrewService["Crew Exchange Service<br/>(Emergency Manpower, Job Availability)"]
+    end
+
+    subgraph PythonAI["AI & Voice Engine (Python / FastAPI)"]
+        VoiceAgent["AI Voice & Advisory Service<br/>- Whisper/Faster-Whisper (Tamil/Malayalam STT)<br/>- Llama/Gemini Agent (Fisheries Knowledge)<br/>- TTS Engine"]
+    end
+
+    subgraph EventStream["Distributed Event Backbone"]
+        Kafka["Apache Kafka<br/>- trip-events (Start, End, Log)<br/>- catch-reported-events<br/>- crew-emergency-events"]
+    end
+
+    subgraph Persistence["Polyglot Data Tier"]
+        Postgres[("PostgreSQL<br/>(Relational ACID, JSONB for i18n)")]
+        Redis[("Redis Cluster<br/>(Leaderboard ZSETs, Token Blacklist, Cache-Aside)")]
+        VectorDB[("Vector DB (pgvector / Qdrant)<br/>(Fish Species, Voice Embeddings)")]
+        S3[("Object Storage (S3 / MinIO)<br/>(Catch Photos, Trip Receipts, Voice Notes)")]
+    end
+
+    Clients -->|HTTPS / WSS / REST / GraphQL| Gateway
+    Gateway -->|Internal REST / gRPC| UserService
+    Gateway -->|Internal REST / gRPC| FleetService
+    Gateway -->|Internal REST / gRPC| MarketService
+    Gateway -->|Internal REST / gRPC| CrewService
+    Gateway -->|REST / gRPC| VoiceAgent
+
+    FleetService -->|Publish Events| Kafka
+    MarketService -->|Publish Events| Kafka
+    CrewService -->|Publish Events| Kafka
+
+    Kafka -->|Consume Events| FleetService
+    Kafka -->|Consume Events| MarketService
+    Kafka -->|Consume Events| VoiceAgent
+
+    UserService --> Postgres
+    FleetService --> Postgres
+    MarketService --> Postgres
+    CrewService --> Postgres
+
+    UserService --> Redis
+    FleetService --> Redis
+    VoiceAgent --> VectorDB
+    UserService --> S3
+`;
+
+    let currentArchSpec = KADALVAZHI_SYSTEM_DESIGN_SPEC;
+    let archDiagramRendered = false;
+    let archZoomScale = 1.0;
+
+    function zoomArchDiagram(delta) {
+      archZoomScale = Math.min(Math.max(0.5, archZoomScale + delta), 2.0);
+      const mount = document.getElementById('kadalvazhi-diagram-mount');
+      if (mount) {
+        mount.style.transform = `scale(${archZoomScale})`;
+      }
+    }
+
+    function resetArchDiagramZoom() {
+      archZoomScale = 1.0;
+      const mount = document.getElementById('kadalvazhi-diagram-mount');
+      if (mount) {
+        mount.style.transform = 'scale(1)';
+      }
+    }
+
+    async function renderKadalvazhiArchitecture() {
+      const mount = document.getElementById('kadalvazhi-diagram-mount');
+      if (!mount) return;
+      
+      const specToRender = KADALVAZHI_SYSTEM_DESIGN_SPEC;
+
+      if (!window.mermaid) {
+        window.addEventListener('mermaid-ready', () => renderKadalvazhiArchitecture(), { once: true });
+        return;
+      }
+
+      mount.innerHTML = `
+        <div class="arch-loading-state">
+          <i data-lucide="refresh-cw" class="spin-icon" style="width: 20px; height: 20px; color: #38bdf8;"></i>
+          <span>Compiling distributed microservices topology...</span>
+        </div>
+      `;
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+
+      try {
+        const renderId = 'kadalvazhi-svg-' + Math.floor(Math.random() * 100000);
+        const { svg } = await window.mermaid.render(renderId, specToRender);
+        mount.innerHTML = svg;
+        archDiagramRendered = true;
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+      } catch (err) {
+        console.error('KadalVazhi architecture render error:', err);
+        mount.innerHTML = `
+          <div style="color: #f87171; font-family: var(--font-code); font-size: 0.82rem; padding: 30px; text-align: center;">
+            <i data-lucide="alert-circle" style="width: 24px; height: 24px; color: #f87171; margin-bottom: 8px;"></i><br>
+            <strong>Mermaid Topology Compilation Error</strong><br>
+            <span style="color: #cbd5e1; font-size: 0.76rem;">${err.message || 'Syntax error'}</span><br>
+            <button class="arch-spec-btn btn-reset" onclick="resetDefaultArchSpec()" style="margin-top: 12px; display: inline-flex;">
+              Restore Valid Architecture Blueprint
+            </button>
+          </div>
+        `;
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+      }
+    }
+    window.renderKadalvazhiArchitecture = renderKadalvazhiArchitecture;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const reqTab = urlParams.get('tab') || (window.location.hash ? ('tab-' + window.location.hash.replace('#', '')) : null);
+      if (reqTab && document.getElementById(reqTab)) {
+        switchTab(reqTab);
+      }
+      setTimeout(() => renderKadalvazhiArchitecture(), 120);
+    });
+
     function switchTab(tabId) {
       playKeyClick();
 
@@ -6719,6 +7544,12 @@
 
       if (tabId === 'tab-gitgraph') {
         renderGitGraph();
+      }
+
+      if (tabId === 'tab-projects') {
+        if (!archDiagramRendered) {
+          setTimeout(() => renderKadalvazhiArchitecture(), 60);
+        }
       }
 
       tabElements.forEach(el => {
@@ -6968,36 +7799,66 @@
     const toggleBadgeBtn = document.getElementById('badge-toggle-btn');
     const hideBadgeBtn = document.getElementById('hide-badge-btn');
 
+    let isBadgeAnimating = false;
+
     function isBadgeOpen() {
       if (!badgeContainer) return false;
       if (window.innerWidth <= 900) {
-        return badgeContainer.classList.contains('mobile-open');
+        return badgeContainer.classList.contains('mobile-open') && !badgeContainer.classList.contains('badge-closing');
       }
-      return !badgeContainer.classList.contains('hidden-badge');
+      return !badgeContainer.classList.contains('hidden-badge') && !badgeContainer.classList.contains('badge-retracting');
     }
 
     function openBadge() {
-      if (!badgeContainer) return;
+      if (!badgeContainer || isBadgeAnimating) return;
+      if (isBadgeOpen()) return;
+
+      isBadgeAnimating = true;
       if (window.innerWidth <= 768) {
         closeMobileSidebar();
       }
       if (typeof window.toggleAiDrawer === 'function') {
         window.toggleAiDrawer(false);
       }
-      badgeContainer.classList.remove('hidden-badge');
+
+      badgeContainer.classList.remove('hidden-badge', 'badge-retracting', 'badge-closing');
+
       if (window.innerWidth <= 900) {
         badgeContainer.classList.add('mobile-open');
+        isBadgeAnimating = false;
       } else {
         badgeContainer.classList.remove('mobile-open');
+        badgeContainer.classList.add('badge-dropping');
+        setTimeout(() => {
+          badgeContainer.classList.remove('badge-dropping');
+          isBadgeAnimating = false;
+        }, 850);
       }
       if (toggleBadgeBtn) toggleBadgeBtn.classList.add('active');
     }
 
     function closeBadge() {
-      if (!badgeContainer) return;
-      badgeContainer.classList.remove('mobile-open');
-      badgeContainer.classList.add('hidden-badge');
+      if (!badgeContainer || isBadgeAnimating) return;
+      if (!isBadgeOpen()) return;
+
+      isBadgeAnimating = true;
       if (toggleBadgeBtn) toggleBadgeBtn.classList.remove('active');
+
+      if (window.innerWidth <= 900) {
+        badgeContainer.classList.add('badge-closing');
+        setTimeout(() => {
+          badgeContainer.classList.remove('mobile-open', 'badge-closing');
+          badgeContainer.classList.add('hidden-badge');
+          isBadgeAnimating = false;
+        }, 260);
+      } else {
+        badgeContainer.classList.add('badge-retracting');
+        setTimeout(() => {
+          badgeContainer.classList.remove('badge-retracting');
+          badgeContainer.classList.add('hidden-badge');
+          isBadgeAnimating = false;
+        }, 400);
+      }
     }
 
     window.openBadge = openBadge;
@@ -7084,7 +7945,7 @@ $ git log --oneline -n 1
 
 $ ./check_metrics.sh
 Algorithms   : 700+ solved (446 Java, 443 Python, 40 SQL, 31 C++)
-LeetCode     : Knight Badge · Rating 1994 · Peak Global Rank #114
+LeetCode     : Knight Badge · Rating 2069 · Peak Global Rank #114
 Academic     : B.Tech in Artificial Intelligence and Data Science (CGPA 8.1)
 Availability : Open for Software Development & AI Agent Development
 `;
@@ -7327,16 +8188,15 @@ Availability : Open for Software Development & AI Agent Development
 
     const kadalvazhiCliResponse = `
 KadalVazhi (கடல் வழி): Maritime Microservices & AI Platform (2026)
-• Status: Under Active Development
-• Organization: https://github.com/orgs/kadal-vazhi/repositories
-• Architecture: Polyglot Microservices (Java 25 Spring Boot + Python FastAPI)
-• Event Backbone: Apache Kafka (Trip lifecycle, catch pre-orders, crew alerts)
+• Status: High-Performance Architecture & Active Development
+• Engineering: Polyglot Microservices (Java 25 Spring Boot + Python FastAPI)
+• Event Backbone: Apache Kafka (trip-events, catch-reported, crew-emergency)
 • Deep-Sea Offline Sync: SQLite local client syncs to PostgreSQL when entering 4G
-• Direct Catch Pre-Orders: Live dockside pre-booking eliminating middlemen
-• Voyage & Fuel Ledger: All-vessel tracking (Country craft to 15-day trawler) with subsidy balances
-• Emergency Crew Exchange: Real-time harbour crew shortage board
-• Voice AI: Tamil & Malayalam Whisper STT + LLM marine safety advisory
-• Cloud & DevOps: AWS EKS, RDS PostgreSQL (JSONB), Redis Cluster, Jenkins CI/CD
+• Direct Catch Pre-Orders: Live dockside pre-booking eliminating middlemen (15-25% margin boost)
+• Voyage & Fuel Ledger: All-vessel tracking with automated diesel subsidy ledger
+• Emergency Crew Exchange: Real-time harbour crew shortage board (80% delay reduction)
+• Voice AI: Tamil & Malayalam Faster-Whisper STT + LLM marine safety advisory
+• Polyglot Persistence: PostgreSQL, Redis Cluster, Vector DB (pgvector), AWS S3
 `;
 
     const cliResponses = {
@@ -7350,7 +8210,7 @@ Available Commands:
   whoami         Display identity, role, and competitive ranking
   skills         Print technical skills matrix
   projects       List featured engineering projects
-  kadalvazhi     Details on KadalVazhi LangGraph multi-agent architecture
+  kadalvazhi     Details on KadalVazhi distributed architecture and maritime platform
   experience     Production highlights at Vaken Technologies Pvt Ltd (Sovablu)
   knight         LeetCode Knight statistics and contest rankings
   resume         Trigger download of James_Nithil_Resume.pdf
@@ -7362,7 +8222,7 @@ Available Commands:
 James Nithil V
 Role: Junior Software Developer at Vaken Technologies Pvt Ltd (Product: Sovablu)
 Education: B.Tech in Artificial Intelligence and Data Science (CGPA: 8.1)
-Competitive Coding: LeetCode Knight (Contest Rating 1,994, Peak Global Rank #114 in WC 517, Rank #197 in WC 490)
+Competitive Coding: LeetCode Knight (Contest Rating 2,069, Peak Global Rank #114 in WC 517, Rank #197 in WC 490)
 Specialization: Java, Spring Boot, Distributed Systems, Redis, LangGraph, LLMs
 `,
       'skills': `
@@ -7375,9 +8235,9 @@ Technical Skills Matrix:
 `,
       'projects': `
 Featured Projects:
-1. KadalVazhi (2026): AI Fisherman Guidance System (LangGraph multi-agent, ChromaDB RAG, LSTM)
-   Repo: https://github.com/orgs/kadal-vazhi/repositories (Active Development)
-2. AI InterviewBot: Autonomous voice-based interview assistant (Gemini API, ElevenLabs)
+1. KadalVazhi (2026): Maritime Distributed Microservices & Voice AI (Java 25 Spring Boot, Python FastAPI, Kafka, Redis)
+   Focus: Zero Middlemen Fish Pre-Booking, Deep-Sea Offline Sync, Real-Time Emergency Crew Exchange
+2. James AI VoiceBot: Interactive personal voice assistant for recruiters to explore background and skills (Gemini API, ElevenLabs)
 3. SymptoMedAI: Disease diagnosis and doctor consultation system (FastAPI, Random Forest, MySQL)
 4. FarmVista: Smart agriculture advisory platform (SIH Hackathon Leader)
 `,
@@ -7409,9 +8269,9 @@ Featured Projects:
 `,
       'knight': `
 LeetCode Knight Badge:
-• Contest Rating: 1,994 (Knight Tier · Top 2.73% Worldwide)
-• Overall Global Ranking: 23,201 / 883,546
-• Attended Contests: 10 Official Contests
+• Contest Rating: 2,069 (Knight Tier · Top 1.83% Worldwide)
+• Overall Global Ranking: 15,558 / 886,096
+• Attended Contests: 11 Official Contests
 • Best Single Contest Rank: Weekly Contest 517 (Global Rank #114, Solved 4/4 Problems)
 • Other 4/4 Solves: Weekly Contest 490 (Rank #197), Weekly Contest 518 (Rank #393)
 • Total Solved: 700+ Problems
@@ -8160,7 +9020,7 @@ Contact Information:
         rating: '1,689 ↗',
         rank: '1,387',
         solved: '3 / 4 Solved',
-        delta: 'Initial Profile Rating · Top 2.73%'
+        delta: 'Initial Contest Rating · Baseline'
       },
       2: {
         name: 'Weekly Contest 490 (Feb 22, 2026)',
@@ -8220,10 +9080,17 @@ Contact Information:
       },
       10: {
         name: 'Weekly Contest 519 (Sep 13, 2026)',
-        rating: '1,994 ↗ (Official Peak)',
-        rank: '1,867 (Top 2.73% Global)',
+        rating: '1,994 ↗',
+        rank: '1,867',
         solved: '2 / 4 Solved',
-        delta: '+8 pts · All-Time Peak Rating'
+        delta: '+8 pts'
+      },
+      11: {
+        name: 'Weekly Contest 520 (Sep 20, 2026)',
+        rating: '2,069 ↗ (Official Peak)',
+        rank: '15,558 (Top 1.83% Global)',
+        solved: '3 / 4 Solved',
+        delta: '+75 pts · Crossed 2,000 Milestone'
       }
     };
 
@@ -8243,7 +9110,7 @@ Contact Information:
       if (solvedEl) solvedEl.textContent = data.solved;
       if (deltaEl) deltaEl.textContent = data.delta;
 
-      for (let i = 1; i <= 10; i++) {
+      for (let i = 1; i <= 11; i++) {
         const dot = document.getElementById(`dot-${i}`);
         if (dot) {
           if (i === id) dot.classList.add('active-dot');
@@ -8251,7 +9118,7 @@ Contact Information:
         }
       }
 
-      for (let i = 1; i <= 10; i++) {
+      for (let i = 1; i <= 11; i++) {
         const pill = document.getElementById(`pill-${i}`);
         if (pill) {
           if (i === id) pill.classList.add('active-pill');
@@ -8479,13 +9346,13 @@ Contact Information:
         branch: 'main',
         lane: 0,
         parentLanes: [0, 3],
-        tags: ['knight-1994'],
+        tags: ['knight-2069'],
         type: 'merge',
         message: 'merge: pull request #8 from feat/algorithms into main',
         date: 'Mar 2026',
         author: 'James Nithil V',
         email: 'jamnithil@gmail.com',
-        context: 'Merged competitive programming achievements and algorithmic solution repository. Verified LeetCode Knight badge (1,994 rating, top 2.73% worldwide).',
+        context: 'Merged competitive programming achievements and algorithmic solution repository. Verified LeetCode Knight badge (2,069 rating, top 1.83% worldwide).',
         files: [
           { name: 'leetcode/solutions/dynamic_programming/hard_problems.java', adds: 340, dels: 0 },
           { name: 'leetcode/solutions/graphs/network_flow.java', adds: 215, dels: 0 },
@@ -8563,7 +9430,7 @@ Contact Information:
         tags: ['sih-leader'],
         type: 'merge',
         message: 'merge: pull request #4 from feat/farmvista-sih into main',
-        date: 'Dec 2025',
+        date: 'Feb 2024',
         author: 'James Nithil V',
         email: 'jamnithil@gmail.com',
         context: 'Merged FarmVista smart agriculture project. Team Leader in Smart India Hackathon (SIH) Internal Hackathon.',
@@ -8584,7 +9451,7 @@ Contact Information:
         tags: ['sih-winner'],
         type: 'milestone',
         message: 'milestone(hackathon): Smart India Hackathon (SIH) Internal Hackathon Leader',
-        date: 'Nov 2025',
+        date: 'Feb 2024',
         author: 'James Nithil V',
         email: 'jamnithil@gmail.com',
         context: 'Led 6-member engineering team to design, prototype, and pitch FarmVista: AI-powered plant pathology diagnostic system with live moisture and NPK sensor telemetry.',
@@ -10084,8 +10951,8 @@ Contact Information:
 - Stack: Java 21, Spring Boot, PostgreSQL, AWS DynamoDB, Redis, AWS (ECS, Lambda, S3, CloudWatch), Jenkins CI/CD, Agentic AI, Python, Playwright.
 - Production Impact: Engineered high-throughput REST APIs in Java 21 with @Transactional ACID consistency; implemented dual-database strategy with PostgreSQL & DynamoDB cutting query latency by 65%; added Redis caching with TTL & cache stampede protection reducing DB load by 70%; built secure S3 Presigned URLs & RBAC; automated Jenkins CI/CD & ECS deployments; built Agentic AI workflows with multi-model routing saving 45% token cost.
 - Flagship Project: KadalVazhi (Maritime Microservices & AI Ecosystem). Microservices backend in Java 21, Kafka event streaming, SQLite deep-sea offline sync (12+ NM offshore with no cellular signal), automated mechanic dispatch, boat crew matchmaking, Tamil & Malayalam i18n voice IVR/SMS, Whisper voice AI transcription.
-- Problem Solving: LeetCode Knight Badge (Contest Rating 1,994, Peak Global Contest Rank #114 / 43,027+ contestants, top 2.73%). 700+ problems solved in Java and Python (Graphs, Trees, DP, Sliding Window, Two Pointers, Hash Maps, Linked Lists).
-- Other Projects: FarmVista (Smart agriculture with CNN plant disease detection, SIH Hackathon Leader), SymptoMedAI (Healthcare triage assistant), InterviewBot (AI technical mock interview platform).
+- Problem Solving: LeetCode Knight Badge (Contest Rating 2,069, Peak Global Contest Rank #114 / 43,027+ contestants, top 1.83%). 700+ problems solved in Java and Python (Graphs, Trees, DP, Sliding Window, Two Pointers, Hash Maps, Linked Lists).
+- Other Projects: FarmVista (Smart agriculture with CNN plant disease detection, SIH Hackathon Leader), SymptoMedAI (Healthcare triage assistant), James AI VoiceBot (Interactive voice assistant for recruiters to explore James's background without reading a static resume).
 - Education: B.Tech in Artificial Intelligence & Data Science, Knowledge Institute of Technology (KIOT), CGPA 8.1 / 10.
 - Contact: Email: jamnithil@gmail.com | Portfolio: https://jamesnithil.vercel.app | LinkedIn: linkedin.com/in/jamesnithil-v.
 Guidelines: Be natural, articulate, concise, and professional (under 130 words). Speak conversationally as James's portfolio assistant. Do NOT use any emojis or emoticons. Keep output completely emoji-free. Do NOT use buzzwords like 'ground-truth' or 'zero-hallucination'. Do NOT spam hyphen bullet points or multiple dashes. Format text cleanly and elegantly.`;
