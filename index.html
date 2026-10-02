@@ -11598,7 +11598,7 @@ Contact Information:
 - Other Projects: FarmVista (Smart agriculture with CNN plant disease detection, SIH Hackathon Leader), SymptoMedAI (Healthcare triage assistant), James AI VoiceBot (Interactive voice assistant for recruiters to explore James's background without reading a static resume).
 - Education: B.Tech in Artificial Intelligence and Data Science, Knowledge Institute of Technology (KIOT), CGPA 8.1 / 10.
 - Contact: Email: jamnithil@gmail.com | Portfolio: https://jamesnithil.vercel.app | LinkedIn: linkedin.com/in/jamesnithil-v.
-Guidelines: Be natural, articulate, concise, and professional (under 130 words). Speak conversationally as James's portfolio assistant. Do NOT use any emojis or emoticons. Keep output completely emoji-free. Do NOT use buzzwords like 'ground-truth' or 'zero-hallucination'. Do NOT spam hyphen bullet points or multiple dashes. Format text cleanly and elegantly.`;
+Guidelines: Speak for the ear with natural conversational pauses ("...", ",") like a real person talking aloud. If asked for unavailable info (like personal phone number), respond warmly with empathy ("Oh... sorry about that... James keeps his phone number private, but reach him at jamnithil@gmail.com"). Keep responses under 130 words. Completely emoji-free. No bullet points or markdown asterisks.`;
 
       // =========================================================================
       // Production Configuration
@@ -11640,11 +11640,11 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         if (LOCAL_DEV_CONFIG.enabled && LOCAL_DEV_CONFIG.groqApiKey) {
           let langDirective = '';
           if (currentAiLang === 'ta') {
-            langDirective = '\n\nPlease reply in natural, polite, and fluent TAMIL script. Keep technical terms, libraries, company names, and metrics in English (e.g., Java 21, Spring Boot, KadalVazhi, LeetCode Knight 2,069, PostgreSQL, Kafka, REST APIs). Keep responses under 130 words. Completely emoji-free.';
+            langDirective = '\n\nPlease reply in natural spoken TAMIL script with thinking pauses ("...", ","). If asked for unavailable info like phone number, respond warmly with empathy ("அச்சச்சோ... மன்னிக்கணும்..."). Keep technical terms in English. Keep responses under 130 words. Completely emoji-free.';
           } else if (currentAiLang === 'ml') {
-            langDirective = '\n\nPlease reply in natural, polite, and fluent MALAYALAM script. Keep technical terms, libraries, company names, and metrics in English (e.g., Java 21, Spring Boot, KadalVazhi, LeetCode Knight 2,069, PostgreSQL, Kafka). Keep responses under 130 words. Completely emoji-free.';
+            langDirective = '\n\nPlease reply in natural spoken MALAYALAM script with thinking pauses ("...", ","). If asked for unavailable info like phone number, respond warmly with empathy ("അയ്യോ... ക്ഷമിക്കണം..."). Keep technical terms in English. Keep responses under 130 words. Completely emoji-free.';
           } else {
-            langDirective = '\n\nPlease reply in concise, professional English. Completely emoji-free.';
+            langDirective = '\n\nPlease reply in natural, conversational, spoken English with realistic pauses ("...", ",") and warm tone. If info is unavailable (like phone number), respond warmly with empathy ("Oh... sorry about that..."). Completely emoji-free.';
           }
 
           const msgs = [{ role: 'system', content: JAMES_AI_DOSSIER + langDirective }];
