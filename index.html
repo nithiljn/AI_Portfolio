@@ -2573,17 +2573,21 @@
     
     .knight-spotlight-card {
       background: var(--bg-card);
-      border: 1px solid rgba(255, 161, 22, 0.22);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       padding: 28px;
       margin-bottom: 24px;
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(10px);
       transition: var(--transition-smooth);
     }
 
     .knight-spotlight-card:hover {
-      border-color: rgba(255, 161, 22, 0.38);
+      border-color: var(--border-accent);
+      background: var(--bg-card-hover);
+      box-shadow: 0 14px 34px -10px rgba(0, 0, 0, 0.4);
+      transform: translateY(-2px);
     }
 
     .knight-title {
@@ -2631,7 +2635,7 @@
 
     .leetcode-screenshot-wrap {
       background: var(--bg-terminal);
-      border: 1px solid rgba(255, 161, 22, 0.22);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       padding: 10px;
       max-width: 360px;
@@ -2642,7 +2646,7 @@
 
     .leetcode-screenshot-wrap:hover {
       transform: translateY(-2px);
-      border-color: rgba(255, 161, 22, 0.45);
+      border-color: var(--border-accent);
       box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.7);
     }
 
@@ -2848,8 +2852,8 @@
     }
 
     .contest-pill-btn.active-pill {
-      background: rgba(255, 161, 22, 0.12);
-      border-color: rgba(255, 161, 22, 0.4);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.22);
       color: #FFA116;
       font-weight: 600;
     }
@@ -6786,11 +6790,11 @@
                 <div class="knight-title">
                   <img src="assets/images/leetcode.svg" alt="LeetCode" width="24" height="24" style="vertical-align: middle; display: inline-block;" />
                   <span>LeetCode Knight Badge</span>
-                  <span style="font-size: 0.72rem; font-family: var(--font-code); font-weight: 600; background: rgba(255, 161, 22, 0.1); color: #FFA116; border: 1px solid rgba(255, 161, 22, 0.28); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; margin-left: 6px;">Top 1.83% Worldwide</span>
+                  <span style="font-size: 0.72rem; font-family: var(--font-code); font-weight: 600; background: rgba(255, 255, 255, 0.04); color: #FFA116; border: 1px solid rgba(255, 255, 255, 0.08); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; margin-left: 6px;">Top 1.83% Worldwide</span>
                 </div>
 
-                <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65; max-width: 820px; margin-bottom: 16px;">
-                  LeetCode Knight with an official <strong>Contest Rating of 2,069</strong>, placing in the <strong>Top 1.83% of competitive programmers worldwide</strong> (Global Rank 15,558 out of 886,000+ active coders). Demonstrated consistent top-tier competitive performance across official weekly contests, achieving a career-best <strong>Global Rank #114</strong> in Weekly Contest 517 (out of 43,000+ international participants), alongside high-tier finishes at <strong>Global Rank #197</strong> (Weekly Contest 490) and <strong>Global Rank #393</strong> (Weekly Contest 518).
+                <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6; max-width: 760px; margin-bottom: 14px;">
+                  LeetCode Knight with an official contest rating of <strong>2,069</strong>, ranking in the <strong>top 1.83% worldwide</strong>. Peak performances include <strong>Global Rank #114</strong> in Weekly Contest 517, alongside finishes at <strong>Rank #197</strong> and <strong>Rank #393</strong>.
                 </p>
 
                 <div class="knight-rank-metric">
@@ -6810,7 +6814,7 @@
                   <span style="background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.25); padding: 3px 9px; border-radius: 4px; color: #34d399;">
                     Best Contest Rank: <strong>#114</strong>
                   </span>
-                  <span style="background: rgba(255, 161, 22, 0.08); border: 1px solid rgba(255, 161, 22, 0.25); padding: 3px 9px; border-radius: 4px; color: #FFA116;">
+                  <span style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); padding: 3px 9px; border-radius: 4px; color: #FFA116;">
                     Knight Tier: <strong>Top 1.83%</strong>
                   </span>
                 </div>
@@ -6826,7 +6830,7 @@
             </div>
 
             <div class="problems-breakdown-grid">
-              <div class="problem-box" style="background: rgba(255, 161, 22, 0.05); border: 1px solid rgba(255, 161, 22, 0.28);">
+              <div class="problem-box">
                 <div class="problem-count" style="color: #FFA116;">700+</div>
                 <div class="problem-category" style="color: #FFA116; font-weight: 600;">Total Solved</div>
               </div>
@@ -6872,7 +6876,7 @@
                 </div>
               </div>
               <div style="display: flex; align-items: center; gap: 8px; font-family: var(--font-code); font-size: 0.8rem; flex-wrap: wrap;">
-                <span style="color: #FFA116; background: rgba(255, 161, 22, 0.08); border: 1px solid rgba(255, 161, 22, 0.25); padding: 4px 10px; border-radius: 12px; font-weight: 600;">
+                <span style="color: #FFA116; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); padding: 4px 10px; border-radius: 12px; font-weight: 600;">
                   Peak Rating: 2,069 (Top 1.83%)
                 </span>
                 <span style="color: #34d399; background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.25); padding: 4px 10px; border-radius: 12px; font-weight: 600;">
@@ -6928,9 +6932,9 @@
                 <text x="38" y="104" fill="#64748b" font-size="10" font-family="monospace" text-anchor="end">1,900</text>
 
                 
-                <line x1="45" y1="125" x2="745" y2="125" stroke="rgba(255, 161, 22, 0.35)" stroke-width="1" stroke-dasharray="4 4" />
-                <text x="38" y="129" fill="#FFA116" font-size="10" font-family="monospace" text-anchor="end" font-weight="600">1,850</text>
-                <text x="745" y="119" fill="#94a3b8" font-size="8.5" font-family="monospace" text-anchor="end"><tspan fill="#FFA116">★</tspan> KNIGHT THRESHOLD (1,850)</text>
+                <line x1="45" y1="125" x2="745" y2="125" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-dasharray="4 4" />
+                <text x="38" y="129" fill="#94a3b8" font-size="10" font-family="monospace" text-anchor="end" font-weight="600">1,850</text>
+                <text x="745" y="119" fill="#94a3b8" font-size="8.5" font-family="monospace" text-anchor="end">★ KNIGHT THRESHOLD (1,850)</text>
 
                 <line x1="45" y1="150" x2="745" y2="150" stroke="rgba(255, 255, 255, 0.05)" stroke-dasharray="3 3" />
                 <text x="38" y="154" fill="#64748b" font-size="10" font-family="monospace" text-anchor="end">1,800</text>
@@ -6955,7 +6959,7 @@
 
                 
                 <g transform="translate(620, 6)">
-                  <rect x="0" y="0" width="118" height="24" rx="12" fill="rgba(10, 15, 26, 0.95)" stroke="rgba(255, 161, 22, 0.55)" stroke-width="1.2" />
+                  <rect x="0" y="0" width="118" height="24" rx="12" fill="rgba(10, 15, 26, 0.95)" stroke="rgba(255, 255, 255, 0.18)" stroke-width="1.2" />
                   <text x="59" y="16" fill="#f8fafc" font-size="9.5" font-family="monospace" font-weight="600" text-anchor="middle"><tspan fill="#FFA116" font-weight="700">★</tspan> PEAK <tspan fill="#FFA116" font-weight="700">2,069</tspan></text>
                 </g>
 
@@ -7108,7 +7112,7 @@
               <i data-lucide="git-merge" style="width: 18px; height: 18px; color: var(--accent-blue); vertical-align: middle;"></i> Core Algorithmic Domains Mastered
             </h3>
             <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
-              Extensive problem-solving depth in Java covering core computer science algorithms:
+              Extensive algorithmic problem solving depth in Java covering core computer science concepts:
             </p>
 
             <div class="tech-pill-list" style="margin-top: 12px;">
@@ -7127,10 +7131,10 @@
           
           <div class="project-card-modern">
             <h3 style="color: var(--text-primary); font-size: 1.15rem; margin-top: 0; margin-bottom: 10px;">
-              <i data-lucide="award" style="width: 18px; height: 18px; color: var(--accent-green); vertical-align: middle;"></i> Smart India Hackathon (SIH) — Team Leader
+              <i data-lucide="award" style="width: 18px; height: 18px; color: var(--accent-green); vertical-align: middle;"></i> Smart India Hackathon (SIH) | Team Leader
             </h3>
             <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">
-              Led a 5-member engineering team to design and build <strong>FarmVista</strong>, an AI precision agriculture platform integrating deep learning computer vision for automated crop disease diagnosis, soil moisture telemetry, and advisory workflows. Coordinated system architecture, machine learning pipelines, REST API integrations, and pitch presentations.
+              Led a 5 member engineering team to design and build <strong>FarmVista</strong>, an AI precision agriculture platform integrating deep learning computer vision for automated crop disease diagnosis, soil moisture telemetry, and advisory workflows. Coordinated system architecture, machine learning pipelines, REST API integrations, and pitch presentations.
             </p>
           </div>
 
