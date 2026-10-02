@@ -2357,12 +2357,13 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      letter-spacing: -0.01em;
     }
 
     .skill-items-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
     }
 
     .skill-chip {
@@ -2387,6 +2388,186 @@
 
     .skill-chip i {
       font-size: 1.1rem;
+    }
+
+    .skill-chip-interactive {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 6px 11px;
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+      text-decoration: none;
+    }
+
+    .skill-chip-interactive:hover {
+      border-color: rgba(56, 189, 248, 0.45);
+      background: rgba(56, 189, 248, 0.06);
+      color: var(--text-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }
+
+    .skill-chip-interactive:focus-visible {
+      outline: 2px solid var(--accent-blue);
+      outline-offset: 2px;
+    }
+
+    .skill-chip-interactive:active {
+      transform: translateY(0);
+    }
+
+    .skill-chip-interactive i.devicon,
+    .skill-chip-interactive i[class*="devicon-"] {
+      font-size: 1.05rem;
+    }
+
+    .skill-applied-tag {
+      font-size: 0.68rem;
+      font-family: var(--font-code);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      padding: 1px 6px;
+      letter-spacing: 0.02em;
+      transition: var(--transition-smooth);
+    }
+
+    .skill-chip-interactive:hover .skill-applied-tag {
+      background: rgba(56, 189, 248, 0.12);
+      color: #7dd3fc;
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .skill-jump-icon {
+      width: 12px;
+      height: 12px;
+      color: var(--text-muted);
+      opacity: 0.5;
+      transition: var(--transition-smooth);
+      flex-shrink: 0;
+    }
+
+    .skill-chip-interactive:hover .skill-jump-icon {
+      color: #38bdf8;
+      opacity: 1;
+      transform: translate(1px, -1px);
+    }
+
+    /* Floating Tooltip for Skills Matrix */
+    .skill-floating-tooltip {
+      position: fixed;
+      z-index: 99999;
+      pointer-events: none;
+      background: #0d1117;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 8px;
+      padding: 10px 14px;
+      width: 320px;
+      max-width: 90vw;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.12);
+      backdrop-filter: blur(8px);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      opacity: 0;
+      transform: translateY(4px);
+    }
+
+    .skill-floating-tooltip.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .skill-tooltip-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .skill-tooltip-name {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #f0f6fc;
+      font-family: var(--font-code);
+    }
+
+    .skill-tooltip-badge {
+      font-size: 0.65rem;
+      font-family: var(--font-code);
+      font-weight: 600;
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 1px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .skill-tooltip-body {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      line-height: 1.45;
+      margin-bottom: 6px;
+    }
+
+    .skill-tooltip-footer {
+      font-size: 0.7rem;
+      font-family: var(--font-code);
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    body.light-theme .skill-floating-tooltip {
+      background: #ffffff;
+      border-color: rgba(9, 105, 218, 0.3);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    body.light-theme .skill-tooltip-name {
+      color: #1f2328;
+    }
+
+    body.light-theme .skill-tooltip-body {
+      color: #475569;
+    }
+
+    body.light-theme .skill-applied-tag {
+      background: rgba(0, 0, 0, 0.05);
+      color: #64748b;
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+
+    @keyframes card-highlight-pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.8);
+        border-color: #38bdf8 !important;
+      }
+      50% {
+        box-shadow: 0 0 28px 6px rgba(56, 189, 248, 0.5);
+        border-color: #38bdf8 !important;
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+      }
+    }
+
+    .highlight-pulse {
+      animation: card-highlight-pulse 2.2s ease-in-out;
+      border-color: #38bdf8 !important;
     }
 
     
@@ -5502,7 +5683,7 @@
           </div>
 
           
-          <div class="project-card-modern">
+          <div class="project-card-modern" id="project-kadalvazhi">
             <div class="project-header">
               <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
                 <h2 class="project-name" style="margin: 0;">
@@ -5926,7 +6107,7 @@
           </div>
 
           
-          <div class="project-card-modern">
+          <div class="project-card-modern" id="project-interviewbot">
             <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-interviewbot.jpg', 'James Nithil Personal AI Assistant: Interactive Voice Interface')" title="Click to view preview in high resolution">
               <img src="assets/images/project-interviewbot.jpg" alt="James Nithil Personal AI Assistant Web Interface" class="project-thumb-img" loading="lazy">
               <div class="thumb-expand-btn">
@@ -5981,7 +6162,7 @@
           </div>
 
           
-          <div class="project-card-modern">
+          <div class="project-card-modern" id="project-symptomedai">
             <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-symptomedai.jpg', 'SymptoMedAI: Disease Prediction Platform')" title="Click to view preview in high resolution">
               <img src="assets/images/project-symptomedai.jpg" alt="SymptoMedAI Disease Prediction Platform" class="project-thumb-img" loading="lazy">
               <div class="thumb-expand-btn">
@@ -6034,7 +6215,7 @@
           </div>
 
           
-          <div class="project-card-modern">
+          <div class="project-card-modern" id="project-farmvista">
             <div class="project-header">
               <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
                 <h2 class="project-name" style="margin: 0;">
@@ -6099,7 +6280,7 @@
             
             <div class="timeline-node">
               <div class="timeline-dot"></div>
-              <div class="experience-card">
+              <div class="experience-card" id="exp-vaken">
                 
                 <div class="company-brand-header">
                   <div class="company-brand-left">
@@ -6203,7 +6384,7 @@
             
             <div class="timeline-node">
               <div class="timeline-dot"></div>
-              <div class="experience-card">
+              <div class="experience-card" id="exp-spreadtech">
                 <div class="exp-top-row">
                   <div class="company-brand">
                     <img src="assets/images/spreadTech.png" alt="SpreadTech Solutions Logo" class="company-logo-img" style="background: #ffffff; padding: 2px;" onerror="this.src='https://github.com/nithiljn/AI_Portfolio/raw/main/assets/images/spreadTech.png'">
@@ -6250,7 +6431,7 @@
             
             <div class="timeline-node">
               <div class="timeline-dot"></div>
-              <div class="experience-card">
+              <div class="experience-card" id="exp-kiot">
                 <div class="exp-top-row">
                   <div class="company-brand">
                     <img src="assets/images/KIOT.jpeg" alt="Knowledge Institute of Technology Logo" class="company-logo-img" style="background: #ffffff; padding: 2px;" onerror="this.src='https://github.com/nithiljn/AI_Portfolio/raw/main/assets/images/KIOT.jpeg'">
@@ -6329,173 +6510,263 @@
 
           <div class="section-headline">
             <div class="section-title">
-              <i data-lucide="cpu" style="color: var(--accent-pink);"></i>
               <span>Technical Skills Matrix</span>
             </div>
             <span style="font-family: var(--font-code); font-size: 0.8rem; color: var(--text-muted);">
-              Extracted from Resume · Production & System Level
+              Applied Engineering Matrix · Click any skill to jump directly to its production application
             </span>
           </div>
 
-          
           <div class="skills-filter-bar">
             <button class="filter-btn active" onclick="filterSkills('all', this)">All Categories</button>
-            <button class="filter-btn" onclick="filterSkills('backend', this)">Backend & Systems</button>
-            <button class="filter-btn" onclick="filterSkills('aiml', this)">AI & Machine Learning</button>
-            <button class="filter-btn" onclick="filterSkills('database', this)">Databases & Caching</button>
-            <button class="filter-btn" onclick="filterSkills('cloud', this)">Cloud & DevOps</button>
+            <button class="filter-btn" onclick="filterSkills('backend', this)">Backend &amp; Systems</button>
+            <button class="filter-btn" onclick="filterSkills('database', this)">Databases &amp; Caching</button>
+            <button class="filter-btn" onclick="filterSkills('aiml', this)">AI &amp; Machine Learning</button>
+            <button class="filter-btn" onclick="filterSkills('cloud', this)">Cloud &amp; DevOps</button>
             <button class="filter-btn" onclick="filterSkills('languages', this)">Languages</button>
+            <button class="filter-btn" onclick="filterSkills('academics', this)">Algorithms &amp; Academics</button>
           </div>
 
           <div class="skills-category-grid" id="skills-matrix">
 
-            
+            <!-- Languages -->
             <div class="skill-cat-card" data-category="languages">
-              <h3 class="skill-cat-title">
-                <i class="devicon-code-plain" style="color: var(--accent-blue);"></i> Languages
-              </h3>
+              <h3 class="skill-cat-title">Languages</h3>
               <div class="skill-items-container">
-                <div class="skill-chip">
-                  <i class="devicon-java-plain" style="color: #ea580c;"></i> Java (Spring Boot / DSA)
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-projects', 'project-kadalvazhi')" data-skill="Java (Core &amp; 21/25)" data-applied="Vaken · KadalVazhi · LeetCode" data-problem="Engineered core backend microservices, ACID transaction boundaries, and solved 440+ LeetCode algorithmic problems." title="Applied in Vaken & KadalVazhi: Engineered core backend microservices and ACID transactions. Click to view project.">
+                  <i class="devicon-java-plain" style="color: #ea580c;"></i>
+                  <span>Java (Core &amp; 21/25)</span>
+                  <span class="skill-applied-tag">KadalVazhi · Vaken</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <img src="assets/images/python.svg" alt="Python" width="15" height="15" style="vertical-align: middle; display: inline-block;" /> Python (AI / FastAPI / LangGraph)
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-projects', 'project-farmvista')" data-skill="Python" data-applied="FarmVista · SpreadTech · FastAPI" data-problem="Developed machine learning regression pipelines, PyTorch computer vision models, and asynchronous AI APIs." title="Applied in FarmVista & SpreadTech: Developed ML regression pipelines and PyTorch computer vision models. Click to view project.">
+                  <img src="assets/images/python.svg" alt="Python" width="15" height="15" style="vertical-align: middle; display: inline-block;" />
+                  <span>Python</span>
+                  <span class="skill-applied-tag">FarmVista · SpreadTech</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i class="devicon-postgresql-plain" style="color: #0284c7;"></i> SQL (PostgreSQL & MySQL)
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-vaken')" data-skill="SQL (PostgreSQL &amp; MySQL)" data-applied="Vaken · KadalVazhi · KIOT" data-problem="Designed relational schemas, implemented composite indexing strategies, and optimized multi-table query latency." title="Applied in Vaken & KadalVazhi: Designed relational schemas and optimized multi-table query latency. Click to view experience.">
+                  <i class="devicon-postgresql-plain" style="color: #3b82f6;"></i>
+                  <span>SQL (PostgreSQL &amp; MySQL)</span>
+                  <span class="skill-applied-tag">Vaken · KadalVazhi</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i class="devicon-javascript-plain" style="color: #facc15;"></i> JavaScript (Vue.js / ES6)
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-projects', 'project-interviewbot')" data-skill="JavaScript (ES6+)" data-applied="James AI VoiceBot" data-problem="Handled Web Speech audio streams, dynamic asynchronous state updates, and interactive DOM rendering." title="Applied in James AI VoiceBot: Handled Web Speech audio streams and real-time DOM rendering. Click to view project.">
+                  <i class="devicon-javascript-plain" style="color: #facc15;"></i>
+                  <span>JavaScript (ES6+)</span>
+                  <span class="skill-applied-tag">James AI VoiceBot</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
+                </div>
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-kiot')" data-skill="C++" data-applied="Academics &amp; DSA (KIOT)" data-problem="Studied core memory management, pointer manipulation, and foundational algorithmic problem solving during college." title="Applied in Academics (KIOT): Studied memory management, pointers, and foundational data structures. Click to view education.">
+                  <i class="devicon-cplusplus-plain" style="color: #0284c7;"></i>
+                  <span>C++</span>
+                  <span class="skill-applied-tag">Academics · KIOT</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
               </div>
             </div>
 
-            
+            <!-- Backend & Systems Architecture -->
             <div class="skill-cat-card" data-category="backend">
-              <h3 class="skill-cat-title">
-                <i class="devicon-spring-plain" style="color: #4ade80;"></i> Backend Engineering
-              </h3>
+              <h3 class="skill-cat-title">Backend &amp; Systems Architecture</h3>
               <div class="skill-items-container">
-                <div class="skill-chip">
-                  <i class="devicon-spring-plain" style="color: #4ade80;"></i> Spring Boot
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-vaken')" data-skill="Spring Boot" data-applied="Vaken Technologies · Sovablu" data-problem="Engineered enterprise RESTful microservices, dependency injection, and production API controllers." title="Applied in Vaken Technologies: Engineered enterprise RESTful microservices and production API controllers. Click to view experience.">
+                  <i class="devicon-spring-plain" style="color: #4ade80;"></i>
+                  <span>Spring Boot</span>
+                  <span class="skill-applied-tag">Vaken · KadalVazhi</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i class="devicon-fastapi-plain" style="color: #06b6d4;"></i> FastAPI
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-projects', 'project-kadalvazhi')" data-skill="Apache Kafka" data-applied="KadalVazhi Platform" data-problem="Engineered event streaming partitioned by Harbour ID to ingest high-throughput vessel telemetry and catch listings (10,000+ msgs/s)." title="Applied in KadalVazhi: Engineered partitioned Kafka event streaming handling 10,000+ msgs/s. Click to view project.">
+                  <i class="devicon-apachekafka-original" style="color: #f59e0b;"></i>
+                  <span>Apache Kafka</span>
+                  <span class="skill-applied-tag">KadalVazhi</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i data-lucide="network" style="width: 16px; height: 16px; color: var(--accent-blue);"></i> Production REST APIs
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-projects', 'project-symptomedai')" data-skill="FastAPI" data-applied="SymptoMedAI · KadalVazhi" data-problem="Built asynchronous Python REST services with sub-50ms inference response times for clinical diagnosis and voice advisory." title="Applied in SymptoMedAI: Built asynchronous Python REST services with sub-50ms inference latency. Click to view project.">
+                  <i class="devicon-fastapi-plain" style="color: #06b6d4;"></i>
+                  <span>FastAPI</span>
+                  <span class="skill-applied-tag">SymptoMedAI</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i data-lucide="shield-check" style="width: 16px; height: 16px; color: var(--accent-green);"></i> Rate Limiting
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-projects', 'project-kadalvazhi')" data-skill="Offline SQLite Sync" data-applied="KadalVazhi Platform" data-problem="Engineered embedded SQLite in WAL mode for uninterrupted voyage logging during 7 to 15 day deep sea cellular blackouts with idempotent 4G sync." title="Applied in KadalVazhi: Resilient embedded SQLite sync for deep sea cellular blackouts. Click to view project.">
+                  <i class="devicon-sqlite-plain" style="color: #38bdf8;"></i>
+                  <span>Offline SQLite Sync (WAL)</span>
+                  <span class="skill-applied-tag">KadalVazhi</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i data-lucide="box" style="width: 16px; height: 16px; color: var(--accent-purple);"></i> Singleton Pattern
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-vaken')" data-skill="Spring Transactions &amp; ACID" data-applied="Vaken Technologies" data-problem="Enforced strict @Transactional boundaries and isolation levels across mutation workflows to eliminate data inconsistencies." title="Applied in Vaken: Enforced strict @Transactional boundaries across critical mutation workflows. Click to view experience.">
+                  <i data-lucide="shield-check" style="width: 15px; height: 15px; color: #34d399;"></i>
+                  <span>Spring Transactions &amp; ACID</span>
+                  <span class="skill-applied-tag">Vaken</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i data-lucide="layout" style="width: 16px; height: 16px; color: var(--accent-yellow);"></i> Vue.js (Frontend UI)
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-projects', 'project-kadalvazhi')" data-skill="Distributed Systems &amp; CAP" data-applied="KadalVazhi · KIOT" data-problem="Architected AP availability at sea during total network disconnection, and CP consistency for harbour preorders and auctions." title="Applied in KadalVazhi: Architected AP availability at sea and CP consistency at harbour. Click to view project.">
+                  <i data-lucide="network" style="width: 15px; height: 15px; color: #38bdf8;"></i>
+                  <span>Distributed Systems &amp; CAP</span>
+                  <span class="skill-applied-tag">KadalVazhi</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
               </div>
             </div>
 
-            
-            <div class="skill-cat-card" data-category="backend">
-              <h3 class="skill-cat-title">
-                <i data-lucide="server" style="color: var(--accent-purple);"></i> Systems & Architecture
-              </h3>
-              <div class="skill-items-container">
-                <div class="skill-chip">
-                  <i data-lucide="share-2" style="width: 16px; height: 16px;"></i> Distributed Systems
-                </div>
-                <div class="skill-chip">
-                  <i data-lucide="zap" style="width: 16px; height: 16px; color: #facc15;"></i> Caching Strategies (LRU)
-                </div>
-                <div class="skill-chip">
-                  <i data-lucide="layers" style="width: 16px; height: 16px;"></i> High-Availability Workflows
-                </div>
-                <div class="skill-chip">
-                  <i data-lucide="link-2" style="width: 16px; height: 16px;"></i> API Integration & Webhooks
-                </div>
-                <div class="skill-chip">
-                  <i data-lucide="compass" style="width: 16px; height: 16px;"></i> System Design
-                </div>
-              </div>
-            </div>
-
-            
+            <!-- Databases & Caching -->
             <div class="skill-cat-card" data-category="database">
-              <h3 class="skill-cat-title">
-                <i class="devicon-redis-plain" style="color: #ef4444;"></i> Databases & Caching
-              </h3>
+              <h3 class="skill-cat-title">Databases &amp; Caching</h3>
               <div class="skill-items-container">
-                <div class="skill-chip">
-                  <i class="devicon-redis-plain" style="color: #ef4444;"></i> Redis (Hotspot Caching)
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-vaken')" data-skill="PostgreSQL" data-applied="Vaken · KadalVazhi" data-problem="Designed relational schemas, implemented composite indexes, and eliminated full row scans to minimize database I/O." title="Applied in Vaken & KadalVazhi: Designed relational schemas and composite indexes eliminating row scans. Click to view experience.">
+                  <i class="devicon-postgresql-plain" style="color: #3b82f6;"></i>
+                  <span>PostgreSQL</span>
+                  <span class="skill-applied-tag">Vaken · KadalVazhi</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i class="devicon-postgresql-plain" style="color: #3b82f6;"></i> PostgreSQL
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-vaken')" data-skill="Redis (Hotspot Caching)" data-applied="Vaken · KadalVazhi" data-problem="Implemented in memory caching with TTL expiration and mutex locks to eliminate cache stampedes and cut database load by 70%." title="Applied in Vaken & KadalVazhi: Implemented TTL caching and mutex locks, cutting DB load by 70%. Click to view experience.">
+                  <i class="devicon-redis-plain" style="color: #ef4444;"></i>
+                  <span>Redis (Hotspot Caching)</span>
+                  <span class="skill-applied-tag">Vaken · KadalVazhi</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i class="devicon-mysql-plain" style="color: #0284c7;"></i> MySQL
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-vaken')" data-skill="Amazon DynamoDB" data-applied="Vaken Technologies" data-problem="Architected a hybrid persistence layer pairing DynamoDB with PostgreSQL for ultra fast, low latency key value document reads." title="Applied in Vaken: Paired DynamoDB with PostgreSQL for fast key-value document reads. Click to view experience.">
+                  <i class="devicon-amazonwebservices-plain-wordmark" style="color: #f59e0b;"></i>
+                  <span>Amazon DynamoDB</span>
+                  <span class="skill-applied-tag">Vaken</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i data-lucide="database" style="width: 16px; height: 16px; color: #f59e0b;"></i> DynamoDB (NoSQL)
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-projects', 'project-symptomedai')" data-skill="MySQL Database" data-applied="SymptoMedAI · KIOT" data-problem="Structured normalized clinical schemas and managed transactional appointment bookings with verified IBM Database certification." title="Applied in SymptoMedAI: Structured normalized clinical schemas and transactional booking queries. Click to view project.">
+                  <i class="devicon-mysql-plain" style="color: #0284c7;"></i>
+                  <span>MySQL Database</span>
+                  <span class="skill-applied-tag">SymptoMedAI · KIOT</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i data-lucide="database" style="width: 16px; height: 16px; color: var(--accent-green);"></i> ChromaDB (Vector Store)
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-projects', 'project-kadalvazhi')" data-skill="SQLite (WAL Mode)" data-applied="KadalVazhi Platform" data-problem="Deployed embedded database on marine client tablets with Write Ahead Logging for crash resilience in turbulent offshore conditions." title="Applied in KadalVazhi: Embedded SQLite with WAL mode for crash-proof voyage logging at sea. Click to view project.">
+                  <i class="devicon-sqlite-plain" style="color: #38bdf8;"></i>
+                  <span>SQLite (Embedded)</span>
+                  <span class="skill-applied-tag">KadalVazhi</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
               </div>
             </div>
 
-            
+            <!-- Applied AI & Machine Learning -->
             <div class="skill-cat-card" data-category="aiml">
-              <h3 class="skill-cat-title">
-                <i data-lucide="brain" style="color: var(--accent-pink);"></i> AI & Machine Learning
-              </h3>
+              <h3 class="skill-cat-title">Applied AI &amp; Machine Learning</h3>
               <div class="skill-items-container">
-                <div class="skill-chip">
-                  <i data-lucide="bot" style="width: 16px; height: 16px; color: var(--accent-blue);"></i> LangGraph (Multi-Agent)
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-vaken')" data-skill="Agentic AI &amp; Modular Skills" data-applied="Vaken Technologies" data-problem="Built autonomous agent execution loops, modular reusable skills, and task workflows to automate complex enterprise platform tasks." title="Applied in Vaken: Built autonomous agent execution loops and reusable modular skills. Click to view experience.">
+                  <i data-lucide="bot" style="width: 15px; height: 15px; color: #38bdf8;"></i>
+                  <span>Agentic AI &amp; Skills</span>
+                  <span class="skill-applied-tag">Vaken</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i data-lucide="sparkles" style="width: 16px; height: 16px; color: var(--accent-yellow);"></i> LLMs & Bedrock
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-vaken')" data-skill="MCP (Model Context Protocol)" data-applied="Vaken Technologies" data-problem="Equipped AI agents with standardized external tool interfaces, schema validation, and secure function calling mechanisms." title="Applied in Vaken: Equipped AI agents with standardized MCP tool interfaces and secure calling. Click to view experience.">
+                  <i data-lucide="cpu" style="width: 15px; height: 15px; color: #a855f7;"></i>
+                  <span>MCP Tools Integration</span>
+                  <span class="skill-applied-tag">Vaken</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i data-lucide="search" style="width: 16px; height: 16px; color: var(--accent-green);"></i> RAG (Retrieval-Augmented)
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-projects', 'project-kadalvazhi')" data-skill="Dynamic Model Routing" data-applied="Vaken · KadalVazhi" data-problem="Reduced LLM inference costs by 45% by routing routine operations to lightweight models and reserving complex reasoning for advanced LLMs." title="Applied in Vaken & KadalVazhi: Reduced LLM inference costs by 45% via dynamic model routing. Click to view project.">
+                  <i data-lucide="route" style="width: 15px; height: 15px; color: #f59e0b;"></i>
+                  <span>Dynamic Model Routing</span>
+                  <span class="skill-applied-tag">KadalVazhi · Vaken</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i data-lucide="activity" style="width: 16px; height: 16px; color: var(--accent-purple);"></i> LangSmith (Agent Evaluation)
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-projects', 'project-kadalvazhi')" data-skill="Whisper Voice Engine" data-applied="KadalVazhi Platform" data-problem="Integrated hands free speech recognition tuned for coastal Tamil and Malayalam dialects for at sea voice navigation and mentoring." title="Applied in KadalVazhi: Hands free speech recognition in coastal Tamil and Malayalam dialects. Click to view project.">
+                  <i data-lucide="mic" style="width: 15px; height: 15px; color: #34d399;"></i>
+                  <span>Whisper Voice Engine</span>
+                  <span class="skill-applied-tag">KadalVazhi</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i data-lucide="scan" style="width: 16px; height: 16px;"></i> PaddleOCR & VLMs
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-projects', 'project-farmvista')" data-skill="PyTorch &amp; Computer Vision" data-applied="FarmVista (SIH Hackathon)" data-problem="Trained Convolutional Neural Networks (CNNs) in PyTorch to automate crop leaf disease identification from camera imagery." title="Applied in FarmVista: Trained PyTorch CNN models for automated crop disease diagnosis. Click to view project.">
+                  <i class="devicon-pytorch-plain" style="color: #ea580c;"></i>
+                  <span>PyTorch &amp; CNNs</span>
+                  <span class="skill-applied-tag">FarmVista</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i data-lucide="trending-up" style="width: 16px; height: 16px;"></i> LSTM Time-Series Models
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-spreadtech')" data-skill="Scikit Learn &amp; ML Regression" data-applied="SpreadTech Solutions" data-problem="Engineered multivariate regression, cross validation (RMSE &amp; R2), and TF-IDF NLP classification for real estate and spam detection." title="Applied in SpreadTech: Built multivariate regression pipelines and TF-IDF classification models. Click to view experience.">
+                  <i data-lucide="trending-up" style="width: 15px; height: 15px; color: #60a5fa;"></i>
+                  <span>Scikit Learn &amp; ML</span>
+                  <span class="skill-applied-tag">SpreadTech</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i class="devicon-pytorch-plain" style="color: #ea580c;"></i> Transformers & PyTorch
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-projects', 'project-interviewbot')" data-skill="Gemini API &amp; Web Speech" data-applied="James AI VoiceBot" data-problem="Integrated Google Gemini API with conversational prompt engineering and voice synthesis for recruiter question answering." title="Applied in James AI VoiceBot: Integrated Gemini API and voice synthesis for real-time interview Q&A. Click to view project.">
+                  <i data-lucide="sparkles" style="width: 15px; height: 15px; color: #fbbf24;"></i>
+                  <span>Gemini API &amp; Speech</span>
+                  <span class="skill-applied-tag">James AI VoiceBot</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
               </div>
             </div>
 
-            
+            <!-- Cloud & DevOps -->
             <div class="skill-cat-card" data-category="cloud">
-              <h3 class="skill-cat-title">
-                <i class="devicon-amazonwebservices-plain-wordmark" style="color: #f59e0b;"></i> Cloud & DevOps
-              </h3>
+              <h3 class="skill-cat-title">Cloud &amp; DevOps</h3>
               <div class="skill-items-container">
-                <div class="skill-chip">
-                  <i class="devicon-amazonwebservices-plain-wordmark" style="color: #f59e0b;"></i> AWS (EC2, S3, Lambda, Bedrock)
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-vaken')" data-skill="Jenkins CI/CD Automation" data-applied="Vaken Technologies" data-problem="Standardized automated Java compilation, testing, packaging, and container deployment pipelines to Amazon ECS." title="Applied in Vaken: Standardized automated Java builds, testing, and ECS container deployments. Click to view experience.">
+                  <i class="devicon-jenkins-plain" style="color: #ef4444;"></i>
+                  <span>Jenkins CI/CD</span>
+                  <span class="skill-applied-tag">Vaken</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i class="devicon-jenkins-plain" style="color: #ef4444;"></i> Jenkins CI/CD Pipelines
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-vaken')" data-skill="Docker &amp; Containers" data-applied="Vaken · Production" data-problem="Created multi-stage Docker container builds for lightweight, reproducible microservices execution across environments." title="Applied in Vaken: Built multi-stage Docker images for reproducible production runtimes. Click to view experience.">
+                  <i class="devicon-docker-plain" style="color: #0284c7;"></i>
+                  <span>Docker Containers</span>
+                  <span class="skill-applied-tag">Vaken</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i class="devicon-docker-plain" style="color: #0284c7;"></i> Docker
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-vaken')" data-skill="Amazon S3 &amp; Presigned URLs" data-applied="Vaken Technologies" data-problem="Secured file and document storage using S3 with expiring presigned access links and role based access control (RBAC)." title="Applied in Vaken: Secured document storage with expiring presigned URLs and RBAC. Click to view experience.">
+                  <i class="devicon-amazonwebservices-plain-wordmark" style="color: #f59e0b;"></i>
+                  <span>Amazon S3 &amp; Presigned URLs</span>
+                  <span class="skill-applied-tag">Vaken</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
-                <div class="skill-chip">
-                  <i class="devicon-githubactions-plain" style="color: #38bdf8;"></i> GitHub Actions & CodeCommit
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-vaken')" data-skill="AWS Lambda &amp; ECS" data-applied="Vaken Technologies" data-problem="Managed containerized application instances on ECS and deployed event driven serverless Lambda functions for batch processing." title="Applied in Vaken: Managed ECS containerized services and serverless Lambda scheduled tasks. Click to view experience.">
+                  <i data-lucide="server" style="width: 15px; height: 15px; color: #a855f7;"></i>
+                  <span>AWS (ECS, Lambda, CloudWatch)</span>
+                  <span class="skill-applied-tag">Vaken</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
+                </div>
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-vaken')" data-skill="Git &amp; Version Control" data-applied="All Projects &amp; Work" data-problem="Managed feature branching, pull request reviews, and structured commit workflows across enterprise and open source repositories." title="Applied in All Projects: Managed branching, pull requests, and clean commit history. Click to view experience.">
+                  <i class="devicon-git-plain" style="color: #f97316;"></i>
+                  <span>Git Version Control</span>
+                  <span class="skill-applied-tag">Production</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
                 </div>
               </div>
             </div>
 
+            <!-- Algorithms & Academic Foundations -->
+            <div class="skill-cat-card" data-category="academics">
+              <h3 class="skill-cat-title">Algorithms &amp; Academic Foundations</h3>
+              <div class="skill-items-container">
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-achievements', 'achievement-leetcode')" data-skill="Data Structures &amp; Algorithms" data-applied="LeetCode Knight (Rating 2,069)" data-problem="Solved 700+ problems in Java and Python spanning Graphs, Trees, Dynamic Programming, Sliding Window, and Two Pointers." title="Applied in LeetCode Knight: Solved 700+ problems in Java & Python with 2,069 contest rating. Click to view achievements.">
+                  <img src="assets/images/leetcode.svg" alt="LeetCode" width="15" height="15" style="vertical-align: middle; display: inline-block;" />
+                  <span>DSA (Trees, Graphs, DP)</span>
+                  <span class="skill-applied-tag">LeetCode Knight (2069)</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
+                </div>
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-kiot')" data-skill="Database Management Systems (DBMS)" data-applied="Knowledge Institute of Technology (KIOT)" data-problem="Studied relational database design, normalization (1NF through BCNF), and transactional concurrency control in B.Tech coursework." title="Applied in KIOT (B.Tech): Studied relational database normalization, transactions, and concurrency control. Click to view education.">
+                  <i data-lucide="database" style="width: 15px; height: 15px; color: #38bdf8;"></i>
+                  <span>DBMS &amp; Relational Theory</span>
+                  <span class="skill-applied-tag">KIOT (CGPA 8.1)</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
+                </div>
+                <div class="skill-chip-interactive" onclick="navigateToSkill('tab-experience', 'exp-kiot')" data-skill="Operating Systems &amp; Networks" data-applied="Knowledge Institute of Technology (KIOT)" data-problem="Acquired strong academic foundations in process concurrency, thread scheduling, memory virtualization, and TCP/IP networking." title="Applied in KIOT (B.Tech): Strong theoretical foundations in concurrency, threading, and TCP/IP networking. Click to view education.">
+                  <i data-lucide="cpu" style="width: 15px; height: 15px; color: #a855f7;"></i>
+                  <span>Operating Systems &amp; Networks</span>
+                  <span class="skill-applied-tag">KIOT Academics</span>
+                  <i data-lucide="arrow-up-right" class="skill-jump-icon"></i>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Global Floating Tooltip Element for Skills Matrix -->
+          <div id="skill-floating-tooltip" class="skill-floating-tooltip" style="display: none;">
+            <div class="skill-tooltip-header">
+              <span class="skill-tooltip-name" id="st-name"></span>
+              <span class="skill-tooltip-badge" id="st-applied"></span>
+            </div>
+            <div class="skill-tooltip-body" id="st-problem"></div>
+            <div class="skill-tooltip-footer">Click to jump to project <i data-lucide="arrow-right" style="width: 12px; height: 12px; vertical-align: middle;"></i></div>
           </div>
 
         </section>
@@ -6514,7 +6785,7 @@
           </div>
 
           
-          <div class="knight-spotlight-card">
+          <div class="knight-spotlight-card" id="achievement-leetcode">
             <div class="knight-spotlight-inner">
               <div class="knight-info-col">
                 <div class="knight-title">
@@ -7529,6 +7800,9 @@
         switchTab(reqTab);
       }
       setTimeout(() => renderKadalvazhiArchitecture(), 120);
+      setTimeout(() => {
+        if (typeof initSkillTooltips === 'function') initSkillTooltips();
+      }, 150);
     });
 
     function switchTab(tabId) {
@@ -7549,6 +7823,13 @@
         if (!archDiagramRendered) {
           setTimeout(() => renderKadalvazhiArchitecture(), 60);
         }
+      }
+
+      if (tabId === 'tab-skills') {
+        setTimeout(() => {
+          if (typeof initSkillTooltips === 'function') initSkillTooltips();
+          if (typeof lucide !== 'undefined') lucide.createIcons();
+        }, 60);
       }
 
       tabElements.forEach(el => {
@@ -7943,6 +8224,106 @@
           card.style.display = 'none';
         }
       });
+    }
+
+    function navigateToSkill(tabId, elementId) {
+      if (typeof playKeyClick === 'function') playKeyClick();
+
+      // Hide tooltip immediately on click
+      const tooltip = document.getElementById('skill-floating-tooltip');
+      if (tooltip) {
+        tooltip.classList.remove('active');
+        tooltip.style.display = 'none';
+      }
+
+      // Switch to target tab
+      if (typeof switchTab === 'function') {
+        switchTab(tabId);
+      }
+
+      // Smooth scroll and pulse highlight the target card
+      setTimeout(() => {
+        const el = document.getElementById(elementId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          el.classList.remove('highlight-pulse');
+          void el.offsetWidth; // trigger reflow
+          el.classList.add('highlight-pulse');
+          setTimeout(() => el.classList.remove('highlight-pulse'), 2500);
+        }
+      }, 140);
+    }
+    window.navigateToSkill = navigateToSkill;
+
+    function initSkillTooltips() {
+      const tooltip = document.getElementById('skill-floating-tooltip');
+      if (!tooltip) return;
+      const chips = document.querySelectorAll('.skill-chip-interactive');
+
+      chips.forEach(chip => {
+        if (chip.getAttribute('data-tooltip-bound') === 'true') return;
+        chip.setAttribute('data-tooltip-bound', 'true');
+
+        chip.addEventListener('mouseenter', () => {
+          const name = chip.getAttribute('data-skill');
+          const applied = chip.getAttribute('data-applied');
+          const problem = chip.getAttribute('data-problem');
+          if (!name || !problem) return;
+
+          const nameEl = document.getElementById('st-name');
+          const appliedEl = document.getElementById('st-applied');
+          const problemEl = document.getElementById('st-problem');
+
+          if (nameEl) nameEl.textContent = name;
+          if (appliedEl) appliedEl.textContent = applied || 'Applied';
+          if (problemEl) problemEl.textContent = problem;
+
+          positionSkillTooltip(chip, tooltip);
+          tooltip.style.display = 'block';
+          requestAnimationFrame(() => {
+            tooltip.classList.add('active');
+          });
+        });
+
+        chip.addEventListener('mouseleave', () => {
+          tooltip.classList.remove('active');
+          setTimeout(() => {
+            if (!tooltip.classList.contains('active')) {
+              tooltip.style.display = 'none';
+            }
+          }, 150);
+        });
+
+        // Keyboard accessibility
+        chip.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            chip.click();
+          }
+        });
+      });
+    }
+    window.initSkillTooltips = initSkillTooltips;
+
+    function positionSkillTooltip(targetEl, tooltipEl) {
+      const rect = targetEl.getBoundingClientRect();
+      const tooltipWidth = 320;
+      const tooltipHeight = 110;
+
+      let top = rect.top - tooltipHeight - 10;
+      if (top < 15) {
+        top = rect.bottom + 10;
+      }
+
+      let left = rect.left + (rect.width / 2) - (tooltipWidth / 2);
+      const padding = 12;
+      if (left < padding) left = padding;
+      if (left + tooltipWidth > window.innerWidth - padding) {
+        left = window.innerWidth - tooltipWidth - padding;
+      }
+
+      tooltipEl.style.top = top + 'px';
+      tooltipEl.style.left = left + 'px';
     }
 
     const typewriterText = `
