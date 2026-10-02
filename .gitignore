@@ -5,3 +5,5 @@
 .env
 .env.local
 .env.*.local
+server.py
+__pycache__/

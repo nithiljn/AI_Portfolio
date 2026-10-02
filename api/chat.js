@@ -61,6 +61,29 @@ RESPONSE GUIDELINES:
 - Scope: If asked unrelated questions, politely redirect back to James's technical work and portfolio.
 - Speaking Style: Speak naturally as James's portfolio assistant.`;
 
+// Auto-load local .env if running in local Node environment
+if (!process.env.GROQ_API_KEY) {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const envPath = path.resolve(__dirname, '../.env');
+    if (fs.existsSync(envPath)) {
+      const lines = fs.readFileSync(envPath, 'utf8').split('\n');
+      for (const line of lines) {
+        const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
+        if (match) {
+          const key = match[1];
+          let val = (match[2] || '').trim();
+          if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+            val = val.slice(1, -1);
+          }
+          if (!process.env[key]) process.env[key] = val;
+        }
+      }
+    }
+  } catch (e) {}
+}
+
 module.exports = async function handler(req, res) {
   // CORS Headers
   res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -107,8 +130,20 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    // Build conversation context (optionally include last 2 history turns if provided)
-    const messages = [{ role: 'system', content: SYSTEM_PROMPT }];
+    // Extract user language preference ('en', 'ta', 'ml')
+    const userLanguage = (body?.language && ['en', 'ta', 'ml'].includes(body.language)) ? body.language : 'en';
+
+    let langInstruction = '';
+    if (userLanguage === 'ta') {
+      langInstruction = `\n\n=======================================================\nMULTILINGUAL DIRECTIVE: USER PREFERS TAMIL (தமிழ்)\n=======================================================\n• Please reply in natural, polite, and fluent TAMIL script.\n• Keep technical terms, libraries, company names, and metrics in English (e.g., "Java 21", "Spring Boot", "PostgreSQL", "LeetCode Knight 2,069", "Kafka", "Vaken Technologies", "KadalVazhi", "REST APIs") so the technical terminology remains accurate and natural for tech discussions.\n• Keep responses concise, friendly, and under 140 words. Completely emoji-free.`;
+    } else if (userLanguage === 'ml') {
+      langInstruction = `\n\n=======================================================\nMULTILINGUAL DIRECTIVE: USER PREFERS MALAYALAM (മലയാളം)\n=======================================================\n• Please reply in natural, polite, and fluent MALAYALAM script.\n• Keep technical terms, libraries, company names, and metrics in English (e.g., "Java 21", "Spring Boot", "PostgreSQL", "LeetCode Knight 2,069", "Kafka", "Vaken Technologies", "KadalVazhi") for technical precision.\n• Keep responses concise, friendly, and under 140 words. Completely emoji-free.`;
+    } else {
+      langInstruction = `\n\n=======================================================\nMULTILINGUAL DIRECTIVE: USER PREFERS ENGLISH\n=======================================================\n• Please reply in concise, professional, and articulate English. Completely emoji-free.`;
+    }
+
+    // Build conversation context (optionally include last 3 history turns if provided)
+    const messages = [{ role: 'system', content: SYSTEM_PROMPT + langInstruction }];
 
     if (Array.isArray(body.history)) {
       body.history.slice(-3).forEach(h => {
@@ -120,8 +155,8 @@ module.exports = async function handler(req, res) {
 
     messages.push({ role: 'user', content: sanitizedQuery });
 
-    // Call Groq API (Primary: qwen/qwen3.8-27b, Fallback: openai/gpt-oss-20b)
-    const modelsToTry = ['qwen/qwen3.8-27b', 'openai/gpt-oss-20b'];
+    // Call Groq API (Primary: qwen/qwen3.8-27b, Fallbacks: openai/gpt-oss-120b, openai/gpt-oss-20b, llama-3.3-70b-versatile)
+    const modelsToTry = ['qwen/qwen3.8-27b', 'openai/gpt-oss-120b', 'openai/gpt-oss-20b', 'llama-3.3-70b-versatile', 'llama-3.1-8b-instant'];
     let aiResponseText = null;
     let lastError = null;
 
@@ -131,12 +166,13 @@ module.exports = async function handler(req, res) {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${apiKey}`,
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko)'
           },
           body: JSON.stringify({
             model: model,
             messages: messages,
-            max_tokens: 300,
+            max_tokens: 350,
             temperature: 0.6
           })
         });
@@ -164,12 +200,19 @@ module.exports = async function handler(req, res) {
     }
 
     if (!aiResponseText) {
-      // Graceful fallback message if all models hit limits
-      aiResponseText = "James AI is currently receiving high recruiter traffic. While the AI engine recharges, feel free to explore the interactive KadalVazhi simulator, download James's resume, or reach out directly at jamnithil@gmail.com.";
+      // Graceful multilingual fallback message if models hit rate limits
+      if (userLanguage === 'ta') {
+        aiResponseText = "ஜேம்ஸ் AI-க்கு தற்போது அதிக வருகை உள்ளது. ஜேம்ஸ்-ன் கடர்வழி (KadalVazhi) செயலியை பார்வையிடலாம், ரெஸ்யூமை பதிவிறக்கலாம் அல்லது jamnithil@gmail.com என்ற மின்னஞ்சலில் தொடர்பு கொள்ளலாம்.";
+      } else if (userLanguage === 'ml') {
+        aiResponseText = "ജെയിംസ് AI ഇപ്പോൾ ഉയർന്ന ട്രാഫിക്കിലാണ്. ജെയിംസിന്റെ കടൽവഴി (KadalVazhi) പ്രോജക്റ്റ് കാണുകയോ റെസ്യുമെ ഡൗൺലോഡ് ചെയ്യുകയോ jamnithil@gmail.com എന്ന ഇമെയിലിൽ ബന്ധപ്പെടുകയോ ചെയ്യാം.";
+      } else {
+        aiResponseText = "James AI is currently receiving high recruiter traffic. While the AI engine recharges, feel free to explore the interactive KadalVazhi simulator, download James's resume, or reach out directly at jamnithil@gmail.com.";
+      }
     }
 
     return res.status(200).json({
       reply: aiResponseText,
+      language: userLanguage,
       status: 'success'
     });
 

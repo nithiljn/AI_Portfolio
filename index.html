@@ -10549,6 +10549,59 @@ Contact Information:
     }
 
     
+    .drawer-lang-selector {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 14px;
+      background: rgba(18, 24, 38, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      flex-shrink: 0;
+      gap: 8px;
+    }
+
+    .lang-selector-label {
+      font-size: 0.7rem;
+      font-family: var(--font-code);
+      color: #94a3b8;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 500;
+    }
+
+    .lang-pills-group {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .lang-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-secondary);
+      font-size: 0.69rem;
+      font-family: var(--font-code);
+      padding: 2px 9px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .lang-pill:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .lang-pill.active {
+      background: rgba(59, 130, 246, 0.15);
+      border-color: rgba(59, 130, 246, 0.35);
+      color: #60a5fa;
+      font-weight: 600;
+    }
+
+    
     .drawer-messages-body {
       flex: 1;
       overflow-y: auto;
@@ -11118,7 +11171,19 @@ Contact Information:
       </div>
 
       
-      <div class="drawer-chips-wrap">
+      <div class="drawer-lang-selector" id="ai-lang-selector">
+        <span class="lang-selector-label">
+          <i data-lucide="languages" style="width: 12px; height: 12px;"></i> Lang:
+        </span>
+        <div class="lang-pills-group">
+          <button type="button" class="lang-pill active" data-lang="en" onclick="setAiLanguage('en')" title="Switch to English">English</button>
+          <button type="button" class="lang-pill" data-lang="ta" onclick="setAiLanguage('ta')" title="தமிழுக்கு மாறுங்கள்">தமிழ்</button>
+          <button type="button" class="lang-pill" data-lang="ml" onclick="setAiLanguage('ml')" title="മലയാളത്തിലേക്ക് മാറ്റുക">മലയാളം</button>
+        </div>
+      </div>
+
+      <!-- Suggested Quick Prompts -->
+      <div class="drawer-chips-wrap" id="ai-chips-wrap">
         <button class="drawer-chip" onclick="handleChipClick('Who is James Nithil? Give a concise overview of his profile and strengths.')">
           <span class="chip-icon">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -11291,21 +11356,185 @@ Contact Information:
         }
       };
 
-      const AI_AVATAR_HTML = `<img src="assets/images/James_Nithil.jpeg" alt="James" />`;
+      let currentAiLang = 'en';
+      try {
+        const storedLang = localStorage.getItem('james_ai_lang');
+        if (storedLang && ['en', 'ta', 'ml'].includes(storedLang)) {
+          currentAiLang = storedLang;
+        }
+      } catch (e) {}
 
-      window.clearAiChat = function () {
-        conversationHistory = [];
-        if (typeof stopSpeaking === 'function') stopSpeaking();
-        if (messagesBody) {
+      const AI_LANG_CONFIG = {
+        en: {
+          code: 'en',
+          name: 'English',
+          sttLang: 'en-US',
+          ttsLang: 'en-US',
+          placeholder: 'Ask a question about James...',
+          listening: '🎙️ Listening... speak your question now...',
+          noSpeech: 'No speech detected. Click mic to try again!',
+          greeting: "Hi! Feel free to ask anything about James's experience, backend architecture, or featured projects. How can I help?",
+          fallbackText: "James AI encountered a brief network glitch. Feel free to check out James's **Download Resume** link or email him at **jamnithil@gmail.com**.",
+          limitMsg: "You have reached the maximum questions limit for this browser session. Feel free to connect directly with James on LinkedIn or email him at **jamnithil@gmail.com**.",
+          chips: [
+            {
+              icon: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+              label: 'About James',
+              query: 'Who is James Nithil? Give a concise overview of his profile and strengths.'
+            },
+            {
+              icon: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>`,
+              label: 'Tech Stack',
+              query: "What is James's core tech stack, backend skills, and problem-solving metrics?"
+            },
+            {
+              icon: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+              label: 'Current Role',
+              query: 'Where is James currently working and what is his role at Vaken Technologies Pvt Ltd?'
+            }
+          ]
+        },
+        ta: {
+          code: 'ta',
+          name: 'தமிழ்',
+          sttLang: 'ta-IN',
+          ttsLang: 'ta-IN',
+          placeholder: 'ஜேம்ஸ் பற்றி கேள்வி கேளுங்கள்...',
+          listening: '🎙️ கேட்கிறது... இப்போது உங்கள் கேள்வியைப் பேசுங்கள்...',
+          noSpeech: 'குரல் எதுவும் கேட்கவில்லை. மீண்டும் மைக் அழுத்தவும்!',
+          greeting: 'வணக்கம்! ஜேம்ஸின் Backend அனுபவம், KadalVazhi புராஜெக்ட் அல்லது LeetCode சாதனைகள் பற்றி எதை வேண்டுமானாலும் கேளுங்கள். நான் எப்படி உதவலாம்?',
+          fallbackText: 'ஜேம்ஸ் AI-ல் தற்காலிக பிணைய சிக்கல் ஏற்பட்டது. ஜேம்ஸின் ரெஸ்யூமைப் பதிவிறக்கலாம் அல்லது **jamnithil@gmail.com** மின்னஞ்சலில் தொடர்பு கொள்ளலாம்.',
+          limitMsg: 'இந்த அமர்விற்கான கேள்வி வரம்பை அடைந்துவிட்டீர்கள். ஜேம்ஸை LinkedIn அல்லது **jamnithil@gmail.com** மூலம் தொடர்பு கொள்ளலாம்.',
+          chips: [
+            {
+              icon: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+              label: 'ஜேம்ஸ் பற்றி',
+              query: 'ஜேம்ஸ் நிதில் யார்? அவரது திறமைகள் மற்றும் பின்னணி பற்றி சுருக்கமாக கூறுங்கள்.'
+            },
+            {
+              icon: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>`,
+              label: 'Tech Stack',
+              query: 'ஜேம்ஸின் முக்கிய Tech Stack, Backend அனுபவம் மற்றும் LeetCode ரேங்க் என்ன?'
+            },
+            {
+              icon: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+              label: 'KadalVazhi திட்டம்',
+              query: 'ஜேம்ஸின் முதன்மை KadalVazhi Maritime திட்டத்தின் கட்டமைப்பு மற்றும் சிறப்பம்சங்கள் என்ன?'
+            }
+          ]
+        },
+        ml: {
+          code: 'ml',
+          name: 'മലയാളം',
+          sttLang: 'ml-IN',
+          ttsLang: 'ml-IN',
+          placeholder: 'ജെയിംസിനെക്കുറിച്ച് എന്തും ചോദിക്കൂ...',
+          listening: '🎙️ കേൾക്കുന്നു... ഇപ്പോൾ നിങ്ങളുടെ ചോദ്യം സംസാരിക്കൂ...',
+          noSpeech: 'ശബ്ദമൊന്നും കേട്ടില്ല. വീണ്ടും മൈക്ക് ക്ലിക്ക് ചെയ്യുക!',
+          greeting: 'നമസ്കാരം! ജെയിംസിന്റെ സോഫ്റ്റ്‌വെയർ അനുഭവം, KadalVazhi പ്രോജക്റ്റ് അല്ലെങ്കിൽ LeetCode നേട്ടങ്ങളെക്കുറിച്ച് ചോദിക്കാം. ഞാൻ എങ്ങനെ സഹായിക്കണം?',
+          fallbackText: 'ജെയിംസ് AI-ൽ ഒരു താൽക്കാലിക നെറ്റ്‌വർക്ക് തടസ്സം ഉണ്ടായി. ജെയിംസിന്റെ റെസ്യൂമെ ഡൗൺലോഡ് ചെയ്യാം അല്ലെങ്കിൽ **jamnithil@gmail.com** വഴി ബന്ധപ്പെടാം.',
+          limitMsg: 'ഈ ബ്രൗസർ സെഷനിലെ ചോദ്യങ്ങളുടെ പരിധി കഴിഞ്ഞു. ജെയിംസുമായി LinkedIn വഴിയോ **jamnithil@gmail.com** വഴിയോ നേരിട്ട് ബന്ധപ്പെടാം.',
+          chips: [
+            {
+              icon: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+              label: 'ജെയിംസിനെക്കുറിച്ച്',
+              query: 'ആരാണ് ജെയിംസ് നിതിൽ? അദ്ദേഹത്തിന്റെ പ്രൊഫൈലും കഴിവുകളും ചുരുക്കത്തിൽ പറയൂ.'
+            },
+            {
+              icon: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>`,
+              label: 'Tech Stack',
+              query: 'ജെയിംസിന്റെ പ്രധാന Tech Stack, Backend സ്കില്ലുകൾ, LeetCode റാങ്ക് എന്നിവ എന്തൊക്കെയാണ്?'
+            },
+            {
+              icon: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+              label: 'KadalVazhi പ്രോജക്റ്റ്',
+              query: 'ജെയിംസിന്റെ പ്രധാന KadalVazhi Maritime പ്രോജക്റ്റിന്റെ സവിശേഷതകളും ആർക്കിടെക്ചറും എന്തൊക്കെയാണ്?'
+            }
+          ]
+        }
+      };
+
+      window.setAiLanguage = function (lang, preserveConversation = false) {
+        if (!AI_LANG_CONFIG[lang]) lang = 'en';
+        currentAiLang = lang;
+        try {
+          localStorage.setItem('james_ai_lang', lang);
+        } catch (e) {}
+
+        // Update active pills
+        document.querySelectorAll('.lang-pill').forEach(btn => {
+          if (btn.getAttribute('data-lang') === lang) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+
+        // Update placeholder
+        if (chatInput && !isVoiceListening) {
+          chatInput.placeholder = AI_LANG_CONFIG[lang].placeholder;
+        }
+
+        // Update prompt suggestion chips
+        const chipsWrap = document.getElementById('ai-chips-wrap');
+        if (chipsWrap && AI_LANG_CONFIG[lang].chips) {
+          chipsWrap.innerHTML = AI_LANG_CONFIG[lang].chips.map(chip => `
+            <button class="drawer-chip" onclick="handleChipClick('${chip.query.replace(/'/g, "\\'")}')">
+              <span class="chip-icon">${chip.icon}</span>
+              <span class="chip-label">${chip.label}</span>
+            </button>
+          `).join('');
+        }
+
+        // Reset speech recognition instance so next listen uses the new language
+        if (recognition) {
+          try { recognition.abort(); } catch (err) {}
+          recognition = null;
+        }
+
+        // If no user messages exchanged yet, localize the welcome message
+        if (!preserveConversation && conversationHistory.length === 0 && messagesBody) {
+          const cfg = AI_LANG_CONFIG[lang];
+          const encoded = encodeURIComponent(cfg.greeting);
           messagesBody.innerHTML = `
             <div class="chat-msg ai">
               <div class="chat-msg-avatar">
                 ${AI_AVATAR_HTML}
               </div>
               <div class="chat-msg-bubble">
-                <div>Hi! Feel free to ask anything about James's experience, backend architecture, or featured projects. How can I help?</div>
+                <div>${formatAiMarkdown(cfg.greeting)}</div>
                 <div class="speech-ctrl-row">
-                  <button class="speech-play-btn" onclick="toggleSpeakMessage(this, 'Hi! Feel free to ask anything about James\\'s experience, backend architecture, or featured projects. How can I help?')" title="Listen to response" aria-label="Listen">
+                  <button class="speech-play-btn" onclick="toggleSpeakMessage(this, decodeURIComponent('${encoded}'))" title="Listen to response" aria-label="Listen">
+                    <span class="speech-btn-icon"><i data-lucide="volume-2" style="width: 12px; height: 12px;"></i></span>
+                    <span class="speech-btn-label">Listen</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+          if (window.lucide) lucide.createIcons();
+        }
+
+        if (typeof playKeyClick === 'function') playKeyClick();
+      };
+
+      const AI_AVATAR_HTML = `<img src="assets/images/James_Nithil.jpeg" alt="James" />`;
+
+      window.clearAiChat = function () {
+        conversationHistory = [];
+        if (typeof stopSpeaking === 'function') stopSpeaking();
+        if (messagesBody) {
+          const cfg = AI_LANG_CONFIG[currentAiLang] || AI_LANG_CONFIG.en;
+          const encoded = encodeURIComponent(cfg.greeting);
+          messagesBody.innerHTML = `
+            <div class="chat-msg ai">
+              <div class="chat-msg-avatar">
+                ${AI_AVATAR_HTML}
+              </div>
+              <div class="chat-msg-bubble">
+                <div>${formatAiMarkdown(cfg.greeting)}</div>
+                <div class="speech-ctrl-row">
+                  <button class="speech-play-btn" onclick="toggleSpeakMessage(this, decodeURIComponent('${encoded}'))" title="Listen to response" aria-label="Listen">
                     <span class="speech-btn-icon"><i data-lucide="volume-2" style="width: 12px; height: 12px;"></i></span>
                     <span class="speech-btn-label">Listen</span>
                   </button>
@@ -11371,19 +11600,91 @@ Contact Information:
 - Contact: Email: jamnithil@gmail.com | Portfolio: https://jamesnithil.vercel.app | LinkedIn: linkedin.com/in/jamesnithil-v.
 Guidelines: Be natural, articulate, concise, and professional (under 130 words). Speak conversationally as James's portfolio assistant. Do NOT use any emojis or emoticons. Keep output completely emoji-free. Do NOT use buzzwords like 'ground-truth' or 'zero-hallucination'. Do NOT spam hyphen bullet points or multiple dashes. Format text cleanly and elegantly.`;
 
-      window.queryAskJamesAI = async function (query, history = []) {
-        const res = await fetch('/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: query, history })
-        });
+      // =========================================================================
+      // Production Configuration
+      // All AI chat and voice synthesis route securely through Vercel Serverless
+      // Functions (/api/chat and /api/tts) using server-side environment variables.
+      // =========================================================================
+      const LOCAL_DEV_CONFIG = {
+        enabled: false,
+        groqApiKey: '',
+        elevenLabsApiKeys: [],
+        elevenLabsVoiceId: 'cjVigY5qzO86Huf0OWal',
+        elevenLabsModel: 'eleven_flash_v2_5' // 50% character credit savings, 75ms latency
+      };
 
-        if (!res.ok) {
-          throw new Error(`Server returned ${res.status}`);
+      window.queryAskJamesAI = async function (query, history = []) {
+        // Route 1: Try serverless endpoint (Vercel production or local dev server)
+        try {
+          const res = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: query, history, language: currentAiLang })
+          });
+
+          if (res.ok) {
+            const data = await res.json();
+            return data.reply || "James's assistant is ready to help!";
+          }
+          if (res.status !== 404 && res.status !== 405) {
+            throw new Error(`Server returned ${res.status}`);
+          }
+        } catch (serverErr) {
+          // If serverless endpoint is not reachable (e.g., Live Server or file:// protocol)
+          if (!LOCAL_DEV_CONFIG.enabled || !LOCAL_DEV_CONFIG.groqApiKey) {
+            throw serverErr;
+          }
         }
 
-        const data = await res.json();
-        return data.reply || "James's assistant is ready to help!";
+        // Route 2: Local direct client-side fallback using .env credentials
+        if (LOCAL_DEV_CONFIG.enabled && LOCAL_DEV_CONFIG.groqApiKey) {
+          let langDirective = '';
+          if (currentAiLang === 'ta') {
+            langDirective = '\n\nPlease reply in natural, polite, and fluent TAMIL script. Keep technical terms, libraries, company names, and metrics in English (e.g., Java 21, Spring Boot, KadalVazhi, LeetCode Knight 2,069, PostgreSQL, Kafka, REST APIs). Keep responses under 130 words. Completely emoji-free.';
+          } else if (currentAiLang === 'ml') {
+            langDirective = '\n\nPlease reply in natural, polite, and fluent MALAYALAM script. Keep technical terms, libraries, company names, and metrics in English (e.g., Java 21, Spring Boot, KadalVazhi, LeetCode Knight 2,069, PostgreSQL, Kafka). Keep responses under 130 words. Completely emoji-free.';
+          } else {
+            langDirective = '\n\nPlease reply in concise, professional English. Completely emoji-free.';
+          }
+
+          const msgs = [{ role: 'system', content: JAMES_AI_DOSSIER + langDirective }];
+          if (Array.isArray(history)) {
+            history.slice(-3).forEach(h => {
+              if (h && (h.role === 'user' || h.role === 'assistant') && typeof h.content === 'string') {
+                msgs.push({ role: h.role, content: h.content.slice(0, 300) });
+              }
+            });
+          }
+          msgs.push({ role: 'user', content: query.slice(0, 400) });
+
+          const models = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant', 'qwen/qwen3.8-27b'];
+          for (const m of models) {
+            try {
+              const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                  'Authorization': `Bearer ${LOCAL_DEV_CONFIG.groqApiKey}`,
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  model: m,
+                  messages: msgs,
+                  max_tokens: 350,
+                  temperature: 0.6
+                })
+              });
+              if (groqRes.ok) {
+                const data = await groqRes.json();
+                const reply = data?.choices?.[0]?.message?.content;
+                if (reply && reply.trim()) return reply.trim();
+              }
+            } catch (e) {
+              console.warn(`Local Groq model ${m} attempt failed:`, e);
+            }
+          }
+        }
+
+        throw new Error('All chat endpoints exhausted.');
       };
 
       window.handleAiSubmit = async function (e) {
@@ -11399,7 +11700,8 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
         }
 
         if (sessionQueriesCount >= MAX_SESSION_QUERIES) {
-          const limitMsg = "You have reached the maximum questions limit for this browser session. Feel free to connect directly with James on LinkedIn or email him at **jamnithil@gmail.com**.";
+          const cfg = AI_LANG_CONFIG[currentAiLang] || AI_LANG_CONFIG.en;
+          const limitMsg = cfg.limitMsg;
           const bubble = appendChatMessage('ai', limitMsg);
           attachVoiceButtonToBubble(bubble, limitMsg);
           if (isAutoVoiceEnabled) {
@@ -11466,7 +11768,8 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
           const indicatorEl = document.getElementById('ai-typing-indicator');
           if (indicatorEl) indicatorEl.remove();
 
-          const fallbackText = "James AI encountered a brief network glitch. Feel free to check out James's **Download Resume** link or email him at **jamnithil@gmail.com**.";
+          const cfg = AI_LANG_CONFIG[currentAiLang] || AI_LANG_CONFIG.en;
+          const fallbackText = cfg.fallbackText;
           const bubble = appendChatMessage('ai', fallbackText);
           attachVoiceButtonToBubble(bubble, fallbackText);
           if (isAutoVoiceEnabled) {
@@ -11493,7 +11796,7 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
           const rec = new SpeechRec();
           rec.continuous = false;
           rec.interimResults = true;
-          rec.lang = 'en-US';
+          rec.lang = (AI_LANG_CONFIG[currentAiLang] && AI_LANG_CONFIG[currentAiLang].sttLang) || 'en-US';
 
           rec.onstart = function () {
             isVoiceListening = true;
@@ -11503,7 +11806,8 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
             }
             if (chatForm) chatForm.classList.add('mic-active');
             if (chatInput) {
-              chatInput.placeholder = "🎙️ Listening... speak your question now...";
+              const cfg = AI_LANG_CONFIG[currentAiLang] || AI_LANG_CONFIG.en;
+              chatInput.placeholder = cfg.listening;
             }
             if (typeof playKeyClick === 'function') playKeyClick();
           };
@@ -11545,10 +11849,11 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
               showMicToast("Microphone access denied. Please allow mic permissions in browser.");
             } else if (event.error === 'no-speech') {
               if (chatInput && !chatInput.value) {
-                chatInput.placeholder = "No speech detected. Click mic to try again!";
+                const cfg = AI_LANG_CONFIG[currentAiLang] || AI_LANG_CONFIG.en;
+                chatInput.placeholder = cfg.noSpeech;
                 setTimeout(() => {
                   if (chatInput && !isVoiceListening) {
-                    chatInput.placeholder = "Ask a question about James...";
+                    chatInput.placeholder = cfg.placeholder;
                   }
                 }, 2200);
               }
@@ -11602,8 +11907,9 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
           micBtn.title = "Speak question (Voice Input)";
         }
         if (chatForm) chatForm.classList.remove('mic-active');
-        if (chatInput && chatInput.placeholder.includes('Listening')) {
-          chatInput.placeholder = "Ask a question about James...";
+        if (chatInput) {
+          const cfg = AI_LANG_CONFIG[currentAiLang] || AI_LANG_CONFIG.en;
+          chatInput.placeholder = cfg.placeholder;
         }
       }
 
@@ -11756,7 +12062,27 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
           `;
         }
 
-        // Attempt 1: Studio ElevenLabs Soft Male Voice via serverless proxy
+        async function playAudioBlob(audioBlob) {
+          const blobUrl = URL.createObjectURL(audioBlob);
+          const audio = new Audio(blobUrl);
+          currentAudio = audio;
+
+          audio.onended = function () {
+            URL.revokeObjectURL(blobUrl);
+            if (currentAudio === audio) currentAudio = null;
+            if (activeSpeakingBtn === btn) resetSpeakingButton(btn);
+          };
+
+          audio.onerror = function () {
+            URL.revokeObjectURL(blobUrl);
+            if (currentAudio === audio) currentAudio = null;
+            speakWithBrowserTts(cleanText, btn);
+          };
+
+          await audio.play();
+        }
+
+        // Layer 1: Serverless proxy /api/tts (Vercel production or local server)
         const abortCtrl = new AbortController();
         activeTtsAbortCtrl = abortCtrl;
         const timeoutId = setTimeout(() => {
@@ -11767,7 +12093,7 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
           const res = await fetch('/api/tts', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ text: cleanText }),
+            body: JSON.stringify({ text: cleanText, language: currentAiLang }),
             signal: abortCtrl.signal
           });
 
@@ -11776,39 +12102,101 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
           const contentType = res.headers.get('content-type') || '';
           if (res.ok && contentType.includes('audio/mpeg')) {
             const audioBlob = await res.blob();
-            const blobUrl = URL.createObjectURL(audioBlob);
-            const audio = new Audio(blobUrl);
-            currentAudio = audio;
-
-            audio.onended = function () {
-              URL.revokeObjectURL(blobUrl);
-              if (currentAudio === audio) currentAudio = null;
-              if (activeSpeakingBtn === btn) resetSpeakingButton(btn);
-            };
-
-            audio.onerror = function () {
-              URL.revokeObjectURL(blobUrl);
-              if (currentAudio === audio) currentAudio = null;
-              // Audio element failed -> Seamless fallback to browser TTS
-              speakWithBrowserTts(cleanText, btn);
-            };
-
-            await audio.play();
+            await playAudioBlob(audioBlob);
             return;
           }
 
-          // If response is fallback JSON (quota exceeded, no key, or rate limited), use browser TTS
-          speakWithBrowserTts(cleanText, btn);
-
+          if (res.ok) {
+            const data = await res.json().catch(() => ({}));
+            if (data.fallback) {
+              speakWithBrowserTts(cleanText, btn);
+              return;
+            }
+          }
         } catch (fetchErr) {
           clearTimeout(timeoutId);
-          // Network offline, timeout, or aborted -> Seamless fallback to browser TTS
-          speakWithBrowserTts(cleanText, btn);
         } finally {
           if (activeTtsAbortCtrl === abortCtrl) {
             activeTtsAbortCtrl = null;
           }
         }
+
+        // Layer 2: Local Direct ElevenLabs synthesis with Multi-Key Pool Failover
+        const localKeys = LOCAL_DEV_CONFIG.elevenLabsApiKeys || (LOCAL_DEV_CONFIG.elevenLabsApiKey ? [LOCAL_DEV_CONFIG.elevenLabsApiKey] : []);
+        if (LOCAL_DEV_CONFIG.enabled && localKeys.length > 0) {
+          // Smart character capping: 280 chars max for speech
+          let speechSnippet = cleanText;
+          if (speechSnippet.length > 280) {
+            const sentenceEnd = speechSnippet.slice(0, 280).lastIndexOf('.');
+            if (sentenceEnd > 140) {
+              speechSnippet = speechSnippet.slice(0, sentenceEnd + 1);
+            } else {
+              speechSnippet = speechSnippet.slice(0, 280);
+            }
+          }
+
+          for (let i = 0; i < localKeys.length; i++) {
+            const key = localKeys[i];
+            try {
+              const directVoiceRes = await fetch(
+                `https://api.elevenlabs.io/v1/text-to-speech/${LOCAL_DEV_CONFIG.elevenLabsVoiceId}?output_format=mp3_44100_128`,
+                {
+                  method: 'POST',
+                  headers: {
+                    'xi-api-key': key,
+                    'Content-Type': 'application/json',
+                    'Accept': 'audio/mpeg'
+                  },
+                  body: JSON.stringify({
+                    text: speechSnippet,
+                    model_id: LOCAL_DEV_CONFIG.elevenLabsModel,
+                    voice_settings: {
+                      stability: 0.55,
+                      similarity_boost: 0.85,
+                      style: 0.0,
+                      use_speaker_boost: true
+                    }
+                  })
+                }
+              );
+
+              if (directVoiceRes.status === 401 || directVoiceRes.status === 402 || directVoiceRes.status === 429) {
+                console.warn(`[Local TTS] Key #${i + 1} reached limit (${directVoiceRes.status}). Switching to next key in pool...`);
+                continue;
+              }
+
+              if (directVoiceRes.ok) {
+                const audioBlob = await directVoiceRes.blob();
+                await playAudioBlob(audioBlob);
+                return;
+              }
+            } catch (directErr) {
+              console.warn(`[Local TTS] Key #${i + 1} exception:`, directErr);
+              continue;
+            }
+          }
+        }
+
+        // Layer 3 (Practical Fault Tolerance): Seamless Browser Web Speech Synthesis Fallback
+        speakWithBrowserTts(cleanText, btn);
+      }
+
+      function getBestVoiceForLanguage(langCode) {
+        if (!window.speechSynthesis) return null;
+        const voices = window.speechSynthesis.getVoices() || [];
+        if (!voices.length) return null;
+
+        if (langCode === 'ta') {
+          const taVoice = voices.find(v => v.lang && (v.lang === 'ta-IN' || v.lang.startsWith('ta'))) ||
+                          voices.find(v => (v.name && v.name.toLowerCase().includes('tamil')) || (v.name && (v.name.includes('Valluvar') || v.name.includes('Lekha'))));
+          if (taVoice) return taVoice;
+        } else if (langCode === 'ml') {
+          const mlVoice = voices.find(v => v.lang && (v.lang === 'ml-IN' || v.lang.startsWith('ml'))) ||
+                          voices.find(v => (v.name && v.name.toLowerCase().includes('malayalam')) || (v.name && v.name.includes('Sobhana')));
+          if (mlVoice) return mlVoice;
+        }
+
+        return getBestNeuralVoice();
       }
 
       function speakWithBrowserTts(cleanText, btn) {
@@ -11819,15 +12207,17 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
 
         window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(cleanText);
-        const bestVoice = getBestNeuralVoice();
+        const bestVoice = getBestVoiceForLanguage(currentAiLang);
         if (bestVoice) {
           utterance.voice = bestVoice;
         }
+        const cfg = AI_LANG_CONFIG[currentAiLang] || AI_LANG_CONFIG.en;
+        utterance.lang = cfg.ttsLang || 'en-US';
 
-        // Soft MALE acoustic calibration: warm, calm, unhurried, non-harsh
-        utterance.rate = 0.98;   // Gentle cadence
-        utterance.pitch = 0.98;  // Warm male tone
-        utterance.volume = 0.92; // Pleasant ear level
+        // Acoustic calibration: gentle cadence, warm tone
+        utterance.rate = currentAiLang === 'en' ? 0.98 : 0.95;
+        utterance.pitch = 0.98;
+        utterance.volume = 0.92;
 
         if (btn) {
           activeSpeakingBtn = btn;
@@ -11909,10 +12299,11 @@ Guidelines: Be natural, articulate, concise, and professional (under 130 words).
 
       if (window.speechSynthesis && window.speechSynthesis.onvoiceschanged !== undefined) {
         window.speechSynthesis.onvoiceschanged = () => {
-          getBestNeuralVoice();
+          getBestVoiceForLanguage(currentAiLang);
         };
       }
 
+      setAiLanguage(currentAiLang, true);
       if (window.lucide) lucide.createIcons();
       initSpeechRecognition();
       updateAutoVoiceUI();
