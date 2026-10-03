@@ -11316,6 +11316,10 @@ Contact Information:
             document.body.classList.add('ai-drawer-open');
           }
 
+          if (conversationHistory.length === 0 && messagesBody) {
+            setAiLanguage(currentAiLang);
+          }
+
           if (chatInput) {
             setTimeout(() => chatInput.focus(), 150);
           }
@@ -11374,6 +11378,7 @@ Contact Information:
           listening: '🎙️ Listening... speak your question now...',
           noSpeech: 'No speech detected. Click mic to try again!',
           greeting: "Hi! Feel free to ask anything about James's experience, backend architecture, or featured projects. How can I help?",
+          listenLabel: 'Listen',
           fallbackText: "James AI encountered a brief network glitch. Feel free to check out James's **Download Resume** link or email him at **jamnithil@gmail.com**.",
           limitMsg: "You have reached the maximum questions limit for this browser session. Feel free to connect directly with James on LinkedIn or email him at **jamnithil@gmail.com**.",
           chips: [
@@ -11403,6 +11408,7 @@ Contact Information:
           listening: '🎙️ கேட்கிறது... இப்போது உங்கள் கேள்வியைப் பேசுங்கள்...',
           noSpeech: 'குரல் எதுவும் கேட்கவில்லை. மீண்டும் மைக் அழுத்தவும்!',
           greeting: 'வணக்கம்! ஜேம்ஸின் Backend அனுபவம், KadalVazhi புராஜெக்ட் அல்லது LeetCode சாதனைகள் பற்றி எதை வேண்டுமானாலும் கேளுங்கள். நான் எப்படி உதவலாம்?',
+          listenLabel: 'கேளுங்கள்',
           fallbackText: 'ஜேம்ஸ் AI-ல் தற்காலிக பிணைய சிக்கல் ஏற்பட்டது. ஜேம்ஸின் ரெஸ்யூமைப் பதிவிறக்கலாம் அல்லது **jamnithil@gmail.com** மின்னஞ்சலில் தொடர்பு கொள்ளலாம்.',
           limitMsg: 'இந்த அமர்விற்கான கேள்வி வரம்பை அடைந்துவிட்டீர்கள். ஜேம்ஸை LinkedIn அல்லது **jamnithil@gmail.com** மூலம் தொடர்பு கொள்ளலாம்.',
           chips: [
@@ -11432,6 +11438,7 @@ Contact Information:
           listening: '🎙️ കേൾക്കുന്നു... ഇപ്പോൾ നിങ്ങളുടെ ചോദ്യം സംസാരിക്കൂ...',
           noSpeech: 'ശബ്ദമൊന്നും കേട്ടില്ല. വീണ്ടും മൈക്ക് ക്ലിക്ക് ചെയ്യുക!',
           greeting: 'നമസ്കാരം! ജെയിംസിന്റെ സോഫ്റ്റ്‌വെയർ അനുഭവം, KadalVazhi പ്രോജക്റ്റ് അല്ലെങ്കിൽ LeetCode നേട്ടങ്ങളെക്കുറിച്ച് ചോദിക്കാം. ഞാൻ എങ്ങനെ സഹായിക്കണം?',
+          listenLabel: 'കേൾക്കൂ',
           fallbackText: 'ജെയിംസ് AI-ൽ ഒരു താൽക്കാലിക നെറ്റ്‌വർക്ക് തടസ്സം ഉണ്ടായി. ജെയിംസിന്റെ റെസ്യൂമെ ഡൗൺലോഡ് ചെയ്യാം അല്ലെങ്കിൽ **jamnithil@gmail.com** വഴി ബന്ധപ്പെടാം.',
           limitMsg: 'ഈ ബ്രൗസർ സെഷനിലെ ചോദ്യങ്ങളുടെ പരിധി കഴിഞ്ഞു. ജെയിംസുമായി LinkedIn വഴിയോ **jamnithil@gmail.com** വഴിയോ നേരിട്ട് ബന്ധപ്പെടാം.',
           chips: [
@@ -11492,8 +11499,8 @@ Contact Information:
           recognition = null;
         }
 
-        // If no user messages exchanged yet, localize the welcome message
-        if (!preserveConversation && conversationHistory.length === 0 && messagesBody) {
+        // Localize initial welcome message whenever no user messages have been exchanged yet
+        if (conversationHistory.length === 0 && messagesBody) {
           const cfg = AI_LANG_CONFIG[lang];
           const encoded = encodeURIComponent(cfg.greeting);
           messagesBody.innerHTML = `
@@ -11506,7 +11513,7 @@ Contact Information:
                 <div class="speech-ctrl-row">
                   <button class="speech-play-btn" onclick="toggleSpeakMessage(this, decodeURIComponent('${encoded}'))" title="Listen to response" aria-label="Listen">
                     <span class="speech-btn-icon"><i data-lucide="volume-2" style="width: 12px; height: 12px;"></i></span>
-                    <span class="speech-btn-label">Listen</span>
+                    <span class="speech-btn-label">${cfg.listenLabel || 'Listen'}</span>
                   </button>
                 </div>
               </div>
@@ -11536,7 +11543,7 @@ Contact Information:
                 <div class="speech-ctrl-row">
                   <button class="speech-play-btn" onclick="toggleSpeakMessage(this, decodeURIComponent('${encoded}'))" title="Listen to response" aria-label="Listen">
                     <span class="speech-btn-icon"><i data-lucide="volume-2" style="width: 12px; height: 12px;"></i></span>
-                    <span class="speech-btn-label">Listen</span>
+                    <span class="speech-btn-label">${cfg.listenLabel || 'Listen'}</span>
                   </button>
                 </div>
               </div>
@@ -12272,9 +12279,10 @@ Guidelines: Speak for the ear with natural conversational pauses ("...", ",") li
       function resetSpeakingButton(btn) {
         if (!btn) return;
         btn.classList.remove('speaking');
+        const cfg = AI_LANG_CONFIG[currentAiLang] || AI_LANG_CONFIG.en;
         btn.innerHTML = `
           <span class="speech-btn-icon"><i data-lucide="volume-2" style="width: 12px; height: 12px;"></i></span>
-          <span class="speech-btn-label">Listen</span>
+          <span class="speech-btn-label">${cfg.listenLabel || 'Listen'}</span>
         `;
         if (window.lucide) lucide.createIcons();
         if (activeSpeakingBtn === btn) activeSpeakingBtn = null;
@@ -12287,10 +12295,11 @@ Guidelines: Speak for the ear with natural conversational pauses ("...", ",") li
         const row = document.createElement('div');
         row.className = 'speech-ctrl-row';
         const encoded = encodeURIComponent(fullText);
+        const cfg = AI_LANG_CONFIG[currentAiLang] || AI_LANG_CONFIG.en;
         row.innerHTML = `
           <button class="speech-play-btn" onclick="toggleSpeakMessage(this, decodeURIComponent('${encoded}'))" title="Listen to response" aria-label="Listen">
             <span class="speech-btn-icon"><i data-lucide="volume-2" style="width: 12px; height: 12px;"></i></span>
-            <span class="speech-btn-label">Listen</span>
+            <span class="speech-btn-label">${cfg.listenLabel || 'Listen'}</span>
           </button>
         `;
         bubbleDiv.appendChild(row);
@@ -12303,7 +12312,7 @@ Guidelines: Speak for the ear with natural conversational pauses ("...", ",") li
         };
       }
 
-      setAiLanguage(currentAiLang, true);
+      setAiLanguage(currentAiLang);
       if (window.lucide) lucide.createIcons();
       initSpeechRecognition();
       updateAutoVoiceUI();
