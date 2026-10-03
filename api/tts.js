@@ -68,9 +68,9 @@ module.exports = async function handler(req, res) {
       return res.status(400).json({ error: 'Missing or empty text parameter.' });
     }
 
-    // Smart Character Capping: Speak the first 280 characters to optimize voice token consumption
-    // (full detailed answer is always visible on screen; speech delivers the crisp executive summary)
-    let textToSpeak = rawText.trim();
+    // Smart Character Capping & Link Stripping: Speak the clean executive summary
+    // (action links and URLs are rendered as interactive visual buttons on screen, skipped in speech)
+    let textToSpeak = rawText.replace(/\[([^\]]+)\]\([^)]+\)/g, '').trim();
     if (textToSpeak.length > 280) {
       const sentenceEnd = textToSpeak.slice(0, 280).lastIndexOf('.');
       if (sentenceEnd > 140) {

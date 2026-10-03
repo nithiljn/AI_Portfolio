@@ -10677,6 +10677,43 @@ Contact Information:
       font-weight: 600;
     }
 
+    .ai-action-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin: 4px 4px 2px 0;
+      padding: 4px 10px;
+      font-size: 0.74rem;
+      font-family: inherit;
+      font-weight: 500;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      vertical-align: middle;
+      line-height: 1.25;
+    }
+
+    .ai-action-chip:hover {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: #38bdf8;
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.22);
+    }
+
+    .ai-action-chip:active {
+      transform: translateY(0);
+    }
+
+    .ai-action-icon {
+      font-size: 0.78rem;
+      opacity: 0.85;
+    }
+
     .chat-msg.ai .chat-msg-bubble ul {
       margin: 6px 0;
       padding-left: 18px;
@@ -11590,11 +11627,49 @@ Contact Information:
           .replace(/</g, '&lt;')
           .replace(/>/g, '&gt;');
 
+        // Parse markdown links into interactive action chips: [Label](url)
+        escaped = escaped.replace(/\[([^\]]+)\]\(((?:https?:\/\/|mailto:|#)[^)\s]+)\)/g, (match, label, href) => {
+          if (href.startsWith('#')) {
+            const section = href.replace('#', '');
+            return `<button type="button" class="ai-action-chip" onclick="handleAiActionLink('${section}')"><span class="ai-action-icon">↗</span> ${label}</button>`;
+          }
+          return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="ai-action-chip"><span class="ai-action-icon">↗</span> ${label}</a>`;
+        });
+
         escaped = escaped.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         escaped = escaped.replace(/(?:^|\n)[•\-*]\s+(.+)/g, '<br>• $1');
         escaped = escaped.replace(/\n\n/g, '<br><br>');
         return escaped;
       }
+
+      window.handleAiActionLink = function (target) {
+        if (typeof playKeyClick === 'function') playKeyClick();
+        if (target === 'projects' || target === 'kadalvazhi' || target === 'farmvista' || target === 'symptomedai') {
+          if (typeof switchTab === 'function') switchTab('tab-projects');
+          if (window.innerWidth <= 768 && typeof window.toggleAiDrawer === 'function') {
+            window.toggleAiDrawer(false);
+          }
+          setTimeout(() => {
+            const el = document.getElementById(target) || document.getElementById('kadalvazhi-system-design') || document.getElementById('tab-projects');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 120);
+        } else if (target === 'experience') {
+          if (typeof switchTab === 'function') switchTab('tab-experience');
+          if (window.innerWidth <= 768 && typeof window.toggleAiDrawer === 'function') {
+            window.toggleAiDrawer(false);
+          }
+        } else if (target === 'skills') {
+          if (typeof switchTab === 'function') switchTab('tab-skills');
+          if (window.innerWidth <= 768 && typeof window.toggleAiDrawer === 'function') {
+            window.toggleAiDrawer(false);
+          }
+        } else if (target === 'achievements') {
+          if (typeof switchTab === 'function') switchTab('tab-achievements');
+          if (window.innerWidth <= 768 && typeof window.toggleAiDrawer === 'function') {
+            window.toggleAiDrawer(false);
+          }
+        }
+      };
 
       const JAMES_AI_DOSSIER = `You are the portfolio assistant representing James Nithil V.
 - Role: Junior Software Developer at Vaken Technologies Pvt Ltd (working on Sovablu Enterprise Platform).
@@ -11976,10 +12051,11 @@ Guidelines: Speak for the ear with natural conversational pauses ("...", ",") li
       function sanitizeTextForSpeech(raw) {
         if (!raw) return '';
         let clean = raw
+          .replace(/\[([^\]]+)\]\([^)]+\)/g, '')
           .replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F900}-\u{1F9FF}\u{1F018}-\u{1F270}\u{238C}-\u{2454}\u{20D0}-\u{20FF}\u{FE0F}]/gu, '')
-          .replace(/https?:\/\/\S+/gi, 'the website link')
-          .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/gi, 'email address')
-          .replace(/```[\s\S]*?```/g, 'code snippet')
+          .replace(/https?:\/\/\S+/gi, '')
+          .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/gi, 'email')
+          .replace(/```[\s\S]*?```/g, '')
           .replace(/`([^`]+)`/g, '$1')
           .replace(/\*\*(.*?)\*\*/g, '$1')
           .replace(/\*(.*?)\*/g, '$1')
