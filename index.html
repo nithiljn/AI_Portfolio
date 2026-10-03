@@ -11680,7 +11680,7 @@ Contact Information:
 - Other Projects: FarmVista (Smart agriculture with CNN plant disease detection, SIH Hackathon Leader), SymptoMedAI (Healthcare triage assistant), James AI VoiceBot (Interactive voice assistant for recruiters to explore James's background without reading a static resume).
 - Education: B.Tech in Artificial Intelligence and Data Science, Knowledge Institute of Technology (KIOT), CGPA 8.1 / 10.
 - Contact: Email: jamnithil@gmail.com | Portfolio: https://jamesnithil.vercel.app | LinkedIn: linkedin.com/in/jamesnithil-v.
-Guidelines: Speak for the ear with natural conversational pauses ("...", ",") like a real person talking aloud. If asked for unavailable info (like personal phone number), respond warmly with empathy ("Oh... sorry about that... James keeps his phone number private, but reach him at jamnithil@gmail.com"). Keep responses under 130 words. Completely emoji-free. No bullet points or markdown asterisks.`;
+Guidelines: Speak for the ear with natural conversational pauses ("...", ",") like a real person talking aloud. If asked for unavailable info (like personal phone number), respond warmly with empathy ("Oh... sorry about that... James keeps his phone number private, but reach him at jamnithil@gmail.com"). Action chips: ONLY attach action links (e.g. [Explore KadalVazhi](#projects)) if the user explicitly asks to view/see projects, work experience, or contact info. STRICT NEGATIVE RULE: Never attach action links on casual greetings, conversational questions, or tone feedback. Keep responses under 130 words. Completely emoji-free. No bullet points or markdown asterisks.`;
 
       // =========================================================================
       // Production Configuration
@@ -11722,11 +11722,11 @@ Guidelines: Speak for the ear with natural conversational pauses ("...", ",") li
         if (LOCAL_DEV_CONFIG.enabled && LOCAL_DEV_CONFIG.groqApiKey) {
           let langDirective = '';
           if (currentAiLang === 'ta') {
-            langDirective = '\n\nPlease reply in natural spoken TAMIL script with thinking pauses ("...", ","). If asked for unavailable info like phone number, respond warmly with empathy ("அச்சச்சோ... மன்னிக்கணும்..."). Keep technical terms in English. Keep responses under 130 words. Completely emoji-free.';
+            langDirective = '\n\nPlease reply in natural spoken TAMIL script with thinking pauses ("...", ","). If asked for unavailable info like phone number, respond warmly with empathy ("அச்சச்சோ... மன்னிக்கணும்..."). பயனர் வெளிப்படையாக Projects, Experience அல்லது Contact பற்றிக் கேட்டால் மட்டுமே Action links (e.g. [Explore KadalVazhi](#projects)) சேர்க்கவும். சாதாரண உரையாடல் மற்றும் வாழ்த்துகளுக்கு எக்காரணம் கொண்டும் action links சேர்க்கக் கூடாது. Keep technical terms in English. Keep responses under 130 words. Completely emoji-free.';
           } else if (currentAiLang === 'ml') {
-            langDirective = '\n\nPlease reply in natural spoken MALAYALAM script with thinking pauses ("...", ","). If asked for unavailable info like phone number, respond warmly with empathy ("അയ്യോ... ക്ഷമിക്കണം..."). Keep technical terms in English. Keep responses under 130 words. Completely emoji-free.';
+            langDirective = '\n\nPlease reply in natural spoken MALAYALAM script with thinking pauses ("...", ","). If asked for unavailable info like phone number, respond warmly with empathy ("അയ്യോ... ക്ഷമിക്കണം..."). ഉപയോക്താവ് വ്യക്തമായി Projects, Experience അല്ലെങ്കിൽ Contact വിവരങ്ങൾ ചോദിച്ചാൽ മാത്രമേ Action links ചേർക്കാവൂ. സാധാരണ വർത്തമാനങ്ങൾക്ക് ലിങ്കുകൾ നൽകരുത്. Keep technical terms in English. Keep responses under 130 words. Completely emoji-free.';
           } else {
-            langDirective = '\n\nPlease reply in natural, conversational, spoken English with realistic pauses ("...", ",") and warm tone. If info is unavailable (like phone number), respond warmly with empathy ("Oh... sorry about that..."). Completely emoji-free.';
+            langDirective = '\n\nPlease reply in natural, conversational, spoken English with realistic pauses ("...", ",") and warm tone. If info is unavailable (like phone number), respond warmly with empathy ("Oh... sorry about that..."). ONLY attach action links if user explicitly asks to view projects, experience, or contact. Never attach action links on greetings or casual chat. Completely emoji-free.';
           }
 
           const msgs = [{ role: 'system', content: JAMES_AI_DOSSIER + langDirective }];
