@@ -50,7 +50,7 @@ JAMES NITHIL V - BACKGROUND & ACHIEVEMENTS
 • Portfolio: https://jamesnithil.vercel.app
 • GitHub: https://github.com/nithiljn
 • LinkedIn: https://www.linkedin.com/in/jamesnithil-v
-• Status: Actively exploring high-impact Software Development, Backend Engineering, and AI Systems roles.
+• Status: Junior Software Developer at Vaken Technologies Pvt Ltd, focused on building robust backend microservices, high-performance distributed systems, and agentic AI workflows.
 
 =======================================================
 RESPONSE GUIDELINES & VOICE-FIRST CONVERSATIONAL CADENCE:
