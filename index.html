@@ -4482,9 +4482,9 @@
     }
 
     .gitgraph-repo-pill .branch-tag {
-      background: rgba(56, 189, 248, 0.15);
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: rgba(88, 166, 255, 0.12);
+      color: #58a6ff;
+      border: 1px solid rgba(88, 166, 255, 0.25);
       padding: 1px 6px;
       border-radius: 4px;
       font-size: 0.7rem;
@@ -4521,9 +4521,9 @@
     }
 
     .git-branch-btn.active {
-      background: rgba(99, 102, 241, 0.15);
-      color: #818cf8;
-      border-color: rgba(99, 102, 241, 0.4);
+      background: rgba(88, 166, 255, 0.12);
+      color: #58a6ff;
+      border-color: rgba(88, 166, 255, 0.35);
       font-weight: 600;
     }
 
@@ -4644,8 +4644,8 @@
     }
 
     .git-row.active {
-      background: rgba(99, 102, 241, 0.1);
-      border-left: 3px solid #6366f1;
+      background: rgba(88, 166, 255, 0.08);
+      border-left: 3px solid #58a6ff;
     }
 
     .git-cell-graph {
@@ -4675,15 +4675,15 @@
     }
 
     .git-branch-tag {
-      background: rgba(168, 85, 247, 0.15);
-      color: #c084fc;
-      border: 1px solid rgba(168, 85, 247, 0.3);
+      background: rgba(139, 127, 245, 0.12);
+      color: #9d86e9;
+      border: 1px solid rgba(139, 127, 245, 0.25);
     }
 
     .git-release-tag {
-      background: rgba(52, 211, 153, 0.15);
-      color: #34d399;
-      border: 1px solid rgba(52, 211, 153, 0.3);
+      background: rgba(46, 175, 143, 0.12);
+      color: #2eaf8f;
+      border: 1px solid rgba(46, 175, 143, 0.25);
     }
 
     .git-msg-text {
@@ -5556,7 +5556,7 @@
           </div>
 
           <div class="file-item" data-tab="tab-gitgraph" data-file-title="git-graph.log" data-file-icon="git-branch">
-            <span class="file-icon"><i data-lucide="git-branch" style="color: #a855f7; width: 14px; height: 14px;"></i></span>
+            <span class="file-icon"><i data-lucide="git-branch" style="color: #8b7ff5; width: 14px; height: 14px;"></i></span>
             <span>git-graph.log</span>
           </div>
         </div>
@@ -7721,7 +7721,7 @@
       'tab-skills': { title: 'skills.ts', icon: 'cpu', color: '#38bdf8' },
       'tab-achievements': { title: 'achievements.yaml', icon: 'award', color: '#fb7185' },
       'tab-terminal': { title: 'terminal.sh', icon: 'terminal', color: '#4ade80' },
-      'tab-gitgraph': { title: 'git-graph.log', icon: 'git-branch', color: '#a855f7' }
+      'tab-gitgraph': { title: 'git-graph.log', icon: 'git-branch', color: '#8b7ff5' }
     };
 
     const KADALVAZHI_SYSTEM_DESIGN_SPEC = `flowchart TD
@@ -9596,11 +9596,11 @@ Contact Information:
     }
 
     const GIT_BRANCH_COLORS = {
-      'main': '#38bdf8',
-      'feat/enterprise-platform': '#a855f7',
-      'feat/kadalvazhi': '#34d399',
-      'feat/algorithms': '#f59e0b',
-      'feat/farmvista-sih': '#ec4899'
+      'main': '#58a6ff',
+      'feat/enterprise-platform': '#8b7ff5',
+      'feat/kadalvazhi': '#2eaf8f',
+      'feat/algorithms': '#d99136',
+      'feat/farmvista-sih': '#cf6679'
     };
 
     const gitCommitsData = [
@@ -9984,12 +9984,12 @@ Contact Information:
       if (!container) return;
 
       const branches = [
-        { id: 'all', label: 'All', count: gitCommitsData.length, color: '#818cf8' },
-        { id: 'main', label: 'main', count: gitCommitsData.filter(c => c.branch === 'main').length, color: '#38bdf8' },
-        { id: 'feat/enterprise-platform', label: 'feat/enterprise-platform', count: gitCommitsData.filter(c => c.branch === 'feat/enterprise-platform').length, color: '#a855f7' },
-        { id: 'feat/kadalvazhi', label: 'feat/kadalvazhi', count: gitCommitsData.filter(c => c.branch === 'feat/kadalvazhi').length, color: '#34d399' },
-        { id: 'feat/algorithms', label: 'feat/algorithms', count: gitCommitsData.filter(c => c.branch === 'feat/algorithms').length, color: '#f59e0b' },
-        { id: 'feat/farmvista-sih', label: 'feat/farmvista-sih', count: gitCommitsData.filter(c => c.branch === 'feat/farmvista-sih').length, color: '#ec4899' }
+        { id: 'all', label: 'All', count: gitCommitsData.length, color: '#7986cb' },
+        { id: 'main', label: 'main', count: gitCommitsData.filter(c => c.branch === 'main').length, color: '#58a6ff' },
+        { id: 'feat/enterprise-platform', label: 'feat/enterprise-platform', count: gitCommitsData.filter(c => c.branch === 'feat/enterprise-platform').length, color: '#8b7ff5' },
+        { id: 'feat/kadalvazhi', label: 'feat/kadalvazhi', count: gitCommitsData.filter(c => c.branch === 'feat/kadalvazhi').length, color: '#2eaf8f' },
+        { id: 'feat/algorithms', label: 'feat/algorithms', count: gitCommitsData.filter(c => c.branch === 'feat/algorithms').length, color: '#d99136' },
+        { id: 'feat/farmvista-sih', label: 'feat/farmvista-sih', count: gitCommitsData.filter(c => c.branch === 'feat/farmvista-sih').length, color: '#cf6679' }
       ];
 
       container.innerHTML = branches.map(b => `
@@ -10063,7 +10063,7 @@ Contact Information:
         x: START_X + (c.lane * LANE_W),
         y: i * ROW_H + (ROW_H / 2),
         lane: c.lane,
-        color: GIT_BRANCH_COLORS[c.branch] || '#818cf8'
+        color: GIT_BRANCH_COLORS[c.branch] || '#58a6ff'
       }));
 
       for (let i = 0; i < filtered.length - 1; i++) {
@@ -10088,7 +10088,7 @@ Contact Information:
           if (nextMergeIndex !== -1) {
             const target = nodeCoords[nextMergeIndex];
             const midY = (curr.y + target.y) / 2;
-            const branchColor = GIT_BRANCH_COLORS[filtered[nextMergeIndex].branch] || '#a855f7';
+            const branchColor = GIT_BRANCH_COLORS[filtered[nextMergeIndex].branch] || '#8b7ff5';
             svgHtml += `<path d="M ${mergeTargetX} ${target.y} C ${mergeTargetX} ${midY}, ${curr.x} ${midY}, ${curr.x} ${curr.y}" fill="none" stroke="${branchColor}" stroke-dasharray="3,3" stroke-width="1.8" opacity="0.65" />`;
           }
         }
@@ -10114,7 +10114,7 @@ Contact Information:
 
       rowsContainer.innerHTML = filtered.map((c, i) => {
         const isSelected = c.hash === selectedCommitHash;
-        const branchColor = GIT_BRANCH_COLORS[c.branch] || '#818cf8';
+        const branchColor = GIT_BRANCH_COLORS[c.branch] || '#58a6ff';
 
         const tagsHtml = c.tags.map(t => {
           const isRelease = t.startsWith('v') || t.includes('prod');
@@ -10125,7 +10125,7 @@ Contact Information:
           <div class="git-row ${isSelected ? 'active' : ''}" onclick="selectCommit('${c.hash}')">
             <div class="git-cell-graph"></div>
             <div class="git-cell-msg">
-              <span class="git-tag-pill" style="background: ${branchColor}22; color: ${branchColor}; border: 1px solid ${branchColor}44;">
+              <span class="git-tag-pill" style="background: ${branchColor}18; color: ${branchColor}; border: 1px solid ${branchColor}33;">
                 ${c.branch}
               </span>
               ${tagsHtml}
@@ -10170,7 +10170,7 @@ Contact Information:
         return;
       }
 
-      const branchColor = GIT_BRANCH_COLORS[commit.branch] || '#818cf8';
+      const branchColor = GIT_BRANCH_COLORS[commit.branch] || '#58a6ff';
 
       const filesHtml = commit.files.map(f => `
         <div class="inspector-file-item">
@@ -10185,7 +10185,7 @@ Contact Information:
       panel.innerHTML = `
         <div class="inspector-header">
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-            <span class="inspector-type-badge" style="background: ${branchColor}22; color: ${branchColor}; border: 1px solid ${branchColor}44;">
+            <span class="inspector-type-badge" style="background: ${branchColor}18; color: ${branchColor}; border: 1px solid ${branchColor}33;">
               ${commit.type} · ${commit.branch}
             </span>
             <span style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-code);">Verified Commit 🛡️</span>
