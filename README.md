@@ -2,7 +2,7 @@
 
 🚀 **Live Portfolio**: [jamesnithil.vercel.app](https://jamesnithil.vercel.app)  
 📄 **Resume**: [Download James Nithil Resume (PDF)](./James_Nithil_Resume.pdf)  
-<img src="./assets/images/leetcode.svg" width="16" height="16" alt="LeetCode" style="vertical-align: -2px;" /> **LeetCode**: [leetcode.com/u/NITHIL07](https://leetcode.com/u/NITHIL07/) (Knight Rating 2,069, Peak Global Rank #114 / 43,000+)  
+<img src="./assets/images/leetcode.svg" width="16" height="16" alt="LeetCode" style="vertical-align: -2px;" /> **LeetCode**: [leetcode.com/u/NITHIL07](https://leetcode.com/u/NITHIL07/) (Guardian Rating 2,134, Peak Global Rank #114 / 43,000+)  
 💼 **LinkedIn**: [linkedin.com/in/jamesnithil-v](https://www.linkedin.com/in/jamesnithil-v)  
 🌐 **GitHub**: [github.com/nithiljn](https://github.com/nithiljn)  
 
@@ -16,7 +16,7 @@ Software Developer at **Vaken Technologies Pvt Ltd**, engineering enterprise bac
 
 ## 🏆 Key Achievements
 
-- **LeetCode Knight Badge**: Contest Rating **2,069** (Top 1.83% Worldwide) | Global Ranking **15,558 / 886,096** | Contests Attended: **11**
+- **LeetCode Guardian Badge**: Contest Rating **2,134** (Top 1.33% Worldwide) | Global Ranking **11,270 / 887,132** | Contests Attended: **12**
 - **Weekly Contest 517**: Peak Global Rank **#114 out of 43,000+** participants (Solved 4/4 problems with 100% accuracy).
 - **Weekly Contest 490**: Global Rank **#197 out of 43,027** participants (Solved 4/4 problems with 100% accuracy).
 - **LeetCode Problem Solving Breakdown**:
@@ -33,7 +33,7 @@ Software Developer at **Vaken Technologies Pvt Ltd**, engineering enterprise bac
 - **Smart India Hackathon (SIH) — Team Leader**: Led a 5 member engineering team to design and build **FarmVista**, an AI precision agriculture platform integrating deep learning computer vision for crop disease diagnosis and soil telemetry.
 
 <p align="center">
-  <img src="./assets/images/leetcode_knight.png" alt="LeetCode Knight Rating 2069" width="500" />
+  <img src="./assets/images/leetcode_guardian.png" alt="LeetCode Guardian Rating 2134" width="500" />
 </p>
 
 ---
