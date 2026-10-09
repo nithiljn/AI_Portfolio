@@ -6169,7 +6169,67 @@
             </div>
           </div>
 
-          
+          <!-- TicketFlow Project Card -->
+          <div class="project-card-modern" id="project-ticketflow">
+            <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-ticketflow.png', 'TicketFlow: Engineering Task & Multi-Workspace Issue Tracker')" title="Click to view preview in high resolution">
+              <img src="assets/images/project-ticketflow.jpg" alt="TicketFlow Engineering Task and Multi-Workspace Issue Tracker Interface" class="project-thumb-img" loading="lazy">
+              <div class="thumb-expand-btn">
+                <i data-lucide="maximize-2" style="width: 13px; height: 13px;"></i>
+                <span>Preview</span>
+              </div>
+            </div>
+
+            <div class="project-header">
+              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+                <h2 class="project-name" style="margin: 0;">
+                  <span>TicketFlow: Engineering Task & Multi-Workspace Issue Tracker</span>
+                </h2>
+                <span style="font-family: var(--font-code); font-size: 0.78rem; color: var(--text-muted); background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-subtle); padding: 3px 10px; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 6px;">
+                  <i data-lucide="calendar" style="width: 12px; height: 12px; color: var(--accent-blue);"></i> Oct 2026 · Active
+                </span>
+              </div>
+              <p class="project-tagline">Full-stack personal ticket tracking & agile workspace portal with real-time GraphQL triage, Kanban board, and velocity metrics</p>
+            </div>
+
+            <p class="project-description">
+              Engineered a high-performance full-stack issue tracking and task management portal designed for engineering teams and multi-project workflows. Features multi-workspace data isolation, real-time GraphQL querying and mutations, Postgres persistence via Supabase, Kanban boards, sprint analytics, and daily standup note logging.
+            </p>
+
+            <ul class="project-bullets">
+              <li>
+                <strong>Multi-Workspace Data Isolation:</strong> Architected segregated workspace contexts allowing seamless switching between distinct project ecosystems (e.g., TicketFlow, KadalVazhi) with isolated ticket stores.
+              </li>
+              <li>
+                <strong>GraphQL Query & Mutation Pipeline:</strong> Implemented responsive GraphQL schemas for fine-grained ticket mutations, zero-latency status transitions, and optimized payload delivery compared to traditional REST endpoints.
+              </li>
+              <li>
+                <strong>Multi-Faceted Real-Time Triage:</strong> Built multi-criteria filtering across lifecycle status (To Do, In Progress, Completed, Blocked), priority urgency (Urgent, High, Medium, Low), and specialized categories (Bug, Feature, Dev, Database, Design).
+              </li>
+              <li>
+                <strong>Kanban Board & Sprint Analytics:</strong> Designed fluid agile boards with visual column flows, real-time ticket counters, and velocity completion metrics alongside daily developer standup notes.
+              </li>
+            </ul>
+
+            <div class="tech-pill-list">
+              <span class="tech-pill highlight">Next.js & React</span>
+              <span class="tech-pill highlight">GraphQL</span>
+              <span class="tech-pill highlight">PostgreSQL</span>
+              <span class="tech-pill">Supabase</span>
+              <span class="tech-pill">Tailwind CSS</span>
+              <span class="tech-pill">TypeScript</span>
+              <span class="tech-pill">Vercel</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://ticketflow-hub.vercel.app/" target="_blank" class="btn-action btn-accent" title="Open live TicketFlow web app in new tab">
+                <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> Live Demo
+              </a>
+              <a href="https://github.com/nithiljn/TicketPortal" target="_blank" class="btn-action" title="View TicketFlow source code on GitHub">
+                <img src="assets/images/github.svg" alt="GitHub" width="15" height="15" style="vertical-align: middle; display: inline-block;" /> github/TicketPortal
+              </a>
+            </div>
+          </div>
+
           <div class="project-card-modern" id="project-interviewbot">
             <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-interviewbot.jpg', 'James Nithil Personal AI Assistant: Interactive Voice Interface')" title="Click to view preview in high resolution">
               <img src="assets/images/project-interviewbot.jpg" alt="James Nithil Personal AI Assistant Web Interface" class="project-thumb-img" loading="lazy">
@@ -7225,6 +7285,7 @@
               <button class="term-pill-btn" onclick="runCliBtn('skills')">skills</button>
               <button class="term-pill-btn" onclick="runCliBtn('projects')">projects</button>
               <button class="term-pill-btn" onclick="runCliBtn('kadalvazhi')">kadalvazhi</button>
+              <button class="term-pill-btn" onclick="runCliBtn('ticketflow')">ticketflow</button>
               <button class="term-pill-btn" onclick="runCliBtn('git log')">git log</button>
               <button class="term-pill-btn" onclick="runCliBtn('git show')">git show</button>
               <button class="term-pill-btn" onclick="runCliBtn('experience')">experience</button>
@@ -8666,6 +8727,18 @@ KadalVazhi (கடல் வழி): Maritime Microservices & AI Platform (2026)
 • Polyglot Persistence: PostgreSQL, Redis Cluster, Vector DB (pgvector), AWS S3
 `;
 
+    const ticketflowCliResponse = `
+TicketFlow: Engineering Task & Multi-Workspace Issue Tracker (2026)
+• Status: Live on Vercel & Actively Deployed
+• Live URL: https://ticketflow-hub.vercel.app/
+• GitHub: https://github.com/nithiljn/TicketPortal
+• Architecture: Full-Stack React / Next.js with GraphQL API & Supabase PostgreSQL
+• Multi-Workspace Isolation: Independent task environments (e.g. TicketFlow, KadalVazhi) with contextual ticket segregation
+• Real-Time Querying & Filtering: Multi-faceted status (To Do, In Progress, Completed, Blocked), priority (Urgent to Low), and category triage
+• Interactive Views: Inbox list view, Kanban board with fluid state transitions, and real-time sprint velocity analytics
+• Developer Notes: Built-in daily standup and meeting note loggers with direct issue referencing
+`;
+
     const cliResponses = {
       'help': `
 Available Commands:
@@ -8678,6 +8751,7 @@ Available Commands:
   skills         Print technical skills matrix
   projects       List featured engineering projects
   kadalvazhi     Details on KadalVazhi distributed architecture and maritime platform
+  ticketflow     Details on TicketFlow engineering task and multi-workspace issue tracker
   experience     Production highlights at Vaken Technologies Pvt Ltd (Sovablu)
   knight         LeetCode Knight statistics and contest rankings
   resume         Trigger download of James_Nithil_Resume.pdf
@@ -8704,12 +8778,15 @@ Technical Skills Matrix:
 Featured Projects:
 1. KadalVazhi (2026): Maritime Distributed Microservices & Voice AI (Java 25 Spring Boot, Python FastAPI, Kafka, Redis)
    Focus: Zero Middlemen Fish Pre-Booking, Deep-Sea Offline Sync, Real-Time Emergency Crew Exchange
-2. James AI VoiceBot: Interactive personal voice assistant for recruiters to explore background and skills (Gemini API, ElevenLabs)
-3. SymptoMedAI: Disease diagnosis and doctor consultation system (FastAPI, Random Forest, MySQL)
-4. FarmVista: Smart agriculture advisory platform (SIH Hackathon Leader)
+2. TicketFlow (2026): Engineering Task & Multi-Workspace Issue Tracker (Next.js, GraphQL, PostgreSQL, Supabase, Tailwind CSS)
+   Focus: Multi-workspace isolation, real-time ticket triage, GraphQL mutations, Kanban & analytics
+3. James AI VoiceBot: Interactive personal voice assistant for recruiters to explore background and skills (Gemini API, ElevenLabs)
+4. SymptoMedAI: Disease diagnosis and doctor consultation system (FastAPI, Random Forest, MySQL)
+5. FarmVista: Smart agriculture advisory platform (SIH Hackathon Leader)
 `,
       'kadalvazhi': kadalvazhiCliResponse,
       'kadalvalzhi': kadalvazhiCliResponse,
+      'ticketflow': ticketflowCliResponse,
       'experience': `
 1. Vaken Technologies (Aug 2025 to Present | Trichy, India | Product: Sovablu)
    • Junior Software Engineer (Full-time: Oct 2025 to Present)
@@ -11697,13 +11774,13 @@ Contact Information:
 
       window.handleAiActionLink = function (target) {
         if (typeof playKeyClick === 'function') playKeyClick();
-        if (target === 'projects' || target === 'kadalvazhi' || target === 'farmvista' || target === 'symptomedai') {
+        if (target === 'projects' || target === 'kadalvazhi' || target === 'ticketflow' || target === 'farmvista' || target === 'symptomedai' || target === 'interviewbot') {
           if (typeof switchTab === 'function') switchTab('tab-projects');
           if (window.innerWidth <= 768 && typeof window.toggleAiDrawer === 'function') {
             window.toggleAiDrawer(false);
           }
           setTimeout(() => {
-            const el = document.getElementById(target) || document.getElementById('kadalvazhi-system-design') || document.getElementById('tab-projects');
+            const el = document.getElementById(target) || document.getElementById('project-' + target) || document.getElementById('kadalvazhi-system-design') || document.getElementById('tab-projects');
             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }, 120);
         } else if (target === 'experience') {
@@ -11730,7 +11807,7 @@ Contact Information:
 - Production Impact: Engineered high throughput REST APIs in Java 21 with @Transactional ACID consistency. Implemented dual database strategy with PostgreSQL and DynamoDB cutting query latency by 65%. Added Redis caching with TTL and cache stampede protection reducing DB load by 70%. Built secure S3 Presigned URLs and RBAC. Automated Jenkins CI/CD and ECS deployments. Built Agentic AI workflows with multi model routing saving 45% token cost.
 - Flagship Project: KadalVazhi (Maritime Operations and AI Platform). Microservices backend in Java 25, Kafka event streaming, SQLite deep sea offline sync (12+ NM offshore with no cellular signal), direct catch preorders bypassing middlemen (15% to 25% margin boost), automated mechanic dispatch, boat crew matchmaking, Tamil and Malayalam voice guidance via Whisper voice engine and Gemini API.
 - Problem Solving: LeetCode Knight Badge (Contest Rating 2,069, Peak Global Contest Rank #114 / 43,027+ contestants, top 1.83%). 700+ problems solved in Java and Python (Graphs, Trees, Dynamic Programming, Sliding Window, Two Pointers, Hash Maps, Linked Lists).
-- Other Projects: FarmVista (Smart agriculture with CNN plant disease detection, SIH Hackathon Leader), SymptoMedAI (Healthcare triage assistant), James AI VoiceBot (Interactive voice assistant for recruiters to explore James's background without reading a static resume).
+- Other Projects: TicketFlow (Full-stack personal ticket and work tracking portal with Next.js, GraphQL, PostgreSQL and Supabase, live at ticketflow-hub.vercel.app), FarmVista (Smart agriculture with CNN plant disease detection, SIH Hackathon Leader), SymptoMedAI (Healthcare triage assistant), James AI VoiceBot (Interactive voice assistant for recruiters to explore James's background without reading a static resume).
 - Education: B.Tech in Artificial Intelligence and Data Science, Knowledge Institute of Technology (KIOT), CGPA 8.1 / 10.
 - Contact: Email: jamnithil@gmail.com | Portfolio: https://jamesnithil.vercel.app | LinkedIn: linkedin.com/in/jamesnithil-v.
 Guidelines: Speak for the ear with natural conversational pauses ("...", ",") like a real person talking aloud. If asked for unavailable info (like personal phone number), respond warmly with empathy ("Oh... sorry about that... James keeps his phone number private, but reach him at jamnithil@gmail.com"). Action chips: ONLY attach action links (e.g. [Explore KadalVazhi](#projects)) if the user explicitly asks to view/see projects, work experience, or contact info. STRICT NEGATIVE RULE: Never attach action links on casual greetings, conversational questions, or tone feedback. Keep responses under 130 words. Completely emoji-free. No bullet points or markdown asterisks.`;

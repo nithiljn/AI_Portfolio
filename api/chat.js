@@ -30,6 +30,7 @@ JAMES NITHIL V - BACKGROUND & ACHIEVEMENTS
   - Whisper Voice AI: Transcribes voice notes from fishermen into structured voyage manifests.
 
 3. OTHER FEATURED PROJECTS:
+• TicketFlow: Full-stack engineering task and multi-workspace issue tracker built with Next.js, GraphQL, PostgreSQL (Supabase), and Tailwind CSS. Features multi-workspace isolation (e.g. TicketFlow, KadalVazhi), real-time ticket triage, multi-faceted filtering (status, priority, category), interactive Kanban board, sprint velocity metrics, and daily standup notes logger. Live at https://ticketflow-hub.vercel.app/ (GitHub: https://github.com/nithiljn/TicketPortal).
 • FarmVista: Precision smart agriculture platform with CNN plant disease detection and soil telemetry; served as Team Leader in Smart India Hackathon (SIH).
 • SymptoMedAI: Clinical triage assistant with probabilistic symptom scoring and emergency routing.
 • InterviewBot: Interactive technical mock interview simulator with speech-to-text evaluation and algorithmic feedback.
