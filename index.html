@@ -6172,7 +6172,7 @@
           <!-- TicketFlow Project Card -->
           <div class="project-card-modern" id="project-ticketflow">
             <div class="project-thumb-wrap" onclick="openImageLightbox('assets/images/project-ticketflow.png', 'TicketFlow: Engineering Task and Workspace Issue Tracker')" title="Click to view preview in high resolution">
-              <img src="assets/images/project-ticketflow.jpg" alt="TicketFlow Engineering Task and Workspace Issue Tracker Interface" class="project-thumb-img" loading="lazy">
+              <img src="assets/images/project-ticketflow.png" alt="TicketFlow Engineering Task and Workspace Issue Tracker Interface" class="project-thumb-img" style="object-position: center center;" loading="lazy">
               <div class="thumb-expand-btn">
                 <i data-lucide="maximize-2" style="width: 13px; height: 13px;"></i>
                 <span>Preview</span>
@@ -8513,9 +8513,23 @@ Availability : Open for Software Development & AI Agent Development
         if (window.location.hash === '#sidebar') {
           setTimeout(openMobileSidebar, 150);
         } else {
-          const target = window.location.hash.replace('#', '');
+          const rawTarget = window.location.hash.replace('#', '');
+          const target = rawTarget.startsWith('tab-') ? rawTarget : ('tab-' + rawTarget);
           if (document.getElementById(target)) {
             setTimeout(() => switchTab(target), 150);
+          } else if (rawTarget === 'ticketflow' || rawTarget === 'project-ticketflow' || rawTarget === 'kadalvazhi' || rawTarget === 'farmvista' || rawTarget === 'symptomedai' || rawTarget === 'interviewbot') {
+            setTimeout(() => {
+              switchTab('tab-projects');
+              const el = document.getElementById(rawTarget) || document.getElementById('project-' + rawTarget);
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 150);
+          } else if (document.getElementById(rawTarget)) {
+            setTimeout(() => {
+              const el = document.getElementById(rawTarget);
+              const parentTab = el.closest('.tab-pane');
+              if (parentTab) switchTab(parentTab.id);
+              el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 150);
           }
         }
       }
