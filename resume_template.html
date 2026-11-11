@@ -6,7 +6,7 @@
 <style>
   @page {
     size: letter;
-    margin: 0.30in 0.42in 0.28in 0.42in;
+    margin: 0.28in 0.40in 0.25in 0.40in;
   }
   * {
     box-sizing: border-box;
@@ -17,8 +17,8 @@
     font-family: "Times New Roman", Times, "Nimbus Roman No9 L", serif;
     color: #000;
     background: #fff;
-    font-size: 9.5pt;
-    line-height: 1.25;
+    font-size: 9.35pt;
+    line-height: 1.23;
     -webkit-font-smoothing: antialiased;
   }
   a {
@@ -29,16 +29,16 @@
   /* HEADER */
   .header {
     text-align: center;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
   .header h1 {
-    font-size: 21pt;
+    font-size: 20.5pt;
     font-weight: bold;
-    letter-spacing: 0.4px;
-    margin-bottom: 3px;
+    letter-spacing: 0.3px;
+    margin-bottom: 2.5px;
   }
   .header .contact-line {
-    font-size: 9.0pt;
+    font-size: 8.8pt;
     word-spacing: 0.5px;
     white-space: nowrap;
   }
@@ -49,17 +49,17 @@
 
   /* SECTION */
   .section {
-    margin-top: 6px;
+    margin-top: 5px;
     margin-bottom: 2px;
   }
   .section-title {
-    font-size: 10.8pt;
+    font-size: 10.5pt;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
+    letter-spacing: 0.5px;
     border-bottom: 0.8pt solid #000;
     padding-bottom: 1px;
-    margin-bottom: 3.5px;
+    margin-bottom: 3px;
   }
 
   /* SUBHEADING / ROW */
@@ -67,34 +67,34 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    font-size: 9.8pt;
+    font-size: 9.6pt;
   }
   .item-header-title {
     font-weight: bold;
   }
   .item-header-date {
     font-weight: bold;
-    font-size: 9.4pt;
+    font-size: 9.2pt;
   }
   .item-subheader {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     font-style: italic;
-    font-size: 9.3pt;
-    margin-bottom: 2px;
+    font-size: 9.1pt;
+    margin-bottom: 1.5px;
   }
 
   /* LISTS */
   ul.bullet-list {
-    margin-left: 17px;
+    margin-left: 16px;
     padding-left: 0;
     list-style-type: disc;
   }
   ul.bullet-list li {
-    font-size: 9.4pt;
-    line-height: 1.28;
-    margin-bottom: 2.2px;
+    font-size: 9.25pt;
+    line-height: 1.25;
+    margin-bottom: 1.8px;
     text-align: justify;
   }
   ul.bullet-list li strong {
@@ -103,19 +103,19 @@
 
   /* SKILLS & ONE-LINERS */
   .skills-list {
-    font-size: 9.4pt;
-    line-height: 1.32;
+    font-size: 9.25pt;
+    line-height: 1.28;
   }
   .skills-list p {
-    margin-bottom: 2px;
+    margin-bottom: 1.6px;
   }
   .skills-list strong {
     font-weight: bold;
   }
 
   .cert-list {
-    font-size: 9.4pt;
-    line-height: 1.30;
+    font-size: 9.2pt;
+    line-height: 1.25;
   }
 </style>
 </head>
@@ -151,30 +151,44 @@
       <span>Trichy, India</span>
     </div>
     <ul class="bullet-list">
-      <li>Engineered and scaled enterprise RESTful APIs using <strong>Java 21, Spring Boot, and PostgreSQL</strong>, implementing strict <strong>Spring Transaction management and ACID principles</strong> across critical mutation and confirmation workflows to maintain data consistency and prevent data loss under concurrent client traffic.</li>
+      <li>Engineered and scaled enterprise RESTful APIs using <strong>Java 21, Spring Boot, and PostgreSQL</strong>, implementing strict <strong>Spring Transaction management and ACID principles</strong> across critical mutation workflows to maintain data consistency and prevent data loss under concurrent client traffic.</li>
       <li>Architected a hybrid persistence layer pairing <strong>PostgreSQL</strong> with <strong>Amazon DynamoDB</strong> for fast key value reads. Restructured table designs and eliminated redundant columns to reduce I/O payload size while implementing <strong>composite indexing and query optimization</strong> to eliminate full row scans.</li>
       <li>Implemented an in memory <strong>Redis caching tier with TTL expiration</strong> for frequently queried datasets to reduce repeated database queries. Applied <strong>cache stampede prevention mechanisms</strong> using mutex locks to safeguard the database from concurrent traffic spikes and improve API response times.</li>
-      <li>Secured file and document storage using <strong>Amazon S3 with expiring presigned URLs</strong> and enforced <strong>role based access control (RBAC)</strong> across platform endpoints. Automated Java compilation, testing, and containerized deployment to <strong>Amazon ECS</strong> via <strong>Jenkins CI/CD</strong> with <strong>AWS Lambda</strong> for event driven scheduled tasks.</li>
-      <li>Contributed to <strong>Agentic AI development</strong> by building autonomous agents, defining modular skills, integrating <strong>MCP tool access</strong>, and deploying <strong>RAG pipelines with guardrails</strong>. Optimized LLM inference costs and response efficiency through <strong>dynamic model routing</strong>, directing routine operations to lightweight models and reserving complex reasoning for advanced LLMs.</li>
+      <li>Secured file and document storage using <strong>Amazon S3 with expiring presigned URLs</strong> and enforced <strong>role based access control (RBAC)</strong> across platform endpoints. Automated Java compilation, testing, and containerized deployment to <strong>Amazon ECS</strong> via <strong>Jenkins CI/CD</strong> with <strong>AWS Lambda</strong> for scheduled tasks.</li>
+      <li>Contributed to <strong>Agentic AI development</strong> by building autonomous agents, defining modular skills, integrating <strong>MCP tool access</strong>, and deploying <strong>RAG pipelines with guardrails</strong>. Optimized LLM inference costs and response efficiency through <strong>dynamic model routing</strong> across lightweight and advanced LLMs.</li>
     </ul>
   </div>
 
   <!-- PROJECTS -->
   <div class="section">
     <div class="section-title">Projects</div>
+    
+    <!-- KadalVazhi -->
     <div class="item-header">
       <span class="item-header-title">KadalVazhi: Maritime Operations and AI Platform</span>
       <span class="item-header-date">2026</span>
     </div>
     <div class="item-subheader">
       <span>Java 25, Spring Boot, Apache Kafka, Python, PostgreSQL, Redis, Offline SQLite Sync</span>
-      <span>Production Microservices</span>
+      <span>Distributed Microservices</span>
+    </div>
+    <ul class="bullet-list" style="margin-bottom: 4px;">
+      <li>Architected a distributed maritime operations platform using <strong>Java 25 and Spring Boot</strong> with an <strong>offline first SQLite WAL sync engine</strong>, ensuring uninterrupted telemetry and catch logging during <strong>7 to 15 day deep sea cellular blackouts</strong> with idempotent cloud reconciliation.</li>
+      <li>Built an event driven messaging pipeline with <strong>Apache Kafka partitioned by Harbour ID</strong> for live catch preorders and emergency crew dispatch, integrating <strong>multilingual Whisper and Gemini AI voice advisory</strong> cutting LLM inference costs by <strong>45%</strong> via dynamic model routing.</li>
+    </ul>
+
+    <!-- TicketFlow -->
+    <div class="item-header">
+      <span class="item-header-title">TicketFlow: Agile Task &amp; AI Voice Workspace Tracker</span>
+      <span class="item-header-date">2026</span>
+    </div>
+    <div class="item-subheader">
+      <span>React.js, GraphQL, Supabase, Upstash Redis, Node.js, Groq (Llama/Qwen), ElevenLabs, Vercel</span>
+      <span>Full-Stack Web &amp; AI</span>
     </div>
     <ul class="bullet-list">
-      <li>Architected a distributed maritime operations and direct catch marketplace using <strong>Java 25 and Spring Boot</strong>, bypassing dockside middlemen through preorders to secure <strong>15% to 25% higher profit margins</strong> for deep sea fishing fleets.</li>
-      <li>Designed a resilient <strong>offline first synchronization engine with embedded SQLite</strong> in Write Ahead Logging mode, enabling uninterrupted logging of boat telemetry, fuel, and catch data during <strong>7 to 15 day deep sea cellular blackouts</strong> with idempotent cloud reconciliation upon reaching coastal 4G.</li>
-      <li>Built an event driven messaging pipeline with <strong>Apache Kafka partitioned by Harbour ID</strong> handling concurrent vessel telemetry, live dockside price broadcasts, and automated <strong>emergency crew and marine mechanic dispatch</strong> across coastal Tamil Nadu and Kerala.</li>
-      <li>Integrated hands free <strong>multilingual voice advisory in Tamil and Malayalam</strong> powered by <strong>Whisper Voice Engine and Gemini API</strong>, cutting LLM inference costs by <strong>45%</strong> through intelligent dynamic model routing for routine marine navigation and weather queries.</li>
+      <li>Engineered a real-time task tracker and Kanban board workspace using <strong>React.js, GraphQL, and Supabase (PostgreSQL)</strong>, deployed on <strong>Vercel</strong> with a lightweight <strong>Node.js micro-service</strong> to eliminate serverless cold starts and optimize query latency.</li>
+      <li>Integrated an interactive <strong>ElevenLabs voice assistant</strong> and sub-second LLM inference via <strong>Groq (Llama &amp; Qwen models)</strong>, implementing <strong>Upstash Redis caching</strong> and an automated <strong>model fallback pipeline</strong> for reliable, fault-tolerant issue triage.</li>
     </ul>
   </div>
 
@@ -182,11 +196,11 @@
   <div class="section">
     <div class="section-title">Technical Skills</div>
     <div class="skills-list">
-      <p><strong>Languages:</strong> Java (Core &amp; 21), Python, SQL, C++, JavaScript</p>
-      <p><strong>Backend &amp; APIs:</strong> Spring Boot, FastAPI, REST APIs, GraphQL, gRPC, Microservices</p>
-      <p><strong>Distributed Systems &amp; Cloud:</strong> Apache Kafka, Distributed Systems, Redis Caching, Rate Limiting, Docker, Jenkins CI/CD, AWS (EC2, S3, Lambda, Bedrock)</p>
-      <p><strong>Databases:</strong> PostgreSQL, DynamoDB, MySQL, Redis, SQLite</p>
-      <p><strong>AI &amp; Systems:</strong> Agentic AI, MCP Tools, Claude SDK, Whisper Voice Engine, Gemini API, RAG, i18n</p>
+      <p><strong>Languages:</strong> Java (Core &amp; 21), Python, JavaScript, SQL, C++</p>
+      <p><strong>Frontend &amp; Backend:</strong> React.js, Spring Boot, FastAPI, REST APIs, GraphQL, gRPC, Microservices</p>
+      <p><strong>Distributed Systems &amp; Cloud:</strong> Apache Kafka, Distributed Systems, Redis Caching, Rate Limiting, Docker, Jenkins CI/CD, AWS (EC2, S3, Lambda)</p>
+      <p><strong>Databases:</strong> PostgreSQL, Supabase, DynamoDB, Redis (Upstash), MySQL, SQLite</p>
+      <p><strong>AI &amp; Systems:</strong> Agentic AI, Groq (LLM Inference), ElevenLabs, MCP Tools, Whisper Voice Engine, Gemini API, RAG</p>
     </div>
   </div>
 
