@@ -740,9 +740,24 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      color: var(--accent-green);
+      background: #16a34a;
+      color: #ffffff;
       font-weight: 600;
-      margin-bottom: 4px;
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      border: none;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .status-badge-live .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: none;
+      animation: none;
     }
 
     .pulse-dot {
@@ -5592,7 +5607,7 @@
         
         <div class="quick-status-card">
           <div class="status-badge-live">
-            <span class="pulse-dot"></span> Active in Production
+            <span class="pulse-dot"></span> Active in production
           </div>
           <div style="color: var(--text-primary); font-weight: 600; margin-bottom: 2px;">Vaken Technologies Pvt Ltd</div>
           <div style="color: var(--text-muted);">Junior Software Developer at Sovablu</div>
